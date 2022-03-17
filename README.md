@@ -17,6 +17,8 @@ $ docker-compose docker-compose.postgres.yml up
 ```sh
 $ git clone https://github.com/mfrachet/rollout.git
 $ cd rollout
+$ mv ./packages/@rollout/frontend/.env.example ./packages/@rollout/frontend/.env # rename .env.example to .env
+$ mv ./packages/@rollout/backend/.env.example ./packages/@rollout/backend/.env # rename .env.example to .env
 $ npm install
 $ npm run setup
 $ npm run db:prepare:sqlite # or npm run db:prepare:sqlite with the good env variables
