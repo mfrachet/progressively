@@ -5,7 +5,7 @@
     "lerna": "^4.0.0"
   },
   "scripts": {
-    "setup": "npm i && lerna bootstrap && lerna run build",
+    "setup": "npm i && lerna bootstrap",
     "build": "lerna run build",
     "start": "lerna run start --stream",
     "start:dev": "lerna run dev --stream",
