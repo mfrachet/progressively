@@ -21,6 +21,7 @@ $ npm install
 $ npm run setup
 $ npm run db:prepare:sqlite # or npm run db:prepare:sqlite with the good env variables
 $ npm run db:seed # optional will bring some mocking data
+$ npm run build
 $ npm run start:dev
 ```
 

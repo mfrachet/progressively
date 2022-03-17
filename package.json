@@ -6,6 +6,7 @@
   },
   "scripts": {
     "setup": "npm i && lerna bootstrap && lerna run build",
+    "build": "lerna run build",
     "start": "lerna run start --stream",
     "start:dev": "lerna run dev --stream",
     "db:prepare:sqlite": "lerna run db:gen:sqlite-schema && npm run db:prepare:schemas",
