@@ -27,6 +27,12 @@ $ npm run build
 $ npm run start:dev
 ```
 
+You can open the ui on `http://localhost:3000/signin` and connect with one of these testing account:
+
+- `marvin.frachet@gmail.com` / `password`
+- `john.doe@gmail.com` / `password`
+- `jane.doe@gmail.com` / `password`
+
 ### Running tests
 
 #### Backend tests
