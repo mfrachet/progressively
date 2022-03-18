@@ -24,7 +24,7 @@ jobs:
 
       - name: Prepare the project
         working-directory: ./packages/@rollout/backend
-        run: npm run db:gen:sqlite-schema && db:migrate:dev && db:generate:schema
+        run: npm run db:gen:sqlite-schema && npm run db:migrate:dev && npm run db:generate:schema
 
       - name: Build the project
         working-directory: ./packages/@rollout/backend
