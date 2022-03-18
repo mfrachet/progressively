@@ -63,7 +63,7 @@ describe('ProjectsController (e2e)', () => {
       verifyAuthGuard(app, '/projects', 'get'));
 
     it('lists all of the users projects', async () => {
-      const [_, access_token] = await createProject(
+      const [, access_token] = await createProject(
         app,
         'New project of the street',
       );
