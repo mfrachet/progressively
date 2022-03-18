@@ -36,8 +36,13 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Start the project in dev mode
+      - name: Start the backend project
+        working-directory: ./packages/@rollout/backend
+        run: npm start &
+
+      - name: Start the frontend project
+        working-directory: ./packages/@rollout/frontend
         run: npm start &
 
       - name: E2E tests
-        run: npm run test:e2e:ci
+        run: npx wait-on -t 60000 tcp:4000 && npm run test:e2e:ci
