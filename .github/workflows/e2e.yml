@@ -9,7 +9,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [macos-latest]
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -46,9 +46,3 @@ jobs:
 
       - name: E2E tests
         run: npx wait-on -t 60000 tcp:4000 && npm run test:e2e:ci
-
-      - name: Archive Cypress errors
-        uses: actions/upload-artifact@v3
-        with:
-          name: code-coverage-report
-          path: packages/@rollout/frontend/cypress/screenshots
