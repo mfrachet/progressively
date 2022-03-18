@@ -18,14 +18,14 @@ jobs:
           cache: "npm"
           cache-dependency-path: packages/@rollout/backend/package-lock.json
 
-      - name: Move to packages/@rollout/backend
-        run: cd ./packages/@rollout/backend
-
       - name: Install dependencies
+        working-directory: ./packages/@rollout/backend
         run: npm install
 
       - name: Run tests
+        working-directory: ./packages/@rollout/backend
         run: npm run test
 
       - name: Run API tests
+        working-directory: ./packages/@rollout/backend
         run: npm run test:e2e
