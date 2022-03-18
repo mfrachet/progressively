@@ -1,4 +1,4 @@
-name: Automated tests
+name: Backend
 on:
   pull_request:
     branches: ["master"]
