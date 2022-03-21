@@ -220,7 +220,11 @@ export default function SettingsPage() {
                   leftIcon={<FaTrash aria-hidden />}
                   variant="outline"
                 >
-                  Delete {`"${project.name}"`} forever
+                  Delete{" "}
+                  <Box as="span" aria-hidden display={["none", "inline"]}>
+                    {`"${project.name}"`} forever
+                  </Box>
+                  <VisuallyHidden>{`"${project.name}"`} forever</VisuallyHidden>
                 </Button>
               </Box>
             </Section>

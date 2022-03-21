@@ -56,6 +56,7 @@ export const SectionHeader = ({
       justifyContent={"space-between"}
       alignItems={"center"}
       pb={8}
+      direction={["column", "row"]}
       {...props}
     >
       <TitleRoot mr={2} p={4}>
