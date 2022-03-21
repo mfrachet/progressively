@@ -30,9 +30,8 @@ export const FlagCard = ({
 
   return (
     <Box
-      borderWidth={1}
+      borderTopWidth={1}
       borderColor="background"
-      borderRadius={6}
       p={4}
       as="article"
       aria-labelledby={`article-${id}`}
@@ -87,13 +86,11 @@ export const FlagCard = ({
           />
           <input type="hidden" name="flagId" value={id} />
 
-          <Flex justifyContent={"center"} mt={[2, 0]}>
-            <Switch
-              type="submit"
-              optimistic={optimistic}
-              checked={flagStatus === FlagStatus.ACTIVATED}
-            />
-          </Flex>
+          <Switch
+            type="submit"
+            optimistic={optimistic}
+            checked={flagStatus === FlagStatus.ACTIVATED}
+          />
         </Form>
       </Flex>
     </Box>

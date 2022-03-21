@@ -25,9 +25,8 @@ export const EnvCard = ({
 
   return (
     <Box
-      borderWidth={1}
+      borderTopWidth={1}
       borderColor="background"
-      borderRadius={6}
       p={4}
       as="article"
       aria-labelledby={`article-${id}`}
