@@ -51,7 +51,7 @@ export const ButtonCopy = ({
     return (
       <CopyToClipboard text={toCopy}>
         <Button
-          size="sm"
+          size={"sm"}
           variant="outline"
           leftIcon={icon}
           onClick={handleClick}

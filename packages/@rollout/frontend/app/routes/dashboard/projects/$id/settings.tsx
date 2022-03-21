@@ -226,6 +226,7 @@ export default function SettingsPage() {
                   to={`/dashboard/projects/${project.uuid}/delete`}
                   leftIcon={<FaTrash aria-hidden />}
                   variant="outline"
+                  width={["100%", "auto"]}
                 >
                   Delete{" "}
                   <Box as="span" aria-hidden display={["none", "inline"]}>
