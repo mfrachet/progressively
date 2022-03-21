@@ -149,9 +149,11 @@ export default function EnvSettingsPage() {
               >
                 Delete{" "}
                 <Box as="span" aria-hidden display={["none", "inline"]}>
-                  {`"${environment.name}"`}
+                  {`"${environment.name}"`} forever
                 </Box>
-                <VisuallyHidden>{`"${environment.name}"`}</VisuallyHidden>
+                <VisuallyHidden>
+                  {`"${environment.name}"`} forever
+                </VisuallyHidden>
               </Button>
             </Flex>
           </Section>
