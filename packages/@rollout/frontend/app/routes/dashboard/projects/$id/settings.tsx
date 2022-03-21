@@ -1,4 +1,11 @@
-import { Box, Button, Stack, Text, VisuallyHidden } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Stack,
+  Text,
+  VisuallyHidden,
+  Flex,
+} from "@chakra-ui/react";
 import { AiOutlineSetting } from "react-icons/ai";
 import { FaTrash } from "react-icons/fa";
 import { FiLayers } from "react-icons/fi";
@@ -212,7 +219,7 @@ export default function SettingsPage() {
                 }
               />
 
-              <Box px={4} pb={4}>
+              <Flex px={4} pb={4} justifyContent={["center", "unset"]}>
                 <Button
                   as={Link}
                   colorScheme="error"
@@ -226,7 +233,7 @@ export default function SettingsPage() {
                   </Box>
                   <VisuallyHidden>{`"${project.name}"`} forever</VisuallyHidden>
                 </Button>
-              </Box>
+              </Flex>
             </Section>
           )}
         </Stack>

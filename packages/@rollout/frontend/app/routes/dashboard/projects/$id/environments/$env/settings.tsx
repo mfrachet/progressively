@@ -1,4 +1,4 @@
-import { Box, Button, Text, VisuallyHidden } from "@chakra-ui/react";
+import { Box, Button, Flex, Text, VisuallyHidden } from "@chakra-ui/react";
 import { AiOutlineKey, AiOutlineSetting } from "react-icons/ai";
 import { FaTrash } from "react-icons/fa";
 import { FiFlag } from "react-icons/fi";
@@ -138,7 +138,7 @@ export default function EnvSettingsPage() {
               }
             />
 
-            <Box px={4} pb={4}>
+            <Flex px={4} pb={4} justifyContent={["center", "unset"]}>
               <Button
                 as={Link}
                 colorScheme="error"
@@ -152,7 +152,7 @@ export default function EnvSettingsPage() {
                 </Box>
                 <VisuallyHidden>{`"${environment.name}"`}</VisuallyHidden>
               </Button>
-            </Box>
+            </Flex>
           </Section>
         )}
       </Main>

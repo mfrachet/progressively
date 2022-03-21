@@ -87,11 +87,13 @@ export const FlagCard = ({
           />
           <input type="hidden" name="flagId" value={id} />
 
-          <Switch
-            type="submit"
-            optimistic={optimistic}
-            checked={flagStatus === FlagStatus.ACTIVATED}
-          />
+          <Flex justifyContent={"center"} mt={[2, 0]}>
+            <Switch
+              type="submit"
+              optimistic={optimistic}
+              checked={flagStatus === FlagStatus.ACTIVATED}
+            />
+          </Flex>
         </Form>
       </Flex>
     </Box>
