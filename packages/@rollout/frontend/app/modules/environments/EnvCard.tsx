@@ -62,12 +62,14 @@ export const EnvCard = ({
               </CLink>
             </Heading>
 
-            <ButtonCopy
-              toCopy={clientKey}
-              icon={<Icon as={BiKey} aria-hidden />}
-            >
-              {clientKey}
-            </ButtonCopy>
+            <Box display={["none", "block"]}>
+              <ButtonCopy
+                toCopy={clientKey}
+                icon={<Icon as={BiKey} aria-hidden />}
+              >
+                {clientKey}
+              </ButtonCopy>
+            </Box>
           </Flex>
 
           <Text>{description}</Text>
@@ -82,6 +84,7 @@ export const EnvCard = ({
           w={6}
           h={6}
           aria-hidden
+          display={["none", "inline"]}
         />
       </Flex>
     </Box>

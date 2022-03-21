@@ -69,6 +69,7 @@ export const ProjectCard = ({
           w={6}
           h={6}
           aria-hidden
+          display={["none", "inline"]}
         />
       </Flex>
     </Box>
