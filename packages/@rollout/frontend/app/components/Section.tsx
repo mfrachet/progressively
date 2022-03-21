@@ -54,7 +54,7 @@ export const SectionHeader = ({
   return (
     <Flex
       justifyContent={"space-between"}
-      alignItems={"center"}
+      alignItems={["flex-start", "center"]}
       pb={8}
       direction={["column", "row"]}
       {...props}
