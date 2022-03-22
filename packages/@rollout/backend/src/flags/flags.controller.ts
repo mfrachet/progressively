@@ -2,6 +2,7 @@ import {
   BadRequestException,
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Post,
@@ -104,6 +105,19 @@ export class FlagsController {
     delete updatedFlagEnv.flag;
 
     return updatedFlagEnv;
+  }
+
+  /**
+   * Delete a project by project/env/flag
+   */
+  @Delete('projects/:id/environments/:envId/flags/:flagId')
+  @UseGuards(HasProjectAccessGuard)
+  @UseGuards(JwtAuthGuard)
+  async deleteFlag(
+    @Param('envId') envId: string,
+    @Param('flagId') flagId: string,
+  ) {
+    return this.flagService.deleteFlag(envId, flagId);
   }
 
   /**

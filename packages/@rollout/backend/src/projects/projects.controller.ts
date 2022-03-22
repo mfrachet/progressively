@@ -23,7 +23,6 @@ import {
 } from './projects.dto';
 import { ProjectsService } from './projects.service';
 import { UserRetrieveDTO } from 'src/users/users.dto';
-import { FlagsService } from '../flags/flags.service';
 import { UserProject } from '@prisma/client';
 import { Roles } from '../shared/decorators/Roles';
 import { UserRoles } from '../users/roles';
@@ -34,7 +33,6 @@ import { HasProjectAccessGuard } from './guards/hasProjectAccess';
 export class ProjectsController {
   constructor(
     private readonly projectService: ProjectsService,
-    private readonly flagService: FlagsService,
     private readonly strategyService: StrategyService,
   ) {}
 
@@ -95,16 +93,6 @@ export class ProjectsController {
   @UseGuards(JwtAuthGuard)
   delete(@Param('id') id: string) {
     return this.projectService.deleteProject(id);
-  }
-
-  @Delete('projects/:id/environments/:envId/flags/:flagId')
-  @UseGuards(HasProjectAccessGuard)
-  @UseGuards(JwtAuthGuard)
-  async deleteFlag(
-    @Param('envId') envId: string,
-    @Param('flagId') flagId: string,
-  ) {
-    return this.flagService.deleteFlag(envId, flagId);
   }
 
   // Strategies
