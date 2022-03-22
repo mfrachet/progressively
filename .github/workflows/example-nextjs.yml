@@ -1,4 +1,4 @@
-name: Example NExtjs
+name: Example Nextjs
 on:
   pull_request:
     branches: ["master"]
@@ -18,7 +18,7 @@ jobs:
           cache: "npm"
           cache-dependency-path: |
             package-lock.json
-            example/@nextjs/package-lock.json
+            example/nextjs/package-lock.json
             packages/@rollout/backend/package-lock.json
 
       - name: Creating .env files
@@ -28,7 +28,7 @@ jobs:
         run: npm install
 
       - name: Install dependencies on the example project
-        working-directory: ./example/@nextjs
+        working-directory: ./example/nextjs
         run: npm install
 
       - name: Bootstrap projects
@@ -45,9 +45,9 @@ jobs:
         run: npm start &
 
       - name: Start the Example Nextjs project
-        working-directory: ./example/@nextjs
+        working-directory: ./example/nextjs
         run: npm start &
 
       - name: E2E tests
-        working-directory: ./example/@nextjs
+        working-directory: ./example/nextjs
         run: npx wait-on -t 60000 tcp:4000 && npm run test:e2e:ci
