@@ -13,14 +13,8 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { ApiBearerAuth } from '@nestjs/swagger';
-import { ValidationPipe } from '../shared/pipes/ValidationPipe';
 import { JwtAuthGuard } from '../auth/strategies/jwt.guard';
-import {
-  ProjectCreationDTO,
-  ProjectCreationSchema,
-  StrategyCreateDTO,
-  StrategySchema,
-} from './projects.dto';
+import { ProjectCreationDTO, ProjectCreationSchema } from './projects.dto';
 import { ProjectsService } from './projects.service';
 import { UserRetrieveDTO } from 'src/users/users.dto';
 import { UserProject } from '@prisma/client';
@@ -28,6 +22,7 @@ import { Roles } from '../shared/decorators/Roles';
 import { UserRoles } from '../users/roles';
 import { StrategyService } from '../strategy/strategy.service';
 import { HasProjectAccessGuard } from './guards/hasProjectAccess';
+import { ValidationPipe } from '../shared/pipes/ValidationPipe';
 @ApiBearerAuth()
 @Controller()
 export class ProjectsController {
@@ -96,21 +91,6 @@ export class ProjectsController {
   }
 
   // Strategies
-  @Post('projects/:id/environments/:envId/flags/:flagId/strategies')
-  @UseGuards(HasProjectAccessGuard)
-  @UseGuards(JwtAuthGuard)
-  @UsePipes(new ValidationPipe(StrategySchema))
-  async addStrategyToProject(
-    @Param('envId') envId: string,
-    @Param('flagId') flagId: string,
-    @Body() strategyDto: StrategyCreateDTO,
-  ): Promise<any> {
-    return this.strategyService.addStrategyToFlagEnv(
-      envId,
-      flagId,
-      strategyDto,
-    );
-  }
 
   @Get('projects/:id/environments/:envId/flags/:flagId/strategies')
   @UseGuards(HasProjectAccessGuard)

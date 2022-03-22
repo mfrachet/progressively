@@ -11,6 +11,7 @@ import { MailService } from './mail/mail.service';
 import { TokensModule } from './tokens/tokens.module';
 import { EnvironmentsController } from './environments/environments.controller';
 import { EnvironmentsModule } from './environments/environments.module';
+import { StrategyModule } from './strategy/strategy.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { EnvironmentsModule } from './environments/environments.module';
     }),
     WebsocketModule,
     EnvironmentsModule,
+    StrategyModule,
   ],
   providers: [AppService, MailService],
   controllers: [EnvironmentsController],
