@@ -8,8 +8,6 @@ import {
   Get,
   Param,
   Delete,
-  Put,
-  BadRequestException,
   Query,
   UnauthorizedException,
   NotFoundException,
@@ -26,17 +24,11 @@ import {
 import { ProjectsService } from './projects.service';
 import { UserRetrieveDTO } from 'src/users/users.dto';
 import { FlagsService } from '../flags/flags.service';
-import { FlagStatus } from '../flags/flags.status';
 import { EnvironmentsService } from '../environments/environments.service';
-import { WebsocketGateway } from '../websocket/websocket.gateway';
-import { strToFlagStatus } from './utils';
-import { Environment, UserProject } from '@prisma/client';
-
+import { UserProject } from '@prisma/client';
 import { Roles } from '../shared/decorators/Roles';
 import { UserRoles } from '../users/roles';
 import { StrategyService } from '../strategy/strategy.service';
-import { FlagCreationSchema } from '../flags/flags.dto';
-import { FlagAlreadyExists } from '../flags/errors';
 import { HasProjectAccessGuard } from './guards/hasProjectAccess';
 @ApiBearerAuth()
 @Controller()
@@ -46,7 +38,6 @@ export class ProjectsController {
     private readonly flagService: FlagsService,
     private readonly envService: EnvironmentsService,
     private readonly strategyService: StrategyService,
-    private readonly wsGateway: WebsocketGateway,
   ) {}
 
   @Get('projects/:id')
@@ -106,74 +97,6 @@ export class ProjectsController {
   @UseGuards(JwtAuthGuard)
   delete(@Param('id') id: string) {
     return this.projectService.deleteProject(id);
-  }
-
-  /**
-   * The id argument is used by the guard
-   */
-  @Get('projects/:id/environments/:envId/flags')
-  @UseGuards(HasProjectAccessGuard)
-  @UseGuards(JwtAuthGuard)
-  getFlagsByProjectAndEnv(@Param('envId') envId: string) {
-    return this.flagService.flagsByEnv(envId);
-  }
-
-  @Post('projects/:id/environments/:envId/flags')
-  @UseGuards(HasProjectAccessGuard)
-  @UseGuards(JwtAuthGuard)
-  @UsePipes(new ValidationPipe(FlagCreationSchema))
-  async createFlag(
-    @Param('envId') envId,
-    @Body() body: { name: string; description: string },
-  ) {
-    try {
-      const flag = await this.flagService.createFlag(
-        envId,
-        body.name,
-        body.description,
-      );
-
-      return flag;
-    } catch (e) {
-      if (e instanceof FlagAlreadyExists) {
-        throw new BadRequestException('Flag already exists');
-      }
-
-      throw e;
-    }
-  }
-
-  @Put('projects/:id/environments/:envId/flags/:flagId')
-  @UseGuards(HasProjectAccessGuard)
-  @UseGuards(JwtAuthGuard)
-  async changeFlagForEnvStatus(
-    @Param('envId') envId: string,
-    @Param('flagId') flagId: string,
-    @Body() body: { status: string },
-  ) {
-    const status: FlagStatus | undefined = strToFlagStatus(body.status);
-
-    if (!status) {
-      throw new BadRequestException('Invalid status code');
-    }
-
-    const updatedFlagEnv = await this.envService.changeFlagForEnvStatus(
-      envId,
-      flagId,
-      status,
-    );
-
-    const environment = updatedFlagEnv.environment;
-    const flag = updatedFlagEnv.flag;
-    const updatedFlag = { [flag.key]: status === FlagStatus.ACTIVATED };
-
-    this.wsGateway.notify(environment.clientKey, updatedFlag);
-
-    // Removing the populated environment since it owns a clientKey that we don't want to leak out
-    delete updatedFlagEnv.environment;
-    delete updatedFlagEnv.flag;
-
-    return updatedFlagEnv;
   }
 
   @Delete('projects/:id/environments/:envId/flags/:flagId')
