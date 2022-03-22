@@ -40,7 +40,7 @@ import { UserRoles } from '../users/roles';
 import { StrategyService } from '../strategy/strategy.service';
 import { FlagCreationSchema } from '../flags/flags.dto';
 import { FlagAlreadyExists } from '../flags/errors';
-import { HasProjectAccessGuard } from '../shared/guards/hasProjectAccess';
+import { HasProjectAccessGuard } from './guards/hasProjectAccess';
 @ApiBearerAuth()
 @Controller()
 export class ProjectsController {
@@ -68,13 +68,6 @@ export class ProjectsController {
     const user: UserRetrieveDTO = req.user;
 
     return this.projectService.getAll(user.uuid);
-  }
-
-  @Get('projects/:id/environments')
-  @UseGuards(HasProjectAccessGuard)
-  @UseGuards(JwtAuthGuard)
-  getProjectEnvironments(@Param('id') id: string) {
-    return this.envService.getProjectEnvironments(id);
   }
 
   @Post('projects')

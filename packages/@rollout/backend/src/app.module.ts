@@ -9,6 +9,7 @@ import { AuthModule } from './auth/auth.module';
 import { WebsocketModule } from './websocket/websocket.module';
 import { MailService } from './mail/mail.service';
 import { TokensModule } from './tokens/tokens.module';
+import { EnvironmentsController } from './environments/environments.controller';
 
 @Module({
   imports: [
@@ -25,5 +26,6 @@ import { TokensModule } from './tokens/tokens.module';
     WebsocketModule,
   ],
   providers: [AppService, MailService],
+  controllers: [EnvironmentsController],
 })
 export class AppModule {}
