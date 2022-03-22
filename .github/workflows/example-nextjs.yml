@@ -46,7 +46,7 @@ jobs:
 
       - name: Start the Example Nextjs project
         working-directory: ./example/nextjs
-        run: npm start &
+        run: npm run build && npm start &
 
       - name: E2E tests
         working-directory: ./example/nextjs
