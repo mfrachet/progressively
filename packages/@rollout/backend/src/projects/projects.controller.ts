@@ -24,7 +24,6 @@ import {
 import { ProjectsService } from './projects.service';
 import { UserRetrieveDTO } from 'src/users/users.dto';
 import { FlagsService } from '../flags/flags.service';
-import { EnvironmentsService } from '../environments/environments.service';
 import { UserProject } from '@prisma/client';
 import { Roles } from '../shared/decorators/Roles';
 import { UserRoles } from '../users/roles';
@@ -36,7 +35,6 @@ export class ProjectsController {
   constructor(
     private readonly projectService: ProjectsService,
     private readonly flagService: FlagsService,
-    private readonly envService: EnvironmentsService,
     private readonly strategyService: StrategyService,
   ) {}
 
@@ -134,16 +132,6 @@ export class ProjectsController {
     @Param('flagId') flagId: string,
   ): Promise<any> {
     return this.strategyService.listStrategies(envId, flagId);
-  }
-
-  @Get('projects/:id/environments/:envId/flags/:flagId/hits')
-  @UseGuards(HasProjectAccessGuard)
-  @UseGuards(JwtAuthGuard)
-  async getFlagHits(
-    @Param('envId') envId: string,
-    @Param('flagId') flagId: string,
-  ): Promise<any> {
-    return this.flagService.listFlagHits(envId, flagId);
   }
 
   @Get('projects/:id/environments/:envId/flags/:flagId/strategies/:stratId')

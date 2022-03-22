@@ -32,6 +32,9 @@ export class FlagsController {
     private readonly wsGateway: WebsocketGateway,
   ) {}
 
+  /**
+   * Get all the flag of a given project/env (by projectId and envId)
+   */
   @Get('projects/:id/environments/:envId/flags')
   @UseGuards(HasProjectAccessGuard)
   @UseGuards(JwtAuthGuard)
@@ -39,6 +42,9 @@ export class FlagsController {
     return this.flagService.flagsByEnv(envId);
   }
 
+  /**
+   * Create a flag on a given project/env (by projectId and envId)
+   */
   @Post('projects/:id/environments/:envId/flags')
   @UseGuards(HasProjectAccessGuard)
   @UseGuards(JwtAuthGuard)
@@ -64,6 +70,9 @@ export class FlagsController {
     }
   }
 
+  /**
+   * Update a flag on a given project/env (by project id AND env id AND flagId)
+   */
   @Put('projects/:id/environments/:envId/flags/:flagId')
   @UseGuards(HasProjectAccessGuard)
   @UseGuards(JwtAuthGuard)
@@ -97,6 +106,9 @@ export class FlagsController {
     return updatedFlagEnv;
   }
 
+  /**
+   * Get the flag values by client sdk key
+   */
   @Get('flags/sdk/:clientKey')
   async getByClientKey(@Request() req, @Param('clientKey') clientKey: string) {
     const user: UserRetrieveDTO = req.user;
@@ -122,5 +134,18 @@ export class FlagsController {
     }
 
     return dictOfFlags;
+  }
+
+  /**
+   * Get the flag hits grouped by date
+   */
+  @Get('projects/:id/environments/:envId/flags/:flagId/hits')
+  @UseGuards(HasProjectAccessGuard)
+  @UseGuards(JwtAuthGuard)
+  async getFlagHits(
+    @Param('envId') envId: string,
+    @Param('flagId') flagId: string,
+  ): Promise<any> {
+    return this.flagService.listFlagHits(envId, flagId);
   }
 }
