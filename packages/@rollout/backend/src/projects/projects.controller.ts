@@ -31,10 +31,7 @@ import { EnvironmentsService } from '../environments/environments.service';
 import { WebsocketGateway } from '../websocket/websocket.gateway';
 import { strToFlagStatus } from './utils';
 import { Environment, UserProject } from '@prisma/client';
-import {
-  EnvironmentCreationSchema,
-  EnvironmentDTO,
-} from '../environments/environments.dto';
+
 import { Roles } from '../shared/decorators/Roles';
 import { UserRoles } from '../users/roles';
 import { StrategyService } from '../strategy/strategy.service';
@@ -82,17 +79,6 @@ export class ProjectsController {
     return this.projectService.createProject(projectDto.name, user.uuid);
   }
 
-  @Post('projects/:id/environments')
-  @UseGuards(HasProjectAccessGuard)
-  @UseGuards(JwtAuthGuard)
-  @UsePipes(new ValidationPipe(EnvironmentCreationSchema))
-  createEnvironment(
-    @Param('id') id: string,
-    @Body() envDto: EnvironmentDTO,
-  ): Promise<Environment> {
-    return this.envService.createEnvironment(id, envDto.name);
-  }
-
   @Delete('projects/:id/members/:memberId')
   @Roles(UserRoles.Admin)
   @UseGuards(HasProjectAccessGuard)
@@ -120,14 +106,6 @@ export class ProjectsController {
   @UseGuards(JwtAuthGuard)
   delete(@Param('id') id: string) {
     return this.projectService.deleteProject(id);
-  }
-
-  @Delete('projects/:id/environments/:envId')
-  @Roles(UserRoles.Admin)
-  @UseGuards(HasProjectAccessGuard)
-  @UseGuards(JwtAuthGuard)
-  deleteEnv(@Param('envId') envId: string) {
-    return this.envService.deleteEnv(envId);
   }
 
   /**
