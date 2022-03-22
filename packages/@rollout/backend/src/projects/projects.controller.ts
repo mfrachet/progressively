@@ -20,16 +20,12 @@ import { UserRetrieveDTO } from 'src/users/users.dto';
 import { UserProject } from '@prisma/client';
 import { Roles } from '../shared/decorators/Roles';
 import { UserRoles } from '../users/roles';
-import { StrategyService } from '../strategy/strategy.service';
 import { HasProjectAccessGuard } from './guards/hasProjectAccess';
 import { ValidationPipe } from '../shared/pipes/ValidationPipe';
 @ApiBearerAuth()
 @Controller()
 export class ProjectsController {
-  constructor(
-    private readonly projectService: ProjectsService,
-    private readonly strategyService: StrategyService,
-  ) {}
+  constructor(private readonly projectService: ProjectsService) {}
 
   @Get('projects/:id')
   @UseGuards(HasProjectAccessGuard)
@@ -88,24 +84,5 @@ export class ProjectsController {
   @UseGuards(JwtAuthGuard)
   delete(@Param('id') id: string) {
     return this.projectService.deleteProject(id);
-  }
-
-  // Strategies
-
-  @Get('projects/:id/environments/:envId/flags/:flagId/strategies')
-  @UseGuards(HasProjectAccessGuard)
-  @UseGuards(JwtAuthGuard)
-  async getStrategies(
-    @Param('envId') envId: string,
-    @Param('flagId') flagId: string,
-  ): Promise<any> {
-    return this.strategyService.listStrategies(envId, flagId);
-  }
-
-  @Get('projects/:id/environments/:envId/flags/:flagId/strategies/:stratId')
-  @UseGuards(HasProjectAccessGuard)
-  @UseGuards(JwtAuthGuard)
-  async getStrategy(@Param('stratId') stratId: string): Promise<any> {
-    return this.strategyService.getStrategy(stratId);
   }
 }
