@@ -25,7 +25,6 @@ import {
 } from './projects.dto';
 import { ProjectsService } from './projects.service';
 import { UserRetrieveDTO } from 'src/users/users.dto';
-import { HasProjectAccessGuard } from './guards/hasProjectAccess';
 import { FlagsService } from '../flags/flags.service';
 import { FlagStatus } from '../flags/flags.status';
 import { EnvironmentsService } from '../environments/environments.service';
@@ -41,8 +40,9 @@ import { UserRoles } from '../users/roles';
 import { StrategyService } from '../strategy/strategy.service';
 import { FlagCreationSchema } from '../flags/flags.dto';
 import { FlagAlreadyExists } from '../flags/errors';
+import { HasProjectAccessGuard } from '../shared/guards/hasProjectAccess';
 @ApiBearerAuth()
-@Controller('projects')
+@Controller()
 export class ProjectsController {
   constructor(
     private readonly projectService: ProjectsService,
@@ -52,7 +52,7 @@ export class ProjectsController {
     private readonly wsGateway: WebsocketGateway,
   ) {}
 
-  @Get(':id')
+  @Get('projects/:id')
   @UseGuards(HasProjectAccessGuard)
   @UseGuards(JwtAuthGuard)
   getById(
@@ -62,7 +62,7 @@ export class ProjectsController {
     return this.projectService.getById(id, populateMember);
   }
 
-  @Get()
+  @Get('projects')
   @UseGuards(JwtAuthGuard)
   getAllProjects(@Request() req) {
     const user: UserRetrieveDTO = req.user;
@@ -70,14 +70,14 @@ export class ProjectsController {
     return this.projectService.getAll(user.uuid);
   }
 
-  @Get(':id/environments')
+  @Get('projects/:id/environments')
   @UseGuards(HasProjectAccessGuard)
   @UseGuards(JwtAuthGuard)
   getProjectEnvironments(@Param('id') id: string) {
     return this.envService.getProjectEnvironments(id);
   }
 
-  @Post()
+  @Post('projects')
   @UseGuards(JwtAuthGuard)
   @UsePipes(new ValidationPipe(ProjectCreationSchema))
   async createProject(
@@ -89,7 +89,7 @@ export class ProjectsController {
     return this.projectService.createProject(projectDto.name, user.uuid);
   }
 
-  @Post(':id/environments')
+  @Post('projects/:id/environments')
   @UseGuards(HasProjectAccessGuard)
   @UseGuards(JwtAuthGuard)
   @UsePipes(new ValidationPipe(EnvironmentCreationSchema))
@@ -100,7 +100,7 @@ export class ProjectsController {
     return this.envService.createEnvironment(id, envDto.name);
   }
 
-  @Delete(':id/members/:memberId')
+  @Delete('projects/:id/members/:memberId')
   @Roles(UserRoles.Admin)
   @UseGuards(HasProjectAccessGuard)
   @UseGuards(JwtAuthGuard)
@@ -121,7 +121,7 @@ export class ProjectsController {
     return this.projectService.removeMember(id, memberId);
   }
 
-  @Delete(':id')
+  @Delete('projects/:id')
   @Roles(UserRoles.Admin)
   @UseGuards(HasProjectAccessGuard)
   @UseGuards(JwtAuthGuard)
@@ -129,7 +129,7 @@ export class ProjectsController {
     return this.projectService.deleteProject(id);
   }
 
-  @Delete(':id/environments/:envId')
+  @Delete('projects/:id/environments/:envId')
   @Roles(UserRoles.Admin)
   @UseGuards(HasProjectAccessGuard)
   @UseGuards(JwtAuthGuard)
@@ -140,14 +140,14 @@ export class ProjectsController {
   /**
    * The id argument is used by the guard
    */
-  @Get(':id/environments/:envId/flags')
+  @Get('projects/:id/environments/:envId/flags')
   @UseGuards(HasProjectAccessGuard)
   @UseGuards(JwtAuthGuard)
   getFlagsByProjectAndEnv(@Param('envId') envId: string) {
     return this.flagService.flagsByEnv(envId);
   }
 
-  @Post(':id/environments/:envId/flags')
+  @Post('projects/:id/environments/:envId/flags')
   @UseGuards(HasProjectAccessGuard)
   @UseGuards(JwtAuthGuard)
   @UsePipes(new ValidationPipe(FlagCreationSchema))
@@ -172,7 +172,7 @@ export class ProjectsController {
     }
   }
 
-  @Put(':id/environments/:envId/flags/:flagId')
+  @Put('projects/:id/environments/:envId/flags/:flagId')
   @UseGuards(HasProjectAccessGuard)
   @UseGuards(JwtAuthGuard)
   async changeFlagForEnvStatus(
@@ -205,7 +205,7 @@ export class ProjectsController {
     return updatedFlagEnv;
   }
 
-  @Delete(':id/environments/:envId/flags/:flagId')
+  @Delete('projects/:id/environments/:envId/flags/:flagId')
   @UseGuards(HasProjectAccessGuard)
   @UseGuards(JwtAuthGuard)
   async deleteFlag(
@@ -216,7 +216,7 @@ export class ProjectsController {
   }
 
   // Strategies
-  @Post(':id/environments/:envId/flags/:flagId/strategies')
+  @Post('projects/:id/environments/:envId/flags/:flagId/strategies')
   @UseGuards(HasProjectAccessGuard)
   @UseGuards(JwtAuthGuard)
   @UsePipes(new ValidationPipe(StrategySchema))
@@ -232,7 +232,7 @@ export class ProjectsController {
     );
   }
 
-  @Get(':id/environments/:envId/flags/:flagId/strategies')
+  @Get('projects/:id/environments/:envId/flags/:flagId/strategies')
   @UseGuards(HasProjectAccessGuard)
   @UseGuards(JwtAuthGuard)
   async getStrategies(
@@ -242,7 +242,7 @@ export class ProjectsController {
     return this.strategyService.listStrategies(envId, flagId);
   }
 
-  @Get(':id/environments/:envId/flags/:flagId/hits')
+  @Get('projects/:id/environments/:envId/flags/:flagId/hits')
   @UseGuards(HasProjectAccessGuard)
   @UseGuards(JwtAuthGuard)
   async getFlagHits(
@@ -252,7 +252,7 @@ export class ProjectsController {
     return this.flagService.listFlagHits(envId, flagId);
   }
 
-  @Get(':id/environments/:envId/flags/:flagId/strategies/:stratId')
+  @Get('projects/:id/environments/:envId/flags/:flagId/strategies/:stratId')
   @UseGuards(HasProjectAccessGuard)
   @UseGuards(JwtAuthGuard)
   async getStrategy(@Param('stratId') stratId: string): Promise<any> {
