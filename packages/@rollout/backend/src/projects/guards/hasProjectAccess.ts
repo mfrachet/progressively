@@ -1,6 +1,6 @@
 import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
-import { ProjectsService } from '../../projects/projects.service';
+import { ProjectsService } from '../projects.service';
 import { UserRetrieveDTO } from '../../users/users.dto';
 
 @Injectable()

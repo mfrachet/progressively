@@ -10,6 +10,7 @@ import { WebsocketModule } from './websocket/websocket.module';
 import { MailService } from './mail/mail.service';
 import { TokensModule } from './tokens/tokens.module';
 import { EnvironmentsController } from './environments/environments.controller';
+import { EnvironmentsModule } from './environments/environments.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { EnvironmentsController } from './environments/environments.controller';
       limit: 10,
     }),
     WebsocketModule,
+    EnvironmentsModule,
   ],
   providers: [AppService, MailService],
   controllers: [EnvironmentsController],

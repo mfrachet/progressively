@@ -17,5 +17,6 @@ import { StrategyService } from '../strategy/strategy.service';
     WebsocketGateway,
     StrategyService,
   ],
+  exports: [ProjectsService],
 })
 export class ProjectsModule {}
