@@ -27,7 +27,7 @@ export const UseDropdown = ({ user }: UserDropdownProps) => {
         as={Link}
         to="/profile"
         variant="ghost"
-        paddingInlineEnd={0}
+        paddingInlineEnd={[0, 4]}
         leftIcon={
           <Icon display={["none", "block"]} as={AiOutlineUser} aria-hidden />
         }
@@ -60,7 +60,7 @@ export const UseDropdown = ({ user }: UserDropdownProps) => {
       <MenuButton
         as={Button}
         variant="ghost"
-        paddingInlineEnd={0}
+        paddingInlineEnd={[0, 4]}
         leftIcon={
           <Icon display={["none", "block"]} as={AiOutlineUser} aria-hidden />
         }
