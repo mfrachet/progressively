@@ -47,16 +47,23 @@ export class WebsocketGateway
   ) {
     const room = flagEnv.environment.clientKey;
     const sockets = this.rooms.getSockets(room);
+    const strategies = await this.strategyService.strategiesForFlagEnv(flagEnv);
 
     for (const socket of sockets) {
+      let status: boolean;
+
+      if (flagEnv.status === FlagStatus.ACTIVATED) {
+        status = await this.strategyService.resolveStrategies(
+          flagEnv,
+          strategies,
+          socket.__ROLLOUT_FIELDS,
+        );
+      } else {
+        status = false;
+      }
+
       const updatedFlag = {
-        [flagEnv.flag.key]:
-          flagEnv.status === FlagStatus.ACTIVATED
-            ? await this.strategyService.resolveStrategies(
-                flagEnv,
-                socket.__ROLLOUT_FIELDS,
-              )
-            : false,
+        [flagEnv.flag.key]: status,
       };
 
       this.rooms.emit(socket, updatedFlag);
