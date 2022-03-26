@@ -31,20 +31,35 @@ export class WebsocketGateway
     if (queryParams.client_key) {
       const { queryClient, ...fields } = queryParams;
       socket.__ROLLOUT_ROOMS = [];
-      socket.__ROLLOUT_FIELDS = fields;
+      socket.__ROLLOUT_FIELDS = fields || {};
       this.rooms.join(queryParams.client_key, socket);
     }
   }
 
-  notifyFlagChanging(
+  /**
+   * TODO: if there is one thing to improve in terms of performances,
+   * it's this function
+   * it iterates of every socket available for the given client key
+   * and get + computes every strategies available
+   */
+  async notifyFlagChanging(
     flagEnv: FlagEnvironment & { environment: Environment; flag: Flag },
   ) {
     const room = flagEnv.environment.clientKey;
+    const sockets = this.rooms.getSockets(room);
 
-    const updatedFlag = {
-      [flagEnv.flag.key]: flagEnv.status === FlagStatus.ACTIVATED,
-    };
+    for (const socket of sockets) {
+      const updatedFlag = {
+        [flagEnv.flag.key]:
+          flagEnv.status === FlagStatus.ACTIVATED
+            ? await this.strategyService.resolveStrategies(
+                flagEnv,
+                socket.__ROLLOUT_FIELDS,
+              )
+            : false,
+      };
 
-    this.rooms.emit(room, updatedFlag);
+      this.rooms.emit(socket, updatedFlag);
+    }
   }
 }
