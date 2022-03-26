@@ -29,10 +29,10 @@ export class WebsocketGateway
     const queryParams = Object.fromEntries(searchParams);
 
     if (queryParams.client_key) {
-      const { queryClient, ...fields } = queryParams;
+      const { client_key, ...fields } = queryParams;
       socket.__ROLLOUT_ROOMS = [];
       socket.__ROLLOUT_FIELDS = fields || {};
-      this.rooms.join(queryParams.client_key, socket);
+      this.rooms.join(client_key, socket);
     }
   }
 
