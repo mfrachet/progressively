@@ -70,17 +70,6 @@ export class StrategyService {
     return false;
   }
 
-  async strategiesForFlagEnv(flagEnv: FlagEnvironment) {
-    const strategies = await this.prisma.rolloutStrategy.findMany({
-      where: {
-        flagEnvironmentFlagId: flagEnv.flagId,
-        flagEnvironmentEnvironmentId: flagEnv.environmentId,
-      },
-    });
-
-    return strategies;
-  }
-
   async resolveStrategies(
     flagEnv: ExtendedFlagEnv,
     strategies: Array<RolloutStrategy>,

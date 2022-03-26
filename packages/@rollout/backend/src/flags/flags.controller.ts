@@ -124,16 +124,12 @@ export class FlagsController {
 
     // TODO: make sure to run these with Promise.all when confident enough
     for (const flagEnv of flagEnvs) {
-      const strategies = await this.strategyService.strategiesForFlagEnv(
-        flagEnv,
-      );
-
       let flagStatus: boolean;
 
       if (flagEnv.status === FlagStatus.ACTIVATED) {
         flagStatus = await this.strategyService.resolveStrategies(
           flagEnv,
-          strategies,
+          flagEnv.strategies,
           queryParams,
         );
       } else {

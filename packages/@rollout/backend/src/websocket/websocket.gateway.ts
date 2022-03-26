@@ -6,7 +6,12 @@ import {
 import { StrategyService } from '../strategy/strategy.service';
 import { URL } from 'url';
 import { Rooms } from './rooms';
-import { Environment, Flag, FlagEnvironment } from '@prisma/client';
+import {
+  Environment,
+  Flag,
+  FlagEnvironment,
+  RolloutStrategy,
+} from '@prisma/client';
 import { FlagStatus } from '../flags/flags.status';
 
 @WebSocketGateway(4001)
@@ -43,11 +48,14 @@ export class WebsocketGateway
    * and get + computes every strategies available
    */
   async notifyFlagChanging(
-    flagEnv: FlagEnvironment & { environment: Environment; flag: Flag },
+    flagEnv: FlagEnvironment & {
+      environment: Environment;
+      flag: Flag;
+      strategies: Array<RolloutStrategy>;
+    },
   ) {
     const room = flagEnv.environment.clientKey;
     const sockets = this.rooms.getSockets(room);
-    const strategies = await this.strategyService.strategiesForFlagEnv(flagEnv);
 
     for (const socket of sockets) {
       let status: boolean;
@@ -55,7 +63,7 @@ export class WebsocketGateway
       if (flagEnv.status === FlagStatus.ACTIVATED) {
         status = await this.strategyService.resolveStrategies(
           flagEnv,
-          strategies,
+          flagEnv.strategies,
           socket.__ROLLOUT_FIELDS,
         );
       } else {
