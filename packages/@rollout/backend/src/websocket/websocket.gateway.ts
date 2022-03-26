@@ -3,8 +3,11 @@ import {
   OnGatewayDisconnect,
   WebSocketGateway,
 } from '@nestjs/websockets';
+import { StrategyService } from '../strategy/strategy.service';
 import { URL } from 'url';
 import { Rooms } from './rooms';
+import { Environment, Flag, FlagEnvironment } from '@prisma/client';
+import { FlagStatus } from '../flags/flags.status';
 
 @WebSocketGateway(4001)
 export class WebsocketGateway
@@ -12,7 +15,7 @@ export class WebsocketGateway
 {
   private rooms: Rooms;
 
-  constructor() {
+  constructor(private readonly strategyService: StrategyService) {
     this.rooms = new Rooms();
   }
 
@@ -33,7 +36,15 @@ export class WebsocketGateway
     }
   }
 
-  notify(room: string, data: any) {
-    this.rooms.emit(room, data);
+  notifyFlagChanging(
+    flagEnv: FlagEnvironment & { environment: Environment; flag: Flag },
+  ) {
+    const room = flagEnv.environment.clientKey;
+
+    const updatedFlag = {
+      [flagEnv.flag.key]: flagEnv.status === FlagStatus.ACTIVATED,
+    };
+
+    this.rooms.emit(room, updatedFlag);
   }
 }
