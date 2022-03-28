@@ -11,7 +11,7 @@ export interface DashboardLayoutProps {
 export const DashboardLayout = ({ user, children }: DashboardLayoutProps) => {
   return (
     <div>
-      <Container maxW="3xl">
+      <Container maxW="5xl">
         <Flex
           py={3}
           as={"nav"}
@@ -25,7 +25,7 @@ export const DashboardLayout = ({ user, children }: DashboardLayoutProps) => {
         </Flex>
       </Container>
 
-      <Container maxW="3xl" pt={16} pb={4}>
+      <Container maxW="5xl" pt={16} pb={4}>
         {children}
       </Container>
     </div>

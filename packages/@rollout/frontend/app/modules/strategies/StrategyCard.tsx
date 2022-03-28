@@ -32,7 +32,7 @@ const StrategyAudience = ({ strat }: { strat: StrategyRetrieveDTO }) => {
   }
 
   return (
-    <Text>
+    <Text color="textlight">
       Serve the flag to <strong>{targetedUsers}</strong>{" "}
       {fieldName ? (
         <span>
@@ -59,7 +59,9 @@ const StrategyTargetConstraints = ({
     return (
       <UnorderedList pl={2}>
         {targets?.map((target) => (
-          <ListItem key={target}>{target}</ListItem>
+          <ListItem key={target} color="textlight">
+            {target}
+          </ListItem>
         ))}
       </UnorderedList>
     );
@@ -84,12 +86,11 @@ export const StrategyCard = ({
     >
       <Flex
         alignItems={"flex-start"}
-        mb={2}
         justifyContent="space-between"
         direction={["column", "row"]}
       >
         <Box mr={4}>
-          <Heading as="h3" id={strat.uuid} size="md">
+          <Heading as="h3" id={strat.uuid} size="md" mb={1}>
             {strat.name}
           </Heading>
 

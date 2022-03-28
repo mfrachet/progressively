@@ -48,7 +48,7 @@ export const EnvCard = ({
     >
       <Flex justifyContent="space-between">
         <div>
-          <Flex alignItems={"center"}>
+          <Flex alignItems={"center"} mb={1}>
             <Heading as="h3" id={`article-${id}`} size="md" mr={2}>
               <CLink
                 as={Link}
@@ -71,7 +71,7 @@ export const EnvCard = ({
             </Box>
           </Flex>
 
-          <Text>{description}</Text>
+          <Text color="textlight">{description}</Text>
         </div>
 
         <Icon

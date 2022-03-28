@@ -49,7 +49,7 @@ export const FlagCard = ({
     >
       <Flex justifyContent={"space-between"} direction={["column", "row"]}>
         <div>
-          <Flex>
+          <Flex mb={1}>
             <Heading as="h3" id={`article-${id}`} size="md" mr={2}>
               <CLink
                 as={Link}
@@ -71,7 +71,7 @@ export const FlagCard = ({
             </Box>
           </Flex>
 
-          <Text>{description}</Text>
+          <Text color="textlight">{description}</Text>
         </div>
 
         <Form method="post">

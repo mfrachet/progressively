@@ -164,7 +164,9 @@ export default function SettingsPage() {
           <Section id="details">
             <SectionHeader title="Project details" />
 
-            <Box px={4}>{project.name}</Box>
+            <Box px={4} pb={4}>
+              {project.name}
+            </Box>
           </Section>
 
           <Section id="members">

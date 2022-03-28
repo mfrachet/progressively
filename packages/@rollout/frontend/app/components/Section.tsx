@@ -53,15 +53,16 @@ export const SectionHeader = ({
     <Flex
       justifyContent={"space-between"}
       alignItems={["flex-start", "center"]}
-      pb={8}
       direction={["column", "row"]}
       {...props}
     >
       <Box p={4}>
-        <Heading as={titleAs} id={id} size="lg" fontSize="2xl" pb={1}>
+        <Heading as={titleAs} id={id} size="lg" pb={1}>
           {title}
         </Heading>
-        {description}
+        <Box fontSize="xl" color="textlight">
+          {description}
+        </Box>
       </Box>
 
       {endAction ? (
