@@ -3,7 +3,6 @@ import {
   LoaderFunction,
   useLoaderData,
   MetaFunction,
-  Link,
   useSearchParams,
 } from "remix";
 import { Crumbs, BreadCrumbs } from "~/components/AppBreadcrumbs";

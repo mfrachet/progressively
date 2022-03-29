@@ -8,7 +8,6 @@ import {
   VisuallyHidden,
 } from "@chakra-ui/react";
 import { FaTrash } from "react-icons/fa";
-import { Link } from "remix";
 import { Button } from "~/components/Button";
 import { StrategyRetrieveDTO } from "./types";
 

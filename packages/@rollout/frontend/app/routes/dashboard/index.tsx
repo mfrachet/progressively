@@ -2,7 +2,6 @@ import { Box, Stack } from "@chakra-ui/react";
 import {
   useLoaderData,
   LoaderFunction,
-  Link,
   MetaFunction,
   redirect,
   useSearchParams,

@@ -3,7 +3,6 @@ import { useRef } from "react";
 import { Link } from "remix";
 import { Box, Text, Icon } from "@chakra-ui/react";
 import { AiOutlineArrowRight } from "react-icons/ai";
-import { FiKey } from "react-icons/fi";
 
 export interface EnvCardProps {
   id: string;
