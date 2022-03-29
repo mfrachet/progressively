@@ -14,7 +14,7 @@ export const HorizontalNav = ({ children, label }: HorizontalNavProps) => {
       borderBottomColor="background300"
       overflowX="scroll"
     >
-      <HStack as="ul" listStyleType={"none"} spacing={3}>
+      <HStack as="ul" listStyleType={"none"} spacing={3} pl={1} pt={1} pr={1}>
         {children}
       </HStack>
     </Box>
