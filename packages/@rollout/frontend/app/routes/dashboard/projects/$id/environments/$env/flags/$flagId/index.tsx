@@ -271,32 +271,35 @@ export default function FlagById() {
                 </Button>
               }
             />
+
             <Stack spacing={2}>
-              {isStrategyAdded ? (
-                <SuccessBox id="strategy-added">
-                  The strategy has been successfully created.
-                </SuccessBox>
-              ) : null}
+              <Box px={4}>
+                {isStrategyAdded ? (
+                  <SuccessBox id="strategy-added" mb={4}>
+                    The strategy has been successfully created.
+                  </SuccessBox>
+                ) : null}
 
-              {isStrategyRemoved ? (
-                <SuccessBox id="strategy-removed">
-                  The strategy has been successfully removed.
-                </SuccessBox>
-              ) : null}
+                {isStrategyRemoved ? (
+                  <SuccessBox id="strategy-removed" mb={4}>
+                    The strategy has been successfully removed.
+                  </SuccessBox>
+                ) : null}
 
-              {strategies.length > 0 ? (
-                <>
-                  {strategies.map((strat) => (
-                    <StrategyCard
-                      key={`${strat.uuid}`}
-                      projectId={project.uuid}
-                      envId={environment.uuid}
-                      flagId={currentFlag.uuid}
-                      strat={strat}
-                    />
-                  ))}
-                </>
-              ) : null}
+                {strategies.length > 0 ? (
+                  <>
+                    {strategies.map((strat) => (
+                      <StrategyCard
+                        key={`${strat.uuid}`}
+                        projectId={project.uuid}
+                        envId={environment.uuid}
+                        flagId={currentFlag.uuid}
+                        strat={strat}
+                      />
+                    ))}
+                  </>
+                ) : null}
+              </Box>
 
               {strategies.length === 0 ? (
                 <>

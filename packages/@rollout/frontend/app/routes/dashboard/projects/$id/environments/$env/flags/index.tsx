@@ -25,11 +25,11 @@ import { SuccessBox } from "~/components/SuccessBox";
 import { DashboardLayout } from "~/layouts/DashboardLayout";
 import { authGuard } from "~/modules/auth/auth-guard";
 import { User } from "~/modules/user/types";
-import { AiOutlineSetting, AiOutlineKey } from "react-icons/ai";
+import { AiOutlineSetting } from "react-icons/ai";
 import { Header } from "~/components/Header";
 import { Section, SectionHeader } from "~/components/Section";
 import { EmptyState } from "~/components/EmptyState";
-import { FiFlag } from "react-icons/fi";
+import { FiFlag, FiKey } from "react-icons/fi";
 import { HorizontalNav, NavItem } from "~/components/HorizontalNav";
 
 interface MetaArgs {
@@ -137,7 +137,7 @@ export default function FlagsByEnvPage() {
             startAction={
               <ButtonCopy
                 toCopy={environment.clientKey}
-                icon={<AiOutlineKey aria-hidden />}
+                icon={<FiKey aria-hidden />}
                 colorScheme="brand"
               >
                 {environment.clientKey}
@@ -194,21 +194,21 @@ export default function FlagsByEnvPage() {
           />
 
           <Stack spacing={2}>
-            {isFlagRemoved ? (
-              <SuccessBox id="flag-removed">
-                The flag has been successfully deleted.
-              </SuccessBox>
-            ) : null}
+            <Box px={4}>
+              {isFlagRemoved ? (
+                <SuccessBox id="flag-removed" mb={4}>
+                  The flag has been successfully deleted.
+                </SuccessBox>
+              ) : null}
 
-            {flagsByEnv.length > 0 ? (
-              <>
-                {newFlagId ? (
-                  <SuccessBox id="flag-added">
-                    The flag has been successfully created.
-                  </SuccessBox>
-                ) : null}
+              {newFlagId ? (
+                <SuccessBox id="flag-added" mb={4}>
+                  The flag has been successfully created.
+                </SuccessBox>
+              ) : null}
 
-                <Box>
+              {flagsByEnv.length > 0 ? (
+                <>
                   {flagsByEnv.map((flagEnv) => (
                     <FlagCard
                       key={flagEnv.flagId}
@@ -225,9 +225,9 @@ export default function FlagsByEnvPage() {
                       }
                     />
                   ))}
-                </Box>
-              </>
-            ) : null}
+                </>
+              ) : null}
+            </Box>
 
             {flagsByEnv.length === 0 ? (
               <EmptyState

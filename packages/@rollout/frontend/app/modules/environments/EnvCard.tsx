@@ -3,8 +3,8 @@ import React, { useRef } from "react";
 import { Link } from "remix";
 import { Box, Text, Icon } from "@chakra-ui/react";
 import { ButtonCopy } from "~/components/ButtonCopy";
-import { BiKey } from "react-icons/bi";
 import { AiOutlineArrowRight } from "react-icons/ai";
+import { FiKey } from "react-icons/fi";
 
 export interface EnvCardProps {
   id: string;
@@ -64,7 +64,7 @@ export const EnvCard = ({
             <Box display={["none", "block"]}>
               <ButtonCopy
                 toCopy={clientKey}
-                icon={<Icon as={BiKey} aria-hidden />}
+                icon={<Icon as={FiKey} aria-hidden />}
               >
                 {clientKey}
               </ButtonCopy>

@@ -5,7 +5,7 @@ import { Box, Text } from "@chakra-ui/react";
 import { FlagStatus } from "./types";
 import { Switch } from "~/components/Switch";
 import { ButtonCopy } from "~/components/ButtonCopy";
-import { BiKey } from "react-icons/bi";
+import { FiKey } from "react-icons/fi";
 
 export interface FlagCardProps {
   id: string;
@@ -64,7 +64,7 @@ export const FlagCard = ({
             <Box display={["none", " block"]}>
               <ButtonCopy
                 toCopy={flagKey}
-                icon={<Icon as={BiKey} aria-hidden />}
+                icon={<Icon as={FiKey} aria-hidden />}
               >
                 {flagKey}
               </ButtonCopy>

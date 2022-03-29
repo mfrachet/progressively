@@ -54,9 +54,10 @@ export const SectionHeader = ({
       justifyContent={"space-between"}
       alignItems={["flex-start", "center"]}
       direction={["column", "row"]}
+      p={4}
       {...props}
     >
-      <Box p={4}>
+      <Box>
         <Heading as={titleAs} id={id} size="lg" pb={1}>
           {title}
         </Heading>
@@ -66,7 +67,7 @@ export const SectionHeader = ({
       </Box>
 
       {endAction ? (
-        <Box flexShrink={0} ml={[4, description ? 2 : 0]}>
+        <Box flexShrink={0} ml={[0, description ? 2 : 0]} mt={[4, 0]}>
           {endAction}
         </Box>
       ) : null}

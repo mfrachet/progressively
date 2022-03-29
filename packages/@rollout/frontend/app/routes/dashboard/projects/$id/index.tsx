@@ -113,19 +113,19 @@ export default function ProjectDetailPage() {
           />
 
           <Stack spacing={2}>
-            {newEnvId ? (
-              <SuccessBox id="env-added">
-                The environment has been successfully created.
-              </SuccessBox>
-            ) : null}
+            <Box px={4}>
+              {newEnvId ? (
+                <SuccessBox id="env-added" mb={4}>
+                  The environment has been successfully created.
+                </SuccessBox>
+              ) : null}
 
-            {envRemoved ? (
-              <SuccessBox id="env-removed">
-                The environment has been successfully deleted.
-              </SuccessBox>
-            ) : null}
+              {envRemoved ? (
+                <SuccessBox id="env-removed" mb={4}>
+                  The environment has been successfully deleted.
+                </SuccessBox>
+              ) : null}
 
-            <Box>
               {project.environments.map((env) => (
                 <EnvCard
                   key={env.uuid}

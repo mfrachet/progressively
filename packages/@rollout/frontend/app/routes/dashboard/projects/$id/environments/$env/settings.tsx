@@ -1,7 +1,7 @@
 import { Box, Button, Flex, Text, VisuallyHidden } from "@chakra-ui/react";
-import { AiOutlineKey, AiOutlineSetting } from "react-icons/ai";
+import { AiOutlineSetting } from "react-icons/ai";
 import { FaTrash } from "react-icons/fa";
-import { FiFlag } from "react-icons/fi";
+import { FiFlag, FiKey } from "react-icons/fi";
 import { Link, LoaderFunction, MetaFunction, useLoaderData } from "remix";
 import { Crumbs, BreadCrumbs } from "~/components/AppBreadcrumbs";
 import { ButtonCopy } from "~/components/ButtonCopy";
@@ -97,7 +97,7 @@ export default function EnvSettingsPage() {
             startAction={
               <ButtonCopy
                 toCopy={environment.clientKey}
-                icon={<AiOutlineKey aria-hidden />}
+                icon={<FiKey aria-hidden />}
                 colorScheme="brand"
               >
                 {environment.clientKey}

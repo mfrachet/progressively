@@ -78,7 +78,9 @@ export const StrategyCard = ({
 }: StrategyCardProps) => {
   return (
     <Box
-      p={4}
+      pt={4}
+      pb={4}
+      pl={4}
       as="article"
       aria-labelledby={strat.uuid}
       borderTopWidth={1}
