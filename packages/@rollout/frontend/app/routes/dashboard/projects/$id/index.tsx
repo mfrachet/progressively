@@ -133,7 +133,6 @@ export default function ProjectDetailPage() {
                   linkTo={`/dashboard/projects/${project.uuid}/environments/${env.uuid}/flags`}
                   title={env.name}
                   clientKey={env.clientKey}
-                  description="Put something here and check afterwards"
                 />
               ))}
             </Box>
