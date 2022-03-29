@@ -57,7 +57,7 @@ export const SectionHeader = ({
       p={4}
       {...props}
     >
-      <Box maxW="xl">
+      <Box maxW={endAction ? "xl" : undefined}>
         <Heading as={titleAs} id={id} size="lg" pb={1}>
           {title}
         </Heading>

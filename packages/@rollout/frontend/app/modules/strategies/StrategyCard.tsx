@@ -100,6 +100,8 @@ export const StrategyCard = ({
         </Box>
 
         <Button
+          colorScheme="error"
+          variant="outline"
           leftIcon={<FaTrash aria-hidden />}
           mt={[2, 0]}
           to={`/dashboard/projects/${projectId}/environments/${envId}/flags/${flagId}/strategies/${strat.uuid}/delete`}
