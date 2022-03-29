@@ -52,9 +52,12 @@ export const BreadCrumbs = ({ crumbs }: BreadCrumbsProps) => {
             <BreadcrumbLink
               fontWeight={index === lastItemIndex ? "semibold" : undefined}
               textDecoration="underline"
+              display="flex"
+              alignItems={"center"}
               as={Link}
               to={crumb.link}
-              fontSize="lg"
+              height={"44px"}
+              fontSize="xl"
             >
               {crumb.label}
             </BreadcrumbLink>
