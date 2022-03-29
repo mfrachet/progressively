@@ -38,6 +38,7 @@ export const NavItem = ({ children, to, icon }: NavItemProps) => {
         end
         display={"inline-block"}
         className="custom-nav-link"
+        fontSize="lg"
       >
         <HStack as="span" spacing={2}>
           <span aria-hidden>{icon}</span>
