@@ -16,7 +16,7 @@ export const Section = ({ children, id, ...props }: SectionProps) => {
         bg="backgroundContent"
         as="section"
         borderRadius={16}
-        p={8}
+        p={[2, 8]}
         boxShadow="md"
         aria-labelledby={id}
         {...props}

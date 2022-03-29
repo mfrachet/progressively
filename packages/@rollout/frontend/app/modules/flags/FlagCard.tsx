@@ -52,7 +52,11 @@ export const FlagCard = ({
         background: "background",
       }}
     >
-      <Flex justifyContent={"space-between"} direction={["column", "row"]}>
+      <Flex
+        justifyContent={"space-between"}
+        direction={["column", "row"]}
+        alignItems="center"
+      >
         <div>
           <HStack spacing={2}>
             <Heading as="h3" id={`article-${id}`} size="md" mr={2} mb={1}>
