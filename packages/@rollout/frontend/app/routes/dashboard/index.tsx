@@ -61,7 +61,7 @@ export default function DashboardRoot() {
         <Box pb={8}>
           <Header
             title="Projects"
-            endAction={
+            startAction={
               <Button
                 leftIcon={<IoIosCreate aria-hidden />}
                 to="/dashboard/projects/create"
