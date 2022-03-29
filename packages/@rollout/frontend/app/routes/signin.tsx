@@ -1,7 +1,6 @@
 import {
   Box,
   FormControl,
-  FormLabel,
   Input,
   Stack,
   Text,
@@ -22,6 +21,7 @@ import {
 } from "remix";
 import { Button } from "~/components/Button";
 import { ErrorBox } from "~/components/ErrorBox";
+import { FormLabel } from "~/components/FormLabel";
 import { H1 } from "~/components/H1";
 import { Main } from "~/components/Main";
 import { Section } from "~/components/Section";

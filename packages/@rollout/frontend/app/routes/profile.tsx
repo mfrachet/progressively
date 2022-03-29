@@ -3,7 +3,6 @@ import {
   Link as CLink,
   HStack,
   FormControl,
-  FormLabel,
   Input,
   Stack,
 } from "@chakra-ui/react";
@@ -20,6 +19,7 @@ import {
 } from "remix";
 import { Button } from "~/components/Button";
 import { ErrorBox } from "~/components/ErrorBox";
+import { FormLabel } from "~/components/FormLabel";
 import { Header } from "~/components/Header";
 import { Main } from "~/components/Main";
 import { Section, SectionHeader } from "~/components/Section";

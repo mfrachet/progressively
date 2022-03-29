@@ -1,4 +1,4 @@
-import { Box, FormControl, FormLabel, Input, Text } from "@chakra-ui/react";
+import { Box, FormControl, Input, Text } from "@chakra-ui/react";
 import { IoIosCreate } from "react-icons/io";
 import {
   Form,
@@ -10,6 +10,7 @@ import {
 } from "remix";
 import { Button } from "~/components/Button";
 import { ErrorBox } from "~/components/ErrorBox";
+import { FormLabel } from "~/components/FormLabel";
 import { Header } from "~/components/Header";
 import { Main } from "~/components/Main";
 import { Section } from "~/components/Section";

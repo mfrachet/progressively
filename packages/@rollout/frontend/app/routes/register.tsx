@@ -16,7 +16,6 @@ import { SuccessBox } from "~/components/SuccessBox";
 import {
   Box,
   FormControl,
-  FormLabel,
   Input,
   Stack,
   Link as CLink,
@@ -27,6 +26,7 @@ import { H1 } from "~/components/H1";
 import { Section } from "~/components/Section";
 import { NotAuthenticatedLayout } from "~/layouts/NotAuthenticatedLayout";
 import { Button } from "~/components/Button";
+import { FormLabel } from "~/components/FormLabel";
 
 export const meta: MetaFunction = () => {
   return {

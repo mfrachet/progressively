@@ -1,4 +1,4 @@
-import { Box, FormControl, FormLabel, Input, Text } from "@chakra-ui/react";
+import { Box, FormControl, Input, Text } from "@chakra-ui/react";
 import { IoIosCreate } from "react-icons/io";
 import {
   Form,
@@ -23,6 +23,7 @@ import { User } from "~/modules/user/types";
 import { Header } from "~/components/Header";
 import { Section } from "~/components/Section";
 import { Button } from "~/components/Button";
+import { FormLabel } from "~/components/FormLabel";
 
 export const meta: MetaFunction = () => {
   return {

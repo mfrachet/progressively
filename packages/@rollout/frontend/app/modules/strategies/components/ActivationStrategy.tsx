@@ -1,7 +1,6 @@
 import {
   Box,
   FormControl,
-  FormLabel,
   Radio,
   RadioGroup,
   Slider,
@@ -10,6 +9,7 @@ import {
   SliderTrack,
 } from "@chakra-ui/react";
 import { useState } from "react";
+import { FormLabel } from "~/components/FormLabel";
 import { Section, SectionHeader } from "~/components/Section";
 import { ActivationType } from "../types/activation";
 

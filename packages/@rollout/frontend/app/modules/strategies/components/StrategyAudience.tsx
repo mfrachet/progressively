@@ -3,11 +3,11 @@ import {
   RadioGroup,
   Radio,
   FormControl,
-  FormLabel,
   Input,
   Select,
   Textarea,
 } from "@chakra-ui/react";
+import { FormLabel } from "~/components/FormLabel";
 import { Section, SectionHeader } from "~/components/Section";
 import { StrategyCreateDTO } from "../types";
 import { StrategyRuleType } from "../types/StrategyRule";
