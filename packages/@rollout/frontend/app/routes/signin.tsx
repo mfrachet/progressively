@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   FormControl,
   FormLabel,
   Input,
@@ -21,6 +20,7 @@ import {
   Link,
   useSearchParams,
 } from "remix";
+import { Button } from "~/components/Button";
 import { ErrorBox } from "~/components/ErrorBox";
 import { H1 } from "~/components/H1";
 import { Main } from "~/components/Main";

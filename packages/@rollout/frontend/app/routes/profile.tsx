@@ -5,9 +5,7 @@ import {
   FormControl,
   FormLabel,
   Input,
-  Button,
   Stack,
-  transition,
   Flex,
 } from "@chakra-ui/react";
 import { MdChevronLeft, MdPassword } from "react-icons/md";
@@ -19,7 +17,9 @@ import {
   MetaFunction,
   useActionData,
   useLoaderData,
+  useTransition,
 } from "remix";
+import { Button } from "~/components/Button";
 import { ErrorBox } from "~/components/ErrorBox";
 import { Header } from "~/components/Header";
 import { Main } from "~/components/Main";
@@ -99,6 +99,7 @@ export const loader: LoaderFunction = async ({
 };
 
 export default function ProfilePage() {
+  const transition = useTransition();
   const data = useActionData<ActionData>();
   const { user } = useLoaderData<LoaderData>();
   const passwordUpdated = data?.passwordUpdated;

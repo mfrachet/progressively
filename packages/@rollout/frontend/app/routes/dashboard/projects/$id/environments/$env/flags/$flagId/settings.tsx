@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Text, VisuallyHidden } from "@chakra-ui/react";
+import { Box, Flex, Text, VisuallyHidden } from "@chakra-ui/react";
 import { useLoaderData, LoaderFunction, MetaFunction, Link } from "remix";
 import { Crumbs, BreadCrumbs } from "~/components/AppBreadcrumbs";
 import { ButtonCopy } from "~/components/ButtonCopy";
@@ -18,6 +18,7 @@ import { Section, SectionHeader } from "~/components/Section";
 import { AiOutlineBarChart, AiOutlineSetting } from "react-icons/ai";
 import { HorizontalNav, NavItem } from "~/components/HorizontalNav";
 import { FaPowerOff, FaTrash } from "react-icons/fa";
+import { Button } from "~/components/Button";
 
 interface MetaArgs {
   data: {
@@ -167,9 +168,8 @@ export default function FlagSettingPage() {
               }
             />
 
-            <Flex px={4} pb={4} justifyContent={["center", "unset"]}>
+            <Flex px={4} pb={4} justifyContent={["center", "flex-end"]}>
               <Button
-                as={Link}
                 colorScheme="error"
                 to={`/dashboard/projects/${project.uuid}/environments/${environment.uuid}/flags/${currentFlag.uuid}/delete`}
                 leftIcon={<FaTrash aria-hidden />}

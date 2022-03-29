@@ -1,4 +1,4 @@
-import { Box, Button, Text, Flex, VisuallyHidden } from "@chakra-ui/react";
+import { Box, Text, Flex, VisuallyHidden } from "@chakra-ui/react";
 import {
   ActionFunction,
   Form,
@@ -27,6 +27,7 @@ import { Section } from "~/components/Section";
 import { FlagEnv } from "~/modules/flags/types";
 import { getFlagsByProjectEnv } from "~/modules/flags/getFlagsByProjectEnv";
 import { deleteFlag } from "~/modules/flags/deleteFlag";
+import { Button } from "~/components/Button";
 
 interface MetaArgs {
   data: {
@@ -186,7 +187,6 @@ export default function DeleteFlagPage() {
             direction={["column", "row"]}
           >
             <Button
-              as={Link}
               to={`/dashboard/projects/${project.uuid}/environments/${environment.uuid}/flags/${currentFlag.uuid}/settings`}
               variant="outline"
               colorScheme="error"

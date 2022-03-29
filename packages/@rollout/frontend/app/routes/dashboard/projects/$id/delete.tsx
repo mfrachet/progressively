@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Flex,
   ListItem,
   Text,
@@ -34,6 +33,7 @@ import { User } from "~/modules/user/types";
 import { getSession } from "~/sessions";
 import { Header } from "~/components/Header";
 import { Section } from "~/components/Section";
+import { Button } from "~/components/Button";
 
 interface MetaArgs {
   data: {
@@ -208,7 +208,6 @@ export default function DeleteProjectPage() {
             direction={["column", "row"]}
           >
             <Button
-              as={Link}
               to={`/dashboard/projects/${project.uuid}/settings`}
               variant="outline"
               colorScheme="error"

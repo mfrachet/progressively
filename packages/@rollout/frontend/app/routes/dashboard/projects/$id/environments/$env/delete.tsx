@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   ListItem,
   UnorderedList,
   Text,
@@ -35,6 +34,7 @@ import { DashboardLayout } from "~/layouts/DashboardLayout";
 import { getSession } from "~/sessions";
 import { Header } from "~/components/Header";
 import { Section } from "~/components/Section";
+import { Button } from "~/components/Button";
 
 interface MetaArgs {
   data: {
@@ -227,7 +227,6 @@ export default function DeleteEnvPage() {
             direction={["column", "row"]}
           >
             <Button
-              as={Link}
               to={`/dashboard/projects/${project.uuid}/environments/${environment.uuid}/settings`}
               variant="outline"
               colorScheme="error"

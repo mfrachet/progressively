@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Flex,
   Heading,
   ListItem,
@@ -10,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { FaTrash } from "react-icons/fa";
 import { Link } from "remix";
+import { Button } from "~/components/Button";
 import { StrategyRetrieveDTO } from "./types";
 
 export interface StrategyCardProps {
@@ -102,7 +102,6 @@ export const StrategyCard = ({
         <Button
           leftIcon={<FaTrash aria-hidden />}
           mt={[2, 0]}
-          as={Link}
           to={`/dashboard/projects/${projectId}/environments/${envId}/flags/${flagId}/strategies/${strat.uuid}/delete`}
         >
           Remove<VisuallyHidden> {strat.name}</VisuallyHidden>

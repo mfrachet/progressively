@@ -1,4 +1,4 @@
-import { Box, Button, Text, Flex, VisuallyHidden } from "@chakra-ui/react";
+import { Box, Text, Flex, VisuallyHidden } from "@chakra-ui/react";
 import {
   ActionFunction,
   Form,
@@ -29,6 +29,7 @@ import { getFlagsByProjectEnv } from "~/modules/flags/getFlagsByProjectEnv";
 import { getStrategy } from "~/modules/strategies/getStrategy";
 import { StrategyRetrieveDTO } from "~/modules/strategies/types";
 import { deleteStrategy } from "~/modules/strategies/deleteStrategy";
+import { Button } from "~/components/Button";
 
 interface MetaArgs {
   data: {
@@ -213,7 +214,6 @@ export default function DeleteStrategyPage() {
             direction={["column", "row"]}
           >
             <Button
-              as={Link}
               to={`/dashboard/projects/${project.uuid}/environments/${environment.uuid}/flags/${currentFlag.uuid}`}
               variant="outline"
               colorScheme="error"

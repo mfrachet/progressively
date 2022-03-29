@@ -1,4 +1,4 @@
-import { Box, Button, Stack } from "@chakra-ui/react";
+import { Box, Stack } from "@chakra-ui/react";
 import {
   LoaderFunction,
   useLoaderData,
@@ -22,6 +22,7 @@ import { Section, SectionHeader } from "~/components/Section";
 import { HorizontalNav, NavItem } from "~/components/HorizontalNav";
 import { AiOutlineSetting } from "react-icons/ai";
 import { FiLayers } from "react-icons/fi";
+import { Button } from "~/components/Button";
 
 interface MetaArgs {
   data: {
@@ -102,7 +103,6 @@ export default function ProjectDetailPage() {
             title="Environments"
             endAction={
               <Button
-                as={Link}
                 to={`/dashboard/projects/${project.uuid}/environments/create`}
                 leftIcon={<IoIosCreate aria-hidden />}
                 colorScheme="brand"

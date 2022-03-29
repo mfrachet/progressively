@@ -1,4 +1,4 @@
-import { Box, Button, Text, Badge, Stack } from "@chakra-ui/react";
+import { Box, Text, Badge, Stack } from "@chakra-ui/react";
 import { IoIosCreate } from "react-icons/io";
 import {
   useLoaderData,
@@ -36,6 +36,7 @@ import { EmptyState } from "~/components/EmptyState";
 import { AiOutlineBarChart, AiOutlineSetting } from "react-icons/ai";
 import { HorizontalNav, NavItem } from "~/components/HorizontalNav";
 import { FaPowerOff } from "react-icons/fa";
+import { Button } from "~/components/Button";
 
 interface MetaArgs {
   data: {
@@ -262,7 +263,6 @@ export default function FlagById() {
               }
               endAction={
                 <Button
-                  as={Link}
                   to={`/dashboard/projects/${project.uuid}/environments/${environment.uuid}/flags/${currentFlag.uuid}/strategies/create`}
                   leftIcon={<IoIosCreate aria-hidden />}
                   colorScheme="brand"

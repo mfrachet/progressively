@@ -1,11 +1,4 @@
-import {
-  Box,
-  Button,
-  Stack,
-  Text,
-  VisuallyHidden,
-  Flex,
-} from "@chakra-ui/react";
+import { Box, Stack, Text, VisuallyHidden, Flex } from "@chakra-ui/react";
 import { AiOutlineSetting } from "react-icons/ai";
 import { FaTrash } from "react-icons/fa";
 import { FiLayers } from "react-icons/fi";
@@ -19,6 +12,7 @@ import {
   useTransition,
 } from "remix";
 import { Crumbs, BreadCrumbs } from "~/components/AppBreadcrumbs";
+import { Button } from "~/components/Button";
 import { ErrorBox } from "~/components/ErrorBox";
 import { Header } from "~/components/Header";
 import { HorizontalNav, NavItem } from "~/components/HorizontalNav";
@@ -221,9 +215,8 @@ export default function SettingsPage() {
                 }
               />
 
-              <Flex px={4} pb={4} justifyContent={["center", "unset"]}>
+              <Flex px={4} pb={4} justifyContent={["center", "flex-end"]}>
                 <Button
-                  as={Link}
                   colorScheme="error"
                   to={`/dashboard/projects/${project.uuid}/delete`}
                   leftIcon={<FaTrash aria-hidden />}

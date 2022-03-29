@@ -25,7 +25,6 @@ import { createStrategy } from "~/modules/strategies/createStrategy";
 import { BreadCrumbs, Crumbs } from "~/components/AppBreadcrumbs";
 import {
   Box,
-  Button,
   Flex,
   FormControl,
   FormLabel,
@@ -41,6 +40,7 @@ import { authGuard } from "~/modules/auth/auth-guard";
 import { User } from "~/modules/user/types";
 import { Header } from "~/components/Header";
 import { Section, SectionHeader } from "~/components/Section";
+import { Button } from "~/components/Button";
 
 interface MetaArgs {
   data: {
