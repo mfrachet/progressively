@@ -163,7 +163,7 @@ export default function DeleteFlagPage() {
           <Header title="You are about to delete the feature flag." />
         </Box>
 
-        <Section size="M">
+        <Section>
           {data?.errors && data.errors.backendError && (
             <Box pb={4}>
               <ErrorBox list={data.errors} />

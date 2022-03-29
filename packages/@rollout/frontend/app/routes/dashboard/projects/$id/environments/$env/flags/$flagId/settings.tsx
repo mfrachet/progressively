@@ -1,5 +1,5 @@
 import { Box, Flex, Text, VisuallyHidden } from "@chakra-ui/react";
-import { useLoaderData, LoaderFunction, MetaFunction, Link } from "remix";
+import { useLoaderData, LoaderFunction, MetaFunction } from "remix";
 import { Crumbs, BreadCrumbs } from "~/components/AppBreadcrumbs";
 import { ButtonCopy } from "~/components/ButtonCopy";
 import { Main } from "~/components/Main";
@@ -168,7 +168,7 @@ export default function FlagSettingPage() {
               }
             />
 
-            <Flex px={4} pb={4} justifyContent={["center", "flex-end"]}>
+            <Flex px={4} pb={4} justifyContent={["center", "flex-start"]}>
               <Button
                 colorScheme="error"
                 to={`/dashboard/projects/${project.uuid}/environments/${environment.uuid}/flags/${currentFlag.uuid}/delete`}

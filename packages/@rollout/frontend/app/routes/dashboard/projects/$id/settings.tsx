@@ -215,7 +215,7 @@ export default function SettingsPage() {
                 }
               />
 
-              <Flex px={4} pb={4} justifyContent={["center", "flex-end"]}>
+              <Flex px={4} pb={4} justifyContent={["center", "flex-start"]}>
                 <Button
                   colorScheme="error"
                   to={`/dashboard/projects/${project.uuid}/delete`}

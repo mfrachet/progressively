@@ -263,7 +263,7 @@ export default function StrategyCreatePage() {
               errors={errors}
             />
 
-            <Flex justifyContent={"flex-end"} mt={8}>
+            <Box mt={8}>
               <Button
                 colorScheme={"brand"}
                 type="submit"
@@ -274,7 +274,7 @@ export default function StrategyCreatePage() {
               >
                 Save the strategy
               </Button>
-            </Flex>
+            </Box>
           </Stack>
         </Form>
       </Main>

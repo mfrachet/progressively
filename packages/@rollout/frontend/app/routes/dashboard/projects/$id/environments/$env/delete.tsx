@@ -159,7 +159,7 @@ export default function DeleteEnvPage() {
             <Header title="You are not allowed to delete environments." />
           </Box>
 
-          <Section size="M">
+          <Section>
             <figure>
               <Text as="figcaption">
                 If you think this is an error, make sure to contact one of the
@@ -202,7 +202,7 @@ export default function DeleteEnvPage() {
           <Header title="You are about to delete the environment." />
         </Box>
 
-        <Section size="M">
+        <Section>
           {data?.errors && data.errors.backendError && (
             <Box pb={4}>
               <ErrorBox list={data.errors} />

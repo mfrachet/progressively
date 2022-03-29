@@ -5,24 +5,18 @@ const SectionContext = createContext<string | undefined>(undefined);
 
 export interface SectionProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
-  size?: "S" | "M";
   as?: any;
   id?: string;
 }
 
-export const Section = ({
-  children,
-  size = "S",
-  id,
-  ...props
-}: SectionProps) => {
+export const Section = ({ children, id, ...props }: SectionProps) => {
   return (
     <SectionContext.Provider value={id}>
       <Box
         bg="backgroundContent"
         as="section"
         borderRadius={16}
-        p={size === "S" ? 4 : 8}
+        p={8}
         boxShadow="md"
         aria-labelledby={id}
         {...props}

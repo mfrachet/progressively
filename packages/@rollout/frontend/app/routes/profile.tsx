@@ -164,7 +164,7 @@ export default function ProfilePage() {
                   />
                 </FormControl>
 
-                <Flex justifyContent="flex-end">
+                <Box>
                   <Button
                     type="submit"
                     colorScheme={"brand"}
@@ -175,7 +175,7 @@ export default function ProfilePage() {
                   >
                     Change password
                   </Button>
-                </Flex>
+                </Box>
               </Stack>
             </Form>
           </Box>

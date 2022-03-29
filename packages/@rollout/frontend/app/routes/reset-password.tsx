@@ -118,7 +118,7 @@ export default function ResetPasswordPage() {
             Back to signin
           </CLink>
         </HStack>
-        <Section size="M">
+        <Section>
           <Box>
             <H1>Reset password</H1>
             <Text>Set your new password.</Text>

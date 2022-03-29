@@ -1,11 +1,4 @@
-import {
-  Box,
-  Flex,
-  FormControl,
-  FormLabel,
-  Input,
-  Text,
-} from "@chakra-ui/react";
+import { Box, FormControl, FormLabel, Input, Text } from "@chakra-ui/react";
 import { IoIosCreate } from "react-icons/io";
 import {
   Form,
@@ -159,7 +152,7 @@ export default function CreateFlagPage() {
           />
         </Box>
 
-        <Section size="M">
+        <Section>
           {(errors?.name || errors?.description) && (
             <Box pb={4}>
               <ErrorBox list={errors} />
@@ -202,7 +195,7 @@ export default function CreateFlagPage() {
               SDK key for application usage.
             </Text>
 
-            <Flex justifyContent="flex-end" mt={4}>
+            <Box mt={4}>
               <Button
                 type="submit"
                 leftIcon={<IoIosCreate aria-hidden />}
@@ -213,7 +206,7 @@ export default function CreateFlagPage() {
               >
                 Create the feature flag
               </Button>
-            </Flex>
+            </Box>
           </Form>
         </Section>
       </Main>

@@ -86,7 +86,7 @@ export default function ForgotPasswordPage() {
             Back to signin
           </CLink>
         </HStack>
-        <Section size="M">
+        <Section>
           <Box>
             <H1>Password forgotten</H1>
             <Text>

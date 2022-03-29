@@ -97,7 +97,7 @@ export default function CreateAccountPage() {
           </CLink>
         </HStack>
 
-        <Section size="M">
+        <Section>
           <Box>
             <H1>Create an account</H1>
           </Box>

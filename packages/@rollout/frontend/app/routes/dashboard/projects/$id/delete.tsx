@@ -140,7 +140,7 @@ export default function DeleteProjectPage() {
             <Header title="You are not allowed to delete projects." />
           </Box>
 
-          <Section size="M">
+          <Section>
             <figure>
               <Text as="figcaption">
                 If you think this is an error, make sure to contact one of the
@@ -184,7 +184,7 @@ export default function DeleteProjectPage() {
           <Header title="You are about to delete the project." />
         </Box>
 
-        <Section size="M">
+        <Section>
           {data?.errors && data.errors.backendError && (
             <Box pb={4}>
               <ErrorBox list={data.errors} />

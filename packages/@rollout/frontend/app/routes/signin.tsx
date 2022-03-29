@@ -87,7 +87,7 @@ export default function Signin() {
   return (
     <NotAuthenticatedLayout>
       <Main>
-        <Section size="M">
+        <Section>
           <Box>
             <H1>Signin</H1>
             <Text>Welcome</Text>

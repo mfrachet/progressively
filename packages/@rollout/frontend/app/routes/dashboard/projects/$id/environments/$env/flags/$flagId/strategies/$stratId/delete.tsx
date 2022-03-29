@@ -190,7 +190,7 @@ export default function DeleteStrategyPage() {
           />
         </Box>
 
-        <Section size="M">
+        <Section>
           {data?.errors && data.errors.backendError && (
             <Box pb={4}>
               <ErrorBox list={data.errors} />

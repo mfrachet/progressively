@@ -2,7 +2,7 @@ import { Box, Flex, Text, VisuallyHidden } from "@chakra-ui/react";
 import { AiOutlineSetting } from "react-icons/ai";
 import { FaTrash } from "react-icons/fa";
 import { FiFlag, FiKey } from "react-icons/fi";
-import { Link, LoaderFunction, MetaFunction, useLoaderData } from "remix";
+import { LoaderFunction, MetaFunction, useLoaderData } from "remix";
 import { Crumbs, BreadCrumbs } from "~/components/AppBreadcrumbs";
 import { Button } from "~/components/Button";
 import { ButtonCopy } from "~/components/ButtonCopy";
@@ -139,7 +139,7 @@ export default function EnvSettingsPage() {
               }
             />
 
-            <Flex px={4} pb={4} justifyContent={["center", "flex-end"]}>
+            <Flex px={4} pb={4} justifyContent={["center", "flex-start"]}>
               <Button
                 colorScheme="error"
                 to={`/dashboard/projects/${project.uuid}/environments/${environment.uuid}/delete`}
