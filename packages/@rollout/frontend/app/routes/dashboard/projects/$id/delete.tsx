@@ -207,19 +207,6 @@ export default function DeleteProjectPage() {
             mt={4}
             direction={["column", "row"]}
           >
-            <Form method="post">
-              <Button
-                type="submit"
-                colorScheme="error"
-                leftIcon={<FaTrash aria-hidden />}
-                isLoading={transition.state === "submitting"}
-                loadingText="Deleting the project, please wait..."
-                disabled={false}
-                width={["100%", "auto"]}
-              >
-                Yes, delete the project
-              </Button>
-            </Form>
             <Button
               as={Link}
               to={`/dashboard/projects/${project.uuid}/settings`}
@@ -236,6 +223,19 @@ export default function DeleteProjectPage() {
                 <VisuallyHidden>{project.name}</VisuallyHidden>
               </span>
             </Button>
+            <Form method="post">
+              <Button
+                type="submit"
+                colorScheme="error"
+                leftIcon={<FaTrash aria-hidden />}
+                isLoading={transition.state === "submitting"}
+                loadingText="Deleting the project, please wait..."
+                disabled={false}
+                width={["100%", "auto"]}
+              >
+                Yes, delete the project
+              </Button>
+            </Form>
           </Flex>
         </Section>
       </Main>

@@ -212,19 +212,6 @@ export default function DeleteStrategyPage() {
             mt={4}
             direction={["column", "row"]}
           >
-            <Form method="post">
-              <Button
-                type="submit"
-                colorScheme="error"
-                leftIcon={<FaTrash aria-hidden />}
-                isLoading={transition.state === "submitting"}
-                loadingText="Deleting the environment, please wait..."
-                disabled={false}
-                width={["100%", "auto"]}
-              >
-                Yes, delete the strategy
-              </Button>
-            </Form>
             <Button
               as={Link}
               to={`/dashboard/projects/${project.uuid}/environments/${environment.uuid}/flags/${currentFlag.uuid}`}
@@ -241,6 +228,20 @@ export default function DeleteStrategyPage() {
                 <VisuallyHidden>{strategy.name}</VisuallyHidden>
               </span>
             </Button>
+
+            <Form method="post">
+              <Button
+                type="submit"
+                colorScheme="error"
+                leftIcon={<FaTrash aria-hidden />}
+                isLoading={transition.state === "submitting"}
+                loadingText="Deleting the environment, please wait..."
+                disabled={false}
+                width={["100%", "auto"]}
+              >
+                Yes, delete the strategy
+              </Button>
+            </Form>
           </Flex>
         </Section>
       </Main>
