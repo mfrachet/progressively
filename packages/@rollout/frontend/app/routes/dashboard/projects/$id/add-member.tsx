@@ -32,6 +32,8 @@ import { validateEmail } from "~/modules/forms/EmailField/validateEmail";
 import { getProject } from "~/modules/projects/getProject";
 import { MdOutlineEmail } from "react-icons/md";
 import { ButtonCopy } from "~/components/ButtonCopy";
+import { addMemberToProject } from "~/modules/projects/addMemberToProject";
+import { SuccessBox } from "~/components/SuccessBox";
 
 interface MetaArgs {
   data: {
@@ -78,7 +80,8 @@ export const loader: LoaderFunction = async ({
 };
 
 interface ActionData {
-  errors: Partial<{ email: string }>;
+  errors?: Partial<{ email: string }>;
+  success?: boolean;
 }
 
 export const action: ActionFunction = async ({
@@ -86,25 +89,17 @@ export const action: ActionFunction = async ({
 }): Promise<ActionData | Response> => {
   const formData = await request.formData();
   const memberEmail = formData.get("member-email")?.toString();
-
   const emailError = validateEmail(memberEmail);
 
   if (emailError) {
     return { errors: { email: emailError } };
   }
 
-  return redirect("/");
+  const session = await getSession(request.headers.get("Cookie"));
 
-  //   const session = await getSession(request.headers.get("Cookie"));
+  await addMemberToProject(memberEmail!, session.get("auth-cookie"));
 
-  //   const userProject: UserProject = await createProject(
-  //     projectName!,
-  //     session.get("auth-cookie")
-  //   );
-
-  //   return redirect(
-  //     `/dashboard?newProjectId=${userProject.projectId}#project-added`
-  //   );
+  return { success: true };
 };
 
 export default function CreateProjectPage() {
@@ -173,6 +168,14 @@ export default function CreateProjectPage() {
       header={<Header title="Add member" />}
     >
       <Section>
+        {data?.success && (
+          <Box pb={4}>
+            <SuccessBox id="member-added">
+              The user has been invited invited to join the project.
+            </SuccessBox>
+          </Box>
+        )}
+
         {errors?.email && (
           <Box pb={4}>
             <ErrorBox list={errors} />
