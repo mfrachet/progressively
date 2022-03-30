@@ -107,13 +107,14 @@ export default function ProfilePage() {
   return (
     <DashboardLayout user={user}>
       <Main>
-        <HStack mb={4}>
-          <MdChevronLeft aria-hidden />
-          <CLink as={Link} to="/dashboard">
-            Back to dashboard
-          </CLink>
-        </HStack>
-        <Box pb={8}>
+        <CLink as={Link} to="/dashboard" display="inline-block">
+          <HStack alignItems={"center"} height={"44px"} fontSize="xl">
+            <MdChevronLeft aria-hidden />
+            <span>Back to dashboard</span>
+          </HStack>
+        </CLink>
+
+        <Box pb={8} mt={[16, 0]}>
           <Header title="My profile" />
         </Box>
 

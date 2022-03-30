@@ -92,7 +92,7 @@ export default function EnvSettingsPage() {
     <DashboardLayout user={user}>
       <BreadCrumbs crumbs={crumbs} />
       <Main>
-        <Box pb={8}>
+        <Box pb={[0, 8]}>
           <Header
             title={environment.name}
             startAction={

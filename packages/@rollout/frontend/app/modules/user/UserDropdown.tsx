@@ -88,10 +88,10 @@ export const UseDropdown = ({ user }: UserDropdownProps) => {
         </Flex>
       </MenuButton>
       <MenuList>
-        <MenuItem as={Link} to="/profile" fontSize="xl">
+        <MenuItem as={Link} to="/profile" fontSize="xl" px={6}>
           Profile
         </MenuItem>
-        <MenuItem as={Link} to="/signout" fontSize="xl">
+        <MenuItem as={Link} to="/signout" fontSize="xl" px={6}>
           Sign out
         </MenuItem>
       </MenuList>

@@ -51,7 +51,7 @@ export const EnvCard = ({ id, linkTo, title, clientKey }: EnvCardProps) => {
             </CLink>
           </Heading>
 
-          <Text color="textlight">
+          <Text color="textlight" display={["none", "inline"]}>
             The environment sdk key is <Tag>{clientKey}</Tag>
           </Text>
         </div>

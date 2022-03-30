@@ -27,7 +27,7 @@ export const DashboardLayout = ({ user, children }: DashboardLayoutProps) => {
         </Flex>
       </Container>
 
-      <Container maxW="5xl" pt={16} pb={4}>
+      <Container maxW="5xl" pt={[0, 16]} pb={4}>
         {children}
       </Container>
     </div>

@@ -77,7 +77,7 @@ export default function OnboardingPage() {
   return (
     <DashboardLayout user={user}>
       <Main>
-        <Box pb={8}>
+        <Box pb={8} mt={[16, 0]}>
           <Header
             title="Welcome aboard"
             description={

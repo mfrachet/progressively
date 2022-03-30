@@ -75,7 +75,7 @@ export default function ProjectDetailPage() {
       <BreadCrumbs crumbs={crumbs} />
 
       <Main>
-        <Box pb={8}>
+        <Box pb={[0, 8]}>
           <Header title={project.name} />
         </Box>
 

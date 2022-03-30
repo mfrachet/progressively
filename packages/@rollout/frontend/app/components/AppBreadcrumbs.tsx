@@ -30,16 +30,21 @@ export const BreadCrumbs = ({ crumbs }: BreadCrumbsProps) => {
   return (
     <>
       {beforeLastCrumb && (
-        <HStack mb={2} display={["flex", "none"]}>
-          <MdChevronLeft aria-hidden />
-          <CLink as={Link} to={beforeLastCrumb.link}>
-            Back to {beforeLastCrumb.label}
-          </CLink>
-        </HStack>
+        <CLink
+          as={Link}
+          to="/dashboard"
+          display={["inline-block", "none"]}
+          mb={12}
+        >
+          <HStack alignItems={"center"} height={"44px"} fontSize="xl">
+            <MdChevronLeft aria-hidden />
+            <span> Back to {beforeLastCrumb.label}</span>
+          </HStack>
+        </CLink>
       )}
+
       <Breadcrumb
         display={["none", "block"]}
-        pb={2}
         separator={
           <Icon display="flex" alignItems="center" as={FiChevronRight} />
         }

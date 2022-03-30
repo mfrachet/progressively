@@ -70,7 +70,7 @@ export const ButtonCopy = ({
   return (
     <Button
       as="span"
-      size="lg"
+      size={"lg"}
       variant="outline"
       leftIcon={icon}
       onClick={undefined}

@@ -52,14 +52,10 @@ export const FlagCard = ({
         background: "background",
       }}
     >
-      <Flex
-        justifyContent={"space-between"}
-        direction={["column", "row"]}
-        alignItems="center"
-      >
+      <Flex justifyContent={"space-between"} direction={["column", "row"]}>
         <div>
-          <HStack spacing={2}>
-            <Heading as="h3" id={`article-${id}`} size="md" mr={2} mb={1}>
+          <HStack spacing={[0, 2]} display={["block", "flex"]}>
+            <Heading as="h3" id={`article-${id}`} size="md" mr={2} mb={[2, 1]}>
               <CLink
                 as={Link}
                 textDecoration="underline"
@@ -72,6 +68,7 @@ export const FlagCard = ({
             </Heading>
 
             <Tag aria-hidden>{flagKey}</Tag>
+
             <VisuallyHidden>
               <p>The flag key is {flagKey}</p>
             </VisuallyHidden>

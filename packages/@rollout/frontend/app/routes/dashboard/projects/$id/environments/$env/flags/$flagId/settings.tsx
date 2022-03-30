@@ -114,7 +114,7 @@ export default function FlagSettingPage() {
     <DashboardLayout user={user}>
       <BreadCrumbs crumbs={crumbs} />
       <Main>
-        <Box pb={8}>
+        <Box pb={[0, 8]}>
           <Header
             title={currentFlag.name}
             startAction={

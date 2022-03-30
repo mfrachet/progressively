@@ -58,7 +58,7 @@ export default function DashboardRoot() {
   return (
     <DashboardLayout user={user}>
       <Main>
-        <Box pb={8}>
+        <Box pb={8} mt={[16, 0]}>
           <Header
             title="Projects"
             startAction={
