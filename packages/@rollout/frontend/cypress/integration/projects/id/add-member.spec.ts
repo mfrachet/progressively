@@ -89,6 +89,48 @@ describe("/dashboard/projects/[id]/add-member", () => {
 
           cy.checkA11y();
         });
+
+        it("shows an error when the user is already in the project", () => {
+          cy.findByLabelText("Member email").type("marvin.frachet@gmail.com");
+          cy.findByRole("button", { name: "Add the member" }).click();
+
+          cy.get(".error-box")
+            .should("have.focus")
+            .and(
+              "contain.text",
+              "The user is already a member of the project."
+            );
+
+          cy.checkA11y();
+        });
+
+        it("shows an error message when the user does not exist in the db", () => {
+          cy.findByLabelText("Member email").type("blah.blah@gmail.com");
+          cy.findByRole("button", { name: "Add the member" }).click();
+
+          cy.get(".error-box")
+            .should("have.focus")
+            .and(
+              "contain.text",
+              "The user does not exist. They must have to create an account before being able to join the project."
+            );
+
+          cy.checkA11y();
+        });
+
+        it("shows a successful message when the user has been added to the project", () => {
+          cy.findByLabelText("Member email").type("jane.doe@gmail.com");
+          cy.findByRole("button", { name: "Add the member" }).click();
+
+          cy.get(".success-box")
+            .should("have.focus")
+            .and(
+              "contain.text",
+              "The user has been invited invited to join the project."
+            );
+
+          cy.checkA11y();
+        });
       });
     });
   });
