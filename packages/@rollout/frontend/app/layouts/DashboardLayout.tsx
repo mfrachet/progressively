@@ -8,7 +8,7 @@ import { UseDropdown } from "~/modules/user/UserDropdown";
 export interface DashboardLayoutProps {
   user: User;
   children: React.ReactNode;
-  breadcrumb: React.ReactNode;
+  breadcrumb?: React.ReactNode;
   header: React.ReactNode;
   subNav?: React.ReactNode;
 }

@@ -15,7 +15,6 @@ import { Button } from "~/components/Button";
 import { ErrorBox } from "~/components/ErrorBox";
 import { Header } from "~/components/Header";
 import { HorizontalNav, NavItem } from "~/components/HorizontalNav";
-import { Main } from "~/components/Main";
 import { Section, SectionHeader } from "~/components/Section";
 import { SuccessBox } from "~/components/SuccessBox";
 import { DashboardLayout } from "~/layouts/DashboardLayout";
