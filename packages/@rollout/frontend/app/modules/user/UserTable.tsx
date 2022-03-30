@@ -9,6 +9,7 @@ import { Button } from "~/components/Button";
 import { IoIosCreate } from "react-icons/io";
 
 export interface UserTableProps {
+  projectId: string;
   userProjects: Array<UserProject>;
   labelledBy: string;
   canEdit: boolean;
@@ -26,6 +27,7 @@ const RoleBadge = ({ role }: { role: UserRoles }) => {
 
 export const UserTable = ({
   userProjects,
+  projectId,
   labelledBy,
   canEdit,
 }: UserTableProps) => {
@@ -44,7 +46,7 @@ export const UserTable = ({
           <Button
             colorScheme="brand"
             as={Link}
-            to={"/"}
+            to={`/dashboard/projects/${projectId}/add-member`}
             leftIcon={<IoIosCreate aria-hidden />}
             variant="outline"
             width={["100%", "auto"]}

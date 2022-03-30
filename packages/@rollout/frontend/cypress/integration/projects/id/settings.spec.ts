@@ -59,7 +59,7 @@ describe("/dashboard/projects/[id]/settings", () => {
           "be.visible"
         );
 
-        cy.findByRole("button", { name: "Add member" }).should("be.visible");
+        cy.findByRole("link", { name: "Add member" }).should("be.visible");
 
         cy.checkA11y();
       });
