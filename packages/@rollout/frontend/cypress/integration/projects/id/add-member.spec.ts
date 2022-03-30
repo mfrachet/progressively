@@ -51,7 +51,7 @@ describe("/dashboard/projects/[id]/add-member", () => {
         });
       });
 
-      describe.only("user: Marvin", () => {
+      describe("user: Marvin", () => {
         beforeEach(() => {
           cy.signIn("Marvin");
           cy.visit("/dashboard/projects/1/add-member");
