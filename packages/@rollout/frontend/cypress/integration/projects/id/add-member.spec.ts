@@ -1,7 +1,7 @@
 describe("/dashboard/projects/[id]/add-member", () => {
   describe("general verifications", () => {
-    before(cy.seed);
-    after(cy.cleanup);
+    beforeEach(cy.seed);
+    afterEach(cy.cleanup);
 
     describe("not authenticated", () => {
       beforeEach(() => {

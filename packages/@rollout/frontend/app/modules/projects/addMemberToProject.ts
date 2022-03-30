@@ -1,7 +1,11 @@
 import { Constants } from "~/constants";
 
-export const addMemberToProject = (memberEmail: string, accessToken: string) =>
-  fetch(`${Constants.BackendUrl}/projects/members`, {
+export const addMemberToProject = (
+  projectId: string,
+  memberEmail: string,
+  accessToken: string
+) =>
+  fetch(`${Constants.BackendUrl}/projects/${projectId}/members`, {
     method: "POST",
     body: JSON.stringify({ email: memberEmail }),
     headers: {
@@ -10,9 +14,9 @@ export const addMemberToProject = (memberEmail: string, accessToken: string) =>
     },
   }).then((res) => {
     if (!res.ok) {
-      throw new Error(
-        "You are not authorized to add a member to this project."
-      );
+      return res.json().then((res) => {
+        throw new Error(res.message);
+      });
     }
 
     return res.json();

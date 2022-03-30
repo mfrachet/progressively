@@ -80,12 +80,13 @@ export const loader: LoaderFunction = async ({
 };
 
 interface ActionData {
-  errors?: Partial<{ email: string }>;
+  errors?: Partial<{ email: string; backendError: string }>;
   success?: boolean;
 }
 
 export const action: ActionFunction = async ({
   request,
+  params,
 }): Promise<ActionData | Response> => {
   const formData = await request.formData();
   const memberEmail = formData.get("member-email")?.toString();
@@ -97,9 +98,21 @@ export const action: ActionFunction = async ({
 
   const session = await getSession(request.headers.get("Cookie"));
 
-  await addMemberToProject(memberEmail!, session.get("auth-cookie"));
+  try {
+    await addMemberToProject(
+      params.id!,
+      memberEmail!,
+      session.get("auth-cookie")
+    );
 
-  return { success: true };
+    return { success: true };
+  } catch (e) {
+    if (e instanceof Error) {
+      return { errors: { backendError: e.message } };
+    }
+
+    return { errors: { backendError: "An error ocurred" } };
+  }
 };
 
 export default function CreateProjectPage() {
@@ -161,6 +174,8 @@ export default function CreateProjectPage() {
     );
   }
 
+  const errorsToDisplay = errors || {};
+
   return (
     <DashboardLayout
       user={user}
@@ -176,9 +191,9 @@ export default function CreateProjectPage() {
           </Box>
         )}
 
-        {errors?.email && (
+        {Object.keys(errorsToDisplay).length > 0 && (
           <Box pb={4}>
-            <ErrorBox list={errors} />
+            <ErrorBox list={errorsToDisplay} />
           </Box>
         )}
         <Form method="post">
