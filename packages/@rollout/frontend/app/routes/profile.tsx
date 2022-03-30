@@ -108,12 +108,14 @@ export default function ProfilePage() {
       user={user}
       header={<Header title="My profile" />}
       breadcrumb={
-        <CLink as={Link} to="/dashboard" display="inline-block">
-          <HStack alignItems={"center"} height={"44px"} fontSize="xl">
-            <MdChevronLeft aria-hidden />
-            <span>Back to dashboard</span>
-          </HStack>
-        </CLink>
+        <nav>
+          <CLink as={Link} to="/dashboard" display="inline-block">
+            <HStack alignItems={"center"} height={"44px"} fontSize="xl">
+              <MdChevronLeft aria-hidden />
+              <span>Back to dashboard</span>
+            </HStack>
+          </CLink>
+        </nav>
       }
     >
       <Section>
