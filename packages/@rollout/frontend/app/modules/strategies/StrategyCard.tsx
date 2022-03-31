@@ -79,7 +79,6 @@ export const StrategyCard = ({
     <Box
       pt={4}
       pb={4}
-      pl={4}
       as="article"
       aria-labelledby={strat.uuid}
       borderTopWidth={1}
@@ -90,7 +89,7 @@ export const StrategyCard = ({
         justifyContent="space-between"
         direction={["column", "row"]}
       >
-        <Box mr={4}>
+        <Box mr={4} pl={4}>
           <Heading as="h3" id={strat.uuid} size="md" mb={1}>
             {strat.name}
           </Heading>
@@ -104,6 +103,7 @@ export const StrategyCard = ({
           leftIcon={<FaTrash aria-hidden />}
           mt={[2, 0]}
           to={`/dashboard/projects/${projectId}/environments/${envId}/flags/${flagId}/strategies/${strat.uuid}/delete`}
+          width={["100%", "auto"]}
         >
           Remove<VisuallyHidden> {strat.name}</VisuallyHidden>
         </Button>

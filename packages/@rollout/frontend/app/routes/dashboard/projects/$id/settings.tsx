@@ -185,7 +185,7 @@ export default function SettingsPage() {
             </Box>
           )}
 
-          <Box mt={4}>
+          <Box mt={4} p={4}>
             <UserTable
               projectId={project.uuid}
               userProjects={project.userProject || []}

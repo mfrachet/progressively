@@ -65,6 +65,7 @@ export default function DashboardRoot() {
               leftIcon={<IoIosCreate aria-hidden />}
               to="/dashboard/projects/create"
               colorScheme="brand"
+              width={["100%", "auto"]}
             >
               Create a project
             </Button>
