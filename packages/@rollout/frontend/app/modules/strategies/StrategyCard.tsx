@@ -103,7 +103,6 @@ export const StrategyCard = ({
           leftIcon={<FaTrash aria-hidden />}
           mt={[2, 0]}
           to={`/dashboard/projects/${projectId}/environments/${envId}/flags/${flagId}/strategies/${strat.uuid}/delete`}
-          width={["100%", "auto"]}
         >
           Remove<VisuallyHidden> {strat.name}</VisuallyHidden>
         </Button>

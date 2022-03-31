@@ -184,7 +184,6 @@ export default function FlagsByEnvPage() {
               leftIcon={<IoIosCreate aria-hidden />}
               colorScheme="brand"
               flexShrink={0}
-              width={["100%", "auto"]}
             >
               Create a feature flag
             </Button>

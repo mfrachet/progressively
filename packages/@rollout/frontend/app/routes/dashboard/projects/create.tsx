@@ -129,7 +129,6 @@ export default function CreateProjectPage() {
                 isLoading={transition.state === "submitting"}
                 loadingText="Creating the project, please wait..."
                 disabled={false}
-                width={["100%", "auto"]}
               >
                 Create the project
               </Button>

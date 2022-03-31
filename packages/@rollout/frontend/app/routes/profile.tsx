@@ -172,7 +172,6 @@ export default function ProfilePage() {
                   isLoading={transition.state === "submitting"}
                   loadingText="Password changing in progress, please wait..."
                   disabled={false}
-                  width={["100%", "auto"]}
                 >
                   Change password
                 </Button>

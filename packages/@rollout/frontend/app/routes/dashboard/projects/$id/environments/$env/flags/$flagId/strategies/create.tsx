@@ -261,7 +261,6 @@ export default function StrategyCreatePage() {
               isLoading={transition.state === "submitting"}
               loadingText="Saving the strategy, please wait..."
               disabled={false}
-              width={["100%", "auto"]}
             >
               Save the strategy
             </Button>

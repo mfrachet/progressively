@@ -100,7 +100,6 @@ export default function ProjectDetailPage() {
               to={`/dashboard/projects/${project.uuid}/environments/create`}
               leftIcon={<IoIosCreate aria-hidden />}
               colorScheme="brand"
-              width={["100%", "auto"]}
             >
               Create an environment
             </Button>

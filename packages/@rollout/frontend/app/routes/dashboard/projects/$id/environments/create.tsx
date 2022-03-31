@@ -164,7 +164,6 @@ export default function CreateEnvironmentPage() {
                 isLoading={transition.state === "submitting"}
                 loadingText="Creating the environment, please wait..."
                 disabled={false}
-                width={["100%", "auto"]}
               >
                 Create the environment
               </Button>

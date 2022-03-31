@@ -204,7 +204,6 @@ export default function CreateFlagPage() {
                 isLoading={transition.state === "submitting"}
                 loadingText="Creating the feature flag, please wait..."
                 disabled={false}
-                width={["100%", "auto"]}
               >
                 Create the feature flag
               </Button>

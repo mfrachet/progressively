@@ -203,7 +203,6 @@ export default function DeleteProjectPage() {
             variant="outline"
             colorScheme="error"
             mt={[4, 0]}
-            width={["100%", "auto"]}
           >
             <span>
               No, {`don't`} delete{" "}
@@ -221,7 +220,6 @@ export default function DeleteProjectPage() {
               isLoading={transition.state === "submitting"}
               loadingText="Deleting the project, please wait..."
               disabled={false}
-              width={["100%", "auto"]}
             >
               Yes, delete the project
             </Button>

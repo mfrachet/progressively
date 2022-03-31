@@ -261,7 +261,6 @@ export default function FlagById() {
                 to={`/dashboard/projects/${project.uuid}/environments/${environment.uuid}/flags/${currentFlag.uuid}/strategies/create`}
                 leftIcon={<IoIosCreate aria-hidden />}
                 colorScheme="brand"
-                width={["100%", "auto"]}
               >
                 Add a strategy
               </Button>
