@@ -136,28 +136,30 @@ export default function DeleteProjectPage() {
         header={<Header title="You are not allowed to delete projects." />}
       >
         <Section>
-          <figure>
-            <Text as="figcaption">
-              If you think this is an error, make sure to contact one of the
-              project administrators:
-            </Text>
+          <Box p={[4, 0]}>
+            <figure>
+              <Text as="figcaption">
+                If you think this is an error, make sure to contact one of the
+                project administrators:
+              </Text>
 
-            <UnorderedList pl={2} mt={2}>
-              {adminOfProject.map((user) => (
-                <ListItem key={user.uuid}>
-                  <Text as="span" mr={2}>
-                    {user.fullname}
-                  </Text>
-                  <ButtonCopy
-                    toCopy={user.email}
-                    icon={<MdOutlineEmail aria-hidden />}
-                  >
-                    {user.email}
-                  </ButtonCopy>
-                </ListItem>
-              ))}
-            </UnorderedList>
-          </figure>
+              <UnorderedList pl={2} mt={2}>
+                {adminOfProject.map((user) => (
+                  <ListItem key={user.uuid}>
+                    <Text as="span" mr={2}>
+                      {user.fullname}
+                    </Text>
+                    <ButtonCopy
+                      toCopy={user.email}
+                      icon={<MdOutlineEmail aria-hidden />}
+                    >
+                      {user.email}
+                    </ButtonCopy>
+                  </ListItem>
+                ))}
+              </UnorderedList>
+            </figure>
+          </Box>
         </Section>
       </DashboardLayout>
     );
