@@ -30,8 +30,8 @@ jobs:
       - name: Bootstrap projects
         run: npm run setup
 
-      - name: Prepare sqlite DB
-        run: npm run db:prepare:sqlite
+      - name: Prepare the DB
+        run: npm run db:prepare
 
       - name: Build
         run: npm run build

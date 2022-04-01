@@ -7,12 +7,19 @@ A personal feature flag solution built with [Nestjs](https://nestjs.com/) and [R
 _If you use docker, make sure to have set the environments variables in the [the backend Dockerfile](./packages/@rollout/backend/Dockerfile) in order to receive email for account activation._
 
 ```sh
-$ docker-compose -f docker-compose.sqlite.yml up
 # or
-$ docker-compose -f docker-compose.postgres.yml up
+$ docker-compose up
 ```
 
 ### Development setup
+
+#### Run a postgres instance
+
+With docker:
+
+```sh
+$ docker run --name rollout-db -e POSTGRES_PASSWORD=admin -e POSTGRES_USER=admin -e POSTGRES_DB=rollout -d postgres
+```
 
 ```sh
 $ git clone https://github.com/mfrachet/rollout.git
@@ -21,7 +28,7 @@ $ mv ./packages/@rollout/frontend/.env.example ./packages/@rollout/frontend/.env
 $ mv ./packages/@rollout/backend/.env.example ./packages/@rollout/backend/.env # rename .env.example to .env
 $ npm install
 $ npm run setup
-$ npm run db:prepare:sqlite # or npm run db:prepare:sqlite with the good env variables
+$ npm run db:prepare
 $ npm run db:seed # optional will bring some mocking data
 $ npm run build
 $ npm run start:dev

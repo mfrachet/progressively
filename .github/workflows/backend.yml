@@ -24,7 +24,7 @@ jobs:
 
       - name: Preparation
         working-directory: ./packages/@rollout/backend
-        run: mv .env.example .env && npm run db:gen:sqlite-schema && npm run db:migrate:dev && npm run db:generate:schema
+        run: mv .env.example .env && npm run db:migrate:dev && npm run db:generate:schema
 
       - name: Build
         working-directory: ./packages/@rollout/backend
