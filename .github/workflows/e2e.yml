@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: node:16-alpine3.14
-      options: --user root
+      options: --user root -v ${{ github.workspace }}
     services:
       # Label used to access the service container
       postgres:
