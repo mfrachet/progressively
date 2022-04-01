@@ -41,11 +41,8 @@ jobs:
       - name: Creating .env files
         run: mv ./packages/@rollout/frontend/.env.example ./packages/@rollout/frontend/.env && mv ./packages/@rollout/backend/.env.example ./packages/@rollout/backend/.env
 
-      - name: Install dependencies
-        run: npm install
-
       - name: Bootstrap projects
-        run: npm run setup
+        run: npm run setup:ci
 
       - name: Prepare the DB
         run: npm run db:prepare
