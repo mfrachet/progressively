@@ -42,7 +42,7 @@ jobs:
         run: mv ./packages/@rollout/frontend/.env.example ./packages/@rollout/frontend/.env && mv ./packages/@rollout/backend/.env.example ./packages/@rollout/backend/.env
 
       - name: Bootstrap projects
-        run: sudo npm run setup:ci
+        run: npm run setup:ci
 
       - name: Prepare the DB
         run: npm run db:prepare
