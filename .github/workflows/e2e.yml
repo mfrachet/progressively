@@ -7,9 +7,7 @@ on:
 jobs:
   in-container:
     runs-on: ubuntu-latest
-    container:
-      image: node:node:16-alpine3.14
-      options: --user root
+    container: node:node:16-alpine3.14
 
     services:
       # Label used to access the service container
