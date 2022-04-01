@@ -7,7 +7,9 @@ on:
 jobs:
   in-container:
     runs-on: ubuntu-latest
-    container: node:16-alpine3.14
+    container:
+      image: node:16-alpine3.14
+      options: --user 1000:1000
     services:
       # Label used to access the service container
       postgres:
