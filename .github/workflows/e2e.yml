@@ -5,11 +5,10 @@ on:
   workflow_dispatch:
 
 jobs:
-  static:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [macos-latest]
+  in-container:
+    runs-on: ubuntu-latest
+    container: node:16-alpine3.14
+
     services:
       # Label used to access the service container
       postgres:
