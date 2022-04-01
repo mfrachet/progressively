@@ -13,13 +13,24 @@ $ docker-compose up
 
 ### Development setup
 
+> :warning: the following database username and password are for development ONLY. They are not secured at all, but easy to remember when developing locally. If you want to use another user and password in production (and make sure to do it), don't forget to modify the `.env` file of the backend so that it can access it.
+
 #### Run a postgres instance
 
-With docker:
+##### With docker
 
 ```sh
-$ docker run --name rollout-db -e POSTGRES_PASSWORD=admin -e POSTGRES_USER=admin -e POSTGRES_DB=rollout -d postgres
+$ docker run --name rollout-db -e POSTGRES_PASSWORD=admin -e POSTGRES_USER=admin -e POSTGRES_DB=rollout -p 5432:5432 -d postgres
 ```
+
+##### Manually
+
+You can install [Postgres manually on its website](https://www.postgresql.org/). In development (and according to the `.env` file), you may need to:
+
+- create a user `admin` with password `admin` (again, for dev only)
+- create a database with name `rollout`
+
+#### Setup the project
 
 ```sh
 $ git clone https://github.com/mfrachet/rollout.git
@@ -34,11 +45,15 @@ $ npm run build
 $ npm run start:dev
 ```
 
-You can open the ui on `http://localhost:3000/signin` and connect with one of these testing account:
+You can now:
 
-- `marvin.frachet@gmail.com` / `password`
-- `john.doe@gmail.com` / `password`
-- `jane.doe@gmail.com` / `password`
+- Navigate the frontend app on `http://localhost:3000/` and connect with one of these testing account:
+
+  - `marvin.frachet@gmail.com` / `password`
+  - `john.doe@gmail.com` / `password`
+  - `jane.doe@gmail.com` / `password`
+
+- Navigate the API on `http://localhost:4000` and the swagger on `http://localhost:4000/api/`
 
 ### Running tests
 
@@ -52,8 +67,9 @@ $ npm run test:e2e
 
 #### E2E tests
 
-The project has a bunch of E2E tests using [Cypress](https://www.cypress.io/). The easiest way to run them is to use the SQLITE configuration and then:
+The project has a bunch of E2E tests using [Cypress](https://www.cypress.io/):
 
+- make sure to have postgres running
 - make sure to have the backend running
 - make sure to have the frontend running
 - inside the frontend package `./packages/@rollout/frontend`, run `$ npm run test:e2e`
