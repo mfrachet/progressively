@@ -7,7 +7,7 @@ on:
 jobs:
   in-container:
     runs-on: ubuntu-latest
-    container: node:16.14.2-stretch
+    container: node:16-alpine3.14
     services:
       # Label used to access the service container
       postgres:
@@ -42,7 +42,7 @@ jobs:
         run: mv ./packages/@rollout/frontend/.env.example ./packages/@rollout/frontend/.env && mv ./packages/@rollout/backend/.env.example ./packages/@rollout/backend/.env
 
       - name: Bootstrap projects
-        run: npm run setup:ci
+        run: sudo npm run setup:ci
 
       - name: Prepare the DB
         run: npm run db:prepare
