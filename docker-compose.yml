@@ -19,6 +19,7 @@ services:
       DATABASE_URL: postgresql://admin:admin@db/rollout
     depends_on:
       - db
+    command: scripts/docker-compose-init.sh
   db:
     image: postgres
     restart: always
