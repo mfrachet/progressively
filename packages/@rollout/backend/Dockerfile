@@ -8,7 +8,7 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-FROM node:16-alpine3.14
+FROM node:16-alpine3.14 AS runner
 
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package*.json ./
