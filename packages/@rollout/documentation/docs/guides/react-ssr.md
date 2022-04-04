@@ -1,4 +1,4 @@
-# Using Rollout with SSR framework
+# Using Rollout with React and SSR frameworks
 
 Rollout comes with a first class support for React and its major frameworks leveraging Server Side Rendering, at runtime. By following this guide, you should be able to start an application that initialize the flags on the server but also to make them available on the client with a websocket subscription.
 
