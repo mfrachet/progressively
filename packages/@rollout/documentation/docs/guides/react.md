@@ -21,7 +21,7 @@ const FlaggedComponent = () => {
 
 export default function MyPage() {
   return (
-    <RolloutProvider clientKey={"your client key"}>
+    <RolloutProvider clientKey={CLIENT_KEY}>
       <FlaggedComponent />
     </RolloutProvider>
   );
@@ -44,7 +44,7 @@ If you prefer to show nothing to the client during the resolution, you can use t
 ```jsx
 export default function MyPage() {
   return (
-    <RolloutProvider clientKey={"your client key"} onlyRenderWhenReady>
+    <RolloutProvider clientKey={CLIENT_KEY} onlyRenderWhenReady>
       <FlaggedComponent />
     </RolloutProvider>
   );
@@ -80,7 +80,7 @@ You may (probably) want to host Rollout on your own server and make sure your cl
 export default function MyPage() {
   return (
     <RolloutProvider
-      clientKey={"your client key"}
+      clientKey={CLIENT_KEY}
       apiUrl="https://your-hosting-server" // put your address here
       websocketUrl="wss://your-hosting-server" // put your address here
     >
@@ -98,7 +98,7 @@ With Rollout, you can pass extra fields to the server in order to create customi
 export default function MyPage() {
   return (
     <RolloutProvider
-      clientKey={"your client key"}
+      clientKey={CLIENT_KEY}
       fields={{
         email: "john.doe@gmail.com",
       }}
