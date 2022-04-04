@@ -30,10 +30,9 @@ export default function MyPage({ rolloutProps }) {
   );
 }
 
-#clientKeyComment#
 export async function getServerSideProps() {
   // Initialize the flags on the server and pass it to the client
-  const ssrProps = await getSSRProps("#clientKey#");
+  const ssrProps = await getSSRProps(CLIENT_KEY);
 
   return {
     props: {
