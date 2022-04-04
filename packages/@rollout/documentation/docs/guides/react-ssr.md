@@ -47,7 +47,10 @@ export async function getServerSideProps() {
 You may (probably) want to host Rollout on your own server and make sure your client application hits the good apis. In order to do so, you can specify the API and Websocket URL by passing `apiUrl` and `websocketUrl` to the `getSSRProps`:
 
 ```jsx
-const ssrProps = await getSSRProps(CLIENT_KEY);
+const ssrProps = await getSSRProps(CLIENT_KEY, {
+  apiUrl: "https://your-hosting-server",
+  websocketUrl: "wss://your-hosting-server",
+});
 ```
 
 ## Passing custom fields
