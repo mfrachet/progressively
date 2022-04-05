@@ -10,12 +10,16 @@ module.exports = {
         collapsable: false,
         children: [
           {
-            title: "Overview",
+            title: "Feature overview",
             path: "/introduction/overview",
           },
           {
-            title: "Get started",
+            title: "Starting the service",
             path: "/introduction/get-started",
+          },
+          {
+            title: "The DNA",
+            path: "/introduction/dna",
           },
         ],
       },

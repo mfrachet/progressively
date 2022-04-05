@@ -1,4 +1,4 @@
-# Get started
+# Starting the service
 
 ## Get the project from Github
 
@@ -44,16 +44,26 @@ You can run the postgres container using the following command:
 $ docker run --name rollout-db -e POSTGRES_PASSWORD=admin -e POSTGRES_USER=admin -e POSTGRES_DB=rollout -p 5432:5432 -d postgres
 ```
 
-You can run the backend container using the following command inside `./packages/@rollout/backend`:
+And make sure the `postgres` database has tables in it:
 
 ```sh
+$ npm install
+$ npm run setup         # prepares the mono-repo
+$ npm run db:prepare    # creates the tables
+```
+
+You can build and run the backend container using the following command inside `./packages/@rollout/backend`:
+
+```sh
+$ docker build -t rollout-backend .
 # Make sure to have a .env file the user/password defined for postgres
 $ docker run --env-file .env -p 4000:4000 -p 4001:4001 rollout-backend
 ```
 
-You can finally run the frontend container using the following command inside: `./packages/@rollout/frontend`:
+You can finally build and run the frontend container using the following command inside: `./packages/@rollout/frontend`:
 
 ```sh
+$ docker build -t rollout-frontend .
 # Make sure to have the .env file with the good variables
 $ docker run --env-file .env -p 3000:3000 rollout-frontend
 ```
@@ -62,16 +72,16 @@ The dashboard is now available on [http://localhost:3000](http://localhost:3000)
 
 ## Usage without Docker
 
-This setup aims to provide a raw installation of the project and can also be used **for contribution**.
+This setup aims to provide a raw installation of the project and can also be used **for contributions**.
 
-Before going further, you need to have a running [Postgres](https://www.postgresql.org/) instance (via docker or locally).
+Before going further, you need to have a running [Postgres](https://www.postgresql.org/) instance (Docker or locally) with a `rollout` database.
 
 Then, at the root of the project, make sure to run the following commands:
 
 ```sh
 $ npm install
 $ npm run setup         # prepares the mono-repo
-$ npm run db:prepare    # creates the database and creates the tables
+$ npm run db:prepare    # creates the tables
 $ npm run db:seed       # (optional) will bring some fixtures
 $ npm run build         # builds the projects and their inter-dependencies
 $ npm run start         # start the frontend and the backend
