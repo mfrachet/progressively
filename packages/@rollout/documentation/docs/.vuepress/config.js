@@ -10,7 +10,7 @@ module.exports = {
         collapsable: false,
         children: [
           {
-            title: "Feature overview",
+            title: "Project overview",
             path: "/introduction/overview",
           },
           {
