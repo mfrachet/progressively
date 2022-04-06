@@ -1,7 +1,7 @@
 module.exports = {
   title: "Rollout Documentation",
   description: "The feature flag solution guides and docs",
-  base: "https://mfrachet.github.io/rollout/",
+  base: "/rollout/",
   themeConfig: {
     search: false,
     sidebar: [
