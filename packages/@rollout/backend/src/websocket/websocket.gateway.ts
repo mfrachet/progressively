@@ -35,6 +35,10 @@ export class WebsocketGateway
       clearInterval(this.heartBeatIntervalId);
     });
 
+    console.log('wth', process.env.SOCKET_TIMEOUT);
+
+    const timeout = Number(process.env.SOCKET_TIMEOUT || 10000);
+
     this.heartBeatIntervalId = setInterval(function ping() {
       server.clients.forEach(function each(ws: LocalWebsocket) {
         if (!ws.isAlive) return ws.terminate();
@@ -42,7 +46,7 @@ export class WebsocketGateway
         ws.isAlive = false;
         ws.ping();
       });
-    }, 10000);
+    }, timeout);
   }
 
   handleDisconnect(socket: LocalWebsocket) {
