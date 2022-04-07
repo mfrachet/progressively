@@ -2,6 +2,7 @@ import {
   OnGatewayConnection,
   OnGatewayDisconnect,
   OnGatewayInit,
+  SubscribeMessage,
   WebSocketGateway,
 } from '@nestjs/websockets';
 import { WebSocketServer as WSServer } from 'ws';
@@ -36,7 +37,7 @@ export class WebsocketGateway
 
     this.heartBeatIntervalId = setInterval(function ping() {
       server.clients.forEach(function each(ws: LocalWebsocket) {
-        if (ws.isAlive === false) return ws.terminate();
+        if (!ws.isAlive) return ws.terminate();
 
         ws.isAlive = false;
         ws.ping();
@@ -51,6 +52,7 @@ export class WebsocketGateway
   handleConnection(socket: LocalWebsocket, req: any) {
     // Heart-beating
     socket.isAlive = true;
+
     socket.on('pong', () => {
       socket.isAlive = true;
     });
