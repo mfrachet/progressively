@@ -3,7 +3,6 @@ import {
   OnGatewayDisconnect,
   OnGatewayInit,
   WebSocketGateway,
-  WebSocketServer,
 } from '@nestjs/websockets';
 import { WebSocketServer as WSServer } from 'ws';
 import { StrategyService } from '../strategy/strategy.service';
@@ -22,9 +21,6 @@ import { LocalWebsocket } from './types';
 export class WebsocketGateway
   implements OnGatewayConnection, OnGatewayDisconnect, OnGatewayInit
 {
-  @WebSocketServer()
-  private server: WSServer;
-
   private rooms: Rooms;
 
   private heartBeatIntervalId: NodeJS.Timer;
@@ -56,7 +52,6 @@ export class WebsocketGateway
     // Heart-beating
     socket.isAlive = true;
     socket.on('pong', () => {
-      console.log('wtf');
       socket.isAlive = true;
     });
     // End of heart-beating
