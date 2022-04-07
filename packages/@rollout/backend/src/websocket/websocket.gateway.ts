@@ -35,8 +35,6 @@ export class WebsocketGateway
       clearInterval(this.heartBeatIntervalId);
     });
 
-    console.log('wth', process.env.SOCKET_TIMEOUT);
-
     const timeout = Number(process.env.SOCKET_TIMEOUT || 10000);
 
     this.heartBeatIntervalId = setInterval(function ping() {
