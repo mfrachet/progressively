@@ -99,6 +99,8 @@ export const action: ActionFunction = async ({
     rolloutPercentage: percentageValue ? Number(percentageValue) : undefined,
   };
 
+  console.log("???", strategy);
+
   try {
     await createStrategy(
       params.id!,
