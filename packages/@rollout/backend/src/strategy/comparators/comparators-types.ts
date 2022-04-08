@@ -1,1 +1,1 @@
-export type Comparator = (v1: string, v2: string) => boolean;
+export type Comparator = (v1: unknown, v2: unknown) => boolean;
