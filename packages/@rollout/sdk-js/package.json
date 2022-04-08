@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "test": "jest",
-    "bundlesize": "bundlesize"
+    "bundlesize": "bundlesize --enable-github-checks"
   },
   "devDependencies": {
     "@types/jest": "^27.4.1",
