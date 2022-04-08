@@ -67,7 +67,6 @@ export class StrategyService {
     }
 
     if (strategy.strategyRuleType === StrategyRuleType.Field) {
-      console.log('wth', strategy.fieldComparator);
       const comparatorPredicate = ComparatorFactory.create(
         strategy.fieldComparator as ComparatorEnum,
       );
