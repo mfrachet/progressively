@@ -1,8 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { Flag, FlagEnvironment, RolloutStrategy } from '@prisma/client';
-import { PrismaService } from '../prisma.service';
 import { x86 as murmur } from 'murmurhash3js';
-import { ActivationRuleType, FieldRecord, StrategyRuleType } from './types';
+import { PrismaService } from '../prisma.service';
+import {
+  ActivationRuleType,
+  ComparatorEnum,
+  FieldRecord,
+  StrategyRuleType,
+} from './types';
+import { ComparatorFactory } from './comparators/comparatorFactory';
 
 const BUCKET_COUNT = 10000; // number of buckets
 const MAX_INT_32 = Math.pow(2, 32);
@@ -61,6 +67,9 @@ export class StrategyService {
     }
 
     if (strategy.strategyRuleType === StrategyRuleType.Field) {
+      const comparatorPredicate = ComparatorFactory.create(
+        strategy.fieldComparator as ComparatorEnum,
+      );
       const splittedFieldValues = strategy.fieldValue.split('\n');
 
       for (const fieldValue of splittedFieldValues) {
