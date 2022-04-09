@@ -3,6 +3,7 @@ import { ActivationType } from "./types/activation";
 export enum ComparatorEnum {
   Equals = "eq",
   NotEquals = "neq",
+  Contains = "contains",
 }
 
 export interface StrategyCreateDTO {
