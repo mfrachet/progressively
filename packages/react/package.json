@@ -8,7 +8,7 @@
   "types": "./lib",
   "scripts": {
     "build": "webpack",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "analyze:bundle": "NODE_ENV=development webpack",
     "bundlesize": "bundlesize --enable-github-checks"
   },
