@@ -5,6 +5,7 @@
   "license": "MIT",
   "main": "./lib/legacy/index.js",
   "exports": "./lib/modern/index.js",
+  "types": "./lib",
   "scripts": {
     "build": "webpack",
     "test": "jest",
