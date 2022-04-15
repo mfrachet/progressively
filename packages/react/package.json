@@ -7,7 +7,8 @@
   "scripts": {
     "build": "webpack",
     "test": "jest",
-    "analyze:bundle": "NODE_ENV=development webpack"
+    "analyze:bundle": "NODE_ENV=development webpack",
+    "bundlesize": "bundlesize --enable-github-checks"
   },
   "peerDependencies": {
     "react": ">= 17"
@@ -15,6 +16,7 @@
   "devDependencies": {
     "@types/jest": "^27.0.2",
     "@types/react": "^17.0.27",
+    "bundlesize2": "^0.0.31",
     "jest": "^27.4.4",
     "ts-jest": "^27.1.1",
     "ts-loader": "^9.2.6",
@@ -25,5 +27,19 @@
   "dependencies": {
     "@rollout/sdk-js": "^0.1.0",
     "prettier": "^2.5.1"
-  }
+  },
+  "bundlesize": [
+    {
+      "path": "./lib/modern/index.js",
+      "maxSize": "1.2 kB"
+    },
+    {
+      "path": "./lib/legacy/index.js",
+      "maxSize": "2.3 kB"
+    },
+    {
+      "path": "./lib/ssr.js",
+      "maxSize": "1.6 kB"
+    }
+  ]
 }
