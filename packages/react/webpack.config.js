@@ -56,7 +56,7 @@ const ssrConfig = {
     globalObject: "this",
     library: {
       name: "@rollout/react",
-      type: "commonjs",
+      type: "umd",
     },
   },
   externals: {
