@@ -4,7 +4,10 @@
   "version": "0.1.0",
   "license": "MIT",
   "main": "./lib/legacy/index.js",
-  "exports": "./lib/modern/index.js",
+  "exports": {
+    ".": "./lib/modern/index.js",
+    "./lib/ssr": "./lib/ssr.js"
+  },
   "types": "./lib",
   "scripts": {
     "build": "webpack",
