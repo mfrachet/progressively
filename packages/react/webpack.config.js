@@ -2,9 +2,15 @@ const path = require("path");
 const BundleAnalyzerPlugin =
   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
+const mode = "development";
+
+const externals = {
+  react: "react",
+};
+
 const legacyConfig = {
   entry: "./src/index.tsx",
-  mode: "production",
+  mode,
   module: {
     rules: [
       {
@@ -26,14 +32,12 @@ const legacyConfig = {
       type: "umd",
     },
   },
-  externals: {
-    react: "react",
-  },
+  externals,
 };
 
 const modernConfig = {
   entry: "./src/index.tsx",
-  mode: "production",
+  mode,
   module: {
     rules: [
       {
@@ -58,9 +62,7 @@ const modernConfig = {
       type: "umd",
     },
   },
-  externals: {
-    react: "react",
-  },
+  externals,
   plugins:
     process.env.NODE_ENV === "development"
       ? [new BundleAnalyzerPlugin()]
@@ -69,7 +71,7 @@ const modernConfig = {
 
 const ssrConfig = {
   entry: "./src/ssr.ts",
-  mode: "production",
+  mode,
   module: {
     rules: [
       {
@@ -91,9 +93,7 @@ const ssrConfig = {
       type: "umd",
     },
   },
-  externals: {
-    react: "react",
-  },
+  externals,
 };
 
 module.exports = [legacyConfig, modernConfig, ssrConfig];
