@@ -35,7 +35,8 @@ function Sdk(flagEndpoint: string, websocketEndpoint: string): RolloutSdkType {
     return fetch(flagEndpoint)
       .then((response) => response.json())
       .then((data) => {
-        return { ...flags, ...data };
+        flags = { ...flags, ...data };
+        return flags;
       });
   }
 
