@@ -57,7 +57,7 @@ jobs:
 
       - name: Avoid React duplicate
         working-directory: ./packages/react
-        run: rm -rf node-modules
+        run: rm -rf node_modules
 
       - name: Start the backend project
         working-directory: ./packages/backend
