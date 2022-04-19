@@ -18,6 +18,7 @@ export default () => {
   const legacy = {
     input: "src/index.tsx",
     output: {
+      name: "rollout-react",
       dir: "lib/legacy",
       format: "umd",
     },
@@ -32,6 +33,7 @@ export default () => {
   const modern = {
     input: "src/index.tsx",
     output: {
+      name: "rollout-react",
       dir: "lib/modern",
       format: "umd",
     },
