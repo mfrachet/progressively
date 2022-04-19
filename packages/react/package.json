@@ -24,11 +24,14 @@
     "bundlesize2": "^0.0.31",
     "jest": "^27.4.4",
     "rollup": "^2.70.2",
+    "rollup-plugin-terser": "^7.0.2",
     "ts-jest": "^27.1.1",
     "ts-loader": "^9.2.6",
     "typescript": "^4.4.3"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@rollout/sdk-js": "^0.1.0"
+  },
   "bundlesize": [
     {
       "path": "./lib/modern/index.js",
