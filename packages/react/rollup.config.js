@@ -3,6 +3,7 @@ import { terser } from "rollup-plugin-terser";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 
 const external = ["react"];
+const globals = { react: "react" };
 
 export default () => {
   const ssr = {
@@ -10,6 +11,7 @@ export default () => {
     output: {
       dir: "lib",
       format: "cjs",
+      globals,
     },
     plugins: [nodeResolve(), typescript({ outDir: "lib" }), terser()],
     external,
@@ -21,6 +23,7 @@ export default () => {
       name: "rollout-react",
       dir: "lib/legacy",
       format: "umd",
+      globals,
     },
     plugins: [
       nodeResolve(),
@@ -36,6 +39,7 @@ export default () => {
       name: "rollout-react",
       dir: "lib/modern",
       format: "umd",
+      globals,
     },
     plugins: [
       nodeResolve(),
