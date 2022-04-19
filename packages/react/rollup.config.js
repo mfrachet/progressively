@@ -1,5 +1,6 @@
 import typescript from "@rollup/plugin-typescript";
 import { terser } from "rollup-plugin-terser";
+import { nodeResolve } from "@rollup/plugin-node-resolve";
 
 const external = ["react"];
 
@@ -10,7 +11,7 @@ export default () => {
       dir: "lib",
       format: "cjs",
     },
-    plugins: [typescript({ outDir: "lib" }), terser()],
+    plugins: [nodeResolve(), typescript({ outDir: "lib" }), terser()],
     external,
   };
 
@@ -18,9 +19,13 @@ export default () => {
     input: "src/index.tsx",
     output: {
       dir: "lib/legacy",
-      format: "cjs",
+      format: "umd",
     },
-    plugins: [typescript({ outDir: "lib/legacy", target: "es5" }), terser()],
+    plugins: [
+      nodeResolve(),
+      typescript({ outDir: "lib/legacy", target: "es5" }),
+      terser(),
+    ],
     external,
   };
 
@@ -28,9 +33,13 @@ export default () => {
     input: "src/index.tsx",
     output: {
       dir: "lib/modern",
-      format: "cjs",
+      format: "umd",
     },
-    plugins: [typescript({ outDir: "lib/modern", target: "ESNext" }), terser()],
+    plugins: [
+      nodeResolve(),
+      typescript({ outDir: "lib/modern", target: "ESNext" }),
+      terser(),
+    ],
     external,
   };
   return [legacy, modern, ssr];
