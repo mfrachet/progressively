@@ -1,11 +1,11 @@
-import RolloutSdk, { SDKOptions } from "@rollout/sdk-js";
-import { RolloutProviderProps } from "./types";
+import ProgressivelySdk, { SDKOptions } from "@progressively/sdk-js";
+import { ProgressivelyProviderProps } from "./types";
 
 export function getSSRProps(
   clientKey: string,
   options?: SDKOptions | undefined
 ) {
-  const sdk = RolloutSdk.init(clientKey, options);
+  const sdk = ProgressivelytSdk.init(clientKey, options);
 
   return sdk.loadFlags().then((initialFlags) => ({
     initialFlags,
