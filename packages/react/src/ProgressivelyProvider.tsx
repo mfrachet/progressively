@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { RolloutContext } from "./RolloutContext";
+import { ProgressivelyContext } from "./ProgressivelyContext";
 import RolloutSdk from "@rollout/sdk-js";
 import { RolloutProviderProps } from "./types";
 import { useWebsocketInit } from "./useWebsocketInit";
