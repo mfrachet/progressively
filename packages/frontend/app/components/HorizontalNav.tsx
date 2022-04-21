@@ -12,7 +12,7 @@ export const HorizontalNav = ({ children, label }: HorizontalNavProps) => {
       aria-label={label}
       borderRadius={32}
       overflowX="scroll"
-      bg="background50"
+      bg="background100"
     >
       <HStack as="ul" listStyleType={"none"} spacing={3} p={1}>
         {children}
