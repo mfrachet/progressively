@@ -5,6 +5,10 @@ import { prepareApp } from '../helpers/prepareApp';
 import { verifyAuthGuard } from '../helpers/verify-auth-guard';
 import { authenticate } from '../helpers/authenticate';
 
+jest.mock('nanoid', () => ({
+  nanoid: () => '12345-marvin',
+}));
+
 describe('FlagsController (e2e)', () => {
   let app: INestApplication;
 
@@ -36,13 +40,18 @@ describe('FlagsController (e2e)', () => {
   });
 
   describe('/flags/sdk/valid-sdk-key (GET)', () => {
-    it('gives a list of flags when the key is valid', async () => {
+    it('gives a list of flags when the key is valid for anonymous user (no field id, no cookies)', async () => {
       const response = await request(app.getHttpServer()).get(
         '/flags/sdk/valid-sdk-key',
       );
 
       expect(response.status).toBe(200);
       expect(response.body).toEqual({ newHomepage: false });
+      expect(response.headers['set-cookie']).toMatchInlineSnapshot(`
+        Array [
+          "progressively-id=12345-marvin; Path=/; HttpOnly; Secure; SameSite=Lax",
+        ]
+      `);
     });
   });
 

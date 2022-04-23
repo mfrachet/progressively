@@ -13,6 +13,7 @@ import {
   UseGuards,
   UsePipes,
 } from '@nestjs/common';
+import { nanoid } from 'nanoid';
 import { EnvironmentsService } from '../environments/environments.service';
 import { FlagStatus } from './flags.status';
 import { StrategyService } from '../strategy/strategy.service';
@@ -142,7 +143,7 @@ export class FlagsController {
       fields.id = userId;
     } else {
       // first visit * anonymous
-      const id = '12345-marvin';
+      const id = nanoid();
       fields.id = id;
 
       response.cookie(COOKIE_KEY, id, {
