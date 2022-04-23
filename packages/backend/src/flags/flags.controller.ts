@@ -121,23 +121,33 @@ export class FlagsController {
   @Get('flags/sdk/:clientKey')
   async getByClientKey(
     @Param('clientKey') clientKey: string,
-    @Query() fields: FieldRecord,
+    @Query() fields: FieldRecord = {},
     @Res({ passthrough: true }) response: Response,
     @Req() request: Request,
   ) {
-    console.log('hajaj', request);
+    const COOKIE_KEY = 'progressively-id';
+    const userId = request.cookies[COOKIE_KEY];
     const flagEnvs = await this.envService.getEnvironmentByClientKey(clientKey);
     const dictOfFlags = {};
 
-    // deal with anonymous users
-    if (!fields?.id) {
-      const id = '12345-marvin';
-
-      //      response.header('Access-Control-Allow-Credentials', 'true');
-
-      response.cookie('progressively-id', id, {
+    if (fields?.id) {
+      // User exists, but initial request
+      response.cookie(COOKIE_KEY, fields.id, {
         httpOnly: true,
-        sameSite: 'none',
+        sameSite: 'lax',
+        secure: true,
+      });
+    } else if (userId) {
+      // User exists, subsequent requests
+      fields.id = userId;
+    } else {
+      // first visit * anonymous
+      const id = '12345-marvin';
+      fields.id = id;
+
+      response.cookie(COOKIE_KEY, id, {
+        httpOnly: true,
+        sameSite: 'lax',
         secure: true,
       });
     }
