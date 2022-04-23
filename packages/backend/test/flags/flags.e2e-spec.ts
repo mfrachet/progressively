@@ -39,7 +39,7 @@ describe('FlagsController (e2e)', () => {
     });
   });
 
-  describe.only('/flags/sdk/valid-sdk-key (GET)', () => {
+  describe('/flags/sdk/valid-sdk-key (GET)', () => {
     it('gives a list of flags when the key is valid for anonymous user (no field id, no cookies)', async () => {
       const response = await request(app.getHttpServer()).get(
         '/flags/sdk/valid-sdk-key',
@@ -72,6 +72,38 @@ describe('FlagsController (e2e)', () => {
       const response = await request(app.getHttpServer()).get(
         '/flags/sdk/valid-sdk-key?id=2',
       );
+
+      expect(response.status).toBe(200);
+      expect(response.body).toEqual({ newHomepage: false, newFooter: false });
+      expect(response.headers['set-cookie']).toMatchInlineSnapshot(`
+        Array [
+          "progressively-id=2; Path=/; HttpOnly; Secure; SameSite=Lax",
+        ]
+      `);
+    });
+
+    it('gives a list of flags when the key is valid for an authenticated user (field is passed as cookie and match a strategy)', async () => {
+      const response = await request(app.getHttpServer())
+        .get('/flags/sdk/valid-sdk-key')
+        .set('Cookie', [
+          'progressively-id=1; Path=/; HttpOnly; Secure; SameSite=Lax',
+        ]);
+
+      expect(response.status).toBe(200);
+      expect(response.body).toEqual({ newHomepage: false, newFooter: true });
+      expect(response.headers['set-cookie']).toMatchInlineSnapshot(`
+        Array [
+          "progressively-id=1; Path=/; HttpOnly; Secure; SameSite=Lax",
+        ]
+      `);
+    });
+
+    it('gives a list of flags when the key is valid for an authenticated user (field is passed as cookie and does NOT match a strategy)', async () => {
+      const response = await request(app.getHttpServer())
+        .get('/flags/sdk/valid-sdk-key')
+        .set('Cookie', [
+          'progressively-id=2; Path=/; HttpOnly; Secure; SameSite=Lax',
+        ]);
 
       expect(response.status).toBe(200);
       expect(response.body).toEqual({ newHomepage: false, newFooter: false });
@@ -399,7 +431,7 @@ describe('FlagsController (e2e)', () => {
         .get('/projects/1/environments/1/flags')
         .set('Authorization', `Bearer ${access_token}`);
 
-      expect(afterResponse.body).toEqual([]);
+      expect(afterResponse.body.length).toBe(1);
     });
   });
 });

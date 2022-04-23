@@ -131,27 +131,25 @@ export class FlagsController {
     const flagEnvs = await this.envService.getEnvironmentByClientKey(clientKey);
     const dictOfFlags = {};
 
+    let realUserId;
+
     if (fields?.id) {
       // User exists, but initial request
-      response.cookie(COOKIE_KEY, fields.id, {
-        httpOnly: true,
-        sameSite: 'lax',
-        secure: true,
-      });
+      realUserId = fields.id;
     } else if (userId) {
       // User exists, subsequent requests
-      fields.id = userId;
+      realUserId = userId;
     } else {
-      // first visit * anonymous
-      const id = nanoid();
-      fields.id = id;
-
-      response.cookie(COOKIE_KEY, id, {
-        httpOnly: true,
-        sameSite: 'lax',
-        secure: true,
-      });
+      // first visit but anonymous
+      realUserId = nanoid();
     }
+
+    fields.id = realUserId;
+    response.cookie(COOKIE_KEY, fields.id, {
+      httpOnly: true,
+      sameSite: 'lax',
+      secure: true,
+    });
 
     // TODO: make sure to run these with Promise.all when confident enough
     for (const flagEnv of flagEnvs) {
