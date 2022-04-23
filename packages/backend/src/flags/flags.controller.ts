@@ -126,7 +126,7 @@ export class FlagsController {
     @Req() request: Request,
   ) {
     const COOKIE_KEY = 'progressively-id';
-    const userId = request.cookies[COOKIE_KEY];
+    const userId = request?.cookies?.[COOKIE_KEY];
     const flagEnvs = await this.envService.getEnvironmentByClientKey(clientKey);
     const dictOfFlags = {};
 
