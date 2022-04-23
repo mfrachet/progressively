@@ -8,6 +8,8 @@ import {
   Post,
   Put,
   Query,
+  Req,
+  Res,
   UseGuards,
   UsePipes,
 } from '@nestjs/common';
@@ -22,6 +24,8 @@ import { FlagCreationSchema } from './flags.dto';
 import { ValidationPipe } from '../shared/pipes/ValidationPipe';
 import { strToFlagStatus } from './utils';
 import { WebsocketGateway } from '../websocket/websocket.gateway';
+import { FieldRecord } from '../strategy/types';
+import { Response, Request } from 'express';
 
 @Controller()
 export class FlagsController {
@@ -117,10 +121,26 @@ export class FlagsController {
   @Get('flags/sdk/:clientKey')
   async getByClientKey(
     @Param('clientKey') clientKey: string,
-    @Query() queryParams,
+    @Query() fields: FieldRecord,
+    @Res({ passthrough: true }) response: Response,
+    @Req() request: Request,
   ) {
+    console.log('hajaj', request);
     const flagEnvs = await this.envService.getEnvironmentByClientKey(clientKey);
     const dictOfFlags = {};
+
+    // deal with anonymous users
+    if (!fields?.id) {
+      const id = '12345-marvin';
+
+      //      response.header('Access-Control-Allow-Credentials', 'true');
+
+      response.cookie('progressively-id', id, {
+        httpOnly: true,
+        sameSite: 'none',
+        secure: true,
+      });
+    }
 
     // TODO: make sure to run these with Promise.all when confident enough
     for (const flagEnv of flagEnvs) {
@@ -130,7 +150,7 @@ export class FlagsController {
         flagStatus = await this.strategyService.resolveStrategies(
           flagEnv,
           flagEnv.strategies,
-          queryParams,
+          fields,
         );
       } else {
         flagStatus = false;
