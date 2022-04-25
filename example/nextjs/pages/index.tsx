@@ -16,7 +16,6 @@ const FlaggedComponent = () => {
 };
 
 const Home: NextPage = ({ progressivelyProps }: any) => {
-  console.log("lol", progressivelyProps);
   return (
     <ProgressivelyProvider {...progressivelyProps}>
       <div className={styles.container}>
@@ -39,14 +38,16 @@ export async function getServerSideProps({
   res,
 }: {
   req: Request;
-  res: Response;
+  res: any;
 }) {
-  const { ssrProps } = await getSSRProps("valid-sdk-key", {
+  const { ssrProps, cookies } = await getSSRProps("valid-sdk-key", {
     fields: {
       email: "marvin.frachet@gmail.com",
       id: "1",
     },
   });
+
+  res.setHeader("set-cookie", cookies);
 
   return {
     props: {
