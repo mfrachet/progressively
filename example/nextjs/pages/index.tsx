@@ -33,8 +33,8 @@ const Home: NextPage = ({ progressivelyProps }: any) => {
   );
 };
 
-export async function getServerSideProps() {
-  const ssrProps = await getSSRProps("valid-sdk-key", {
+export async function getServerSideProps({ req }: { req: Request }) {
+  const { ssrProps } = await getSSRProps("valid-sdk-key", {
     fields: {
       email: "marvin.frachet@gmail.com",
       id: "1",

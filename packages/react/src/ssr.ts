@@ -6,10 +6,18 @@ export function getSSRProps(
 ) {
   const sdk = ProgressivelySdk.init(clientKey, options);
 
-  return sdk.loadFlags().then((initialFlags) => ({
-    initialFlags,
-    clientKey,
-    onlyRenderWhenReady: false,
-    ...options,
-  }));
+  let response: Response;
+
+  return sdk.loadFlags().then(({ flags, response: res }) => {
+    response = res;
+    return {
+      ssrProps: {
+        flags,
+        clientKey,
+        onlyRenderWhenReady: false,
+        ...options,
+      },
+      cookies: response.headers.get("set-cookie"),
+    };
+  });
 }

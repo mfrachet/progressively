@@ -35,11 +35,16 @@ function Sdk(
   let socket: WebSocket;
 
   function loadFlags() {
+    let response: Response;
+
     return fetch(flagEndpoint, { credentials: "include" })
-      .then((response) => response.json())
+      .then((res) => {
+        response = res;
+        return response.json();
+      })
       .then((data) => {
         flags = { ...flags, ...data };
-        return flags;
+        return { flags, response };
       });
   }
 
