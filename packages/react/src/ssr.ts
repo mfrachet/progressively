@@ -12,7 +12,7 @@ export function getSSRProps(
     response = res;
     return {
       ssrProps: {
-        flags,
+        initialFlags: flags,
         clientKey,
         onlyRenderWhenReady: false,
         ...options,
