@@ -8,11 +8,16 @@ import { getSSRProps } from "@progressively/react/lib/ssr";
 const FlaggedComponent = () => {
   const { flags } = useFlags();
 
-  if (flags.newHomepage) {
-    return <div style={{ background: "red", color: "white" }}>New variant</div>;
-  }
+  return (
+    <main>
+      <div>
+        <h1>New homepage</h1>
+        {flags.newHomepage ? "New variant" : "Old variant"}
+      </div>
 
-  return <div style={{ background: "lightblue" }}>Old variant</div>;
+      <footer>{flags.newFooter ? "New footer" : "Old footer"}</footer>
+    </main>
+  );
 };
 
 const Home: NextPage = ({ progressivelyProps }: any) => {
@@ -25,9 +30,7 @@ const Home: NextPage = ({ progressivelyProps }: any) => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <main className={styles.main}>
-          <FlaggedComponent />
-        </main>
+        <FlaggedComponent />
       </div>
     </ProgressivelyProvider>
   );
