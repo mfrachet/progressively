@@ -18,7 +18,7 @@ export const useFlagInit = (
 
     sdkRef
       .current!.loadFlags()
-      .then(({ flags }: { flags: FlagDict }) => {
+      .then(({ flags: clientFlags }) => {
         setFlags(clientFlags);
         setIsLoading(false);
       })
