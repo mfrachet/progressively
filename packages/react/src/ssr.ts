@@ -6,10 +6,7 @@ export function getSSRProps(
 ) {
   const sdk = ProgressivelySdk.init(clientKey, options);
 
-  let response: Response;
-
-  return sdk.loadFlags().then(({ flags, response: res }) => {
-    response = res;
+  return sdk.loadFlags().then(({ flags, response }) => {
     return {
       ssrProps: {
         initialFlags: flags,
