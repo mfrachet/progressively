@@ -8,6 +8,11 @@ describe("/", () => {
     cy.visit("/");
   });
 
+  it("forwards the cookie from the backend, to nextjs server, to the client", () => {
+    // 1 is the user id set in nextjs getServerSideProps
+    cy.getCookie("progressively-id").should("have.property", "value", "1");
+  });
+
   it("shows the old variant when the flag is not activated", () => {
     cy.findByText("Old variant").should("be.visible");
     cy.findByText("New variant").should("not.exist");
