@@ -52,10 +52,9 @@ function Sdk(
     socket = new WebSocket(websocketEndpoint);
 
     socket.onmessage = (event) => {
-      const serverMsg = JSON.parse(event.data || {});
-      const { data } = serverMsg;
-
+      const { data } = JSON.parse(event.data);
       flags = { ...flags, ...data };
+
       callback(flags);
     };
   }
