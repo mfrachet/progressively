@@ -22,20 +22,6 @@ export const ProgressivelyProvider = ({
     initialFlags
   );
 
-  useEffect(() => {
-    if (!sdkRef.current) return;
-
-    // wait for the flags to resolve before establishing the ws connection, because cookies :(
-    if (isLoading) return;
-
-    const sdk = sdkRef.current;
-    sdk.onFlagUpdate(setFlags);
-
-    return () => {
-      sdk.disconnect();
-    };
-  }, [isLoading]);
-
   if (onlyRenderWhenReady && isLoading) {
     return null;
   }
