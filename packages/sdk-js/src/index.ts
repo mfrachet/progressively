@@ -6,8 +6,6 @@ function appendFieldToUrl(url: URL, fields: Fields) {
   for (const field in fields) {
     url.searchParams.set(field, String(fields[field]));
   }
-
-  return url;
 }
 
 function init(clientKey: string, options?: SDKOptions): ProgressivelySdkType {
