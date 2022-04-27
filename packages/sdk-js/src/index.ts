@@ -55,7 +55,7 @@ function Sdk(
       websocketEndpoint.searchParams.set("id", cookieValue);
     }
 
-    socket = new WebSocket(websocketEndpoint);
+    socket = new WebSocket(websocketEndpoint.toString());
     socket.onmessage = (event) => {
       const { data } = JSON.parse(event.data);
       flags = { ...flags, ...data };

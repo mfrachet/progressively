@@ -26,11 +26,11 @@
   "bundlesize": [
     {
       "path": "./dist/legacy/index.js",
-      "maxSize": "870 B"
+      "maxSize": "873 B"
     },
     {
       "path": "./dist/modern/index.js",
-      "maxSize": "796B B"
+      "maxSize": "800 B"
     }
   ]
 }
