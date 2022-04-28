@@ -52,18 +52,20 @@ jobs:
         working-directory: ./packages/backend
         run: npm start &
 
+      - name: Start the frontend project
+        working-directory: ./packages/frontend
+        run: npm start &
+
       - name: "E2E tests"
         uses: cypress-io/github-action@v2
-        working-directory: ./packages/frontend
         with:
           install: false
-          start: npm start
           wait-on: "http://localhost:4000"
           wait-on-timeout: 120
           browser: chrome
           record: true
           parallel: true
-          spec: cypress/integration/*
+          spec: ./packages/frontend/cypress/integration/*
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
