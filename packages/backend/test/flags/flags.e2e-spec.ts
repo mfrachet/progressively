@@ -115,6 +115,20 @@ describe('FlagsController (e2e)', () => {
     it('gives a 401 when the user is not authenticated', () =>
       verifyAuthGuard(app, '/projects/1/environments/1/flags', 'get'));
 
+    it.only('gives a 401 when trying to access a valid project but an invalid env', async () => {
+      const access_token = await authenticate(app);
+
+      return request(app.getHttpServer())
+        .get('/projects/1/environments/3/flags')
+        .set('Authorization', `Bearer ${access_token}`)
+        .expect(403)
+        .expect({
+          statusCode: 403,
+          message: 'Forbidden resource',
+          error: 'Forbidden',
+        });
+    });
+
     it('gives a 403 when the user is not allowed to access these information', async () => {
       const access_token = await authenticate(
         app,
