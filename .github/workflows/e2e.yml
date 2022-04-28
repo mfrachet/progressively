@@ -61,8 +61,8 @@ jobs:
         run: npm start &
 
       # Uncomment for parallel
-      # - name: E2E tests
-      #   run: npx wait-on -t 60000 tcp:4000 && npm run test:e2e:ci
-      #   env:
-      #     CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: E2E tests
+        run: npx wait-on -t 60000 tcp:4000 && npm run test:e2e:ci
+        # env:
+        #   CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
