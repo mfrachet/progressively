@@ -1,0 +1,13 @@
+config:
+  target: 'http://localhost:4000'
+  phases:
+    - duration: 6
+      arrivalRate: 5
+      name: Warm up
+    - duration: 12
+      arrivalRate: 5
+      rampTo: 50
+      name: Ramp up load
+    - duration: 6
+      arrivalRate: 50
+      name: Sustained load
