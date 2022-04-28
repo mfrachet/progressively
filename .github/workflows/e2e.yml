@@ -56,12 +56,13 @@ jobs:
         working-directory: ./packages/frontend
         run: npm start &
 
+      - name: Wait for the backend to be ready
+        run: npx wait-on -t 60000 tcp:4000
+
       - name: "E2E tests"
         uses: cypress-io/github-action@v2
         with:
           install: false
-          wait-on: "http://localhost:4000"
-          wait-on-timeout: 120
           browser: chrome
           record: true
           parallel: true
