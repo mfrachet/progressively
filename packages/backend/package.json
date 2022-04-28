@@ -23,7 +23,7 @@
     "test:cov": "cross-env TZ=UTC jest --coverage",
     "test:debug": "cross-env TZ=UTC node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "cross-env TZ=UTC jest --runInBand --config ./test/jest-e2e.json",
-    "test:load": "artillery run ./test/load/flag-env-key-api.yml"
+    "test:load": "ts-node ./test/load/seed-load-testing.ts && artillery run ./test/load/flag-env-key-api.yml && npm run db:cleanup"
   },
   "dependencies": {
     "@nestjs/common": "^8.4.4",
