@@ -7,9 +7,6 @@ on:
 jobs:
   static:
     runs-on: macos-latest
-    strategy:
-      matrix:
-        job: [0, 1, 2, 3]
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2

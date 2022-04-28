@@ -7,6 +7,9 @@ on:
 jobs:
   static:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        job: [0, 1, 2, 3]
     services:
       # Label used to access the service container
       postgres:
