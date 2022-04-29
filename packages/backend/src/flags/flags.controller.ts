@@ -5,11 +5,13 @@ import {
   Delete,
   Get,
   Param,
+  Post,
   Put,
   Query,
   Req,
   Res,
   UseGuards,
+  UsePipes,
 } from '@nestjs/common';
 import { nanoid } from 'nanoid';
 import { EnvironmentsService } from '../environments/environments.service';
@@ -22,6 +24,9 @@ import { WebsocketGateway } from '../websocket/websocket.gateway';
 import { FieldRecord } from '../strategy/types';
 import { Response, Request } from 'express';
 import { HasEnvironmentAccessGuard } from '../environments/guards/hasEnvAccess';
+import { StrategySchema, StrategyCreateDTO } from 'src/strategy/strategy.dto';
+import { HasFlagAccessGuard } from './guards/hasFlagAccess';
+import { ValidationPipe } from '../shared/pipes/ValidationPipe';
 
 @Controller()
 export class FlagsController {
@@ -146,5 +151,31 @@ export class FlagsController {
     const rawHits = await this.flagService.listFlagHits(envId, flagId);
 
     return rawHits.map(({ _count, date }) => ({ count: _count.id, date }));
+  }
+
+  @Post('projects/:id/environments/:envId/flags/:flagId/strategies')
+  @UseGuards(HasFlagAccessGuard)
+  @UseGuards(JwtAuthGuard)
+  @UsePipes(new ValidationPipe(StrategySchema))
+  async addStrategyToProject(
+    @Param('envId') envId: string,
+    @Param('flagId') flagId: string,
+    @Body() strategyDto: StrategyCreateDTO,
+  ): Promise<any> {
+    return this.strategyService.addStrategyToFlagEnv(
+      envId,
+      flagId,
+      strategyDto,
+    );
+  }
+
+  @Get('projects/:id/environments/:envId/flags/:flagId/strategies')
+  @UseGuards(HasFlagAccessGuard)
+  @UseGuards(JwtAuthGuard)
+  async getStrategies(
+    @Param('envId') envId: string,
+    @Param('flagId') flagId: string,
+  ): Promise<any> {
+    return this.strategyService.listStrategies(envId, flagId);
   }
 }

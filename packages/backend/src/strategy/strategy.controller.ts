@@ -20,32 +20,6 @@ import { HasFlagAccessGuard } from '../flags/guards/hasFlagAccess';
 export class StrategyController {
   constructor(private readonly strategyService: StrategyService) {}
 
-  @Post('projects/:id/environments/:envId/flags/:flagId/strategies')
-  @UseGuards(HasFlagAccessGuard)
-  @UseGuards(JwtAuthGuard)
-  @UsePipes(new ValidationPipe(StrategySchema))
-  async addStrategyToProject(
-    @Param('envId') envId: string,
-    @Param('flagId') flagId: string,
-    @Body() strategyDto: StrategyCreateDTO,
-  ): Promise<any> {
-    return this.strategyService.addStrategyToFlagEnv(
-      envId,
-      flagId,
-      strategyDto,
-    );
-  }
-
-  @Get('projects/:id/environments/:envId/flags/:flagId/strategies')
-  @UseGuards(HasFlagAccessGuard)
-  @UseGuards(JwtAuthGuard)
-  async getStrategies(
-    @Param('envId') envId: string,
-    @Param('flagId') flagId: string,
-  ): Promise<any> {
-    return this.strategyService.listStrategies(envId, flagId);
-  }
-
   @Get('projects/:id/environments/:envId/flags/:flagId/strategies/:stratId')
   @UseGuards(HasFlagAccessGuard)
   @UseGuards(JwtAuthGuard)
