@@ -27,6 +27,7 @@ import { strToFlagStatus } from './utils';
 import { WebsocketGateway } from '../websocket/websocket.gateway';
 import { FieldRecord } from '../strategy/types';
 import { Response, Request } from 'express';
+import { HasEnvironmentAccessGuard } from '../environments/guards/hasEnvAccess';
 
 @Controller()
 export class FlagsController {
@@ -41,7 +42,7 @@ export class FlagsController {
    * Get all the flag of a given project/env (by projectId and envId)
    */
   @Get('projects/:id/environments/:envId/flags')
-  @UseGuards(HasProjectAccessGuard)
+  @UseGuards(HasEnvironmentAccessGuard)
   @UseGuards(JwtAuthGuard)
   getFlagsByProjectAndEnv(@Param('envId') envId: string) {
     return this.flagService.flagsByEnv(envId);
