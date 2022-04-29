@@ -24,16 +24,6 @@ export class EnvironmentsController {
   constructor(private readonly envService: EnvironmentsService) {}
 
   /**
-   * Get all the environments of a given project (by id)
-   */
-  @Get('projects/:id/environments')
-  @UseGuards(HasProjectAccessGuard)
-  @UseGuards(JwtAuthGuard)
-  getProjectEnvironments(@Param('id') id: string) {
-    return this.envService.getProjectEnvironments(id);
-  }
-
-  /**
    * Create an environment on a given project (by id)
    */
   @Post('projects/:id/environments')
