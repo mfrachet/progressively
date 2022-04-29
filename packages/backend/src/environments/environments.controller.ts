@@ -40,7 +40,7 @@ export class EnvironmentsController {
   /**
    * Create a flag on a given project/env (by projectId and envId)
    */
-  @Post('projects/:id/environments/:envId/flags')
+  @Post('environments/:envId/flags')
   @UseGuards(HasEnvironmentAccessGuard)
   @UseGuards(JwtAuthGuard)
   @UsePipes(new ValidationPipe(FlagCreationSchema))
@@ -68,7 +68,7 @@ export class EnvironmentsController {
   /**
    * Delete an environment on a given project (by project id AND env id)
    */
-  @Delete('projects/:id/environments/:envId')
+  @Delete('environments/:envId')
   @Roles(UserRoles.Admin)
   @UseGuards(HasEnvironmentAccessGuard)
   @UseGuards(JwtAuthGuard)
