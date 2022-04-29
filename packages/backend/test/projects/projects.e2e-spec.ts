@@ -421,4 +421,41 @@ describe('ProjectsController (e2e)', () => {
         ]);
     });
   });
+
+  describe('/projects/1/environments (POST)', () => {
+    it('gives a 401 when the user is not authenticated', () =>
+      verifyAuthGuard(app, '/projects/1/environments', 'post'));
+
+    it("gives a 400 when there's no name field", async () => {
+      const access_token = await authenticate(app);
+
+      return request(app.getHttpServer())
+        .post('/projects/1/environments')
+        .set('Authorization', `Bearer ${access_token}`)
+        .send({
+          noNameField: true,
+        })
+        .expect(400)
+        .expect({
+          statusCode: 400,
+          message: 'Validation failed',
+          error: 'Bad Request',
+        });
+    });
+
+    it('creates an environment when authenticated and providing a good name', async () => {
+      const access_token = await authenticate(app);
+      const res = await request(app.getHttpServer())
+        .post('/projects/1/environments')
+        .set('Authorization', `Bearer ${access_token}`)
+        .send({
+          name: 'New env',
+        });
+
+      expect(res.body.uuid).toBeTruthy();
+      expect(res.body.name).toBe('New env');
+      expect(res.body.projectId).toBe('1');
+      expect(res.body.clientKey).toBeTruthy();
+    });
+  });
 });

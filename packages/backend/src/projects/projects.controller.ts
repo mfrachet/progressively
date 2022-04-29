@@ -22,13 +22,17 @@ import {
 } from './projects.dto';
 import { ProjectsService } from './projects.service';
 import { UserRetrieveDTO } from 'src/users/users.dto';
-import { UserProject } from '@prisma/client';
+import { Environment, UserProject } from '@prisma/client';
 import { Roles } from '../shared/decorators/Roles';
 import { UserRoles } from '../users/roles';
 import { HasProjectAccessGuard } from './guards/hasProjectAccess';
 import { ValidationPipe } from '../shared/pipes/ValidationPipe';
 import { UsersService } from '../users/users.service';
 import { EnvironmentsService } from '../environments/environments.service';
+import {
+  EnvironmentCreationSchema,
+  EnvironmentDTO,
+} from '../environments/environments.dto';
 @ApiBearerAuth()
 @Controller()
 export class ProjectsController {
@@ -132,5 +136,19 @@ export class ProjectsController {
   @UseGuards(JwtAuthGuard)
   getProjectEnvironments(@Param('id') id: string) {
     return this.envService.getProjectEnvironments(id);
+  }
+
+  /**
+   * Create an environment on a given project (by id)
+   */
+  @Post('projects/:id/environments')
+  @UseGuards(HasProjectAccessGuard)
+  @UseGuards(JwtAuthGuard)
+  @UsePipes(new ValidationPipe(EnvironmentCreationSchema))
+  createEnvironment(
+    @Param('id') id: string,
+    @Body() envDto: EnvironmentDTO,
+  ): Promise<Environment> {
+    return this.envService.createEnvironment(id, envDto.name);
   }
 }
