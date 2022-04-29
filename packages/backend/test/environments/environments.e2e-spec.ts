@@ -108,15 +108,15 @@ describe('Environments (e2e)', () => {
     });
   });
 
-  describe('/projects/1/environments/1/flags (GET)', () => {
+  describe('/environments/1/flags (GET)', () => {
     it('gives a 401 when the user is not authenticated', () =>
-      verifyAuthGuard(app, '/projects/1/environments/1/flags', 'get'));
+      verifyAuthGuard(app, '/environments/1/flags', 'get'));
 
     it('gives a 403 when trying to access a valid project but an invalid env', async () => {
       const access_token = await authenticate(app);
 
       return request(app.getHttpServer())
-        .get('/projects/1/environments/3/flags')
+        .get('/environments/3/flags')
         .set('Authorization', `Bearer ${access_token}`)
         .expect(403)
         .expect({
@@ -134,7 +134,7 @@ describe('Environments (e2e)', () => {
       );
 
       return request(app.getHttpServer())
-        .get('/projects/1/environments/1/flags')
+        .get('/environments/1/flags')
         .set('Authorization', `Bearer ${access_token}`)
         .expect(403)
         .expect({
@@ -148,7 +148,7 @@ describe('Environments (e2e)', () => {
       const access_token = await authenticate(app);
 
       const response = await request(app.getHttpServer())
-        .get('/projects/1/environments/1/flags')
+        .get('/environments/1/flags')
         .set('Authorization', `Bearer ${access_token}`);
 
       const flagEnv = response.body[0];
