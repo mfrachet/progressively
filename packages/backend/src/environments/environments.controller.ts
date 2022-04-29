@@ -30,7 +30,7 @@ export class EnvironmentsController {
   /**
    * Get all the flag of a given project/env (by projectId and envId)
    */
-  @Get('projects/:id/environments/:envId/flags')
+  @Get('environments/:envId/flags')
   @UseGuards(HasEnvironmentAccessGuard)
   @UseGuards(JwtAuthGuard)
   getFlagsByProjectAndEnv(@Param('envId') envId: string) {
