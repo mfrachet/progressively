@@ -19,7 +19,6 @@ import { FlagStatus } from './flags.status';
 import { StrategyService } from '../strategy/strategy.service';
 import { FlagsService } from './flags.service';
 import { JwtAuthGuard } from '../auth/strategies/jwt.guard';
-import { HasProjectAccessGuard } from '../projects/guards/hasProjectAccess';
 import { FlagAlreadyExists } from './errors';
 import { FlagCreationSchema } from './flags.dto';
 import { ValidationPipe } from '../shared/pipes/ValidationPipe';
@@ -52,7 +51,7 @@ export class FlagsController {
    * Create a flag on a given project/env (by projectId and envId)
    */
   @Post('projects/:id/environments/:envId/flags')
-  @UseGuards(HasProjectAccessGuard)
+  @UseGuards(HasEnvironmentAccessGuard)
   @UseGuards(JwtAuthGuard)
   @UsePipes(new ValidationPipe(FlagCreationSchema))
   async createFlag(
@@ -80,7 +79,7 @@ export class FlagsController {
    * Update a flag on a given project/env (by project id AND env id AND flagId)
    */
   @Put('projects/:id/environments/:envId/flags/:flagId')
-  @UseGuards(HasProjectAccessGuard)
+  @UseGuards(HasEnvironmentAccessGuard)
   @UseGuards(JwtAuthGuard)
   async changeFlagForEnvStatus(
     @Param('envId') envId: string,
@@ -108,7 +107,7 @@ export class FlagsController {
    * Delete a project by project/env/flag
    */
   @Delete('projects/:id/environments/:envId/flags/:flagId')
-  @UseGuards(HasProjectAccessGuard)
+  @UseGuards(HasEnvironmentAccessGuard)
   @UseGuards(JwtAuthGuard)
   async deleteFlag(
     @Param('envId') envId: string,
@@ -181,7 +180,7 @@ export class FlagsController {
    * Get the flag hits grouped by date
    */
   @Get('projects/:id/environments/:envId/flags/:flagId/hits')
-  @UseGuards(HasProjectAccessGuard)
+  @UseGuards(HasEnvironmentAccessGuard)
   @UseGuards(JwtAuthGuard)
   async getFlagHits(
     @Param('envId') envId: string,
