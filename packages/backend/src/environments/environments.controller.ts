@@ -68,7 +68,7 @@ export class EnvironmentsController {
   /**
    * Delete an environment on a given project (by project id AND env id)
    */
-  @Delete('projects/:id/environments/:envId')
+  @Delete('environments/:envId')
   @Roles(UserRoles.Admin)
   @UseGuards(HasEnvironmentAccessGuard)
   @UseGuards(JwtAuthGuard)
