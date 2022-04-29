@@ -24,7 +24,7 @@ import { WebsocketGateway } from '../websocket/websocket.gateway';
 import { FieldRecord } from '../strategy/types';
 import { Response, Request } from 'express';
 import { HasEnvironmentAccessGuard } from '../environments/guards/hasEnvAccess';
-import { StrategySchema, StrategyCreateDTO } from 'src/strategy/strategy.dto';
+import { StrategySchema, StrategyCreateDTO } from '../strategy/strategy.dto';
 import { HasFlagAccessGuard } from './guards/hasFlagAccess';
 import { ValidationPipe } from '../shared/pipes/ValidationPipe';
 
