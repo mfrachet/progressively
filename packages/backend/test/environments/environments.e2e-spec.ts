@@ -164,15 +164,15 @@ describe('Environments (e2e)', () => {
     });
   });
 
-  describe('/projects/1/environments/1/flags (POST)', () => {
+  describe('/environments/1/flags (POST)', () => {
     it('gives a 401 when the user is not authenticated', () =>
-      verifyAuthGuard(app, '/projects/1/environments/1/flags', 'post'));
+      verifyAuthGuard(app, '/environments/1/flags', 'post'));
 
     it('gives a 403 when trying to access a valid project but an invalid env', async () => {
       const access_token = await authenticate(app);
 
       return request(app.getHttpServer())
-        .post('/projects/1/environments/3/flags')
+        .post('/environments/3/flags')
         .set('Authorization', `Bearer ${access_token}`)
         .send({
           name: 'New flag',
@@ -194,7 +194,7 @@ describe('Environments (e2e)', () => {
       );
 
       return request(app.getHttpServer())
-        .post('/projects/1/environments/1/flags')
+        .post('/environments/1/flags')
         .set('Authorization', `Bearer ${access_token}`)
         .expect(403)
         .expect({
@@ -208,7 +208,7 @@ describe('Environments (e2e)', () => {
       const access_token = await authenticate(app);
 
       return request(app.getHttpServer())
-        .post('/projects/1/environments/1/flags')
+        .post('/environments/1/flags')
         .set('Authorization', `Bearer ${access_token}`)
         .send({
           description: 'valid description',
@@ -225,7 +225,7 @@ describe('Environments (e2e)', () => {
       const access_token = await authenticate(app);
 
       return request(app.getHttpServer())
-        .post('/projects/1/environments/1/flags')
+        .post('/environments/1/flags')
         .set('Authorization', `Bearer ${access_token}`)
         .send({
           name: 'valid name',
@@ -241,7 +241,7 @@ describe('Environments (e2e)', () => {
     it('gives a 201 when the flag is created', async () => {
       const access_token = await authenticate(app);
       const res = await request(app.getHttpServer())
-        .post('/projects/1/environments/1/flags')
+        .post('/environments/1/flags')
         .set('Authorization', `Bearer ${access_token}`)
         .send({
           name: 'New flag',
@@ -259,7 +259,7 @@ describe('Environments (e2e)', () => {
       // create a flag
       const access_token = await authenticate(app);
       await request(app.getHttpServer())
-        .post('/projects/1/environments/1/flags')
+        .post('/environments/1/flags')
         .set('Authorization', `Bearer ${access_token}`)
         .send({
           name: 'New flag',
@@ -267,7 +267,7 @@ describe('Environments (e2e)', () => {
         });
 
       return request(app.getHttpServer())
-        .post('/projects/1/environments/1/flags')
+        .post('/environments/1/flags')
         .set('Authorization', `Bearer ${access_token}`)
         .send({
           name: 'New flag',
