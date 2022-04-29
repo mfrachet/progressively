@@ -5,13 +5,11 @@ import {
   Delete,
   Get,
   Param,
-  Post,
   Put,
   Query,
   Req,
   Res,
   UseGuards,
-  UsePipes,
 } from '@nestjs/common';
 import { nanoid } from 'nanoid';
 import { EnvironmentsService } from '../environments/environments.service';
@@ -19,9 +17,6 @@ import { FlagStatus } from './flags.status';
 import { StrategyService } from '../strategy/strategy.service';
 import { FlagsService } from './flags.service';
 import { JwtAuthGuard } from '../auth/strategies/jwt.guard';
-import { FlagAlreadyExists } from './errors';
-import { FlagCreationSchema } from './flags.dto';
-import { ValidationPipe } from '../shared/pipes/ValidationPipe';
 import { strToFlagStatus } from './utils';
 import { WebsocketGateway } from '../websocket/websocket.gateway';
 import { FieldRecord } from '../strategy/types';
@@ -36,44 +31,6 @@ export class FlagsController {
     private readonly flagService: FlagsService,
     private readonly wsGateway: WebsocketGateway,
   ) {}
-
-  /**
-   * Get all the flag of a given project/env (by projectId and envId)
-   */
-  @Get('projects/:id/environments/:envId/flags')
-  @UseGuards(HasEnvironmentAccessGuard)
-  @UseGuards(JwtAuthGuard)
-  getFlagsByProjectAndEnv(@Param('envId') envId: string) {
-    return this.flagService.flagsByEnv(envId);
-  }
-
-  /**
-   * Create a flag on a given project/env (by projectId and envId)
-   */
-  @Post('projects/:id/environments/:envId/flags')
-  @UseGuards(HasEnvironmentAccessGuard)
-  @UseGuards(JwtAuthGuard)
-  @UsePipes(new ValidationPipe(FlagCreationSchema))
-  async createFlag(
-    @Param('envId') envId,
-    @Body() body: { name: string; description: string },
-  ) {
-    try {
-      const flag = await this.flagService.createFlag(
-        envId,
-        body.name,
-        body.description,
-      );
-
-      return flag;
-    } catch (e) {
-      if (e instanceof FlagAlreadyExists) {
-        throw new BadRequestException('Flag already exists');
-      }
-
-      throw e;
-    }
-  }
 
   /**
    * Update a flag on a given project/env (by project id AND env id AND flagId)
