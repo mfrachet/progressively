@@ -24,15 +24,15 @@ describe('Environments (e2e)', () => {
     await cleanupDb();
   });
 
-  describe('/projects/1/environments/1 (DELETE)', () => {
+  describe('/environments/1 (DELETE)', () => {
     it('gives a 401 when the user is not authenticated', () =>
-      verifyAuthGuard(app, '/projects/1/environments/1', 'delete'));
+      verifyAuthGuard(app, '/environments/1', 'delete'));
 
     it('gives a 403 when trying to access a valid project but an invalid env', async () => {
       const access_token = await authenticate(app);
 
       return request(app.getHttpServer())
-        .delete('/projects/1/environments/3')
+        .delete('/environments/3')
         .set('Authorization', `Bearer ${access_token}`)
         .expect(403)
         .expect({
@@ -50,7 +50,7 @@ describe('Environments (e2e)', () => {
       );
 
       return request(app.getHttpServer())
-        .delete('/projects/1/environments/1')
+        .delete('/environments/1')
         .set('Authorization', `Bearer ${access_token}`)
         .expect(403)
         .expect({
@@ -68,7 +68,7 @@ describe('Environments (e2e)', () => {
       );
 
       return request(app.getHttpServer())
-        .delete('/projects/1/environments/1')
+        .delete('/environments/1')
         .set('Authorization', `Bearer ${access_token}`)
         .expect(403)
         .expect({
@@ -82,7 +82,7 @@ describe('Environments (e2e)', () => {
       const access_token = await authenticate(app);
 
       const response = await request(app.getHttpServer())
-        .delete('/projects/1/environments/1')
+        .delete('/environments/1')
         .set('Authorization', `Bearer ${access_token}`);
 
       expect(response.status).toBe(200);
