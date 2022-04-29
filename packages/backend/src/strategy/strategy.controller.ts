@@ -14,6 +14,7 @@ import { HasProjectAccessGuard } from '../projects/guards/hasProjectAccess';
 import { StrategySchema, StrategyCreateDTO } from './strategy.dto';
 import { ValidationPipe } from '../shared/pipes/ValidationPipe';
 import { StrategyService } from './strategy.service';
+import { HasFlagAccessGuard } from '../flags/guards/hasFlagAccess';
 
 @ApiBearerAuth()
 @Controller()
@@ -37,7 +38,7 @@ export class StrategyController {
   }
 
   @Get('projects/:id/environments/:envId/flags/:flagId/strategies')
-  @UseGuards(HasProjectAccessGuard)
+  @UseGuards(HasFlagAccessGuard)
   @UseGuards(JwtAuthGuard)
   async getStrategies(
     @Param('envId') envId: string,

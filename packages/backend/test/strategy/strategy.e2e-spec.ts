@@ -24,7 +24,7 @@ describe('Strategy (e2e)', () => {
     await cleanupDb();
   });
 
-  describe('/projects/:id/environments/:envId/flags/:flagId/strategies', () => {
+  describe('/projects/:id/environments/:envId/flags/:flagId/strategies (POST)', () => {
     it('gives a 401 when the user is not authenticated', () =>
       verifyAuthGuard(
         app,
@@ -253,6 +253,20 @@ describe('Strategy (e2e)', () => {
         '/projects/1/environments/1/flags/1/strategies',
         'get',
       ));
+
+    it('gives a 403 when trying to access a valid project but an invalid env', async () => {
+      const access_token = await authenticate(app);
+
+      return request(app.getHttpServer())
+        .get('/projects/1/environments/1/flags/3/strategies')
+        .set('Authorization', `Bearer ${access_token}`)
+        .expect(403)
+        .expect({
+          statusCode: 403,
+          message: 'Forbidden resource',
+          error: 'Forbidden',
+        });
+    });
 
     it('gives a 403 when the user requests a forbidden project', async () => {
       const access_token = await authenticate(
