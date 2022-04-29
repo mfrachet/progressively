@@ -40,7 +40,7 @@ export class EnvironmentsController {
   /**
    * Create a flag on a given project/env (by projectId and envId)
    */
-  @Post('projects/:id/environments/:envId/flags')
+  @Post('environments/:envId/flags')
   @UseGuards(HasEnvironmentAccessGuard)
   @UseGuards(JwtAuthGuard)
   @UsePipes(new ValidationPipe(FlagCreationSchema))
