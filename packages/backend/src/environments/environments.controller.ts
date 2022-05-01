@@ -79,7 +79,7 @@ export class EnvironmentsController {
   /**
    * Get the flag hits grouped by date
    */
-  @Get('projects/:id/environments/:envId/flags/:flagId/hits')
+  @Get(':envId/flags/:flagId/hits')
   @UseGuards(HasEnvironmentAccessGuard)
   @UseGuards(JwtAuthGuard)
   async getFlagHits(

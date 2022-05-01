@@ -7,7 +7,7 @@ export const getFlagHits = async (
   accessToken: string
 ) =>
   fetch(
-    `${Constants.BackendUrl}/projects/${project}/environments/${envId}/flags/${flagId}/hits`,
+    `${Constants.BackendUrl}/environments/${envId}/flags/${flagId}/hits`,
     {
       headers: {
         Authorization: `Bearer ${accessToken}`,
