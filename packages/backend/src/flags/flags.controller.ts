@@ -138,21 +138,6 @@ export class FlagsController {
     return dictOfFlags;
   }
 
-  /**
-   * Get the flag hits grouped by date
-   */
-  @Get('projects/:id/environments/:envId/flags/:flagId/hits')
-  @UseGuards(HasEnvironmentAccessGuard)
-  @UseGuards(JwtAuthGuard)
-  async getFlagHits(
-    @Param('envId') envId: string,
-    @Param('flagId') flagId: string,
-  ): Promise<any> {
-    const rawHits = await this.flagService.listFlagHits(envId, flagId);
-
-    return rawHits.map(({ _count, date }) => ({ count: _count.id, date }));
-  }
-
   @Post('projects/:id/environments/:envId/flags/:flagId/strategies')
   @UseGuards(HasFlagAccessGuard)
   @UseGuards(JwtAuthGuard)
