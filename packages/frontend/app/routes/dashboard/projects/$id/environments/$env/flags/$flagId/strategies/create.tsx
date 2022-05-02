@@ -209,7 +209,7 @@ export default function StrategyCreatePage() {
         <Header
           title="Add a strategy"
           description={
-            <Text fontSize="xl" color="textlight" textAlign="center">
+            <Text fontSize="xl" color="textlight">
               {`You're`} about to add a strategy to{" "}
               <strong>{currentFlag.name}</strong> in{" "}
               <strong>{project.name}</strong> on{" "}
@@ -241,6 +241,7 @@ export default function StrategyCreatePage() {
                   aria-describedby={
                     errors["strategy-name"] ? "error-strategy-name" : undefined
                   }
+                  width="34ch"
                 />
               </FormControl>
             </Box>
