@@ -109,7 +109,12 @@ export default function ProfilePage() {
       header={<Header title="My profile" />}
       breadcrumb={
         <nav>
-          <CLink as={Link} to="/dashboard" display="inline-block">
+          <CLink
+            as={Link}
+            to="/dashboard"
+            display="inline-block"
+            color="textlight"
+          >
             <HStack alignItems={"center"} height={"44px"} fontSize="xl">
               <MdChevronLeft aria-hidden />
               <span>Back to dashboard</span>
@@ -144,6 +149,7 @@ export default function ProfilePage() {
                   aria-describedby={
                     errors?.password ? "error-password" : undefined
                   }
+                  maxW="34ch"
                 />
               </FormControl>
 
@@ -161,6 +167,7 @@ export default function ProfilePage() {
                       ? "error-confirmationPassword"
                       : undefined
                   }
+                  maxW="34ch"
                 />
               </FormControl>
 
