@@ -208,15 +208,15 @@ describe('FlagsController (e2e)', () => {
     });
   });
 
-  describe('/projects/1/environments/1/flags/1/hits (GET)', () => {
+  describe('environments/1/flags/1/hits (GET)', () => {
     it('gives a 401 when the user is not authenticated', () =>
-      verifyAuthGuard(app, '/projects/1/environments/1/flags/1/hits', 'get'));
+      verifyAuthGuard(app, '/environments/1/flags/1/hits', 'get'));
 
     it('gives a 403 when trying to access a valid project but an invalid env', async () => {
       const access_token = await authenticate(app);
 
       return request(app.getHttpServer())
-        .get('/projects/1/environments/3/flags/1/hits')
+        .get('/environments/3/flags/1/hits')
         .set('Authorization', `Bearer ${access_token}`)
         .expect(403)
         .expect({
@@ -234,7 +234,7 @@ describe('FlagsController (e2e)', () => {
       );
 
       return request(app.getHttpServer())
-        .get('/projects/1/environments/1/flags/1/hits')
+        .get('/environments/1/flags/1/hits')
         .set('Authorization', `Bearer ${access_token}`)
         .expect(403)
         .expect({
@@ -248,7 +248,7 @@ describe('FlagsController (e2e)', () => {
       const access_token = await authenticate(app);
 
       return request(app.getHttpServer())
-        .get('/projects/1/environments/1/flags/1/hits')
+        .get('/environments/1/flags/1/hits')
         .set('Authorization', `Bearer ${access_token}`)
         .expect(200)
         .expect([
