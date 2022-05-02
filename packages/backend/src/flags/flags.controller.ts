@@ -153,7 +153,7 @@ export class FlagsController {
     return rawHits.map(({ _count, date }) => ({ count: _count.id, date }));
   }
 
-  @Post('projects/:id/environments/:envId/flags/:flagId/strategies')
+  @Post('environments/:envId/flags/:flagId/strategies')
   @UseGuards(HasFlagAccessGuard)
   @UseGuards(JwtAuthGuard)
   @UsePipes(new ValidationPipe(StrategySchema))
