@@ -222,9 +222,9 @@ export default function StrategyCreatePage() {
     >
       <Form method="post">
         {actionData?.errors && (
-          <Box pb={4}>
+          <Container maxW="5xl" pb={4}>
             <ErrorBox list={actionData.errors} />
-          </Box>
+          </Container>
         )}
 
         <Container maxW="8xl">
