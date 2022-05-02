@@ -68,7 +68,7 @@ export class FlagsController {
   /**
    * Delete a project by project/env/flag
    */
-  @Delete('projects/:id/environments/:envId/flags/:flagId')
+  @Delete('environments/:envId/flags/:flagId')
   @UseGuards(HasEnvironmentAccessGuard)
   @UseGuards(JwtAuthGuard)
   async deleteFlag(
