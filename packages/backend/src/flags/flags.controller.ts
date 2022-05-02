@@ -40,7 +40,7 @@ export class FlagsController {
   /**
    * Update a flag on a given project/env (by project id AND env id AND flagId)
    */
-  @Put('projects/:id/environments/:envId/flags/:flagId')
+  @Put('environments/:envId/flags/:flagId')
   @UseGuards(HasEnvironmentAccessGuard)
   @UseGuards(JwtAuthGuard)
   async changeFlagForEnvStatus(
