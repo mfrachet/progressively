@@ -53,7 +53,14 @@ export const SectionHeader = ({
             </Heading>
           </VisuallyHidden>
         ) : (
-          <Heading as={titleAs} id={id} size="xl" pb={1}>
+          <Heading
+            as={titleAs}
+            id={id}
+            size="xl"
+            pb={1}
+            color="header"
+            fontWeight="medium"
+          >
             {title}
           </Heading>
         )}
@@ -64,7 +71,7 @@ export const SectionHeader = ({
       </Box>
 
       {endAction ? (
-        <Box flexShrink={0} ml={[0, 4]} mt={[4, 0]} width={["100%", "auto"]}>
+        <Box flexShrink={0} mt={[4, 0]} width={["100%", "auto"]}>
           {endAction}
         </Box>
       ) : null}
