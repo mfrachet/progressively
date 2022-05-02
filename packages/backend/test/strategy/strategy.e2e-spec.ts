@@ -36,7 +36,7 @@ describe('Strategy (e2e)', () => {
       const access_token = await authenticate(app);
 
       return request(app.getHttpServer())
-        .get('/projects/1/environments/1/flags/3/strategies/1')
+        .get('/projects/1/environments/1/flags/1/strategies/3')
         .set('Authorization', `Bearer ${access_token}`)
         .expect(403)
         .expect({
@@ -99,7 +99,7 @@ describe('Strategy (e2e)', () => {
       const access_token = await authenticate(app);
 
       return request(app.getHttpServer())
-        .delete('/projects/1/environments/1/flags/3/strategies/1')
+        .delete('/projects/1/environments/1/flags/1/strategies/3')
         .set('Authorization', `Bearer ${access_token}`)
         .expect(403)
         .expect({
@@ -170,7 +170,13 @@ describe('Strategy (e2e)', () => {
         .get('/projects/1/environments/1/flags/1/strategies/1')
         .set('Authorization', `Bearer ${access_token}`);
 
-      expect(after.body).toMatchInlineSnapshot(`Object {}`);
+      expect(after.body).toMatchInlineSnapshot(`
+        Object {
+          "error": "Forbidden",
+          "message": "Forbidden resource",
+          "statusCode": 403,
+        }
+      `);
     });
   });
 });
