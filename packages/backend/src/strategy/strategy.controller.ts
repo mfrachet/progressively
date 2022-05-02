@@ -5,18 +5,18 @@ import { StrategyService } from './strategy.service';
 import { HasStrategyAccessGuard } from './guards/hasStrategyAccess';
 
 @ApiBearerAuth()
-@Controller()
+@Controller('strategies')
 export class StrategyController {
   constructor(private readonly strategyService: StrategyService) {}
 
-  @Get('projects/:id/environments/:envId/flags/:flagId/strategies/:stratId')
+  @Get(':stratId')
   @UseGuards(HasStrategyAccessGuard)
   @UseGuards(JwtAuthGuard)
   async getStrategy(@Param('stratId') stratId: string): Promise<any> {
     return this.strategyService.getStrategy(stratId);
   }
 
-  @Delete('projects/:id/environments/:envId/flags/:flagId/strategies/:stratId')
+  @Delete(':stratId')
   @UseGuards(HasStrategyAccessGuard)
   @UseGuards(JwtAuthGuard)
   async deleteStrategy(@Param('stratId') stratId: string): Promise<any> {
