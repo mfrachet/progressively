@@ -169,7 +169,7 @@ export class FlagsController {
     );
   }
 
-  @Get('projects/:id/environments/:envId/flags/:flagId/strategies')
+  @Get('environments/:envId/flags/:flagId/strategies')
   @UseGuards(HasFlagAccessGuard)
   @UseGuards(JwtAuthGuard)
   async getStrategies(
