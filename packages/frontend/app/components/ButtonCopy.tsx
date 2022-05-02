@@ -57,6 +57,7 @@ export const ButtonCopy = ({
           onClick={handleClick}
           colorScheme={colorScheme}
           aria-live="polite"
+          color="textlight"
           {...copyToClipBoardProps}
         >
           {isCopied ? (
