@@ -50,6 +50,9 @@ export const FlagCard = ({
       _hover={{
         background: "background100",
       }}
+      _focusWithin={{
+        background: "background100",
+      }}
       _active={{
         background: "background200",
       }}
