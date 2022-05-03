@@ -1,10 +1,5 @@
 import { Box, Text } from "@chakra-ui/react";
-import {
-  useActionData,
-  ActionFunction,
-  MetaFunction,
-  useSearchParams,
-} from "remix";
+import { ActionFunction, MetaFunction } from "remix";
 import { Header } from "~/components/Header";
 import { Main } from "~/components/Main";
 import { NotAuthenticatedLayout } from "~/layouts/NotAuthenticatedLayout";
@@ -31,10 +26,6 @@ export const action: ActionFunction = ({
 };
 
 export default function WelcomePage() {
-  const [searchParams] = useSearchParams();
-  const userActivated = searchParams.get("userActivated");
-  const data = useActionData<ActionData>();
-
   return (
     <NotAuthenticatedLayout>
       <Main>
