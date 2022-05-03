@@ -7,7 +7,7 @@ on:
 jobs:
   static:
     env:
-      - ALLOW_REGISTRATION: true
+      ALLOW_REGISTRATION: true
     runs-on: ubuntu-latest
     # Uncomment for parallel
     # strategy:
