@@ -202,8 +202,6 @@ export default function DeleteProjectPage() {
             isLoading={transition.state === "submitting"}
             loadingText="Deleting the project, please wait..."
             disabled={false}
-            mt={[4, 4, 0]}
-            width={["100%", "100%", "auto"]}
           >
             Yes, delete the project
           </Button>
