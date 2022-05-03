@@ -177,21 +177,23 @@ export default function FlagById() {
             description="Number of hits per date"
           />
 
-          <Box ml={-4}>
-            <ResponsiveContainer width="100%" aspect={16.0 / 9.0}>
-              <LineChart data={hits}>
-                <Line
-                  isAnimationActive={false}
-                  type="monotone"
-                  dataKey="count"
-                  stroke="#8884d8"
-                />
-                <CartesianGrid stroke="#ccc" />
-                <XAxis dataKey="date" tickFormatter={formatX} />
-                <YAxis />
-              </LineChart>
-            </ResponsiveContainer>
-          </Box>
+          {hits.length > 0 && (
+            <Box ml={-4}>
+              <ResponsiveContainer width="100%" aspect={16.0 / 9.0}>
+                <LineChart data={hits}>
+                  <Line
+                    isAnimationActive={false}
+                    type="monotone"
+                    dataKey="count"
+                    stroke="#8884d8"
+                  />
+                  <CartesianGrid stroke="#ccc" />
+                  <XAxis dataKey="date" tickFormatter={formatX} />
+                  <YAxis />
+                </LineChart>
+              </ResponsiveContainer>
+            </Box>
+          )}
         </Section>
       </Stack>
     </DashboardLayout>
