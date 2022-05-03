@@ -30,7 +30,7 @@ import { getProject } from "~/modules/projects/services/getProject";
 import { removeMember } from "~/modules/projects/services/removeMember";
 import { Project, UserProject, UserRoles } from "~/modules/projects/types";
 import { User } from "~/modules/user/types";
-import { UserTable } from "~/modules/user/UserTable";
+import { UserTable } from "~/modules/user/components/UserTable";
 import { getSession } from "~/sessions";
 
 export const meta: MetaFunction = ({ data }) => {

@@ -16,10 +16,10 @@ import { Project } from "~/modules/projects/types";
 import { ActivationType } from "~/modules/strategies/types/activation";
 import { StrategyRuleType } from "~/modules/strategies/types/StrategyRule";
 import { getSession } from "~/sessions";
-import { validateStrategyForm } from "~/modules/strategies/validateStrategyForm";
+import { validateStrategyForm } from "~/modules/strategies/validators/validateStrategyForm";
 import { ErrorBox } from "~/components/ErrorBox";
 import { StrategyCreateDTO } from "~/modules/strategies/types";
-import { createStrategy } from "~/modules/strategies/createStrategy";
+import { createStrategy } from "~/modules/strategies/services/createStrategy";
 import { BreadCrumbs, Crumbs } from "~/components/AppBreadcrumbs";
 import {
   Box,

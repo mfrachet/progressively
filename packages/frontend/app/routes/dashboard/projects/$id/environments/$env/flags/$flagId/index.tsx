@@ -15,8 +15,8 @@ import { getFlagsByProjectEnv } from "~/modules/flags/services/getFlagsByProject
 import { FlagEnv, FlagStatus } from "~/modules/flags/types";
 import { getProject } from "~/modules/projects/services/getProject";
 import { Project } from "~/modules/projects/types";
-import { getStrategies } from "~/modules/strategies/getStrategies";
-import { StrategyCard } from "~/modules/strategies/StrategyCard";
+import { getStrategies } from "~/modules/strategies/services/getStrategies";
+import { StrategyCard } from "~/modules/strategies/components/StrategyCard";
 import { User } from "~/modules/user/types";
 import { getSession } from "~/sessions";
 import { SuccessBox } from "~/components/SuccessBox";

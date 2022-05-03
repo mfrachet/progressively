@@ -24,9 +24,9 @@ import { Header } from "~/components/Header";
 import { Section } from "~/components/Section";
 import { FlagEnv } from "~/modules/flags/types";
 import { getFlagsByProjectEnv } from "~/modules/flags/services/getFlagsByProjectEnv";
-import { getStrategy } from "~/modules/strategies/getStrategy";
+import { getStrategy } from "~/modules/strategies/services/getStrategy";
 import { StrategyRetrieveDTO } from "~/modules/strategies/types";
-import { deleteStrategy } from "~/modules/strategies/deleteStrategy";
+import { deleteStrategy } from "~/modules/strategies/services/deleteStrategy";
 import { Button } from "~/components/Button";
 
 interface MetaArgs {

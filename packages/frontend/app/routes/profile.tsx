@@ -29,7 +29,7 @@ import {
   validatePassword,
   validateConfirmationPassword,
 } from "~/modules/forms/utils/validatePassword";
-import { changePassword } from "~/modules/user/changePassword";
+import { changePassword } from "~/modules/user/services/changePassword";
 import { User } from "~/modules/user/types";
 import { getSession } from "~/sessions";
 

@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { FaTrash } from "react-icons/fa";
 import { Button } from "~/components/Button";
-import { ComparatorEnum, StrategyRetrieveDTO } from "./types";
+import { ComparatorEnum, StrategyRetrieveDTO } from "../types";
 
 export interface StrategyCardProps {
   flagId: string;

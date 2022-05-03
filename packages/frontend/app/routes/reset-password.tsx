@@ -29,7 +29,7 @@ import {
   validateConfirmationPassword,
   validatePassword,
 } from "~/modules/forms/utils/validatePassword";
-import { resetPassword } from "~/modules/user/resetPassword";
+import { resetPassword } from "~/modules/user/services/resetPassword";
 
 export const meta: MetaFunction = () => {
   return {
