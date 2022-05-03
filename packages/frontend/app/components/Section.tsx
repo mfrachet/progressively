@@ -65,7 +65,7 @@ export const SectionHeader = ({
           </Heading>
         )}
 
-        <Box fontSize="xl" color="textlight">
+        <Box fontSize="xl" color="textlight" maxWidth="65ch">
           {description}
         </Box>
       </Box>
