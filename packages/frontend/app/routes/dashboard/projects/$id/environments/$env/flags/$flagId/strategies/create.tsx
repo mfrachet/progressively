@@ -45,14 +45,14 @@ interface MetaArgs {
   data?: {
     project?: Project;
     environment?: Environment;
-    currentFlagEnv?: FlagEnv;
+    currentFlag?: Flag;
   };
 }
 
 export const meta: MetaFunction = ({ data }: MetaArgs) => {
   const projectName = data?.project?.name || "An error ocurred";
   const envName = data?.environment?.name || "An error ocurred";
-  const flagName = data?.currentFlagEnv?.flag?.name || "An error ocurred";
+  const flagName = data?.currentFlag?.name || "An error ocurred";
 
   return {
     title: `Progressively | ${projectName} | ${envName} | Flags | ${flagName} | Strategies | Create`,
