@@ -193,7 +193,7 @@ export default function DeleteEnvPage() {
     <DashboardLayout
       user={user}
       breadcrumb={<BreadCrumbs crumbs={crumbs} />}
-      header={<Header title="You are about to delete the environment." />}
+      header={<Header title="Deleting an environment" />}
     >
       <Section>
         {data?.errors && data.errors.backendError && (
@@ -202,17 +202,19 @@ export default function DeleteEnvPage() {
           </Box>
         )}
 
-        <WarningBox
-          list={warnings}
-          title={
-            <Text>
-              We really want to warn you: if you validate the environment
-              suppression, you {`won't`} be able to access the{" "}
-              <strong>{environment.name}</strong> environment anymore. It
-              includes:
-            </Text>
-          }
-        />
+        <Box maxW="65ch">
+          <WarningBox
+            list={warnings}
+            title={
+              <Text>
+                We really want to warn you: if you validate the environment
+                suppression, you {`won't`} be able to access the{" "}
+                <strong>{environment.name}</strong> environment anymore. It
+                includes:
+              </Text>
+            }
+          />
+        </Box>
 
         <Flex
           justifyContent="space-between"
