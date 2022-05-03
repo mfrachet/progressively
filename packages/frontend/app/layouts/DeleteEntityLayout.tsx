@@ -30,7 +30,7 @@ export const DeleteEntityLayout = ({
 
           <Box maxW="65ch">{children}</Box>
 
-          <Flex mt={8} direction={["column", "column", "row"]}>
+          <Flex mt={8} direction={["column", "column", "row"]} gap={8}>
             {cancelAction}
             {confirmAction}
           </Flex>

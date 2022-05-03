@@ -33,6 +33,7 @@ import { getSession } from "~/sessions";
 import { Header } from "~/components/Header";
 import { Section } from "~/components/Section";
 import { Button } from "~/components/Button";
+import { DeleteEntityLayout } from "~/layouts/DeleteEntityLayout";
 
 interface MetaArgs {
   data: {
@@ -190,67 +191,61 @@ export default function DeleteEnvPage() {
   };
 
   return (
-    <DashboardLayout
+    <DeleteEntityLayout
       user={user}
       breadcrumb={<BreadCrumbs crumbs={crumbs} />}
       header={<Header title="Deleting an environment" />}
-    >
-      <Section>
-        {data?.errors && data.errors.backendError && (
+      error={
+        data?.errors &&
+        data.errors.backendError && (
           <Box pb={4}>
             <ErrorBox list={data.errors} />
           </Box>
-        )}
-
-        <Box maxW="65ch">
-          <WarningBox
-            list={warnings}
-            title={
-              <Text>
-                We really want to warn you: if you validate the environment
-                suppression, you {`won't`} be able to access the{" "}
-                <strong>{environment.name}</strong> environment anymore. It
-                includes:
-              </Text>
-            }
-          />
-        </Box>
-
-        <Flex
-          justifyContent="space-between"
-          mt={4}
-          direction={["column", "column", "row"]}
+        )
+      }
+      cancelAction={
+        <Button
+          to={`/dashboard/projects/${project.uuid}/environments/${environment.uuid}/settings`}
+          variant="outline"
+          colorScheme="error"
         >
+          <span>
+            No, {`don't`} delete{" "}
+            <Box as="strong" display={["none", "inline"]} aria-hidden>
+              {environment.name}
+            </Box>
+            <VisuallyHidden>{environment.name}</VisuallyHidden>
+          </span>
+        </Button>
+      }
+      confirmAction={
+        <Form method="post">
           <Button
-            to={`/dashboard/projects/${project.uuid}/environments/${environment.uuid}/settings`}
-            variant="outline"
+            type="submit"
             colorScheme="error"
+            leftIcon={<FaTrash aria-hidden />}
+            isLoading={transition.state === "submitting"}
+            loadingText="Deleting the environment, please wait..."
+            disabled={false}
+            mt={[4, 4, 0]}
+            width={["100%", "100%", "auto"]}
           >
-            <span>
-              No, {`don't`} delete{" "}
-              <Box as="strong" display={["none", "inline"]} aria-hidden>
-                {environment.name}
-              </Box>
-              <VisuallyHidden>{environment.name}</VisuallyHidden>
-            </span>
+            Yes, delete the environment
           </Button>
-
-          <Form method="post">
-            <Button
-              type="submit"
-              colorScheme="error"
-              leftIcon={<FaTrash aria-hidden />}
-              isLoading={transition.state === "submitting"}
-              loadingText="Deleting the environment, please wait..."
-              disabled={false}
-              mt={[4, 4, 0]}
-              width={["100%", "100%", "auto"]}
-            >
-              Yes, delete the environment
-            </Button>
-          </Form>
-        </Flex>
-      </Section>
-    </DashboardLayout>
+        </Form>
+      }
+    >
+      <WarningBox
+        list={warnings}
+        title={
+          <Text>
+            We really want to warn you: if you validate the environment
+            suppression, you {`won't`} be able to access the{" "}
+            <strong>{environment.name}</strong> environment anymore. It
+            includes:
+          </Text>
+        }
+      />
+    </DeleteEntityLayout>
   );
 }

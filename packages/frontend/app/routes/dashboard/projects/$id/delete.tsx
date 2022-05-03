@@ -183,7 +183,6 @@ export default function DeleteProjectPage() {
           to={`/dashboard/projects/${project.uuid}/settings`}
           variant="outline"
           colorScheme="error"
-          mr={8}
         >
           <span>
             No, {`don't`} delete{" "}
