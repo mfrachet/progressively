@@ -6,7 +6,7 @@ import { User } from "~/modules/user/types";
 import { UseDropdown } from "~/modules/user/components/UserDropdown";
 
 export interface DashboardLayoutProps {
-  user: User;
+  user?: Partial<User>;
   children: React.ReactNode;
   breadcrumb?: React.ReactNode;
   header: React.ReactNode;
@@ -36,7 +36,7 @@ export const DashboardLayout = ({
           >
             <Logo />
 
-            <UseDropdown user={user} />
+            {user && user.fullname && <UseDropdown user={user as User} />}
           </Flex>
         </Container>
       </Box>
