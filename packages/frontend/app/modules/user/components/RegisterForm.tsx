@@ -1,6 +1,7 @@
-import { Stack, FormControl, FormLabel, Input, Button } from "@chakra-ui/react";
+import { Stack, FormControl, FormLabel, Input, Box } from "@chakra-ui/react";
 import { MdAccountCircle } from "react-icons/md";
 import { ActionFunction, Form, useActionData, useTransition } from "remix";
+import { Button } from "~/components/Button";
 import { ErrorBox } from "~/components/ErrorBox";
 import { SuccessBox } from "~/components/SuccessBox";
 import { createUser } from "../services/createUser";
@@ -120,16 +121,18 @@ export const RegisterForm = () => {
           />
         </FormControl>
 
-        <Button
-          type="submit"
-          colorScheme={"brand"}
-          leftIcon={<MdAccountCircle aria-hidden />}
-          isLoading={transition.state === "submitting"}
-          loadingText="Creation in progress, please wait..."
-          disabled={false}
-        >
-          Create an account
-        </Button>
+        <Box>
+          <Button
+            type="submit"
+            colorScheme={"brand"}
+            leftIcon={<MdAccountCircle aria-hidden />}
+            isLoading={transition.state === "submitting"}
+            loadingText="Creation in progress, please wait..."
+            disabled={false}
+          >
+            Create an account
+          </Button>
+        </Box>
       </Stack>
     </Form>
   );

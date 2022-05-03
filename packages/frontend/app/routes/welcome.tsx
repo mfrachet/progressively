@@ -1,44 +1,23 @@
+import { Box, Text } from "@chakra-ui/react";
 import {
-  Box,
-  FormControl,
-  Input,
-  Stack,
-  Text,
-  Link as CLink,
-  UnorderedList,
-  ListItem,
-  Container,
-  Flex,
-} from "@chakra-ui/react";
-import { AiOutlineLogin } from "react-icons/ai";
-import {
-  Form,
   useActionData,
-  useTransition,
   ActionFunction,
   redirect,
   MetaFunction,
-  Link,
   useSearchParams,
 } from "remix";
-import { Button } from "~/components/Button";
-import { ErrorBox } from "~/components/ErrorBox";
-import { FormLabel } from "~/components/FormLabel";
-import { H1 } from "~/components/H1";
 import { Header } from "~/components/Header";
-import { Logo } from "~/components/Logo";
 import { Main } from "~/components/Main";
-import { Section } from "~/components/Section";
-import { SuccessBox } from "~/components/SuccessBox";
 import { NotAuthenticatedLayout } from "~/layouts/NotAuthenticatedLayout";
 import { AuthCredentials } from "~/modules/auth/types";
+import { RegisterForm } from "~/modules/user/components/RegisterForm";
 import { commitSession, getSession } from "~/sessions";
 import { authenticate } from "../modules/auth/services/authenticate";
 import { validateSigninForm } from "../modules/auth/validators/validate-signin-form";
 
 export const meta: MetaFunction = () => {
   return {
-    title: "Progressively | Sign in",
+    title: "Progressively | Welcome",
   };
 };
 
@@ -82,111 +61,27 @@ export const action: ActionFunction = async ({
 };
 
 export default function WelcomePage() {
-  const transition = useTransition();
   const [searchParams] = useSearchParams();
   const userActivated = searchParams.get("userActivated");
   const data = useActionData<ActionData>();
-  const errors = data?.errors;
 
   return (
-    <div>
-      <Container maxW="5xl">
-        <Flex
-          p={3}
-          as={"nav"}
-          aria-label="General"
-          justifyContent={"space-between"}
-          alignItems="center"
-        >
-          <Logo to="/" />
-        </Flex>
-      </Container>
-
-      <Container maxW="5xl" pt={16} pb={4}>
-        <Main>
+    <NotAuthenticatedLayout>
+      <Main>
+        <Box pb={4}>
           <Header
             title="Congratulations!"
             description={
-              <Text>
+              <Text textColor="textlight">
                 {`You've`} successfully run your Progressively instance.{" "}
                 {`It's`} time to create <strong>your admin user.</strong>
               </Text>
             }
           />
+        </Box>
 
-          <Form method="post">
-            <Stack spacing={4} mt={4}>
-              {(errors?.password || errors?.email || errors?.badUser) && (
-                <ErrorBox list={errors} />
-              )}
-
-              {Boolean(userActivated) && (
-                <SuccessBox id="user-activated">
-                  The account has been activated, you can now log in
-                </SuccessBox>
-              )}
-
-              <FormControl isInvalid={Boolean(errors?.email)}>
-                <FormLabel htmlFor="email">Email</FormLabel>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="e.g: james.bond@mi6.com"
-                  aria-describedby={errors?.email ? "error-email" : undefined}
-                />
-              </FormControl>
-
-              <FormControl isInvalid={Boolean(errors?.password)}>
-                <FormLabel htmlFor="password">Password</FormLabel>
-                <Input
-                  id="password"
-                  name="password"
-                  type="password"
-                  placeholder="************"
-                  aria-describedby={
-                    errors?.password ? "error-password" : undefined
-                  }
-                />
-              </FormControl>
-
-              <Button
-                type="submit"
-                colorScheme={"brand"}
-                leftIcon={<AiOutlineLogin aria-hidden />}
-                isLoading={transition.state === "submitting"}
-                loadingText="Signin in progress, please wait..."
-                disabled={false}
-              >
-                Sign in
-              </Button>
-            </Stack>
-          </Form>
-
-          <Stack
-            mt={6}
-            spacing={2}
-            as={UnorderedList}
-            aria-label="Account related"
-          >
-            <ListItem>
-              <CLink as={Link} to="/register" textDecoration={"underline"}>
-                {`Create an account`}
-              </CLink>
-            </ListItem>
-
-            <ListItem>
-              <CLink
-                as={Link}
-                to="/forgot-password"
-                textDecoration={"underline"}
-              >
-                {`I forgot my password`}
-              </CLink>
-            </ListItem>
-          </Stack>
-        </Main>
-      </Container>
-    </div>
+        <RegisterForm />
+      </Main>
+    </NotAuthenticatedLayout>
   );
 }

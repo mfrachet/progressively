@@ -1,15 +1,14 @@
 import { ActionFunction, MetaFunction, Link } from "remix";
 import { Main } from "~/components/Main";
-import { Box, Link as CLink, HStack } from "@chakra-ui/react";
+import { Link as CLink, HStack, Box } from "@chakra-ui/react";
 import { MdChevronLeft } from "react-icons/md";
-import { H1 } from "~/components/H1";
-import { Section } from "~/components/Section";
 import { NotAuthenticatedLayout } from "~/layouts/NotAuthenticatedLayout";
 import {
   RegisterForm,
   registerAction,
   RegisterActionData,
 } from "~/modules/user/components/RegisterForm";
+import { Header } from "~/components/Header";
 
 export const meta: MetaFunction = () => {
   return {
@@ -34,13 +33,11 @@ export default function CreateAccountPage() {
           </CLink>
         </HStack>
 
-        <Section>
-          <Box>
-            <H1>Create an account</H1>
-          </Box>
+        <Box pb={4}>
+          <Header title="Create an account" />
+        </Box>
 
-          <RegisterForm />
-        </Section>
+        <RegisterForm />
       </Main>
     </NotAuthenticatedLayout>
   );
