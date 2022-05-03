@@ -73,7 +73,7 @@ const StrategyTargetConstraints = ({
     const targets = strat.fieldValue?.split("\n");
 
     return (
-      <UnorderedList pl={2}>
+      <UnorderedList pl={8}>
         {targets?.map((target) => (
           <ListItem key={target} color="textlight">
             {target}

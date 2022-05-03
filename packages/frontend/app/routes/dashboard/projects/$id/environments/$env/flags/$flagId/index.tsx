@@ -178,6 +178,24 @@ export default function FlagById() {
     >
       <Stack spacing={8}>
         <Section id="concerned-audience">
+          <Stack spacing={2}>
+            {isStrategyAdded ? (
+              <SuccessBox id="strategy-added" mb={4}>
+                The strategy has been successfully created.
+              </SuccessBox>
+            ) : null}
+
+            {isStrategyRemoved ? (
+              <SuccessBox id="strategy-removed" mb={4}>
+                The strategy has been successfully removed.
+              </SuccessBox>
+            ) : null}
+
+            {strategies.length === 0 && (
+              <WarningBox title="You don't have strategies yet. When activating the flag, every user will receive the activated variant." />
+            )}
+          </Stack>
+
           <SectionHeader
             title="Strategies"
             hiddenTitle
@@ -194,57 +212,38 @@ export default function FlagById() {
             }
           />
 
-          <Stack spacing={2}>
-            {isStrategyAdded ? (
-              <SuccessBox id="strategy-added" mb={4}>
-                The strategy has been successfully created.
-              </SuccessBox>
-            ) : null}
-
-            {isStrategyRemoved ? (
-              <SuccessBox id="strategy-removed" mb={4}>
-                The strategy has been successfully removed.
-              </SuccessBox>
-            ) : null}
-
-            {strategies.length > 0 ? (
-              <Box>
-                {strategies.map((strat, index) => (
-                  <StrategyCard
-                    noBorder={index === 0}
-                    key={`${strat.uuid}`}
-                    projectId={project.uuid}
-                    envId={environment.uuid}
-                    flagId={currentFlag.uuid}
-                    strat={strat}
-                  />
-                ))}
-              </Box>
-            ) : null}
-
-            {strategies.length === 0 ? (
-              <>
-                <Box mb={8}>
-                  <WarningBox title="You don't have strategies yet. When activating the flag, every user will receive the activated variant." />
-                </Box>
-                <EmptyState
-                  title="No strategy found"
-                  description={
-                    <Text>There are no strategies bound to this flag yet.</Text>
-                  }
-                  action={
-                    <Button
-                      to={`/dashboard/projects/${project.uuid}/environments/${environment.uuid}/flags/${currentFlag.uuid}/strategies/create`}
-                      leftIcon={<IoIosCreate aria-hidden />}
-                      colorScheme="brand"
-                    >
-                      Add a strategy
-                    </Button>
-                  }
+          {strategies.length > 0 ? (
+            <Box>
+              {strategies.map((strat, index) => (
+                <StrategyCard
+                  noBorder={index === 0}
+                  key={`${strat.uuid}`}
+                  projectId={project.uuid}
+                  envId={environment.uuid}
+                  flagId={currentFlag.uuid}
+                  strat={strat}
                 />
-              </>
-            ) : null}
-          </Stack>
+              ))}
+            </Box>
+          ) : null}
+
+          {strategies.length === 0 ? (
+            <EmptyState
+              title="No strategy found"
+              description={
+                <Text>There are no strategies bound to this flag yet.</Text>
+              }
+              action={
+                <Button
+                  to={`/dashboard/projects/${project.uuid}/environments/${environment.uuid}/flags/${currentFlag.uuid}/strategies/create`}
+                  leftIcon={<IoIosCreate aria-hidden />}
+                  colorScheme="brand"
+                >
+                  Add a strategy
+                </Button>
+              }
+            />
+          ) : null}
         </Section>
       </Stack>
     </DashboardLayout>
