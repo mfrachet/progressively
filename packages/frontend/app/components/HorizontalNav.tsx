@@ -38,7 +38,7 @@ export const NavItem = ({ children, to, icon }: NavItemProps) => {
       <CLink
         as={NavLink}
         px={6}
-        py={3}
+        py={4}
         to={to}
         end
         display={"inline-block"}
