@@ -24,11 +24,11 @@ import { Header } from "~/components/Header";
 import { Section, SectionHeader } from "~/components/Section";
 import { SuccessBox } from "~/components/SuccessBox";
 import { DashboardLayout } from "~/layouts/DashboardLayout";
-import { authGuard } from "~/modules/auth/auth-guard";
+import { authGuard } from "~/modules/auth/services/auth-guard";
 import {
   validatePassword,
   validateConfirmationPassword,
-} from "~/modules/forms/PasswordField/validatePassword";
+} from "~/modules/forms/utils/validatePassword";
 import { changePassword } from "~/modules/user/changePassword";
 import { User } from "~/modules/user/types";
 import { getSession } from "~/sessions";

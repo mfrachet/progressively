@@ -9,7 +9,7 @@ import {
 import React, { useRef } from "react";
 import { Form, Link } from "remix";
 import { Box, Text } from "@chakra-ui/react";
-import { FlagStatus } from "./types";
+import { FlagStatus } from "../types";
 import { Switch } from "~/components/Switch";
 
 export interface FlagCardProps {

@@ -24,7 +24,7 @@ import { Main } from "~/components/Main";
 import { Section } from "~/components/Section";
 import { SuccessBox } from "~/components/SuccessBox";
 import { NotAuthenticatedLayout } from "~/layouts/NotAuthenticatedLayout";
-import { validateEmail } from "~/modules/forms/EmailField/validateEmail";
+import { validateEmail } from "~/modules/forms/utils/validateEmail";
 import { forgotPassword } from "~/modules/user/forgotPassword";
 
 export const meta: MetaFunction = () => {

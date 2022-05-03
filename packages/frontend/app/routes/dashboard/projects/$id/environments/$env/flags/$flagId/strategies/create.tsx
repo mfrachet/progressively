@@ -9,9 +9,9 @@ import {
   useLoaderData,
   useTransition,
 } from "remix";
-import { getFlagsByProjectEnv } from "~/modules/flags/getFlagsByProjectEnv";
+import { getFlagsByProjectEnv } from "~/modules/flags/services/getFlagsByProjectEnv";
 import { Flag, FlagEnv } from "~/modules/flags/types";
-import { getProject } from "~/modules/projects/getProject";
+import { getProject } from "~/modules/projects/services/getProject";
 import { Project } from "~/modules/projects/types";
 import { ActivationType } from "~/modules/strategies/types/activation";
 import { StrategyRuleType } from "~/modules/strategies/types/StrategyRule";
@@ -33,7 +33,7 @@ import { StrategyAudience } from "~/modules/strategies/components/StrategyAudien
 import { ActivationStrategy } from "~/modules/strategies/components/ActivationStrategy";
 import { IoIosCreate } from "react-icons/io";
 import { DashboardLayout } from "~/layouts/DashboardLayout";
-import { authGuard } from "~/modules/auth/auth-guard";
+import { authGuard } from "~/modules/auth/services/auth-guard";
 import { User } from "~/modules/user/types";
 import { Header } from "~/components/Header";
 import { Section, SectionHeader } from "~/components/Section";

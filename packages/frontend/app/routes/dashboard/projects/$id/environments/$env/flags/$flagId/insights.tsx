@@ -7,11 +7,11 @@ import {
 } from "remix";
 import { Crumbs, BreadCrumbs } from "~/components/AppBreadcrumbs";
 import { DashboardLayout } from "~/layouts/DashboardLayout";
-import { authGuard } from "~/modules/auth/auth-guard";
+import { authGuard } from "~/modules/auth/services/auth-guard";
 import { Environment } from "~/modules/environments/types";
-import { getFlagsByProjectEnv } from "~/modules/flags/getFlagsByProjectEnv";
+import { getFlagsByProjectEnv } from "~/modules/flags/services/getFlagsByProjectEnv";
 import { FlagEnv, FlagStatus } from "~/modules/flags/types";
-import { getProject } from "~/modules/projects/getProject";
+import { getProject } from "~/modules/projects/services/getProject";
 import { Project } from "~/modules/projects/types";
 import { User } from "~/modules/user/types";
 import { getSession } from "~/sessions";
@@ -28,8 +28,11 @@ import {
   YAxis,
   ResponsiveContainer,
 } from "recharts";
-import { getFlagHits } from "~/modules/flags/getFlagHits";
-import { toggleAction, ToggleFlag } from "~/modules/flags/ToggleFlag";
+import { getFlagHits } from "~/modules/flags/services/getFlagHits";
+import {
+  toggleAction,
+  ToggleFlag,
+} from "~/modules/flags/components/ToggleFlag";
 import { FiFlag } from "react-icons/fi";
 import { ButtonCopy } from "~/components/ButtonCopy";
 

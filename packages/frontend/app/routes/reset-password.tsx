@@ -28,7 +28,7 @@ import { NotAuthenticatedLayout } from "~/layouts/NotAuthenticatedLayout";
 import {
   validateConfirmationPassword,
   validatePassword,
-} from "~/modules/forms/PasswordField/validatePassword";
+} from "~/modules/forms/utils/validatePassword";
 import { resetPassword } from "~/modules/user/resetPassword";
 
 export const meta: MetaFunction = () => {

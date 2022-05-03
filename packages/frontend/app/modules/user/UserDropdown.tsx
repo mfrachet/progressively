@@ -12,7 +12,7 @@ import {
 import { BiCaretDown } from "react-icons/bi";
 import { Link } from "remix";
 import { User } from "~/modules/user/types";
-import { useHydrated } from "~/modules/misc/useHydrated";
+import { useHydrated } from "~/modules/misc/hooks/useHydrated";
 
 export interface UserDropdownProps {
   user: User;
