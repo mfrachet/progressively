@@ -27,7 +27,7 @@ export const action: ActionFunction = async ({
   return { errors: {} };
 };
 
-export default function OnboardingPage() {
+export default function WhatsYourNamePage() {
   const data = useActionData<ActionData>();
 
   const errors = data?.errors;
