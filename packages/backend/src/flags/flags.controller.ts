@@ -28,6 +28,7 @@ import { StrategySchema, StrategyCreateDTO } from '../strategy/strategy.dto';
 import { HasFlagAccessGuard } from './guards/hasFlagAccess';
 import { ValidationPipe } from '../shared/pipes/ValidationPipe';
 import { ApiBearerAuth } from '@nestjs/swagger';
+import { ActivateFlagDTO } from './flags.dto';
 
 @ApiBearerAuth()
 @Controller()
@@ -48,7 +49,7 @@ export class FlagsController {
   async changeFlagForEnvStatus(
     @Param('envId') envId: string,
     @Param('flagId') flagId: string,
-    @Body() body: { status: string },
+    @Body() body: ActivateFlagDTO,
   ) {
     const status: FlagStatus | undefined = strToFlagStatus(body.status);
 

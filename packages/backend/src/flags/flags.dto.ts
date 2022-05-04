@@ -9,3 +9,7 @@ export class FlagCreationDTO {
   name: string;
   description: string;
 }
+
+export class ActivateFlagDTO {
+  status: string;
+}
