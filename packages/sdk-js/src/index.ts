@@ -7,7 +7,7 @@ function init(clientKey: string, options?: SDKOptions): ProgressivelySdkType {
 
   // HTTP specific
   const apiRoot = options?.apiUrl || "http://localhost:4000";
-  const flagEndpoint = new URL(`${apiRoot}/flags/sdk/${clientKey}`);
+  const flagEndpoint = new URL(`${apiRoot}/sdk/${clientKey}`);
   for (const field in fields) {
     flagEndpoint.searchParams.set(field, String(fields[field]));
   }
