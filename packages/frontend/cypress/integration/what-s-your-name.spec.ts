@@ -32,28 +32,22 @@ describe("/dashboard/what-s-your-name", () => {
     });
 
     it("shows an error when submitting an empty form", () => {
-      cy.findByRole("button", { name: "Create the project" }).click();
+      cy.findByRole("button", { name: "Set my fullname" }).click();
       cy.get(".error-box")
         .should("have.focus")
         .and(
           "contain.text",
-          "The name field is required, make sure to have one."
+          "The fullname field is required, make sure to have one."
         );
 
       cy.checkA11y();
     });
 
-    it("creates a new project", () => {
-      cy.get("input").type("My new project");
-      cy.findByRole("button", { name: "Create the project" }).click();
-      cy.get(".success-box")
-        .should("have.focus")
-        .and("contain.text", "The project has been successfully created.");
-
-      cy.findByText("My new project").should("be.visible");
-
-      cy.url().should("include", "/dashboard?newProjectId");
-      cy.checkA11y();
+    it("changes the fullname", () => {
+      cy.get("input").type("Linda");
+      cy.findByRole("button", { name: "Set my fullname" }).click();
+      cy.url().should("eq", "/dashboard");
+      cy.findByText("Linda").should("be.visible");
     });
   });
 });

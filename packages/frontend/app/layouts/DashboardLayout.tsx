@@ -33,6 +33,7 @@ export const DashboardLayout = ({
             aria-label="General"
             justifyContent={"space-between"}
             alignItems="center"
+            h={"72px"}
           >
             <Logo />
 
