@@ -6,7 +6,6 @@ import { ErrorBox } from "~/components/ErrorBox";
 import { FormLabel } from "~/components/FormLabel";
 import { Header } from "~/components/Header";
 import { Section } from "~/components/Section";
-import { User } from "~/modules/user/types";
 import { DashboardLayout } from "../../layouts/DashboardLayout";
 
 export const meta = () => {
@@ -65,7 +64,7 @@ export default function WhatsYourNamePage() {
                 leftIcon={<IoIosCreate aria-hidden />}
                 colorScheme="brand"
               >
-                Set my name
+                Set my fullname
               </Button>
             </Box>
           </Form>

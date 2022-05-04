@@ -14,21 +14,19 @@ describe("/dashboard/what-s-your-name", () => {
 
   describe("authenticated", () => {
     beforeEach(() => {
-      cy.signIn("Jane");
-      cy.visit("/dashboard/what-s-your-name");
+      cy.signIn("WithoutFullname");
+      cy.visit("/dashboard");
       cy.injectAxe();
     });
 
     it("shows an onboarding layout", () => {
-      cy.title().should("eq", "Progressively | Onboarding");
-      cy.findByText("Welcome aboard").should("be.visible");
-      cy.contains(
-        "Before being fully operational, you will need to create a project"
-      ).should("be.visible");
-      cy.findByLabelText("Project name").should("be.visible");
-      cy.findByRole("button", { name: "Create the project" }).should(
+      cy.title().should("eq", "Progressively | What's your name?");
+      cy.findByText("Hey, welcome around! What's your name?").should(
         "be.visible"
       );
+
+      cy.findByLabelText("Fullname").should("be.visible");
+      cy.findByRole("button", { name: "Set my fullname" }).should("be.visible");
 
       cy.checkA11y();
     });
