@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { ProgressivelyContext } from "./ProgressivelyContext";
 import ProgressivelySdk from "@progressively/sdk-js";
 import { ProgressivelyProviderProps } from "./types";
@@ -14,13 +14,15 @@ export const ProgressivelyProvider = ({
   fields = {},
 }: ProgressivelyProviderProps) => {
   const sdkRef = useRef(
-    ProgressivelySdk.init(clientKey, { fields, apiUrl, websocketUrl })
+    ProgressivelySdk.init(clientKey, {
+      fields,
+      apiUrl,
+      websocketUrl,
+      initialFlags,
+    })
   );
 
-  const { flags, error, isLoading, setFlags } = useFlagInit(
-    sdkRef,
-    initialFlags
-  );
+  const { flags, error, isLoading } = useFlagInit(sdkRef, initialFlags);
 
   if (onlyRenderWhenReady && isLoading) {
     return null;

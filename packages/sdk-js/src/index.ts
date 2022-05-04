@@ -21,14 +21,15 @@ function init(clientKey: string, options?: SDKOptions): ProgressivelySdkType {
   websocketUrl.searchParams.set("client_key", clientKey);
   appendFieldToUrl(websocketUrl, fields);
 
-  return Sdk(flagEndpoint.toString(), websocketUrl);
+  return Sdk(flagEndpoint.toString(), websocketUrl, options?.initialFlags);
 }
 
 function Sdk(
   flagEndpoint: string,
-  websocketEndpoint: URL
+  websocketEndpoint: URL,
+  initialFlags: FlagDict = {}
 ): ProgressivelySdkType {
-  let flags: FlagDict = {};
+  let flags: FlagDict = initialFlags;
   let socket: WebSocket;
 
   function loadFlags() {
