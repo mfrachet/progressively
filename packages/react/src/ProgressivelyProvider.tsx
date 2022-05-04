@@ -11,27 +11,23 @@ export const ProgressivelyProvider = ({
   onlyRenderWhenReady = true,
   apiUrl,
   websocketUrl,
-  fields = {},
+  fields,
 }: ProgressivelyProviderProps) => {
   const sdkRef = useRef(
     ProgressivelySdk.init(clientKey, {
-      fields,
+      fields: fields || {},
       apiUrl,
       websocketUrl,
       initialFlags,
     })
   );
 
-  const { flags, error, isLoading } = useFlagInit(sdkRef, initialFlags);
+  const flagData = useFlagInit(sdkRef, initialFlags);
 
-  if (onlyRenderWhenReady && isLoading) {
-    return null;
-  }
-
-  const providerValue = { flags, isLoading, error };
+  if (onlyRenderWhenReady && flagData.isLoading) return null;
 
   return (
-    <ProgressivelyContext.Provider value={providerValue}>
+    <ProgressivelyContext.Provider value={flagData}>
       {children}
     </ProgressivelyContext.Provider>
   );
