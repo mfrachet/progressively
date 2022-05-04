@@ -10,7 +10,7 @@ export interface ProjectRetrieveDTO {
   createdAt: Date;
 }
 
-export class MemberProjectDTO {
+export class AddMemberProjectDTO {
   email: string;
 }
 

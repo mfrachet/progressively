@@ -1,6 +1,6 @@
 import * as Joi from 'joi';
 
-export class EnvironmentDTO {
+export class EnvironmentCreationDTO {
   name: string;
 }
 

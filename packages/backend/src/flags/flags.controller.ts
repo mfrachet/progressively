@@ -24,7 +24,7 @@ import { WebsocketGateway } from '../websocket/websocket.gateway';
 import { FieldRecord } from '../strategy/types';
 import { Response, Request } from 'express';
 import { HasEnvironmentAccessGuard } from '../environments/guards/hasEnvAccess';
-import { StrategySchema, StrategyCreateDTO } from '../strategy/strategy.dto';
+import { StrategySchema, StrategyCreationDTO } from '../strategy/strategy.dto';
 import { HasFlagAccessGuard } from './guards/hasFlagAccess';
 import { ValidationPipe } from '../shared/pipes/ValidationPipe';
 import { ApiBearerAuth } from '@nestjs/swagger';
@@ -163,7 +163,7 @@ export class FlagsController {
   async addStrategyToProject(
     @Param('envId') envId: string,
     @Param('flagId') flagId: string,
-    @Body() strategyDto: StrategyCreateDTO,
+    @Body() strategyDto: StrategyCreationDTO,
   ): Promise<any> {
     return this.strategyService.addStrategyToFlagEnv(
       envId,
