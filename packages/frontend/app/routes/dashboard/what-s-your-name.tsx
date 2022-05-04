@@ -1,14 +1,22 @@
 import { Box, FormControl, Input } from "@chakra-ui/react";
 import { IoIosCreate } from "react-icons/io";
-import { Form, useActionData, ActionFunction, LoaderFunction } from "remix";
+import {
+  Form,
+  useActionData,
+  ActionFunction,
+  LoaderFunction,
+  redirect,
+} from "remix";
 import { Button } from "~/components/Button";
 import { ErrorBox } from "~/components/ErrorBox";
 import { FormLabel } from "~/components/FormLabel";
 import { Header } from "~/components/Header";
 import { Section } from "~/components/Section";
 import { authGuard } from "~/modules/auth/services/auth-guard";
+import { changeFullname } from "~/modules/user/services/changeFullname";
 import { User } from "~/modules/user/types";
 import { validateUserFullname } from "~/modules/user/validators/validate-user-fullname";
+import { getSession } from "~/sessions";
 import { DashboardLayout } from "../../layouts/DashboardLayout";
 
 export const meta = () => {
@@ -39,14 +47,17 @@ export const action: ActionFunction = async ({
   request,
 }): Promise<ActionData | Response> => {
   const formData = await request.formData();
-  const fullname = formData.get("fullname")?.toString();
-
-  const errors = validateUserFullname(fullname || "");
+  const fullname = formData.get("fullname")?.toString() || "";
+  const session = await getSession(request.headers.get("Cookie"));
+  const errors = validateUserFullname(fullname);
 
   if (errors?.fullname) {
     return { errors };
   }
-  return { errors: {} };
+
+  await changeFullname(fullname!, session.get("auth-cookie"));
+
+  return redirect("/dashboard");
 };
 
 export default function WhatsYourNamePage() {

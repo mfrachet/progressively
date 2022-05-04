@@ -46,8 +46,8 @@ describe("/dashboard/what-s-your-name", () => {
     it("changes the fullname", () => {
       cy.get("input").type("Linda");
       cy.findByRole("button", { name: "Set my fullname" }).click();
-      cy.url().should("eq", "/dashboard");
-      cy.findByText("Linda").should("be.visible");
+      cy.findByRole("heading", { name: "Welcome aboard" }).should("be.visible");
+      cy.findAllByText("Linda").should("be.visible");
     });
   });
 });
