@@ -31,6 +31,11 @@ import { MailService } from '../mail/mail.service';
 import { AuthService } from './auth.service';
 import { CryptoService } from '../crypto/crypto.service';
 
+type LoginDTO = {
+  email: string;
+  password: string;
+};
+
 @Controller('auth')
 export class AuthController {
   constructor(

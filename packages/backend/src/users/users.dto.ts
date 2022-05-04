@@ -4,6 +4,6 @@ export interface UserRetrieveDTO {
   email: string;
 }
 
-export interface UserChangeFullnameDTO {
+export class UserChangeFullnameDTO {
   fullname: string;
 }
