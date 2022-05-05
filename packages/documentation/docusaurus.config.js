@@ -11,7 +11,7 @@ const config = {
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  favicon: "img/favicon.ico",
+  // favicon: "img/favicon.ico",
   organizationName: "mfrachet", // Usually your GitHub org/user name.
   projectName: "progressively", // Usually your repo name.
 

@@ -5,7 +5,7 @@ import styles from "./styles.module.css";
 const FeatureList = [
   {
     title: "Lightweight",
-    Svg: require("@site/static/img/undraw_docusaurus_mountain.svg").default,
+    Svg: require("@site/static/img/rocket.svg").default,
     description: (
       <>
         Progressively provides lightweight SDKs so that your websites and
@@ -36,7 +36,7 @@ const FeatureList = [
   },
   {
     title: "Accessible",
-    Svg: require("@site/static/img/undraw_docusaurus_tree.svg").default,
+    Svg: require("@site/static/img/a11y.svg").default,
     description: (
       <>
         Progressively's dashboard has been built with accessibility in mind and
@@ -46,7 +46,7 @@ const FeatureList = [
   },
   {
     title: "Zero tracking",
-    Svg: require("@site/static/img/undraw_docusaurus_react.svg").default,
+    Svg: require("@site/static/img/eye-crossed.svg").default,
     description: (
       <>
         Progressively does not track anything related to users activities. The
@@ -61,7 +61,7 @@ function Feature({ Svg, title, description }) {
   return (
     <div className={clsx("col col--4")}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+        <Svg className={styles.featureSvg} role="img" style={{ height: 88 }} />
       </div>
       <div className="text--center padding-horiz--md">
         <h3>{title}</h3>
