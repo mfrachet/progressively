@@ -7,8 +7,8 @@ const lightCodeTheme = require("prism-react-renderer/themes/github");
 const config = {
   title: "Progressively",
   tagline: "Feature flags that don't kill your website performances.",
-  url: "https://your-docusaurus-test-site.com",
-  baseUrl: "/",
+  url: "https://mfrachet.github.io/",
+  baseUrl: "/progressively/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   // favicon: "img/favicon.ico",
