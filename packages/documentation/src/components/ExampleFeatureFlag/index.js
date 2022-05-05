@@ -45,18 +45,21 @@ export const ExampleFeatureFlag = () => {
       <Browser>
         <h3>Progressively dashboard</h3>
 
-        <button
-          role="switch"
-          aria-label="Feature flag activation"
-          aria-checked={activated}
-          borderRadius={32}
-          onClick={() => setActivated((s) => !s)}
-          className={styles.btn}
-        >
-          <div>Off</div>
-          <div aria-hidden className={switchClassName}></div>
-          <div>On</div>
-        </button>
+        <div className={styles.flag}>
+          <span id="homepage">The new homepage feature flag</span>
+          <button
+            role="switch"
+            aria-labelledby="homepage"
+            aria-checked={activated}
+            borderRadius={32}
+            onClick={() => setActivated((s) => !s)}
+            className={styles.btn}
+          >
+            <div>Off</div>
+            <div aria-hidden className={switchClassName}></div>
+            <div>On</div>
+          </button>
+        </div>
       </Browser>
 
       <Browser isActivated={activated} hasColoredDots>

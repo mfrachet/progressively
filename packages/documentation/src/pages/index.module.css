@@ -8,6 +8,7 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+  border-bottom: 1px solid #e1e8f6;
 }
 
 @media screen and (max-width: 996px) {
@@ -20,4 +21,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.firstPart {
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #4267b2;
+}
+
+.secondPart {
+  text-transform: uppercase;
+  color: rgb(74, 85, 104);
+  border-bottom-width: 2px;
+  border-bottom-color: rgb(74, 85, 104);
 }
