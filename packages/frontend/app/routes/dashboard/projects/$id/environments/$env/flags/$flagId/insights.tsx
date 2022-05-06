@@ -261,7 +261,7 @@ export default function FlagById() {
                       />
                     </linearGradient>
                   </defs>
-                  <XAxis dataKey="name" />
+                  <XAxis dataKey="date" tickFormatter={formatX} />
                   <YAxis />
                   <CartesianGrid strokeDasharray="3 3" vertical={false} />
                   <Tooltip />
