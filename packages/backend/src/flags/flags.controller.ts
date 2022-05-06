@@ -29,6 +29,7 @@ import { HasFlagAccessGuard } from './guards/hasFlagAccess';
 import { ValidationPipe } from '../shared/pipes/ValidationPipe';
 import { ApiBearerAuth } from '@nestjs/swagger';
 import { ActivateFlagDTO } from './flags.dto';
+import { FlagHitsRetrieveDTO } from './types';
 
 @ApiBearerAuth()
 @Controller()
@@ -150,12 +151,10 @@ export class FlagsController {
   async getFlagHits(
     @Param('envId') envId: string,
     @Param('flagId') flagId: string,
-    @Query() query,
   ): Promise<any> {
-    const status = query.status || FlagStatus.ACTIVATED;
-    const rawHits = await this.flagService.listFlagHits(envId, flagId, status);
+    const rawHits = await this.flagService.listFlagHits(envId, flagId);
 
-    return rawHits.map(({ _count, date }) => ({ count: _count.id, date }));
+    return rawHits;
   }
 
   @Post('environments/:envId/flags/:flagId/strategies')
