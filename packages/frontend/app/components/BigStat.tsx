@@ -1,7 +1,7 @@
 import { Box, Stat, StatLabel, StatNumber } from "@chakra-ui/react";
 
 export interface BigStateProps {
-  value: string;
+  value: string | number;
   name: string;
   color: string;
   dotted?: boolean;
