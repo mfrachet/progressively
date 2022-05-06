@@ -1,4 +1,4 @@
-import { Box, HStack, Stack } from "@chakra-ui/react";
+import { Box, HStack, Stack, useTheme } from "@chakra-ui/react";
 import {
   useLoaderData,
   LoaderFunction,
@@ -35,6 +35,7 @@ import {
 } from "~/modules/flags/components/ToggleFlag";
 import { FiFlag } from "react-icons/fi";
 import { ButtonCopy } from "~/components/ButtonCopy";
+import { BigState } from "~/components/BigStat";
 
 interface MetaArgs {
   data?: {
@@ -100,6 +101,8 @@ export const loader: LoaderFunction = async ({
 };
 
 export default function FlagById() {
+  const theme = useTheme();
+  console.log("lol", theme);
   const { project, environment, currentFlagEnv, user, hits } =
     useLoaderData<LoaderData>();
 
@@ -179,23 +182,40 @@ export default function FlagById() {
             description="Number of hits per date"
           />
 
+          <HStack spacing={8} mt={8} mb={8}>
+            <BigState
+              name="Hits on activated variant"
+              value={"9000"}
+              color={theme.colors.brand["500"]}
+            />
+            <BigState
+              name="Hits on not activated variant"
+              value={"3000"}
+              color={theme.colors.error["500"]}
+              dotted
+            />
+          </HStack>
+
           {hits.length > 0 && (
-            <Box ml={-4}>
+            <Box ml={-9}>
               <ResponsiveContainer width="100%" aspect={16.0 / 9.0}>
                 <LineChart data={hits}>
                   <Line
                     isAnimationActive={false}
                     type="monotone"
                     dataKey="activated"
-                    stroke="#8884d8"
+                    stroke={theme.colors.brand["500"]}
+                    strokeWidth={3}
                   />
                   <Line
                     isAnimationActive={false}
                     type="monotone"
                     dataKey="notactivated"
-                    stroke="red"
+                    stroke={theme.colors.error["500"]}
+                    strokeDasharray="3 3"
+                    strokeWidth={3}
                   />
-                  <CartesianGrid stroke="#ccc" />
+                  <CartesianGrid stroke="#f1f1f1" vertical={false} />
                   <XAxis dataKey="date" tickFormatter={formatX} />
                   <YAxis />
                 </LineChart>
