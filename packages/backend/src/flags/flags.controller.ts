@@ -150,8 +150,10 @@ export class FlagsController {
   async getFlagHits(
     @Param('envId') envId: string,
     @Param('flagId') flagId: string,
+    @Query() query,
   ): Promise<any> {
-    const rawHits = await this.flagService.listFlagHits(envId, flagId);
+    const status = query.status || FlagStatus.ACTIVATED;
+    const rawHits = await this.flagService.listFlagHits(envId, flagId, status);
 
     return rawHits.map(({ _count, date }) => ({ count: _count.id, date }));
   }

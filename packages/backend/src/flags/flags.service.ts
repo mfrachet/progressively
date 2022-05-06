@@ -45,7 +45,7 @@ export class FlagsService {
     return hit;
   }
 
-  async listFlagHits(envId: string, flagId: string) {
+  async listFlagHits(envId: string, flagId: string, flagStatus: FlagStatus) {
     const hits = await this.prisma.flagHit.groupBy({
       by: ['date'],
       _count: {
@@ -54,6 +54,7 @@ export class FlagsService {
       where: {
         flagEnvironmentEnvironmentId: envId,
         flagEnvironmentFlagId: flagId,
+        status: flagStatus,
       },
       orderBy: {
         date: 'asc',
