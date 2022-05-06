@@ -20,10 +20,10 @@ export const BigState = ({ name, value, color, dotted }: BigStateProps) => {
       pb={3}
     >
       <Stat>
-        <StatNumber fontSize="3xl">{value}</StatNumber>
         <StatLabel fontSize="xl" textColor="textlight" fontWeight="normal">
           {name}
         </StatLabel>
+        <StatNumber fontSize="3xl">{value}</StatNumber>
       </Stat>
     </Box>
   );
