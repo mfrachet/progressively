@@ -29,5 +29,5 @@ services:
       POSTGRES_USER: admin
       POSTGRES_DB: progressively
   redis-cache:
-    image: postgres
+    image: redis
     restart: always
