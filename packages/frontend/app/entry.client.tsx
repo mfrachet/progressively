@@ -1,16 +1,16 @@
 import { CacheProvider } from "@emotion/react";
-import React from "react";
-import ReactDOM from "react-dom";
+import React, { useState } from "react";
+import ReactDOM from "react-dom/client";
 import { RemixBrowser } from "remix";
-import ClientStyleContext from "./_chakra-setup/context.client";
-import createEmotionCache from "./_chakra-setup/createMotionCache";
+import { ClientStyleContext } from "./_chakra-setup/context";
+import createEmotionCache from "./_chakra-setup/createEmotionCache";
 
 interface ClientCacheProviderProps {
   children: React.ReactNode;
 }
 
 function ClientCacheProvider({ children }: ClientCacheProviderProps) {
-  const [cache, setCache] = React.useState(createEmotionCache());
+  const [cache, setCache] = useState(createEmotionCache());
 
   function reset() {
     setCache(createEmotionCache());
@@ -23,9 +23,9 @@ function ClientCacheProvider({ children }: ClientCacheProviderProps) {
   );
 }
 
-ReactDOM.hydrate(
+ReactDOM.hydrateRoot(
+  document,
   <ClientCacheProvider>
     <RemixBrowser />
-  </ClientCacheProvider>,
-  document
+  </ClientCacheProvider>
 );
