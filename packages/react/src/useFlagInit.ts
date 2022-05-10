@@ -28,7 +28,6 @@ export const useFlagInit = (
     sdk
       .loadFlags()
       .then((res) => {
-        console.log("wtf");
         sdk.onFlagUpdate(
           setFlags,
           res.response.headers.get("X-progressively-id")
