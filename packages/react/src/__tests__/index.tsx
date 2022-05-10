@@ -1,9 +1,9 @@
 import React from "react";
-import { render as renderTL } from "@testing-library/react";
+import { render as renderTL, screen, waitFor } from "@testing-library/react";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
-import { WebSocketServer, WebSocket } from "ws";
 import fetch from "node-fetch";
+import "@testing-library/jest-dom";
 import { ProgressivelyProvider } from "../ProgressivelyProvider";
 import { ProgressivelyProviderProps } from "../types";
 import { useFlags } from "../useFlags";
@@ -26,38 +26,53 @@ describe("React-sdk root", () => {
       </ProgressivelyProvider>
     );
 
-  // HTTP
-  (globalThis as any).fetch = jest.fn(fetch);
   const FLAG_ENDPOINT = `http://localhost:4000*`;
   const worker = setupServer();
-
-  // WS
-  (globalThis as any).WebSocket = WebSocket;
-  let wss: WebSocketServer;
-  let ws: WebSocket;
-  let intervalId: NodeJS.Timer;
+  let socket: any;
 
   beforeEach(() => {
-    wss = new WebSocketServer({
-      port: 1234,
-    });
-
-    wss.on("connection", (websocket) => {
-      ws = websocket;
-    });
+    socket = { close: jest.fn() };
+    (globalThis as any).fetch = jest.fn(fetch);
+    (globalThis as any).WebSocket = jest.fn(() => socket);
   });
 
   afterEach(() => {
-    clearInterval(intervalId);
-    wss.clients.forEach((client) => client.terminate());
-    wss.close();
+    jest.resetAllMocks();
   });
 
   beforeAll(() => worker.listen());
   afterEach(() => worker.resetHandlers());
   afterAll(() => worker.close());
 
-  it("", () => {
-    render();
+  describe("initial loading (fetch)", () => {
+    it("shows the initial flags after loading (newHomepage is false)", () => {
+      worker.use(
+        rest.get(FLAG_ENDPOINT, (_, res, ctx) => {
+          return res(ctx.json({ newHomepage: false }));
+        })
+      );
+
+      render();
+
+      expect(screen.getByText("Old variant")).toBeInTheDocument();
+    });
+
+    it("shows the initial flags after loading (newHomepage is true)", async () => {
+      worker.use(
+        rest.get(FLAG_ENDPOINT, (_, res, ctx) => {
+          return res(ctx.json({ newHomepage: true }));
+        })
+      );
+
+      render();
+
+      await waitFor(() =>
+        expect(screen.getByText("New variant")).toBeInTheDocument()
+      );
+
+      expect((global as any).WebSocket).toHaveBeenCalledWith(
+        "ws://localhost:1234?client_key=valid-sdk-key"
+      );
+    });
   });
 });

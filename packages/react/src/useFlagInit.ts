@@ -17,7 +17,6 @@ export const useFlagInit = (
 
     // Early return the client side fetch when they are resolved on the server
     if (initialFlags) {
-      console.log("???", initialFlags);
       const cookieValue = document.cookie
         .split("; ")
         .find((row) => row.startsWith("progressively-id="))
@@ -26,6 +25,8 @@ export const useFlagInit = (
       sdk.onFlagUpdate(setFlags, cookieValue);
       return () => sdk.disconnect();
     }
+
+    console.log("passing here?");
 
     sdk
       .loadFlags()
