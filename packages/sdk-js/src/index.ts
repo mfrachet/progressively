@@ -7,9 +7,13 @@ function init(clientKey: string, options?: SDKOptions): ProgressivelySdkType {
 
   // HTTP specific
   const apiRoot = options?.apiUrl || "http://localhost:4000";
-  const flagEndpoint = `${apiRoot}/sdk/${clientKey}?${Object.keys(fields)
+  const httpOptions = Object.keys(fields)
     .map((key) => key + "=" + fields[key])
-    .join("&")}`;
+    .join("&");
+
+  const flagEndpoint = `${apiRoot}/sdk/${clientKey}${
+    httpOptions ? `?${httpOptions}` : ""
+  }`;
 
   // Websocket specific
   const websocketRoot = options?.websocketUrl || "ws://localhost:4001";
