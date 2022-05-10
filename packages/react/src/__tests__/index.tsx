@@ -32,8 +32,8 @@ describe("React-sdk root", () => {
 
   beforeEach(() => {
     socket = { close: jest.fn() };
-    (globalThis as any).fetch = jest.fn(fetch);
-    (globalThis as any).WebSocket = jest.fn(() => socket);
+    (global as any).fetch = jest.fn(fetch);
+    (global as any).WebSocket = jest.fn(() => socket);
   });
 
   afterEach(() => {
@@ -44,7 +44,7 @@ describe("React-sdk root", () => {
   afterEach(() => worker.resetHandlers());
   afterAll(() => worker.close());
 
-  describe("initial loading (fetch)", () => {
+  describe("[CSR] initial loading", () => {
     it("shows the initial flags after loading (newHomepage is false)", () => {
       worker.use(
         rest.get(FLAG_ENDPOINT, (_, res, ctx) => {
@@ -69,9 +69,63 @@ describe("React-sdk root", () => {
       await waitFor(() =>
         expect(screen.getByText("New variant")).toBeInTheDocument()
       );
+    });
+  });
 
-      expect((global as any).WebSocket).toHaveBeenCalledWith(
-        "ws://localhost:1234?client_key=valid-sdk-key"
+  describe("[SSR] initial loading", () => {
+    it("shows the initial flags after loading (newHomepage is false)", () => {
+      render({
+        initialFlags: { newHomepage: false },
+        clientKey: "valid-sdk-key",
+      });
+
+      expect(screen.getByText("Old variant")).toBeInTheDocument();
+    });
+
+    it("shows the initial flags after loading (newHomepage is true)", async () => {
+      render({
+        initialFlags: { newHomepage: true },
+        clientKey: "valid-sdk-key",
+      });
+
+      await waitFor(() =>
+        expect(screen.getByText("New variant")).toBeInTheDocument()
+      );
+    });
+  });
+
+  describe("WebSocket init", () => {
+    it("[From CSR loads and React Native] Socket init through HTTP header", async () => {
+      worker.use(
+        rest.get(FLAG_ENDPOINT, (_, res, ctx) => {
+          return res(
+            ctx.json({ newHomepage: true }),
+            ctx.set("X-progressively-id", "abcd")
+          );
+        })
+      );
+
+      render();
+
+      await waitFor(() =>
+        expect(screen.getByText("New variant")).toBeInTheDocument()
+      );
+
+      expect(global.WebSocket).toHaveBeenCalledWith(
+        "ws://localhost:4001?client_key=valid-sdk-key&id=abcd"
+      );
+    });
+
+    it("[From SSR loads] Socket init through cookies", () => {
+      document.cookie = "progressively-id=super-cool";
+
+      render({
+        initialFlags: { newHomepage: true },
+        clientKey: "valid-sdk-key",
+      });
+
+      expect(global.WebSocket).toHaveBeenCalledWith(
+        "ws://localhost:4001?client_key=valid-sdk-key&id=super-cool"
       );
     });
   });

@@ -13,7 +13,6 @@ export const useFlagInit = (
   // Only run the effect on mount, NEVER later
   useEffect(() => {
     const sdk = sdkRef.current;
-    if (!sdk) return;
 
     // Early return the client side fetch when they are resolved on the server
     if (initialFlags) {
@@ -26,11 +25,10 @@ export const useFlagInit = (
       return () => sdk.disconnect();
     }
 
-    console.log("passing here?");
-
     sdk
       .loadFlags()
       .then((res) => {
+        console.log("wtf");
         sdk.onFlagUpdate(
           setFlags,
           res.response.headers.get("X-progressively-id")
