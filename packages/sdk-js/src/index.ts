@@ -47,14 +47,12 @@ function Sdk(
       });
   }
 
-  function onFlagUpdate(callback: (data: FlagDict) => void) {
-    const cookieValue = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("progressively-id="))
-      ?.split("=")[1];
-
+  function onFlagUpdate(
+    callback: (data: FlagDict) => void,
+    userId?: string | null
+  ) {
     socket = new WebSocket(
-      cookieValue ? `${websocketEndpoint}&id=${cookieValue}` : websocketEndpoint
+      userId ? `${websocketEndpoint}&id=${userId}` : websocketEndpoint
     );
 
     socket.onmessage = (event) => {
