@@ -4,9 +4,9 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
-    "android": "rm -rf ../../packages/react/node_modules && expo start --android",
-    "ios": "rm -rf ../../packages/react/node_modules && expo start --ios",
-    "web": "rm -rf ../../packages/react/node_modules && expo start --web",
+    "android": "rm -rf ./node_modules/@progressively/react/node_modules && expo start --android",
+    "ios": "rm -rf ./node_modules/@progressively/react/node_modules && expo start --ios",
+    "web": "rm -rf ./node_modules/@progressively/react/node_modules && expo start --web",
     "eject": "expo eject"
   },
   "dependencies": {
