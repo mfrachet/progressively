@@ -15,19 +15,19 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: "16"
-          cache: "npm"
+          cache: "pnpm"
           cache-dependency-path: packages/react/package-lock.json
 
       - name: Bootstrap projects
-        run: npm run setup:ci
+        run: pnpm run setup:ci
 
       - name: Build
-        run: npm run build
+        run: pnpm run build
 
       - name: Tests
         working-directory: ./packages/react
-        run: npm run test
+        run: pnpm run test
 
       - name: Bundlesize
         working-directory: ./packages/react
-        run: npm run bundlesize
+        run: pnpm run bundlesize
