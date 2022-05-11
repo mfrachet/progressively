@@ -21,7 +21,7 @@ import { FlagsService } from './flags.service';
 import { JwtAuthGuard } from '../auth/strategies/jwt.guard';
 import { strToFlagStatus } from './utils';
 import { WebsocketGateway } from '../websocket/websocket.gateway';
-import { FieldRecord } from '../strategy/types';
+import { FieldRecord, FlagDict } from '../strategy/types';
 import { Response, Request } from 'express';
 import { HasEnvironmentAccessGuard } from '../environments/guards/hasEnvAccess';
 import { StrategySchema, StrategyCreationDTO } from '../strategy/strategy.dto';
@@ -85,16 +85,25 @@ export class FlagsController {
   /**
    * Get the flag values by client sdk key
    */
-  @Get('sdk/:clientKey')
+  @Get('sdk/:params')
   async getByClientKey(
-    @Param('clientKey') clientKey: string,
-    @Query() fields: FieldRecord = {},
+    @Param('params') params: string,
     @Res({ passthrough: true }) response: Response,
     @Req() request: Request,
   ) {
+    let fields;
+    try {
+      fields = JSON.parse(Buffer.from(params, 'base64').toString('ascii'));
+    } catch (e) {
+      throw new BadRequestException();
+    }
+
     const COOKIE_KEY = 'progressively-id';
     const userId = request?.cookies?.[COOKIE_KEY];
-    const flagEnvs = await this.envService.getEnvironmentByClientKey(clientKey);
+    const flagEnvs = await this.envService.getEnvironmentByClientKey(
+      fields.clientKey,
+    );
+
     const dictOfFlags = {};
 
     let realUserId;
