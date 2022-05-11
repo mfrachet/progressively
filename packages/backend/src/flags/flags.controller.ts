@@ -7,7 +7,6 @@ import {
   Param,
   Post,
   Put,
-  Query,
   Req,
   Res,
   UseGuards,
@@ -21,7 +20,6 @@ import { FlagsService } from './flags.service';
 import { JwtAuthGuard } from '../auth/strategies/jwt.guard';
 import { strToFlagStatus } from './utils';
 import { WebsocketGateway } from '../websocket/websocket.gateway';
-import { FieldRecord, FlagDict } from '../strategy/types';
 import { Response, Request } from 'express';
 import { HasEnvironmentAccessGuard } from '../environments/guards/hasEnvAccess';
 import { StrategySchema, StrategyCreationDTO } from '../strategy/strategy.dto';
@@ -29,7 +27,7 @@ import { HasFlagAccessGuard } from './guards/hasFlagAccess';
 import { ValidationPipe } from '../shared/pipes/ValidationPipe';
 import { ApiBearerAuth } from '@nestjs/swagger';
 import { ActivateFlagDTO } from './flags.dto';
-import { FlagHitsRetrieveDTO } from './types';
+import { FieldRecord } from '../strategy/types';
 
 @ApiBearerAuth()
 @Controller()
@@ -91,7 +89,7 @@ export class FlagsController {
     @Res({ passthrough: true }) response: Response,
     @Req() request: Request,
   ) {
-    let fields;
+    let fields: FieldRecord;
     try {
       fields = JSON.parse(Buffer.from(params, 'base64').toString('ascii'));
     } catch (e) {

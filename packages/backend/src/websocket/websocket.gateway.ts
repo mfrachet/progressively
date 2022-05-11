@@ -17,7 +17,6 @@ import {
 import { FlagStatus } from '../flags/flags.status';
 import { LocalWebsocket } from './types';
 import { RedisService } from './redis.service';
-import { FlagDict } from '../strategy/types';
 
 @WebSocketGateway(4001)
 export class WebsocketGateway
