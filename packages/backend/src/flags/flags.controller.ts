@@ -99,7 +99,7 @@ export class FlagsController {
     const COOKIE_KEY = 'progressively-id';
     const userId = request?.cookies?.[COOKIE_KEY];
     const flagEnvs = await this.envService.getEnvironmentByClientKey(
-      fields.clientKey,
+      fields.clientKey as string,
     );
 
     const dictOfFlags = {};
