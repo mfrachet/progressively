@@ -21,7 +21,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('Progressively API')
     .setDescription(
-      'The Progressively API description. In order to generate a Bearer token, you can get the headers of an authenticated user OR run "npm run gen:bearer" at the root of the backend project.',
+      'The Progressively API description. In order to generate a Bearer token, you can get the headers of an authenticated user OR run "pnpm run gen:bearer" at the root of the backend project.',
     )
     .setVersion('1.0')
     .addBearerAuth()

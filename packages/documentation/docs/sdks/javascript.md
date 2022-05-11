@@ -7,7 +7,7 @@ Progressively comes with a JavaScript SDK that used under the hood of the differ
 ## Installation
 
 ```bash
-npm install @progressively/sdk-js
+pnpm install @progressively/sdk-js
 ```
 
 ## Loading the flags

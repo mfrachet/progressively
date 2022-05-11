@@ -3,12 +3,12 @@ FROM node:16-alpine3.14 AS builder
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm install
+RUN pnpm install
 
 ENV NODE_ENV=production
 
 COPY . .
-RUN npm run build
+RUN pnpm run build
 
 FROM node:16-alpine3.14 AS runner
 
@@ -19,4 +19,4 @@ COPY --from=builder /app/public ./public
 
 EXPOSE 3000
 
-CMD ["npm","run", "start"]
+CMD ["pnpm","run", "start"]

@@ -5,7 +5,7 @@ Progressively comes with a first class support for React and its major framework
 ## Installation
 
 ```bash
-npm install @progressively/react
+pnpm install @progressively/react
 ```
 
 ## Ready to go snippet (Nextjs)

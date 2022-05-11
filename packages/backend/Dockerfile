@@ -3,10 +3,10 @@ WORKDIR /app
 
 COPY package*.json ./
 COPY prisma ./prisma/
-RUN npm install
+RUN pnpm install
 
 COPY . .
-RUN npm run build
+RUN pnpm run build
 
 FROM node:16-alpine3.14 AS runner
 
@@ -19,4 +19,4 @@ COPY --from=builder /app/scripts ./scripts
 EXPOSE 4000
 EXPOSE 4001
 
-CMD [ "npm", "run", "start:prod" ]
+CMD [ "pnpm", "run", "start:prod" ]
