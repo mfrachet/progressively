@@ -10,7 +10,6 @@ export { cleanupDb } from "../../backend/test/helpers/seed";
 const prismaClient = new PrismaClient();
 
 export const seedDb = async (userCount: number) => {
-  console.log("????");
   await prismaClient.$connect();
 
   const [projectFromSeeding] = await seedProjects(prismaClient);
