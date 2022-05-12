@@ -72,7 +72,7 @@ export const seedDb = async (userCount: number) => {
   );
 
   await Promise.all(userProjectsPromises);
-  console.log(`User seeded: ${userProjectsPromises.length}`);
+  console.log(`[Seeding]: User seeded: ${userProjectsPromises.length}\n\n\n`);
 
   await prismaClient.$disconnect();
 };

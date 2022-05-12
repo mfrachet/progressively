@@ -2,6 +2,7 @@ import { BrowserChain, LocalBrowserType } from "./BrowserChain";
 import { seedDb, cleanupDb } from "../../src/seed";
 
 export const test = async (
+  name: string,
   userCount: number,
   type: LocalBrowserType,
   fn: (browserChain: BrowserChain) => Promise<unknown>
@@ -13,10 +14,9 @@ export const test = async (
     await fn(browserChain);
     await browserChain.closeAll();
   } catch (error) {
-    console.info("╳ Test failed");
-    console.error(error);
+    console.error(`╳ FAILED: ${name}\n`, error);
   }
 
   await cleanupDb();
-  console.info("✓ Test succeeded");
+  console.info(`✓ ${name}`);
 };
