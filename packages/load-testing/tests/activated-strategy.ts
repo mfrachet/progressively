@@ -10,18 +10,22 @@ const config: TestConfig = {
   type: browserType || "chromium",
 };
 
-test("percentage based rollout", config, async (browsers) => {
-  await browsers.open("http://localhost:3000");
+test(
+  "verifies that flags are updated for everyone",
+  config,
+  async (browsers) => {
+    await browsers.open("http://localhost:3000");
 
-  await browsers.run(async (page, index) => {
-    await expect(page).toHaveText(`User ${index}`);
-    await expect(page).toHaveText(`New variant`);
-  });
+    await browsers.run(async (page, index) => {
+      await expect(page).toHaveText(`User ${index}`);
+      await expect(page).toHaveText(`New variant`);
+    });
 
-  await changeFlagStatus("1", "1", "NOT_ACTIVATED");
+    await changeFlagStatus("1", "1", "NOT_ACTIVATED");
 
-  await browsers.run(async (page, index) => {
-    await expect(page).toHaveText(`User ${index}`);
-    await expect(page).toHaveText(`Old variant`);
-  });
-});
+    await browsers.run(async (page, index) => {
+      await expect(page).toHaveText(`User ${index}`);
+      await expect(page).toHaveText(`Old variant`);
+    });
+  }
+);
