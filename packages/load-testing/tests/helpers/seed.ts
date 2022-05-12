@@ -59,6 +59,25 @@ export const seedDb = async (userCount: number) => {
     );
   }
 
+  const marvin = await prismaClient.user.create({
+    data: {
+      uuid: "-1",
+      fullname: "Marvin Frachet",
+      email: `marvin.frachet@something.com`,
+      password: await CryptoService.hash("password"),
+      activationToken: "-1",
+      status: UserStatus.Active,
+    },
+  });
+
+  await prismaClient.userProject.create({
+    data: {
+      projectId: projectFromSeeding.uuid,
+      userId: marvin.uuid,
+      role: UserRoles.Admin,
+    },
+  });
+
   const userResults = await Promise.all(userPromises);
 
   const userProjectsPromises = userResults.map((u: any) =>

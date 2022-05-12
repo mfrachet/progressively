@@ -1,3 +1,5 @@
+import chalk from "chalk";
+import { Page } from "playwright";
 import { BrowserChain, LocalBrowserType } from "./BrowserChain";
 import { seedDb, cleanupDb } from "./seed";
 
@@ -21,10 +23,21 @@ export const test = async (
 
     await fn(browserChain);
     await browserChain.closeAll();
+    console.info(chalk.green(`✓ ${name}`));
   } catch (error) {
-    console.error(`╳ FAILED: ${name}\n`, error);
+    console.error(chalk.red(`FAILED: ${name}\n`));
+    throw error;
+  } finally {
+    await cleanupDb();
   }
-
-  await cleanupDb();
-  console.info(`✓ ${name}`);
 };
+
+export function expect(page: Page) {
+  return {
+    toHaveText: async (str: string) => {
+      const result = await page.waitForSelector(`text='${str}'`);
+
+      if (!result) throw new Error(`${str} not found`);
+    },
+  };
+}
