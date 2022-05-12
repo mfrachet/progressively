@@ -31,13 +31,3 @@ export const test = async (
     await cleanupDb();
   }
 };
-
-export function expect(page: Page) {
-  return {
-    toHaveText: async (str: string) => {
-      const result = await page.waitForSelector(`text='${str}'`);
-
-      if (!result) throw new Error(`${str} not found`);
-    },
-  };
-}
