@@ -13,8 +13,10 @@ export const test = async (
     await fn(browserChain);
     await browserChain.closeAll();
   } catch (error) {
+    console.info("╳ Test failed");
     console.error(error);
   }
 
   await cleanupDb();
+  console.info("✓ Test succeeded");
 };
