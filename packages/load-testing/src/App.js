@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import { ProgressivelyProvider, useFlags } from "@progressively/react";
 
 const FlaggedComponent = () => {
-  const { flags } = useFlags();
+  const { flags, isLoading } = useFlags();
+
+  if (isLoading) return null;
 
   if (flags.newHomepage) {
     return <div style={{ background: "red", color: "white" }}>New variant</div>;
