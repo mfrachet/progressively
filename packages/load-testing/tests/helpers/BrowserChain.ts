@@ -8,6 +8,7 @@ import {
 } from "playwright";
 
 export type LocalBrowserType = "chromium" | "firefox" | "webkit";
+export type PageCallback = (p: Page) => Promise<void>;
 
 export class LocalBrowser {
   private page?: Page;
@@ -23,6 +24,12 @@ export class LocalBrowser {
 
   public async close() {
     await this.browser.close();
+  }
+
+  public async run(callback: PageCallback) {
+    if (this.page) {
+      await callback(this.page);
+    }
   }
 }
 
@@ -72,6 +79,14 @@ export class BrowserChain {
 
   public async closeAll() {
     const browserPromises = this.browsers.map((browser) => browser.close());
+
+    await Promise.all(browserPromises);
+  }
+
+  public async run(callback: PageCallback) {
+    const browserPromises = this.browsers.map((browser) =>
+      browser.run(callback)
+    );
 
     await Promise.all(browserPromises);
   }

@@ -7,12 +7,14 @@ export const test = async (
   fn: (browserChain: BrowserChain) => Promise<unknown>
 ) => {
   await seedDb(userCount);
-  console.log("Seeding finished\n-----------------------");
 
-  const browserChain = await BrowserChain.create(userCount, type);
-  await fn(browserChain);
-  await browserChain.closeAll();
+  try {
+    const browserChain = await BrowserChain.create(userCount, type);
+    await fn(browserChain);
+    await browserChain.closeAll();
+  } catch (error) {
+    console.error(error);
+  }
 
   await cleanupDb();
-  console.log("-----------------------\nCleanup finished");
 };
