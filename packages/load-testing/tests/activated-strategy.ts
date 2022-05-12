@@ -5,9 +5,10 @@ const config: TestConfig = {
   type: "chromium",
 };
 
-test("percentage based rollout", config, async (browserChain) => {
-  await browserChain.openForAll("http://localhost:3000");
-  await browserChain.run(async (page, index) => {
-    await await page.$$(`text='User ${index}'`);
+test("percentage based rollout", config, async (browsers) => {
+  await browsers.open("http://localhost:3000");
+  await browsers.run(async (page, index) => {
+    await page.$$(`text='User ${index}'`);
+    await page.$$(`text='New variant'`);
   });
 });

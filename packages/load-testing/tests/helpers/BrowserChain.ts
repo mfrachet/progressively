@@ -72,7 +72,7 @@ export class BrowserChain {
     return new BrowserChain(localBrowsers);
   }
 
-  public async openForAll(rawUrl: string) {
+  public async open(rawUrl: string) {
     const browserPromises = this.browsers.map((browser, index) => {
       const url = new URL(rawUrl);
       url.searchParams.set("id", String(index));

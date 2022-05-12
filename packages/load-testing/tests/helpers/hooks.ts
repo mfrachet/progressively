@@ -1,5 +1,5 @@
 import { BrowserChain, LocalBrowserType } from "./BrowserChain";
-import { seedDb, cleanupDb } from "../../src/seed";
+import { seedDb, cleanupDb } from "./seed";
 
 export interface TestConfig {
   userCount: number;
