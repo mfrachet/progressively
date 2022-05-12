@@ -11,7 +11,7 @@ const config: TestConfig = {
 };
 
 test(
-  "verifies that flags are updated for everyone",
+  "[Boolean activation]: everybody receives the same variations at load and update time",
   config,
   async (browsers) => {
     await browsers.open("http://localhost:3000");
