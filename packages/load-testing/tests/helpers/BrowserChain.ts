@@ -9,6 +9,7 @@ import {
 
 export type LocalBrowserType = "chromium" | "firefox" | "webkit";
 export type PageCallback = (p: Page) => Promise<void>;
+export type PageCallbackWithIndex = (p: Page, index: number) => Promise<void>;
 
 export class LocalBrowser {
   private page?: Page;
@@ -83,9 +84,9 @@ export class BrowserChain {
     await Promise.all(browserPromises);
   }
 
-  public async run(callback: PageCallback) {
-    const browserPromises = this.browsers.map((browser) =>
-      browser.run(callback)
+  public async run(callback: PageCallbackWithIndex) {
+    const browserPromises = this.browsers.map((browser, index) =>
+      browser.run((page) => callback(page, index))
     );
 
     await Promise.all(browserPromises);
