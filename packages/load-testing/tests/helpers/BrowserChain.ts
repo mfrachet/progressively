@@ -72,8 +72,13 @@ export class BrowserChain {
     return new BrowserChain(localBrowsers);
   }
 
-  public async openForAll(url: string) {
-    const browserPromises = this.browsers.map((browser) => browser.open(url));
+  public async openForAll(rawUrl: string) {
+    const browserPromises = this.browsers.map((browser, index) => {
+      const url = new URL(rawUrl);
+      url.searchParams.set("id", String(index));
+
+      return browser.open(url.toString());
+    });
 
     await Promise.all(browserPromises);
   }
