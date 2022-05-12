@@ -23,7 +23,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build:test": "react-scripts build",
-    "test:perf": "ts-node ./tests/activated-strategy.ts"
+    "test:chromium": "BROWSER_TYPE=chromium ts-node ./tests/activated-strategy.ts",
+    "test:firefox": "BROWSER_TYPE=firefox ts-node ./tests/activated-strategy.ts",
+    "test:webkit": "BROWSER_TYPE=webkit ts-node ./tests/activated-strategy.ts"
   },
   "eslintConfig": {
     "extends": [
