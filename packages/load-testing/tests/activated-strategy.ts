@@ -39,13 +39,11 @@ test("[Percentage activation]: 25% of the people should receive the activated va
     config.userCount
   );
 
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-
   await browsers.run(async (page) => {
     await activatedCounter.increaseWhenVisible(page);
     await notActivatedCounter.increaseWhenVisible(page);
   });
 
-  await activatedCounter.verifyRange(15, 20);
+  await activatedCounter.verifyRange(15, 25);
   await notActivatedCounter.verifyRange(75, 85);
 });
