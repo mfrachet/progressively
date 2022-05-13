@@ -29,8 +29,6 @@ export function createCounter(str: string, userCount: number) {
           `${str} has been counted ${percentBased} while it was supposed to be between ${startRange} and ${endRange}`
         );
       }
-
-      console.log("lol", percentBased);
     },
   };
 }
