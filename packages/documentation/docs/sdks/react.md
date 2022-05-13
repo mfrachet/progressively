@@ -5,7 +5,7 @@
 ## Installation
 
 ```bash
-npm install @progressively/react
+pnpm install @progressively/react
 ```
 
 ## Ready to go snippet

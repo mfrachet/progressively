@@ -40,9 +40,9 @@ Then, prepare the database by creating the tables:
 
 ```bash
 # At the root of the project
-npm install
-npm run setup         # prepares the mono-repo
-npm run db:prepare    # creates the tables
+pnpm install
+pnpm run setup         # prepares the mono-repo
+pnpm run db:prepare    # creates the tables
 ```
 
 Now, you can either build the image using the Dockerfile available in the project or directly use the image hosted on Docker Hub:

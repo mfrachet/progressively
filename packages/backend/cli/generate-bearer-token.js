@@ -25,7 +25,7 @@ const printError = () => {
   
   Oops! User not found on ${endpoint}
         
-  On a side note, remember that by default the generation runs against port 4000. If you want to run on another port, make sure to run BACKEND_ENDPOINT=http://localhost:5000 npm run gen:bearer
+  On a side note, remember that by default the generation runs against port 4000. If you want to run on another port, make sure to run BACKEND_ENDPOINT=http://localhost:5000 pnpm run gen:bearer
             `);
 };
 

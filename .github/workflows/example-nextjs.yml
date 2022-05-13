@@ -31,10 +31,11 @@ jobs:
           - 5432:5432
     steps:
       - uses: actions/checkout@v2
+      - uses: pnpm/action-setup@v2.1.0
       - uses: actions/setup-node@v2
         with:
           node-version: "16"
-          cache: "npm"
+          cache: "pnpm"
           cache-dependency-path: |
             package-lock.json
             example/nextjs/package-lock.json
@@ -45,25 +46,25 @@ jobs:
 
       - name: Install dependencies on the example project
         working-directory: ./example/nextjs
-        run: npm install
+        run: pnpm install
 
       - name: Bootstrap projects
-        run: npm run setup:ci
+        run: pnpm run setup:ci
 
       - name: Prepare the DB
-        run: npm run db:prepare
+        run: pnpm run db:prepare
 
       - name: Build
-        run: npm run build
+        run: pnpm run build
 
       - name: Start the backend project
         working-directory: ./packages/backend
-        run: npm start &
+        run: pnpm start &
 
       - name: Start the Example Nextjs project
         working-directory: ./example/nextjs
-        run: npm run build && npm start &
+        run: pnpm run build && pnpm start &
 
       - name: E2E tests
         working-directory: ./example/nextjs
-        run: npx wait-on -t 60000 tcp:4000 && npm run test:e2e:ci
+        run: npx wait-on -t 60000 tcp:4000 && pnpm run test:e2e:ci

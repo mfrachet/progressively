@@ -35,16 +35,16 @@ docker run -it --rm --name progressively-redis -p 6379:6379 -d redis
 Then, run the following commands at the root of the project:
 
 ```bash
-npm install
-npm run setup         # prepares the mono-repo
-npm run db:prepare    # creates the tables
-npm run build         # builds the projects and their inter-dependencies
-npm run start         # start the frontend and the backend
+pnpm install
+pnpm run setup         # prepares the mono-repo
+pnpm run db:prepare    # creates the tables
+pnpm run build         # builds the projects and their inter-dependencies
+pnpm run start         # start the frontend and the backend
 ```
 
 The dashboard is now available on [http://localhost:3000](http://localhost:3000), the backend APIs are available on [http://localhost:4000/api](http://localhost:4000/api).
 
-_Note: this project comes with fixtures to run API and E2E automated tests. You can seed Postgres running the `npm run db:seed` and cleaning up using `npm run db:cleanup`. The following accounts are provided:_
+_Note: this project comes with fixtures to run API and E2E automated tests. You can seed Postgres running the `pnpm run db:seed` and cleaning up using `pnpm run db:cleanup`. The following accounts are provided:_
 
 - marvin.frachet@something.com / password
 - john.doe@gmail.com / password
