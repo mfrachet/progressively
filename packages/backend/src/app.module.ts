@@ -40,8 +40,10 @@ import { AppLoggerMiddleware } from './logging.middleware';
     UsersModule,
     AuthModule,
     ThrottlerModule.forRoot({
-      ttl: 60,
-      limit: 10,
+      ttl: process.env.THROTTLING_TTL ? Number(process.env.THROTTLING_TTL) : 60,
+      limit: process.env.THROTTLING_LIMIT
+        ? Number(process.env.THROTTLING_LIMIT)
+        : 10,
     }),
     WebsocketModule,
     EnvironmentsModule,
