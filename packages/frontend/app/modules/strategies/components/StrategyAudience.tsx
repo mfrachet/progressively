@@ -94,25 +94,6 @@ export const StrategyAudience = ({
             ]}
           />
 
-          <FormControl isInvalid={Boolean(errors["field-comparator"])}>
-            <FormLabel htmlFor="field-comparator">Field comparator:</FormLabel>
-
-            <Select
-              name="field-comparator"
-              id="field-comparator"
-              defaultValue={initialFieldComparator}
-              aria-describedby={
-                errors["field-comparator"]
-                  ? "error-field-comparator"
-                  : undefined
-              }
-            >
-              <option value={ComparatorEnum.Equals}>Equals</option>
-              <option value={ComparatorEnum.NotEquals}>Not equals</option>
-              <option value={ComparatorEnum.Contains}>Contains</option>
-            </Select>
-          </FormControl>
-
           <TextareaInput
             isInvalid={Boolean(errors["field-value"])}
             label="Values matching the previous field (one per line):"

@@ -120,6 +120,7 @@ export default function Signin() {
               isInvalid={Boolean(errors?.password)}
               name="password"
               label="Password"
+              type="password"
               placeholder="************"
             />
 
