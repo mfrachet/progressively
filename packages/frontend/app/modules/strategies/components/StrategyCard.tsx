@@ -1,7 +1,8 @@
-import { Box, Flex, Heading, ListItem, UnorderedList } from "@chakra-ui/react";
+import { Box, Flex, Heading } from "@chakra-ui/react";
 import { FaTrash } from "react-icons/fa";
 import { Button } from "~/components/Button";
 import { Typography } from "~/components/Typography";
+import { Li, Ul } from "~/components/UL";
 import { VisuallyHidden } from "~/components/VisuallyHidden";
 import { ComparatorEnum, StrategyRetrieveDTO } from "../types";
 
@@ -67,13 +68,15 @@ const StrategyTargetConstraints = ({
     const targets = strat.fieldValue?.split("\n");
 
     return (
-      <UnorderedList pl={8}>
-        {targets?.map((target) => (
-          <ListItem key={target} color="textlight">
-            {target}
-          </ListItem>
-        ))}
-      </UnorderedList>
+      <Box pl={8}>
+        <Ul>
+          {targets?.map((target) => (
+            <Li key={target} color="textlight">
+              {target}
+            </Li>
+          ))}
+        </Ul>
+      </Box>
     );
   }
 

@@ -1,10 +1,4 @@
-import {
-  Box,
-  Stack,
-  Link as CLink,
-  UnorderedList,
-  ListItem,
-} from "@chakra-ui/react";
+import { Box, Stack, Link as CLink } from "@chakra-ui/react";
 import { AiOutlineLogin } from "react-icons/ai";
 import {
   Form,
@@ -24,6 +18,7 @@ import { TextInput } from "~/components/Fields/TextInput";
 import { Header } from "~/components/Header";
 import { Main } from "~/components/Main";
 import { SuccessBox } from "~/components/SuccessBox";
+import { Li, Ul } from "~/components/UL";
 import { NotAuthenticatedLayout } from "~/layouts/NotAuthenticatedLayout";
 import { AuthCredentials } from "~/modules/auth/types";
 import { commitSession, getSession } from "~/sessions";
@@ -140,25 +135,20 @@ export default function Signin() {
           </Stack>
         </Form>
 
-        <Stack
-          mt={6}
-          spacing={2}
-          as={UnorderedList}
-          aria-label="Account related"
-        >
+        <Stack mt={6} spacing={2} as={Ul} aria-label="Account related">
           {showRegister ? (
-            <ListItem>
+            <Li>
               <CLink as={Link} to="/register" textDecoration={"underline"}>
                 {`Create an account`}
               </CLink>
-            </ListItem>
+            </Li>
           ) : null}
 
-          <ListItem>
+          <Li>
             <CLink as={Link} to="/forgot-password" textDecoration={"underline"}>
               {`I forgot my password`}
             </CLink>
-          </ListItem>
+          </Li>
         </Stack>
       </Main>
     </NotAuthenticatedLayout>
