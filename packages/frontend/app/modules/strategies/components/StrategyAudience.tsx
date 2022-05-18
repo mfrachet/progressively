@@ -3,11 +3,11 @@ import {
   RadioGroup,
   Radio,
   FormControl,
-  Input,
   Select,
-  Textarea,
   Stack,
 } from "@chakra-ui/react";
+import { SelectField } from "~/components/Fields/SelectField";
+import { TextareaInput } from "~/components/Fields/TextareaInput";
 import { TextInput } from "~/components/Fields/TextInput";
 import { FormLabel } from "~/components/FormLabel";
 import { Section, SectionHeader } from "~/components/Section";
@@ -83,6 +83,17 @@ export const StrategyAudience = ({
             name="field-name"
           />
 
+          <SelectField
+            isInvalid={Boolean(errors["field-comparator"])}
+            name="field-comparator"
+            label="Field comparator:"
+            options={[
+              { value: ComparatorEnum.Equals, label: "Equals" },
+              { value: ComparatorEnum.NotEquals, label: "Not equals" },
+              { value: ComparatorEnum.Contains, label: "Contains" },
+            ]}
+          />
+
           <FormControl isInvalid={Boolean(errors["field-comparator"])}>
             <FormLabel htmlFor="field-comparator">Field comparator:</FormLabel>
 
@@ -102,20 +113,13 @@ export const StrategyAudience = ({
             </Select>
           </FormControl>
 
-          <FormControl isInvalid={Boolean(errors["field-value"])}>
-            <FormLabel htmlFor="field-value">
-              Values matching the previous field (one per line):
-            </FormLabel>
-            <Textarea
-              name="field-value"
-              id="field-value"
-              defaultValue={initialFieldValue}
-              placeholder="e.g: marvin.frachet@something.com"
-              aria-describedby={
-                errors["field-value"] ? "error-field-value" : undefined
-              }
-            />
-          </FormControl>
+          <TextareaInput
+            isInvalid={Boolean(errors["field-value"])}
+            label="Values matching the previous field (one per line):"
+            name="field-value"
+            defaultValue={initialFieldValue}
+            placeholder="e.g: marvin.frachet@something.com"
+          />
         </Stack>
       )}
     </Section>
