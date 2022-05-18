@@ -1,4 +1,4 @@
-import { Stack, Box, Text, HStack, Link as CLink } from "@chakra-ui/react";
+import { Stack, Box, HStack, Link as CLink } from "@chakra-ui/react";
 import { MdChevronLeft, MdPassword } from "react-icons/md";
 import {
   ActionFunction,
