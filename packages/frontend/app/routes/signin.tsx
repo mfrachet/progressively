@@ -1,4 +1,4 @@
-import { Box, Stack, Link as CLink } from "@chakra-ui/react";
+import { Box, Stack } from "@chakra-ui/react";
 import { AiOutlineLogin } from "react-icons/ai";
 import {
   Form,
@@ -7,7 +7,6 @@ import {
   ActionFunction,
   redirect,
   MetaFunction,
-  Link,
   useSearchParams,
   LoaderFunction,
   useLoaderData,
@@ -16,6 +15,7 @@ import { Button } from "~/components/Button";
 import { ErrorBox } from "~/components/ErrorBox";
 import { TextInput } from "~/components/Fields/TextInput";
 import { Header } from "~/components/Header";
+import { Link } from "~/components/Link";
 import { Main } from "~/components/Main";
 import { SuccessBox } from "~/components/SuccessBox";
 import { Li, Ul } from "~/components/UL";
@@ -138,16 +138,12 @@ export default function Signin() {
         <Stack mt={6} spacing={2} as={Ul} aria-label="Account related">
           {showRegister ? (
             <Li>
-              <CLink as={Link} to="/register" textDecoration={"underline"}>
-                {`Create an account`}
-              </CLink>
+              <Link to="/register">{`Create an account`}</Link>
             </Li>
           ) : null}
 
           <Li>
-            <CLink as={Link} to="/forgot-password" textDecoration={"underline"}>
-              {`I forgot my password`}
-            </CLink>
+            <Link to="/forgot-password">{`I forgot my password`}</Link>
           </Li>
         </Stack>
       </Main>
