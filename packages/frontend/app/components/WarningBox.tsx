@@ -1,6 +1,6 @@
 import { Box, Flex, Icon } from "@chakra-ui/react";
 import { AiOutlineWarning } from "react-icons/ai";
-import { Li, Ul } from "./UL";
+import { Li, Ul } from "./Ul";
 
 export interface WarningBoxProps {
   title: React.ReactNode;

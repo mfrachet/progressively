@@ -27,7 +27,7 @@ import { addMemberToProject } from "~/modules/projects/services/addMemberToProje
 import { SuccessBox } from "~/components/SuccessBox";
 import { TextInput } from "~/components/Fields/TextInput";
 import { Typography } from "~/components/Typography";
-import { Li, Ul } from "~/components/UL";
+import { Li, Ul } from "~/components/Ul";
 
 interface MetaArgs {
   data?: {

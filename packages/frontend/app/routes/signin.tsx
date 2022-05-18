@@ -18,7 +18,7 @@ import { Header } from "~/components/Header";
 import { Link } from "~/components/Link";
 import { Main } from "~/components/Main";
 import { SuccessBox } from "~/components/SuccessBox";
-import { Li, Ul } from "~/components/UL";
+import { Li, Ul } from "~/components/Ul";
 import { NotAuthenticatedLayout } from "~/layouts/NotAuthenticatedLayout";
 import { AuthCredentials } from "~/modules/auth/types";
 import { commitSession, getSession } from "~/sessions";

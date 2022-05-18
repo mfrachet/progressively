@@ -1,7 +1,7 @@
 import { Box, Flex, Icon } from "@chakra-ui/react";
 import { useEffect, useRef } from "react";
 import { MdErrorOutline } from "react-icons/md";
-import { Li, Ul } from "./UL";
+import { Li, Ul } from "./Ul";
 
 export interface ErrorBoxProps {
   list: {

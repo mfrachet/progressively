@@ -2,7 +2,7 @@ import { Box, Flex, Heading } from "@chakra-ui/react";
 import { FaTrash } from "react-icons/fa";
 import { Button } from "~/components/Button";
 import { Typography } from "~/components/Typography";
-import { Li, Ul } from "~/components/UL";
+import { Li, Ul } from "~/components/Ul";
 import { VisuallyHidden } from "~/components/VisuallyHidden";
 import { ComparatorEnum, StrategyRetrieveDTO } from "../types";
 

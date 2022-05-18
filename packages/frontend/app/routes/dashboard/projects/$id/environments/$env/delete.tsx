@@ -29,7 +29,7 @@ import { Button } from "~/components/Button";
 import { DeleteEntityLayout } from "~/layouts/DeleteEntityLayout";
 import { Typography } from "~/components/Typography";
 import { VisuallyHidden } from "~/components/VisuallyHidden";
-import { Li, Ul } from "~/components/UL";
+import { Li, Ul } from "~/components/Ul";
 
 interface MetaArgs {
   data?: {
