@@ -8,6 +8,7 @@ import {
   Textarea,
   Stack,
 } from "@chakra-ui/react";
+import { TextInput } from "~/components/Fields/TextInput";
 import { FormLabel } from "~/components/FormLabel";
 import { Section, SectionHeader } from "~/components/Section";
 import { ComparatorEnum, StrategyCreateDTO } from "../types";
@@ -74,19 +75,13 @@ export const StrategyAudience = ({
           borderRadius={6}
           spacing={6}
         >
-          <FormControl isInvalid={Boolean(errors["field-name"])}>
-            <FormLabel htmlFor="field-name">Field name:</FormLabel>
-            <Input
-              type="text"
-              name="field-name"
-              id="field-name"
-              placeholder="e.g: email"
-              defaultValue={initialFieldName}
-              aria-describedby={
-                errors["field-name"] ? "error-field-name" : undefined
-              }
-            />
-          </FormControl>
+          <TextInput
+            isInvalid={Boolean(errors["field-name"])}
+            label="Field name:"
+            placeholder="e.g: email"
+            defaultValue={initialFieldName}
+            name="field-name"
+          />
 
           <FormControl isInvalid={Boolean(errors["field-comparator"])}>
             <FormLabel htmlFor="field-comparator">Field comparator:</FormLabel>
