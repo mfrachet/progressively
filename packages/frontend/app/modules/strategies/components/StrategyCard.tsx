@@ -1,14 +1,8 @@
-import {
-  Box,
-  Flex,
-  Heading,
-  ListItem,
-  UnorderedList,
-  VisuallyHidden,
-} from "@chakra-ui/react";
+import { Box, Flex, Heading, ListItem, UnorderedList } from "@chakra-ui/react";
 import { FaTrash } from "react-icons/fa";
 import { Button } from "~/components/Button";
 import { Typography } from "~/components/Typography";
+import { VisuallyHidden } from "~/components/VisuallyHidden";
 import { ComparatorEnum, StrategyRetrieveDTO } from "../types";
 
 export interface StrategyCardProps {

@@ -1,17 +1,11 @@
-import {
-  Flex,
-  Heading,
-  HStack,
-  Link as CLink,
-  Tag,
-  VisuallyHidden,
-} from "@chakra-ui/react";
+import { Flex, Heading, HStack, Link as CLink, Tag } from "@chakra-ui/react";
 import React, { useRef } from "react";
 import { Form, Link } from "remix";
 import { Box } from "@chakra-ui/react";
 import { FlagStatus } from "../types";
 import { Switch } from "~/components/Switch";
 import { Typography } from "~/components/Typography";
+import { VisuallyHidden } from "~/components/VisuallyHidden";
 
 export interface FlagCardProps {
   id: string;
