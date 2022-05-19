@@ -21,7 +21,6 @@ import { ErrorBox } from "~/components/ErrorBox";
 import { StrategyCreateDTO } from "~/modules/strategies/types";
 import { createStrategy } from "~/modules/strategies/services/createStrategy";
 import { BreadCrumbs, Crumbs } from "~/components/AppBreadcrumbs";
-import { Flex } from "@chakra-ui/react";
 import { StrategyAudience } from "~/modules/strategies/components/StrategyAudience";
 import { ActivationStrategy } from "~/modules/strategies/components/ActivationStrategy";
 import { IoIosCreate } from "react-icons/io";
@@ -218,34 +217,28 @@ export default function StrategyCreatePage() {
         <Container>
           {actionData?.errors && <ErrorBox list={actionData.errors} />}
 
-          <Flex
-            gap={4}
-            alignItems="flex-start"
-            flexDirection={["column", "column", "column", "row"]}
-          >
-            <Section id="general-information">
-              <SectionHeader title="General information" />
+          <Section id="general-information">
+            <SectionHeader title="General information" />
 
-              <TextInput
-                name="strategy-name"
-                placeholder="e.g: Strategy 1"
-                label="Strategy name"
-                isInvalid={Boolean(errors["strategy-name"])}
-              />
-            </Section>
-
-            <StrategyAudience
-              strategyType={strategyType}
-              onStrategyChange={setStrategyType}
-              errors={errors}
+            <TextInput
+              name="strategy-name"
+              placeholder="e.g: Strategy 1"
+              label="Strategy name"
+              isInvalid={Boolean(errors["strategy-name"])}
             />
+          </Section>
 
-            <ActivationStrategy
-              activationStrategy={activationStrategy}
-              onActivationChange={setActivationStrategy}
-              errors={errors}
-            />
-          </Flex>
+          <StrategyAudience
+            strategyType={strategyType}
+            onStrategyChange={setStrategyType}
+            errors={errors}
+          />
+
+          <ActivationStrategy
+            activationStrategy={activationStrategy}
+            onActivationChange={setActivationStrategy}
+            errors={errors}
+          />
 
           <Button
             colorScheme={"brand"}

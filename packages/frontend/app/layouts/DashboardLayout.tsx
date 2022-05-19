@@ -1,4 +1,3 @@
-import { Flex } from "@chakra-ui/react";
 import { Logo } from "~/components/Logo";
 import { Main } from "~/components/Main";
 import { User } from "~/modules/user/types";
@@ -26,18 +25,11 @@ export const DashboardLayout = ({
       <SkipNavLink>Skip to content</SkipNavLink>
 
       <Container>
-        <Flex
-          py={3}
-          as={"nav"}
-          aria-label="General"
-          justifyContent={"space-between"}
-          alignItems="center"
-          h={"72px"}
-        >
+        <nav>
           <Logo />
 
           {user && user.fullname && <UseDropdown user={user as User} />}
-        </Flex>
+        </nav>
 
         {breadcrumb}
       </Container>
