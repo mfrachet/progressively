@@ -61,7 +61,7 @@ export const SectionHeader = ({
 
       {description}
 
-      {endAction ? { endAction } : null}
+      {endAction}
     </Flex>
   );
 };

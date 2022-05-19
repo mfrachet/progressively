@@ -180,7 +180,7 @@ export default function DeleteStrategyPage() {
           variant="outline"
           colorScheme="error"
         >
-          No, {`don't`} delete <strong aria-hidden>{strategy.name}</strong>
+          {`No, don't delete`} {strategy.name}
         </Button>
       }
       confirmAction={
