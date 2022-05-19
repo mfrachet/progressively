@@ -24,7 +24,7 @@ export const ErrorBox = ({ list }: ErrorBoxProps) => {
       : `The following ${errors.length} errors have been found:`;
 
   return (
-    <figure ref={boxRef} tabIndex={-1}>
+    <figure ref={boxRef} tabIndex={-1} className="error-box">
       <Flex as="figcaption">
         <Icon as={MdErrorOutline} w={6} h={6} aria-hidden mr={2} />
         <strong>{label}</strong>
