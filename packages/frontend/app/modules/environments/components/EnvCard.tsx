@@ -1,4 +1,4 @@
-import { Flex, Heading, Link as CLink } from "@chakra-ui/react";
+import { Flex, Link as CLink } from "@chakra-ui/react";
 import { useRef } from "react";
 import { Link } from "remix";
 import { Box, Icon } from "@chakra-ui/react";
@@ -6,6 +6,7 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 import { Typography } from "~/components/Typography";
 import { VisuallyHidden } from "~/components/VisuallyHidden";
 import { Tag } from "~/components/Tag";
+import { Heading } from "~/components/Heading";
 
 export interface EnvCardProps {
   id: string;
@@ -56,17 +57,19 @@ export const EnvCard = ({
     >
       <Flex justifyContent="space-between">
         <div>
-          <Heading as="h3" id={`article-${id}`} size="md" mr={2} mb={1}>
-            <CLink
-              as={Link}
-              textDecoration="underline"
-              ref={linkRef}
-              to={linkTo}
-              color="brand.600"
-            >
-              {title} <VisuallyHidden>environment</VisuallyHidden>
-            </CLink>
-          </Heading>
+          <Box mr={2} mb={1}>
+            <Heading as="h3" id={`article-${id}`} size="md">
+              <CLink
+                as={Link}
+                textDecoration="underline"
+                ref={linkRef}
+                to={linkTo}
+                color="brand.600"
+              >
+                {title} <VisuallyHidden>environment</VisuallyHidden>
+              </CLink>
+            </Heading>
+          </Box>
 
           <Box as="span" display={["none", "inline"]}>
             <Typography color="textlight">

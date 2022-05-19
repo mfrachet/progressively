@@ -1,4 +1,4 @@
-import { Flex, Heading, HStack, Link as CLink } from "@chakra-ui/react";
+import { Flex, HStack, Link as CLink } from "@chakra-ui/react";
 import React, { useRef } from "react";
 import { Form, Link } from "remix";
 import { Box } from "@chakra-ui/react";
@@ -7,6 +7,7 @@ import { Switch } from "~/components/Switch";
 import { Typography } from "~/components/Typography";
 import { VisuallyHidden } from "~/components/VisuallyHidden";
 import { Tag } from "~/components/Tag";
+import { Heading } from "~/components/Heading";
 
 export interface FlagCardProps {
   id: string;
@@ -56,17 +57,19 @@ export const FlagCard = ({
       <Flex justifyContent={"space-between"} direction={["column", "row"]}>
         <div>
           <HStack spacing={[0, 2]} display={["block", "flex"]}>
-            <Heading as="h3" id={`article-${id}`} size="md" mr={2} mb={[2, 1]}>
-              <CLink
-                as={Link}
-                textDecoration="underline"
-                ref={linkRef}
-                to={linkTo}
-                color="brand.600"
-              >
-                {title} <VisuallyHidden>feature flag</VisuallyHidden>
-              </CLink>
-            </Heading>
+            <Box as="span" mr={2} mb={[2, 1]}>
+              <Heading as="h3" id={`article-${id}`} size="md">
+                <CLink
+                  as={Link}
+                  textDecoration="underline"
+                  ref={linkRef}
+                  to={linkTo}
+                  color="brand.600"
+                >
+                  {title} <VisuallyHidden>feature flag</VisuallyHidden>
+                </CLink>
+              </Heading>
+            </Box>
 
             <Box as="span" aria-hidden display={["none", "inline-flex"]}>
               <Tag>{flagKey}</Tag>
