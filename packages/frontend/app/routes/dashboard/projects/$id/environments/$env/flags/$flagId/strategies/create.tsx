@@ -21,7 +21,7 @@ import { ErrorBox } from "~/components/ErrorBox";
 import { StrategyCreateDTO } from "~/modules/strategies/types";
 import { createStrategy } from "~/modules/strategies/services/createStrategy";
 import { BreadCrumbs, Crumbs } from "~/components/AppBreadcrumbs";
-import { Container, Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { StrategyAudience } from "~/modules/strategies/components/StrategyAudience";
 import { ActivationStrategy } from "~/modules/strategies/components/ActivationStrategy";
 import { IoIosCreate } from "react-icons/io";
@@ -34,6 +34,7 @@ import { Button } from "~/components/Button";
 import { Environment } from "~/modules/environments/types";
 import { TextInput } from "~/components/Fields/TextInput";
 import { Typography } from "~/components/Typography";
+import { Container } from "~/components/Container";
 
 interface MetaArgs {
   data?: {
@@ -214,13 +215,9 @@ export default function StrategyCreatePage() {
       }
     >
       <Form method="post">
-        {actionData?.errors && (
-          <Container maxW="5xl" pb={4}>
-            <ErrorBox list={actionData.errors} />
-          </Container>
-        )}
+        <Container>
+          {actionData?.errors && <ErrorBox list={actionData.errors} />}
 
-        <Container maxW="8xl">
           <Flex
             gap={4}
             alignItems="flex-start"
@@ -249,9 +246,7 @@ export default function StrategyCreatePage() {
               errors={errors}
             />
           </Flex>
-        </Container>
 
-        <Container maxWidth="5xl" mt={8}>
           <Button
             colorScheme={"brand"}
             type="submit"

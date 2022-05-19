@@ -1,5 +1,6 @@
-import { Container, HStack, Link as CLink } from "@chakra-ui/react";
+import { HStack, Link as CLink } from "@chakra-ui/react";
 import { NavLink } from "remix";
+import { Container } from "./Container";
 
 export interface HorizontalNavProps {
   children: React.ReactNode;
@@ -8,7 +9,7 @@ export interface HorizontalNavProps {
 export const HorizontalNav = ({ children, label }: HorizontalNavProps) => {
   return (
     <nav aria-label={label}>
-      <Container maxW="5xl">
+      <Container>
         <HStack
           as="ul"
           listStyleType={"none"}

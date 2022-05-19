@@ -1,9 +1,10 @@
-import { Container, Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { Logo } from "~/components/Logo";
 import { Main } from "~/components/Main";
 import { User } from "~/modules/user/types";
 import { UseDropdown } from "~/modules/user/components/UserDropdown";
 import { SkipNavLink } from "~/components/SkipNav";
+import { Container } from "~/components/Container";
 
 export interface DashboardLayoutProps {
   user?: Partial<User>;
@@ -24,7 +25,7 @@ export const DashboardLayout = ({
     <div>
       <SkipNavLink>Skip to content</SkipNavLink>
 
-      <Container maxW="5xl">
+      <Container>
         <Flex
           py={3}
           as={"nav"}
@@ -37,19 +38,15 @@ export const DashboardLayout = ({
 
           {user && user.fullname && <UseDropdown user={user as User} />}
         </Flex>
-      </Container>
 
-      <Container maxW="5xl" pt={[0, 6]}>
         {breadcrumb}
       </Container>
 
       <Main>
-        <Container maxW="5xl" pt={4} pb={8}>
-          {header}
-        </Container>
+        <Container>{header}</Container>
         {subNav}
 
-        <Container maxW="5xl">{children}</Container>
+        <Container>{children}</Container>
       </Main>
     </div>
   );
