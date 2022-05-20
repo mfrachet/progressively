@@ -9,7 +9,14 @@ export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   type?: "button" | "submit" | "reset";
 }
 
-export const Button = ({ to, children, type, ...props }: ButtonProps) => {
+export const Button = ({
+  to,
+  children,
+  type,
+  isLoading,
+  loadingText,
+  ...props
+}: ButtonProps) => {
   if (to) {
     return <Link to={to}>{children}</Link>;
   }

@@ -20,17 +20,17 @@ export const RadioField = <T extends string>({
     <fieldset>
       {/* <legend>Select a maintenance drone:</legend> */}
       {options.map((opt) => (
-        <input
-          type="radio"
-          key={opt.value}
-          id={opt.value}
-          name={name}
-          value={opt.value}
-          checked={opt.value === value}
-          onChange={(e) => onChange(e.target.value as T)}
-        >
-          {opt.label}
-        </input>
+        <div key={opt.value}>
+          <label htmlFor={opt.value}>{opt.label}</label>
+          <input
+            type="radio"
+            id={opt.value}
+            name={name}
+            value={opt.value}
+            checked={opt.value === value}
+            onChange={(e) => onChange(e.target.value as T)}
+          ></input>
+        </div>
       ))}
     </fieldset>
   );
