@@ -19,15 +19,15 @@ import { Section, SectionHeader } from "~/components/Section";
 import { AiOutlineBarChart, AiOutlineSetting } from "react-icons/ai";
 import { HorizontalNav, NavItem } from "~/components/HorizontalNav";
 import { FaPowerOff } from "react-icons/fa";
-import {
-  CartesianGrid,
-  XAxis,
-  YAxis,
-  ResponsiveContainer,
-  Area,
-  AreaChart,
-  Tooltip,
-} from "recharts";
+// import {
+//   CartesianGrid,
+//   XAxis,
+//   YAxis,
+//   ResponsiveContainer,
+//   Area,
+//   AreaChart,
+//   Tooltip,
+// } from "recharts";
 import { getFlagHits } from "~/modules/flags/services/getFlagHits";
 import {
   toggleAction,
@@ -211,7 +211,7 @@ export default function FlagById() {
           value={notActivatedCount}
         />
 
-        {hits.length > 0 && (
+        {/* {hits.length > 0 && (
           <ResponsiveContainer width="100%" aspect={16.0 / 9.0}>
             <AreaChart
               data={hits}
@@ -254,7 +254,7 @@ export default function FlagById() {
               />
             </AreaChart>
           </ResponsiveContainer>
-        )}
+        )} */}
       </Section>
     </DashboardLayout>
   );
