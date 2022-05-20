@@ -23,7 +23,11 @@ export const BreadCrumbs = ({ crumbs }: BreadCrumbsProps) => {
             <li key={crumb.link}>
               <Link
                 aria-current={
-                  crumb.forceNotCurrent ? false : index === lastItemIndex
+                  crumb.forceNotCurrent
+                    ? undefined
+                    : index === lastItemIndex
+                    ? "page"
+                    : undefined
                 }
                 to={crumb.link}
               >
