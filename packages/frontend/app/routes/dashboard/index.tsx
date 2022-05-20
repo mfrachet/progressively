@@ -77,7 +77,7 @@ export default function DashboardRoot() {
           </SuccessBox>
         ) : null}
 
-        {projects.map((project, index: number) => (
+        {projects.map((project) => (
           <ProjectCard
             key={project.projectId}
             id={project.projectId}

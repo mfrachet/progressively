@@ -12,6 +12,6 @@ export interface LiProps {
   color?: string;
 }
 
-export const Li = ({ children, id, color }: LiProps) => {
+export const Li = ({ children, id }: LiProps) => {
   return <li id={id}>{children}</li>;
 };

@@ -10,12 +10,7 @@ export interface ButtonCopyProps extends HTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
 }
 
-export const ButtonCopy = ({
-  toCopy,
-  children,
-  icon,
-  ...props
-}: ButtonCopyProps) => {
+export const ButtonCopy = ({ toCopy, children, ...props }: ButtonCopyProps) => {
   const timerIdRef = useRef<NodeJS.Timeout>();
   const [isCopied, setIsCopied] = useState(false);
   const isHydrated = useHydrated();
