@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 
-export interface SuccessBoxProps extends FlexProps {
+export interface SuccessBoxProps {
   children: React.ReactNode;
   id: string;
 }

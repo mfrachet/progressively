@@ -1,4 +1,4 @@
-import { MdChevronLeft, MdPassword } from "react-icons/md";
+import { MdPassword } from "react-icons/md";
 import {
   ActionFunction,
   Form,
@@ -8,11 +8,11 @@ import {
   useLoaderData,
   useTransition,
 } from "remix";
+import { BackLink } from "~/components/BackLink";
 import { Button } from "~/components/Button";
 import { ErrorBox } from "~/components/ErrorBox";
 import { TextInput } from "~/components/Fields/TextInput";
 import { Header } from "~/components/Header";
-import { Link } from "~/components/Link";
 import { Section, SectionHeader } from "~/components/Section";
 import { SuccessBox } from "~/components/SuccessBox";
 import { DashboardLayout } from "~/layouts/DashboardLayout";
@@ -101,10 +101,7 @@ export default function ProfilePage() {
       header={<Header title="My profile" />}
       breadcrumb={
         <nav>
-          <Link to="/dashboard">
-            <MdChevronLeft aria-hidden />
-            <span>Back to dashboard</span>
-          </Link>
+          <BackLink to="/dashboard">Back to dashboard</BackLink>
         </nav>
       }
     >

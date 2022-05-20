@@ -25,7 +25,7 @@ export const DashboardLayout = ({
       <SkipNavLink>Skip to content</SkipNavLink>
 
       <Container>
-        <nav>
+        <nav aria-label="General">
           <Logo />
 
           {user && user.fullname && <UseDropdown user={user as User} />}
