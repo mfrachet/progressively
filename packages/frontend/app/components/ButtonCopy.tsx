@@ -1,11 +1,10 @@
-import { ButtonProps } from "@chakra-ui/react";
 import { HTMLAttributes, useEffect, useRef, useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useHydrated } from "~/modules/misc/hooks/useHydrated";
 import { Button } from "./Button";
 import { VisuallyHidden } from "./VisuallyHidden";
 
-export interface ButtonCopyProps extends ButtonProps {
+export interface ButtonCopyProps extends HTMLAttributes<HTMLButtonElement> {
   toCopy: string;
   icon: React.ReactElement<unknown>;
   children: React.ReactNode;
@@ -15,7 +14,6 @@ export const ButtonCopy = ({
   toCopy,
   children,
   icon,
-  colorScheme,
   ...props
 }: ButtonCopyProps) => {
   const timerIdRef = useRef<NodeJS.Timeout>();
@@ -53,12 +51,8 @@ export const ButtonCopy = ({
     return (
       <CopyToClipboard text={toCopy}>
         <Button
-          variant="outline"
-          leftIcon={icon}
           onClick={handleClick}
-          colorScheme={colorScheme}
           aria-live="polite"
-          color="textlight"
           {...copyToClipBoardProps}
         >
           {isCopied ? (
@@ -77,17 +71,8 @@ export const ButtonCopy = ({
   const spanProps = props as HTMLAttributes<HTMLSpanElement>;
 
   return (
-    <Button
-      as="span"
-      size={"lg"}
-      variant="outline"
-      leftIcon={icon}
-      onClick={undefined}
-      colorScheme={colorScheme}
-      aria-live="polite"
-      {...spanProps}
-    >
+    <span aria-live="polite" {...spanProps}>
       {children}
-    </Button>
+    </span>
   );
 };

@@ -1,5 +1,3 @@
-import { RadioGroup, Radio } from "@chakra-ui/react";
-
 export interface RadioFieldOption<T> {
   label: string;
   value: T;
@@ -19,19 +17,21 @@ export const RadioField = <T extends string>({
   options,
 }: RadioFieldProps<T>) => {
   return (
-    <RadioGroup value={value} onChange={onChange}>
+    <fieldset>
+      {/* <legend>Select a maintenance drone:</legend> */}
       {options.map((opt) => (
-        <Radio
+        <input
+          type="radio"
           key={opt.value}
           id={opt.value}
           name={name}
           value={opt.value}
-          size="lg"
-          h={12}
+          checked={opt.value === value}
+          onChange={(e) => onChange(e.target.value as T)}
         >
           {opt.label}
-        </Radio>
+        </input>
       ))}
-    </RadioGroup>
+    </fieldset>
   );
 };

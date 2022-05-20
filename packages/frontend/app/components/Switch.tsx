@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { HTMLAttributes, useState } from "react";
-import { Button, Spinner } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 import { Typography } from "./Typography";
+import { Spinner } from "./Spinner";
 
 const RawSwitch = styled.div`
   transition: all 0.3s;
@@ -32,21 +32,18 @@ export const Switch = ({ checked, optimistic, ...props }: SwitchProps) => {
   const [internalChecked, setInternalChecked] = useState(checked);
 
   return (
-    <Button
+    <button
       role="switch"
       aria-label="Feature flag activation"
       aria-checked={checked}
-      variant="outline"
-      borderRadius={32}
       onClick={() => setInternalChecked((s) => !s)}
-      h={[16, 12]}
       {...props}
     >
       <Typography as="span">Off</Typography>
       <RawSwitch aria-hidden data-is-checked={internalChecked}>
-        {optimistic && <Spinner size="xs" />}
+        {optimistic && <Spinner />}
       </RawSwitch>
       <Typography as="span">On</Typography>
-    </Button>
+    </button>
   );
 };

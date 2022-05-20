@@ -1,11 +1,9 @@
-import { ListItem, UnorderedList } from "@chakra-ui/react";
-
 export interface UlProps {
   children: React.ReactNode;
 }
 
 export const Ul = ({ children }: UlProps) => {
-  return <UnorderedList>{children}</UnorderedList>;
+  return <ul>{children}</ul>;
 };
 
 export interface LiProps {
@@ -15,9 +13,5 @@ export interface LiProps {
 }
 
 export const Li = ({ children, id, color }: LiProps) => {
-  return (
-    <ListItem id={id} color={color}>
-      {children}
-    </ListItem>
-  );
+  return <li id={id}>{children}</li>;
 };

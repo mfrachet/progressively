@@ -139,11 +139,8 @@ export default function ResetPasswordPage() {
         <div>
           <Button
             type="submit"
-            colorScheme={"brand"}
-            leftIcon={<MdPassword aria-hidden />}
             isLoading={transition.state === "submitting"}
             loadingText="Password changing in progress, please wait..."
-            disabled={false}
           >
             Change password
           </Button>
