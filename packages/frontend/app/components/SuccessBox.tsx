@@ -14,7 +14,7 @@ export const SuccessBox = ({ children, id, ...props }: SuccessBoxProps) => {
   }, []);
 
   return (
-    <p ref={boxRef} tabIndex={-1} id={id} {...props}>
+    <p ref={boxRef} tabIndex={-1} id={id} className="success-box" {...props}>
       <AiOutlineCheckCircle aria-hidden />
       {children}
     </p>
