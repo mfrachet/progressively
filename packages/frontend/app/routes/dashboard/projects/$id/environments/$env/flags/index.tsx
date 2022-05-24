@@ -28,6 +28,9 @@ import { FiFlag, FiKey } from "react-icons/fi";
 import { HorizontalNav, NavItem } from "~/components/HorizontalNav";
 import { Typography } from "~/components/Typography";
 import { CreateButton } from "~/components/Buttons/CreateButton";
+import { CardGroup } from "~/components/CardGroup";
+import { CreationCard } from "~/components/CreationCard";
+import { Spacer } from "~/components/Spacer";
 
 interface MetaArgs {
   data?: {
@@ -169,22 +172,17 @@ export default function FlagsByEnvPage() {
           </SuccessBox>
         ) : null}
 
-        <SectionHeader
-          title="Feature flags"
-          hiddenTitle
-          endAction={
-            flagsByEnv.length > 0 && (
-              <CreateButton
-                to={`/dashboard/projects/${project.uuid}/environments/${environment.uuid}/flags/create`}
-              >
-                Create a feature flag
-              </CreateButton>
-            )
-          }
-        />
+        <SectionHeader title="Feature flags" hiddenTitle />
+
+        <Spacer size={10} />
 
         {flagsByEnv.length > 0 ? (
-          <>
+          <CardGroup>
+            <CreationCard
+              to={`/dashboard/projects/${project.uuid}/environments/${environment.uuid}/flags/create`}
+            >
+              Create a feature flag
+            </CreationCard>
             {flagsByEnv.map((flagEnv) => (
               <FlagCard
                 key={flagEnv.flagId}
@@ -201,7 +199,7 @@ export default function FlagsByEnvPage() {
                 }
               />
             ))}
-          </>
+          </CardGroup>
         ) : null}
 
         {flagsByEnv.length === 0 ? (

@@ -5,8 +5,21 @@ import { Switch } from "~/components/Switch";
 import { Typography } from "~/components/Typography";
 import { VisuallyHidden } from "~/components/VisuallyHidden";
 import { Tag } from "~/components/Tag";
-import { Heading } from "~/components/Heading";
 import { Link } from "~/components/Link";
+import { Card, CardContent, CardHeader } from "~/components/CardGroup";
+import { Spacer } from "~/components/Spacer";
+import { styled } from "~/stitches.config";
+
+const HeaderInline = styled("div", {
+  display: "flex",
+  gap: "$spacing$2",
+  justifyContent: "space-between",
+});
+
+const Footer = styled("div", {
+  display: "flex",
+  justifyContent: "space-between",
+});
 
 export interface FlagCardProps {
   id: string;
@@ -15,7 +28,6 @@ export interface FlagCardProps {
   title: string;
   flagStatus: FlagStatus;
   flagKey: string;
-  optimistic: boolean;
 }
 
 export const FlagCard = ({
@@ -25,48 +37,49 @@ export const FlagCard = ({
   title,
   flagStatus,
   flagKey,
-  optimistic,
 }: FlagCardProps) => {
   const linkRef = useRef<HTMLAnchorElement>(null);
 
   return (
-    <div>
-      <div>
-        <Heading as="h3" id={`article-${id}`} size="md">
+    <Card>
+      <CardHeader as="h3" id={`article-${id}`}>
+        <HeaderInline>
           <Link ref={linkRef} to={linkTo}>
             {title} <VisuallyHidden>feature flag</VisuallyHidden>
           </Link>
-        </Heading>
+        </HeaderInline>
+      </CardHeader>
 
-        <span aria-hidden>
-          <Tag>{flagKey}</Tag>
-        </span>
-
-        <VisuallyHidden>
-          <p>The flag key is {flagKey}</p>
-        </VisuallyHidden>
-
+      <CardContent>
         <Typography>{description}</Typography>
-      </div>
 
-      <Form method="post">
-        <input
-          type="hidden"
-          name="nextStatus"
-          value={
-            flagStatus === FlagStatus.ACTIVATED
-              ? FlagStatus.NOT_ACTIVATED
-              : FlagStatus.ACTIVATED
-          }
-        />
-        <input type="hidden" name="flagId" value={id} />
+        <Spacer size={10} />
 
-        <Switch
-          type="submit"
-          optimistic={optimistic}
-          checked={flagStatus === FlagStatus.ACTIVATED}
-        />
-      </Form>
-    </div>
+        <Footer>
+          <span aria-hidden>
+            <Tag>{flagKey}</Tag>
+          </span>
+
+          <VisuallyHidden>
+            <p>The flag key is {flagKey}</p>
+          </VisuallyHidden>
+
+          <Form method="post">
+            <input
+              type="hidden"
+              name="nextStatus"
+              value={
+                flagStatus === FlagStatus.ACTIVATED
+                  ? FlagStatus.NOT_ACTIVATED
+                  : FlagStatus.ACTIVATED
+              }
+            />
+            <input type="hidden" name="flagId" value={id} />
+
+            <Switch checked={flagStatus === FlagStatus.ACTIVATED} />
+          </Form>
+        </Footer>
+      </CardContent>
+    </Card>
   );
 };
