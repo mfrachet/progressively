@@ -118,7 +118,7 @@ export default function CreateEnvironmentPage() {
         <Header
           title="Create an environment"
           description={
-            <Typography fontSize="xl" color="textlight">
+            <Typography>
               The new environment will appear in <strong>{project.name}</strong>
               .
             </Typography>

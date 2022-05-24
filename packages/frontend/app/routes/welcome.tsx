@@ -31,7 +31,7 @@ export default function WelcomePage() {
         <Header
           title="Congratulations!"
           description={
-            <Typography color="textlight">
+            <Typography>
               {`You've`} successfully run your Progressively instance. {`It's`}{" "}
               time to create <strong>your admin user.</strong>
             </Typography>

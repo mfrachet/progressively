@@ -20,6 +20,7 @@ export const {
     },
     sizes: {
       container: "1080px",
+      cardWidth: "400px",
     },
     fontSizes: {
       content: "1.25rem",

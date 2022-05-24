@@ -4,7 +4,8 @@ import { styled } from "~/stitches.config";
 
 const RawLink = styled("a", {
   fontSize: "$content",
-  color: "$text",
+  color: "$content",
+  fontFamily: "$default",
 });
 
 export interface LinkProps extends HTMLAttributes<HTMLAnchorElement> {

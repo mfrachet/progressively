@@ -40,9 +40,7 @@ export const TextInput = ({
       />
 
       {description && (
-        <Typography fontSize="sm" color="textlight" id={`${name}-hint`}>
-          {description}
-        </Typography>
+        <Typography id={`${name}-hint`}>{description}</Typography>
       )}
     </div>
   );

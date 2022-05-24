@@ -38,7 +38,7 @@ const StrategyAudience = ({ strat }: { strat: StrategyRetrieveDTO }) => {
   }
 
   return (
-    <Typography color="textlight">
+    <Typography>
       Serve the flag to <strong>{targetedUsers}</strong>{" "}
       {fieldName ? (
         <span>
@@ -68,9 +68,7 @@ const StrategyTargetConstraints = ({
     return (
       <Ul>
         {targets?.map((target) => (
-          <Li key={target} color="textlight">
-            {target}
-          </Li>
+          <Li key={target}>{target}</Li>
         ))}
       </Ul>
     );

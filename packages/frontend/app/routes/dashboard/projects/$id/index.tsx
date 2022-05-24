@@ -21,6 +21,8 @@ import { FiLayers } from "react-icons/fi";
 import { EmptyState } from "~/components/EmptyState";
 import { Typography } from "~/components/Typography";
 import { CreateButton } from "~/components/Buttons/CreateButton";
+import { CardGroup } from "~/components/CardGroup";
+import { Spacer } from "~/components/Spacer";
 
 interface MetaArgs {
   data?: {
@@ -119,15 +121,19 @@ export default function ProjectDetailPage() {
           }
         />
 
-        {project.environments.map((env) => (
-          <EnvCard
-            key={env.uuid}
-            id={env.uuid}
-            linkTo={`/dashboard/projects/${project.uuid}/environments/${env.uuid}/flags`}
-            title={env.name}
-            clientKey={env.clientKey}
-          />
-        ))}
+        <Spacer size={4} />
+
+        <CardGroup>
+          {project.environments.map((env) => (
+            <EnvCard
+              key={env.uuid}
+              id={env.uuid}
+              linkTo={`/dashboard/projects/${project.uuid}/environments/${env.uuid}/flags`}
+              title={env.name}
+              clientKey={env.clientKey}
+            />
+          ))}
+        </CardGroup>
 
         {project.environments.length === 0 ? (
           <EmptyState

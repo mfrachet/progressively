@@ -141,7 +141,7 @@ export default function CreateFlagPage() {
         <Header
           title="Create a feature flag"
           description={
-            <Typography fontSize="xl" color="textlight">
+            <Typography>
               The new feature flag will appear in{" "}
               <strong>{project.name}</strong> /{" "}
               <strong>{environment.name}</strong>.
@@ -168,7 +168,7 @@ export default function CreateFlagPage() {
             placeholder="e.g: The new homepage"
           />
 
-          <Typography fontSize="sm" color="textlight">
+          <Typography>
             After the creation of a feature flag, you will be able to get its
             SDK key for application usage.
           </Typography>

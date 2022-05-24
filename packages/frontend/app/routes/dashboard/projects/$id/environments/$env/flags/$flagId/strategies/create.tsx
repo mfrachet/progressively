@@ -202,7 +202,7 @@ export default function StrategyCreatePage() {
         <Header
           title="Add a strategy"
           description={
-            <Typography fontSize="xl" color="textlight">
+            <Typography>
               {`You're`} about to add a strategy to{" "}
               <strong>{currentFlag.name}</strong> in{" "}
               <strong>{project.name}</strong> on{" "}

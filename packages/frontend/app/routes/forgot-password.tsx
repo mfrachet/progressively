@@ -73,7 +73,7 @@ export default function ForgotPasswordPage() {
         <Header
           title="Password forgotten"
           description={
-            <Typography color="textlight">
+            <Typography>
               Enter your email to get a recovery link and reset your password.
             </Typography>
           }

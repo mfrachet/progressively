@@ -12,6 +12,7 @@ const RawButton = styled("button", {
   border: "2px solid $primary",
   display: "inline-block",
   textDecoration: "none",
+  cursor: "pointer",
 });
 
 export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {

@@ -46,7 +46,7 @@ export const FlagCard = ({
           <p>The flag key is {flagKey}</p>
         </VisuallyHidden>
 
-        <Typography color="textlight">{description}</Typography>
+        <Typography>{description}</Typography>
       </div>
 
       <Form method="post">

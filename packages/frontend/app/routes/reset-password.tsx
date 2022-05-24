@@ -103,9 +103,7 @@ export default function ResetPasswordPage() {
       header={
         <Header
           title="Reset password"
-          description={
-            <Typography color="textlight">Set your new password.</Typography>
-          }
+          description={<Typography>Set your new password.</Typography>}
         />
       }
       nav={<BackLink to="/signin">Back to signin</BackLink>}
