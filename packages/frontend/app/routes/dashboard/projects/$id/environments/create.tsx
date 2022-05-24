@@ -24,7 +24,7 @@ import { getSession } from "~/sessions";
 import { User } from "~/modules/user/types";
 import { Header } from "~/components/Header";
 import { Section } from "~/components/Section";
-import { Button } from "~/components/Button";
+import { Button } from "~/components/Buttons/Button";
 import { TextInput } from "~/components/Fields/TextInput";
 import { Typography } from "~/components/Typography";
 

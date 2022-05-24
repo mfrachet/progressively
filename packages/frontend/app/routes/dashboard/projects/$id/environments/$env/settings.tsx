@@ -2,7 +2,7 @@ import { AiOutlineSetting } from "react-icons/ai";
 import { FiFlag, FiKey } from "react-icons/fi";
 import { LoaderFunction, MetaFunction, useLoaderData } from "remix";
 import { Crumbs, BreadCrumbs } from "~/components/AppBreadcrumbs";
-import { Button } from "~/components/Button";
+import { Button } from "~/components/Buttons/Button";
 import { ButtonCopy } from "~/components/ButtonCopy";
 import { Header } from "~/components/Header";
 import { HorizontalNav, NavItem } from "~/components/HorizontalNav";

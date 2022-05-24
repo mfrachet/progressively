@@ -19,7 +19,7 @@ import { Section, SectionHeader } from "~/components/Section";
 import { AiOutlineBarChart, AiOutlineSetting } from "react-icons/ai";
 import { HorizontalNav, NavItem } from "~/components/HorizontalNav";
 import { FaPowerOff } from "react-icons/fa";
-import { Button } from "~/components/Button";
+import { Button } from "~/components/Buttons/Button";
 import {
   toggleAction,
   ToggleFlag,

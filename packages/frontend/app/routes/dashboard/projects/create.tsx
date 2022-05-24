@@ -19,7 +19,7 @@ import { getSession } from "~/sessions";
 import { User } from "~/modules/user/types";
 import { Header } from "~/components/Header";
 import { Section } from "~/components/Section";
-import { Button } from "~/components/Button";
+import { Button } from "~/components/Buttons/Button";
 import { TextInput } from "~/components/Fields/TextInput";
 import { Typography } from "~/components/Typography";
 
@@ -93,7 +93,7 @@ export default function CreateProjectPage() {
         <Header
           title="Create a project"
           description={
-            <Typography fontSize="xl" color="textlight">
+            <Typography>
               When creating a project, {`you'll`} become the administrator of it
               and will have full control over it.
             </Typography>

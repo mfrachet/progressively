@@ -1,4 +1,4 @@
-import { Button } from "~/components/Button";
+import { Button } from "~/components/Buttons/Button";
 import { Heading } from "~/components/Heading";
 import { Typography } from "~/components/Typography";
 import { Li, Ul } from "~/components/Ul";

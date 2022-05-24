@@ -1,4 +1,21 @@
+import { styled } from "~/stitches.config";
 import { Link } from "./Link";
+
+const Ol = styled("ol", {
+  display: "flex",
+  fontFamily: "$default",
+  color: "$content",
+
+  '& [aria-current="page"]': {
+    fontWeight: "$fontWeights$semiBold",
+    color: "$primary",
+  },
+});
+
+const Separator = styled("div", {
+  margin: "0 $spacing$2",
+  display: "inline-block",
+});
 
 export interface Crumb {
   link: string;
@@ -18,24 +35,29 @@ export const BreadCrumbs = ({ crumbs }: BreadCrumbsProps) => {
   return (
     <>
       <nav aria-label="Breadcrumb">
-        <ul>
-          {crumbs.map((crumb, index) => (
-            <li key={crumb.link}>
-              <Link
-                aria-current={
-                  crumb.forceNotCurrent
-                    ? undefined
-                    : index === lastItemIndex
-                    ? "page"
-                    : undefined
-                }
-                to={crumb.link}
-              >
-                {crumb.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <Ol>
+          {crumbs.map((crumb, index) => {
+            const currentPage = index === lastItemIndex;
+
+            return (
+              <li key={crumb.link}>
+                <Link
+                  aria-current={
+                    crumb.forceNotCurrent
+                      ? undefined
+                      : currentPage
+                      ? "page"
+                      : undefined
+                  }
+                  to={crumb.link}
+                >
+                  {crumb.label}
+                </Link>
+                {!currentPage && <Separator aria-hidden>{"/"}</Separator>}
+              </li>
+            );
+          })}
+        </Ol>
       </nav>
     </>
   );

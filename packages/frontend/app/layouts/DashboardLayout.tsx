@@ -4,6 +4,7 @@ import { User } from "~/modules/user/types";
 import { UseDropdown } from "~/modules/user/components/UserDropdown";
 import { SkipNavLink } from "~/components/SkipNav";
 import { Container } from "~/components/Container";
+import { Nav } from "~/components/Nav";
 
 export interface DashboardLayoutProps {
   user?: Partial<User>;
@@ -24,15 +25,13 @@ export const DashboardLayout = ({
     <div>
       <SkipNavLink>Skip to content</SkipNavLink>
 
-      <Container>
-        <nav aria-label="General">
-          <Logo />
+      <Nav aria-label="General">
+        <Logo />
 
-          {user && user.fullname && <UseDropdown user={user as User} />}
-        </nav>
+        {user && user.fullname && <UseDropdown user={user as User} />}
+      </Nav>
 
-        {breadcrumb}
-      </Container>
+      <Container>{breadcrumb}</Container>
 
       <Main>
         <Container>{header}</Container>

@@ -26,8 +26,8 @@ import { Section, SectionHeader } from "~/components/Section";
 import { EmptyState } from "~/components/EmptyState";
 import { FiFlag, FiKey } from "react-icons/fi";
 import { HorizontalNav, NavItem } from "~/components/HorizontalNav";
-import { Button } from "~/components/Button";
 import { Typography } from "~/components/Typography";
+import { CreateButton } from "~/components/Buttons/CreateButton";
 
 interface MetaArgs {
   data?: {
@@ -174,11 +174,11 @@ export default function FlagsByEnvPage() {
           hiddenTitle
           endAction={
             flagsByEnv.length > 0 && (
-              <Button
+              <CreateButton
                 to={`/dashboard/projects/${project.uuid}/environments/${environment.uuid}/flags/create`}
               >
                 Create a feature flag
-              </Button>
+              </CreateButton>
             )
           }
         />
@@ -213,11 +213,11 @@ export default function FlagsByEnvPage() {
               </Typography>
             }
             action={
-              <Button
+              <CreateButton
                 to={`/dashboard/projects/${project.uuid}/environments/${environment.uuid}/flags/create`}
               >
                 Create a feature flag
-              </Button>
+              </CreateButton>
             }
           />
         ) : null}

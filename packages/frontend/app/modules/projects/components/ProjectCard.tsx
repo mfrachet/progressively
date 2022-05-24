@@ -23,7 +23,7 @@ export const ProjectCard = ({
   return (
     <div>
       <div>
-        <Heading as="h2" id={`article-${id}`} size="md">
+        <Heading as="h2" id={`article-${id}`}>
           <Link ref={linkRef} to={linkTo}>
             {title} <VisuallyHidden>project</VisuallyHidden>
           </Link>

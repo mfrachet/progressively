@@ -28,7 +28,7 @@ import { authGuard } from "~/modules/auth/services/auth-guard";
 import { User } from "~/modules/user/types";
 import { Header } from "~/components/Header";
 import { Section, SectionHeader } from "~/components/Section";
-import { Button } from "~/components/Button";
+import { Button } from "~/components/Buttons/Button";
 import { Environment } from "~/modules/environments/types";
 import { TextInput } from "~/components/Fields/TextInput";
 import { Typography } from "~/components/Typography";

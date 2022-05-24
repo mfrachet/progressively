@@ -9,7 +9,7 @@ import {
   useTransition,
 } from "remix";
 import { Crumbs, BreadCrumbs } from "~/components/AppBreadcrumbs";
-import { Button } from "~/components/Button";
+import { Button } from "~/components/Buttons/Button";
 import { ErrorBox } from "~/components/ErrorBox";
 import { Header } from "~/components/Header";
 import { HorizontalNav, NavItem } from "~/components/HorizontalNav";

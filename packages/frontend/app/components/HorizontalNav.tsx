@@ -1,17 +1,25 @@
 import { NavLink } from "remix";
+import { styled } from "~/stitches.config";
 import { Container } from "./Container";
+
+const HorizontalNavWrapper = styled("nav", {
+  "& ul": {
+    display: "flex",
+  },
+});
 
 export interface HorizontalNavProps {
   children: React.ReactNode;
   label: string;
 }
+
 export const HorizontalNav = ({ children, label }: HorizontalNavProps) => {
   return (
-    <nav aria-label={label}>
+    <HorizontalNavWrapper aria-label={label}>
       <Container>
         <ul>{children}</ul>
       </Container>
-    </nav>
+    </HorizontalNavWrapper>
   );
 };
 

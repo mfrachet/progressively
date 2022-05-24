@@ -20,7 +20,7 @@ import { Project, UserProject, UserRoles } from "~/modules/projects/types";
 import { User } from "~/modules/user/types";
 import { getSession } from "~/sessions";
 import { Header } from "~/components/Header";
-import { Button } from "~/components/Button";
+import { Button } from "~/components/Buttons/Button";
 import { DeleteEntityLayout } from "~/layouts/DeleteEntityLayout";
 import { Typography } from "~/components/Typography";
 import { Li, Ul } from "~/components/Ul";

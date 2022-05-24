@@ -1,5 +1,5 @@
 import { ActionFunction, Form, useActionData, useTransition } from "remix";
-import { Button } from "~/components/Button";
+import { Button } from "~/components/Buttons/Button";
 import { ErrorBox } from "~/components/ErrorBox";
 import { TextInput } from "~/components/Fields/TextInput";
 import { SuccessBox } from "~/components/SuccessBox";

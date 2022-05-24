@@ -23,7 +23,7 @@ import { DashboardLayout } from "~/layouts/DashboardLayout";
 import { getSession } from "~/sessions";
 import { Header } from "~/components/Header";
 import { Section } from "~/components/Section";
-import { Button } from "~/components/Button";
+import { Button } from "~/components/Buttons/Button";
 import { DeleteEntityLayout } from "~/layouts/DeleteEntityLayout";
 import { Typography } from "~/components/Typography";
 import { Li, Ul } from "~/components/Ul";

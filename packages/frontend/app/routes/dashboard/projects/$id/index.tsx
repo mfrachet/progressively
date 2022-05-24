@@ -18,9 +18,9 @@ import { Section, SectionHeader } from "~/components/Section";
 import { HorizontalNav, NavItem } from "~/components/HorizontalNav";
 import { AiOutlineSetting } from "react-icons/ai";
 import { FiLayers } from "react-icons/fi";
-import { Button } from "~/components/Button";
 import { EmptyState } from "~/components/EmptyState";
 import { Typography } from "~/components/Typography";
+import { CreateButton } from "~/components/Buttons/CreateButton";
 
 interface MetaArgs {
   data?: {
@@ -110,11 +110,11 @@ export default function ProjectDetailPage() {
           hiddenTitle
           endAction={
             project.environments.length > 0 && (
-              <Button
+              <CreateButton
                 to={`/dashboard/projects/${project.uuid}/environments/create`}
               >
                 Create an environment
-              </Button>
+              </CreateButton>
             )
           }
         />
@@ -138,11 +138,11 @@ export default function ProjectDetailPage() {
               </Typography>
             }
             action={
-              <Button
+              <CreateButton
                 to={`/dashboard/projects/${project.uuid}/environments/create`}
               >
                 Create an environment
-              </Button>
+              </CreateButton>
             }
           />
         ) : null}

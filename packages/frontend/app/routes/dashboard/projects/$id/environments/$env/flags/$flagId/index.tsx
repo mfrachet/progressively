@@ -26,7 +26,6 @@ import { EmptyState } from "~/components/EmptyState";
 import { AiOutlineBarChart, AiOutlineSetting } from "react-icons/ai";
 import { HorizontalNav, NavItem } from "~/components/HorizontalNav";
 import { FaPowerOff } from "react-icons/fa";
-import { Button } from "~/components/Button";
 import {
   toggleAction,
   ToggleFlag,
@@ -34,6 +33,7 @@ import {
 import { ButtonCopy } from "~/components/ButtonCopy";
 import { FiFlag } from "react-icons/fi";
 import { Typography } from "~/components/Typography";
+import { CreateButton } from "~/components/Buttons/CreateButton";
 
 interface MetaArgs {
   data?: {
@@ -200,11 +200,11 @@ export default function FlagById() {
           hiddenTitle
           endAction={
             strategies.length > 0 && (
-              <Button
+              <CreateButton
                 to={`/dashboard/projects/${project.uuid}/environments/${environment.uuid}/flags/${currentFlag.uuid}/strategies/create`}
               >
                 Add a strategy
-              </Button>
+              </CreateButton>
             )
           }
         />
@@ -232,11 +232,11 @@ export default function FlagById() {
               </Typography>
             }
             action={
-              <Button
+              <CreateButton
                 to={`/dashboard/projects/${project.uuid}/environments/${environment.uuid}/flags/${currentFlag.uuid}/strategies/create`}
               >
                 Add a strategy
-              </Button>
+              </CreateButton>
             }
           />
         ) : null}

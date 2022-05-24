@@ -15,7 +15,9 @@ import { authGuard } from "~/modules/auth/services/auth-guard";
 import { User } from "~/modules/user/types";
 import { Header } from "~/components/Header";
 import { Section } from "~/components/Section";
-import { Button } from "~/components/Button";
+import { CardGroup } from "~/components/CardGroup";
+import { Spacer } from "~/components/Spacer";
+import { CreateButton } from "~/components/Buttons/CreateButton";
 
 export const meta: MetaFunction = () => {
   return {
@@ -59,7 +61,9 @@ export default function DashboardRoot() {
         <Header
           title="Projects"
           startAction={
-            <Button to="/dashboard/projects/create">Create a project</Button>
+            <CreateButton to="/dashboard/projects/create">
+              Create a project
+            </CreateButton>
           }
         />
       }
@@ -77,19 +81,23 @@ export default function DashboardRoot() {
           </SuccessBox>
         ) : null}
 
-        {projects.map((project) => (
-          <ProjectCard
-            key={project.projectId}
-            id={project.projectId}
-            linkTo={`/dashboard/projects/${project.projectId}`}
-            title={project.project.name}
-            description={
-              <>
-                You are an <em>{project.role}</em> of the project.
-              </>
-            }
-          />
-        ))}
+        <Spacer size={4} />
+
+        <CardGroup>
+          {projects.map((project) => (
+            <ProjectCard
+              key={project.projectId}
+              id={project.projectId}
+              linkTo={`/dashboard/projects/${project.projectId}`}
+              title={project.project.name}
+              description={
+                <>
+                  You are an <em>{project.role}</em> of the project.
+                </>
+              }
+            />
+          ))}
+        </CardGroup>
       </Section>
     </DashboardLayout>
   );
