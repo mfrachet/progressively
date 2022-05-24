@@ -9,6 +9,7 @@ export const CardGroup = styled("div", {
 
 export const Card = styled("div", {
   maxWidth: "$cardWidth",
+  minHeight: "$cardHeight",
   background: "$backgroundAccent",
   borderRadius: "$borderRadius$regular",
   padding: "$spacing$10 0",

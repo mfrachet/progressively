@@ -5,6 +5,7 @@ import { UseDropdown } from "~/modules/user/components/UserDropdown";
 import { SkipNavLink } from "~/components/SkipNav";
 import { Container } from "~/components/Container";
 import { Nav } from "~/components/Nav";
+import { Spacer } from "~/components/Spacer";
 
 export interface DashboardLayoutProps {
   user?: Partial<User>;
@@ -31,9 +32,10 @@ export const DashboardLayout = ({
         {user && user.fullname && <UseDropdown user={user as User} />}
       </Nav>
 
-      <Container>{breadcrumb}</Container>
+      {breadcrumb}
 
       <Main>
+        <Spacer size={6} />
         <Container>{header}</Container>
         {subNav}
 

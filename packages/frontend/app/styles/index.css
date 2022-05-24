@@ -4,13 +4,7 @@ body {
   font-size: 100%;
 }
 
-a.custom-nav-link {
-  border-bottom: 3px solid transparent;
-}
 a.custom-nav-link.active {
-  font-weight: var(--chakra-fontWeights-bold);
-  color: var(--chakra-colors-brand-500);
-  border-bottom: 3px solid var(--chakra-colors-brand-500);
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/ 

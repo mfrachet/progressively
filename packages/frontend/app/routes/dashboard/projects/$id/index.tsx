@@ -23,6 +23,7 @@ import { Typography } from "~/components/Typography";
 import { CreateButton } from "~/components/Buttons/CreateButton";
 import { CardGroup } from "~/components/CardGroup";
 import { Spacer } from "~/components/Spacer";
+import { CreationCard } from "~/components/CreationCard";
 
 interface MetaArgs {
   data?: {
@@ -107,23 +108,17 @@ export default function ProjectDetailPage() {
           </SuccessBox>
         ) : null}
 
-        <SectionHeader
-          title="Environments"
-          hiddenTitle
-          endAction={
-            project.environments.length > 0 && (
-              <CreateButton
-                to={`/dashboard/projects/${project.uuid}/environments/create`}
-              >
-                Create an environment
-              </CreateButton>
-            )
-          }
-        />
+        <SectionHeader title="Environments" hiddenTitle />
 
-        <Spacer size={4} />
+        <Spacer size={10} />
 
         <CardGroup>
+          <CreationCard
+            to={`/dashboard/projects/${project.uuid}/environments/create`}
+          >
+            Create an environment
+          </CreationCard>
+
           {project.environments.map((env) => (
             <EnvCard
               key={env.uuid}

@@ -5,7 +5,12 @@ export const RawH1 = styled(Heading, {
   fontSize: "$title",
   fontFamily: "$default",
   fontWeight: "$bold",
-  lineHeight: "$title",
+  backgroundImage: "linear-gradient(90deg, $title, $primary)",
+  backgroundClip: "text",
+  "-webkit-background-clip": "text",
+  "-webkit-text-fill-color": "transparent",
+  "-moz-background-clip": "text",
+  "-moz-text-fill-color": "transparent",
 });
 
 export const H1: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = (

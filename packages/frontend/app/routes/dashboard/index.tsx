@@ -17,7 +17,7 @@ import { Header } from "~/components/Header";
 import { Section } from "~/components/Section";
 import { CardGroup } from "~/components/CardGroup";
 import { Spacer } from "~/components/Spacer";
-import { CreateButton } from "~/components/Buttons/CreateButton";
+import { CreationCard } from "~/components/CreationCard";
 
 export const meta: MetaFunction = () => {
   return {
@@ -55,19 +55,7 @@ export default function DashboardRoot() {
   const hasRemovedProject = searchParams.get("projectRemoved") || undefined;
 
   return (
-    <DashboardLayout
-      user={user}
-      header={
-        <Header
-          title="Projects"
-          startAction={
-            <CreateButton to="/dashboard/projects/create">
-              Create a project
-            </CreateButton>
-          }
-        />
-      }
-    >
+    <DashboardLayout user={user} header={<Header title="Projects" />}>
       <Section>
         {newProjectId ? (
           <SuccessBox id="project-added">
@@ -81,9 +69,13 @@ export default function DashboardRoot() {
           </SuccessBox>
         ) : null}
 
-        <Spacer size={4} />
+        <Spacer size={10} />
 
         <CardGroup>
+          <CreationCard to="/dashboard/projects/create">
+            Create a project
+          </CreationCard>
+
           {projects.map((project) => (
             <ProjectCard
               key={project.projectId}

@@ -1,14 +1,16 @@
+import { MdChevronRight } from "react-icons/md";
 import { styled } from "~/stitches.config";
 import { Link } from "./Link";
 
 const Ol = styled("ol", {
   display: "flex",
+  justifyContent: "center",
   fontFamily: "$default",
   color: "$content",
 
   '& [aria-current="page"]': {
     fontWeight: "$fontWeights$semiBold",
-    color: "$primary",
+    color: "$hover",
   },
 });
 
@@ -53,7 +55,11 @@ export const BreadCrumbs = ({ crumbs }: BreadCrumbsProps) => {
                 >
                   {crumb.label}
                 </Link>
-                {!currentPage && <Separator aria-hidden>{"/"}</Separator>}
+                {!currentPage && (
+                  <Separator aria-hidden>
+                    <MdChevronRight />
+                  </Separator>
+                )}
               </li>
             );
           })}

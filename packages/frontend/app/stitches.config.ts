@@ -14,13 +14,16 @@ export const {
     colors: {
       title: "white",
       background: "#151722",
+      border: "rgb(36, 38, 49)",
       backgroundAccent: "rgb(26, 28, 39)",
-      primary: "#1fa2ff",
+      primary: "hsl(340deg, 82%, 42%)",
       content: "#9ba1a6",
+      hover: "hsl(340deg, 82%, 95%)",
     },
     sizes: {
       container: "1080px",
       cardWidth: "400px",
+      cardHeight: "100px",
     },
     fontSizes: {
       content: "1.25rem",
