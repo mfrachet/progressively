@@ -13,6 +13,7 @@ const StyledSwitch = styled(SwitchPrimitive.Root, {
   WebkitTapHighlightColor: "rgba(0, 0, 0, 0)",
   "&:focus": { outline: `revert` },
   '&[data-state="checked"]': { backgroundColor: "$primary" },
+  cursor: "pointer",
 });
 
 const StyledThumb = styled(SwitchPrimitive.Thumb, {

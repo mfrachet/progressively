@@ -1,15 +1,14 @@
 import { MdChevronRight } from "react-icons/md";
 import { styled } from "~/stitches.config";
+import { Container } from "./Container";
 import { Link } from "./Link";
-
 const Ol = styled("ol", {
-  display: "flex",
-  justifyContent: "center",
   fontFamily: "$default",
   color: "$content",
+  display: "flex",
 
   '& [aria-current="page"]': {
-    fontWeight: "$fontWeights$semiBold",
+    fontWeight: "$fontWeights$bold",
     color: "$hover",
   },
 });
@@ -35,7 +34,7 @@ export const BreadCrumbs = ({ crumbs }: BreadCrumbsProps) => {
   const lastItemIndex = crumbs.length - 1;
 
   return (
-    <>
+    <Container>
       <nav aria-label="Breadcrumb">
         <Ol>
           {crumbs.map((crumb, index) => {
@@ -65,6 +64,6 @@ export const BreadCrumbs = ({ crumbs }: BreadCrumbsProps) => {
           })}
         </Ol>
       </nav>
-    </>
+    </Container>
   );
 };

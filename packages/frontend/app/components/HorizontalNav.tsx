@@ -1,13 +1,9 @@
 import { NavLink } from "remix";
 import { styled } from "~/stitches.config";
-import { Container } from "./Container";
 
 const HorizontalNavWrapper = styled("nav", {
-  display: "flex",
-  justifyContent: "center",
-
   "& ul": {
-    background: "$title",
+    background: "$backgroundAccent",
     display: "flex",
     padding: "$spacing$1",
     borderRadius: "$borderRadius$regular",
@@ -18,11 +14,12 @@ const HorizontalNavWrapper = styled("nav", {
   "& ul li a": {
     display: "flex",
     fontFamily: "$default",
-    padding: "$spacing$2 $spacing$3",
+    padding: "$spacing$3 $spacing$4",
     alignItems: "center",
     textDecoration: "none",
-    color: "$background",
+    color: "$title",
     borderRadius: "$borderRadius$regular",
+    cursor: "pointer",
   },
 
   "& ul li a:hover": {
@@ -47,9 +44,7 @@ export interface HorizontalNavProps {
 export const HorizontalNav = ({ children, label }: HorizontalNavProps) => {
   return (
     <HorizontalNavWrapper aria-label={label}>
-      <Container>
-        <ul>{children}</ul>
-      </Container>
+      <ul>{children}</ul>
     </HorizontalNavWrapper>
   );
 };
