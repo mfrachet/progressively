@@ -42,6 +42,18 @@ export const FlagCard = ({
 
   return (
     <Card>
+      <CardHeader>
+        <span aria-hidden>
+          <Tag>{flagKey}</Tag>
+        </span>
+
+        <VisuallyHidden>
+          <p>The flag key is {flagKey}</p>
+        </VisuallyHidden>
+      </CardHeader>
+
+      <Spacer size={2} />
+
       <CardHeader as="h3" id={`article-${id}`}>
         <HeaderInline>
           <Link ref={linkRef} to={linkTo}>
@@ -53,17 +65,9 @@ export const FlagCard = ({
       <CardContent>
         <Typography>{description}</Typography>
 
-        <Spacer size={10} />
+        <Spacer size={8} />
 
         <Footer>
-          <span aria-hidden>
-            <Tag>{flagKey}</Tag>
-          </span>
-
-          <VisuallyHidden>
-            <p>The flag key is {flagKey}</p>
-          </VisuallyHidden>
-
           <Form method="post">
             <input
               type="hidden"
