@@ -1,5 +1,6 @@
 import { Button } from "~/components/Buttons/Button";
-import { Heading } from "~/components/Heading";
+import { Card, CardContent, CardHeader } from "~/components/CardGroup";
+import { Spacer } from "~/components/Spacer";
 import { Typography } from "~/components/Typography";
 import { Li, Ul } from "~/components/Ul";
 import { VisuallyHidden } from "~/components/VisuallyHidden";
@@ -84,20 +85,24 @@ export const StrategyCard = ({
   strat,
 }: StrategyCardProps) => {
   return (
-    <div>
-      <Heading as="h3" id={strat.uuid} size="md">
+    <Card>
+      <CardHeader as="h3" id={strat.uuid}>
         {strat.name}
-      </Heading>
+      </CardHeader>
 
-      <StrategyAudience strat={strat} />
+      <CardContent>
+        <StrategyAudience strat={strat} />
 
-      <Button
-        to={`/dashboard/projects/${projectId}/environments/${envId}/flags/${flagId}/strategies/${strat.uuid}/delete`}
-      >
-        Remove<VisuallyHidden> {strat.name}</VisuallyHidden>
-      </Button>
+        <StrategyTargetConstraints strat={strat} />
 
-      <StrategyTargetConstraints strat={strat} />
-    </div>
+        <Spacer size={8} />
+
+        <Button
+          to={`/dashboard/projects/${projectId}/environments/${envId}/flags/${flagId}/strategies/${strat.uuid}/delete`}
+        >
+          Remove<VisuallyHidden> {strat.name}</VisuallyHidden>
+        </Button>
+      </CardContent>
+    </Card>
   );
 };

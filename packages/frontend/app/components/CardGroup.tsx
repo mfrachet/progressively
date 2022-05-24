@@ -5,10 +5,16 @@ export const CardGroup = styled("div", {
   gridTemplateColumns: "1fr 1fr 1fr",
   gridColumnGap: "$spacing$4",
   gridRowGap: "$spacing$4",
+  variants: {
+    cols: {
+      2: {
+        gridTemplateColumns: "1fr 1fr",
+      },
+    },
+  },
 });
 
 export const Card = styled("div", {
-  maxWidth: "$cardWidth",
   minHeight: "$cardHeight",
   background: "$backgroundAccent",
   borderRadius: "$borderRadius$regular",
@@ -18,6 +24,9 @@ export const Card = styled("div", {
 export const CardHeader = styled("div", {
   padding: "0 $spacing$10 $spacing$3 $spacing$10",
   fontFamily: "$default",
+  color: "$title",
+  fontSize: "$content",
+
   "& a": {
     color: "$title",
   },

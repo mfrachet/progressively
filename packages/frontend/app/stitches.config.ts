@@ -22,7 +22,6 @@ export const {
     },
     sizes: {
       container: "1080px",
-      cardWidth: "400px",
       cardHeight: "100px",
     },
     fontSizes: {

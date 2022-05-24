@@ -7,4 +7,5 @@ export const Tag = styled("span", {
   color: "$title",
   fontFamily: "$default",
   whiteSpace: "nowrap",
+  fontSize: "$btn",
 });
