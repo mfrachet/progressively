@@ -107,16 +107,21 @@ export default function ResetPasswordPage() {
         />
       }
       nav={<BackLink to="/signin">Back to signin</BackLink>}
+      status={
+        <>
+          {errors && Object.keys(errors).length > 0 && (
+            <ErrorBox list={errors} />
+          )}
+
+          {success && (
+            <SuccessBox id="password-reset">
+              The password has been successfully reset. You can now connect.
+            </SuccessBox>
+          )}
+        </>
+      }
     >
       <Form method="post">
-        {errors && Object.keys(errors).length > 0 && <ErrorBox list={errors} />}
-
-        {success && (
-          <SuccessBox id="password-reset">
-            The password has been successfully reset. You can now connect.
-          </SuccessBox>
-        )}
-
         <input type="hidden" name="token" id="token" value={urlToken || ""} />
 
         <TextInput

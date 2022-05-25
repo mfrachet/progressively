@@ -2,6 +2,7 @@ import { MdChevronRight } from "react-icons/md";
 import { styled } from "~/stitches.config";
 import { Container } from "./Container";
 import { Link } from "./Link";
+
 const Ol = styled("ol", {
   fontFamily: "$default",
   color: "$content",

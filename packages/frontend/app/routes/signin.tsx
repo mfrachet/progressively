@@ -83,18 +83,23 @@ export default function Signin() {
   const errors = data?.errors;
 
   return (
-    <NotAuthenticatedLayout header={<Header title="Signin" />}>
+    <NotAuthenticatedLayout
+      header={<Header title="Signin" />}
+      status={
+        <>
+          {(errors?.password || errors?.email || errors?.badUser) && (
+            <ErrorBox list={errors} />
+          )}
+
+          {Boolean(userActivated) && (
+            <SuccessBox id="user-activated">
+              The account has been activated, you can now log in
+            </SuccessBox>
+          )}
+        </>
+      }
+    >
       <Form method="post">
-        {(errors?.password || errors?.email || errors?.badUser) && (
-          <ErrorBox list={errors} />
-        )}
-
-        {Boolean(userActivated) && (
-          <SuccessBox id="user-activated">
-            The account has been activated, you can now log in
-          </SuccessBox>
-        )}
-
         <TextInput
           isInvalid={Boolean(errors?.email)}
           name="email"

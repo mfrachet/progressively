@@ -14,7 +14,7 @@ const HorizontalNavWrapper = styled("nav", {
   "& ul li a": {
     display: "flex",
     fontFamily: "$default",
-    padding: "$spacing$3 $spacing$4",
+    padding: "$spacing$4 $spacing$5",
     alignItems: "center",
     textDecoration: "none",
     color: "$title",
@@ -29,7 +29,10 @@ const HorizontalNavWrapper = styled("nav", {
 
   "& ul li a:focus": {
     background: "$hover",
+    color: "$primary",
   },
+
+  "& ul li a.custom-nav-link.active": {},
 
   "& ul li svg": {
     marginRight: "$spacing$1",

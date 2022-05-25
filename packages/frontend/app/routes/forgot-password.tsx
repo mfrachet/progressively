@@ -79,17 +79,22 @@ export default function ForgotPasswordPage() {
           }
         />
       }
+      status={
+        <>
+          {errors && Object.keys(errors).length > 0 && (
+            <ErrorBox list={errors} />
+          )}
+
+          {success && (
+            <SuccessBox id="password-reset">
+              An email with a link to reset your password has been set. Make
+              sure to follow the instructions.
+            </SuccessBox>
+          )}
+        </>
+      }
     >
       <Form method="post">
-        {errors && Object.keys(errors).length > 0 && <ErrorBox list={errors} />}
-
-        {success && (
-          <SuccessBox id="password-reset">
-            An email with a link to reset your password has been set. Make sure
-            to follow the instructions.
-          </SuccessBox>
-        )}
-
         <TextInput
           isInvalid={Boolean(errors?.email)}
           label="Email"

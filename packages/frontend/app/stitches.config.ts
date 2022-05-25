@@ -19,6 +19,14 @@ export const {
       primary: "hsl(340deg, 82%, 42%)",
       content: "#9ba1a6",
       hover: "hsl(340deg, 82%, 95%)",
+
+      successBg: "#c8e6c9",
+      successFg: "#1b5e20",
+      successBorder: "#66bb6a",
+
+      errorBg: "#ffcdd2",
+      errorFg: "#b71c1c",
+      errorBorder: "#ef5350",
     },
     sizes: {
       container: "1080px",
