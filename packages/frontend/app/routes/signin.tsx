@@ -17,12 +17,26 @@ import { Header } from "~/components/Header";
 import { Link } from "~/components/Link";
 import { Stack } from "~/components/Stack";
 import { SuccessBox } from "~/components/SuccessBox";
-import { Li, Ul } from "~/components/Ul";
 import { NotAuthenticatedLayout } from "~/layouts/NotAuthenticatedLayout";
 import { AuthCredentials } from "~/modules/auth/types";
 import { commitSession, getSession } from "~/sessions";
+import { styled } from "~/stitches.config";
 import { authenticate } from "../modules/auth/services/authenticate";
 import { validateSigninForm } from "../modules/auth/validators/validate-signin-form";
+
+const ForgotPasswordLink = styled(Link, {
+  fontSize: "$btn",
+  color: "$hover",
+});
+
+const SignupLink = styled(Link, {
+  fontSize: "$btn",
+  color: "$hover",
+  textAlign: "center",
+  padding: "$spacing$4 0",
+  borderTop: "1px solid $background",
+  display: "block",
+});
 
 export const meta: MetaFunction = () => {
   return {
@@ -110,37 +124,35 @@ export default function Signin() {
             placeholder="e.g: james.bond@mi6.com"
           />
 
-          <TextInput
-            isInvalid={Boolean(errors?.password)}
-            name="password"
-            label="Password"
-            type="password"
-            placeholder="************"
-          />
+          <Stack spacing={2}>
+            <div>
+              <TextInput
+                isInvalid={Boolean(errors?.password)}
+                name="password"
+                label="Password"
+                type="password"
+                placeholder="************"
+              />
+            </div>
+            <div>
+              <ForgotPasswordLink to="/forgot-password">{`I forgot my password`}</ForgotPasswordLink>
+            </div>
+          </Stack>
 
-          <div>
-            <Button
-              type="submit"
-              isLoading={transition.state === "submitting"}
-              loadingText="Signin in progress, please wait..."
-            >
-              Sign in
-            </Button>
-          </div>
+          <Button
+            fullWidth
+            type="submit"
+            isLoading={transition.state === "submitting"}
+            loadingText="Signin in progress, please wait..."
+          >
+            Sign in
+          </Button>
         </FormGroup>
       </Form>
 
-      <Ul aria-label="Account related">
-        {showRegister ? (
-          <Li>
-            <Link to="/register">{`Create an account`}</Link>
-          </Li>
-        ) : null}
-
-        <Li>
-          <Link to="/forgot-password">{`I forgot my password`}</Link>
-        </Li>
-      </Ul>
+      {showRegister ? (
+        <SignupLink to="/register">{`Create an account`}</SignupLink>
+      ) : null}
     </NotAuthenticatedLayout>
   );
 }

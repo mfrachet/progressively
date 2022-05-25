@@ -35,11 +35,11 @@ export const NotAuthenticatedLayout = ({
       <Main>
         <Container>
           <Wrapper>
-            {status && <Stack spacing={4}>{status}</Stack>}
             <Stack spacing={8}>
               <Stack spacing={2}>
                 {nav}
                 {header}
+                {status && <Stack spacing={4}>{status}</Stack>}
               </Stack>
               {children}
             </Stack>

@@ -13,6 +13,14 @@ const RawButton = styled("button", {
   display: "inline-block",
   textDecoration: "none",
   cursor: "pointer",
+
+  variants: {
+    fullWidth: {
+      true: {
+        width: "100%",
+      },
+    },
+  },
 });
 
 export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
@@ -21,12 +29,14 @@ export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   isLoading?: boolean;
   loadingText?: string;
   type?: "button" | "submit" | "reset";
+  fullWidth?: boolean;
 }
 
 export const Button = ({
   to,
   children,
   type,
+  fullWidth,
   isLoading,
   loadingText,
   ...props
@@ -40,7 +50,7 @@ export const Button = ({
   }
 
   return (
-    <RawButton type={type} {...props}>
+    <RawButton type={type} fullWidth={fullWidth} {...props}>
       {children}
     </RawButton>
   );

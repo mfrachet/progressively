@@ -8,6 +8,7 @@ import {
 import { BackLink } from "~/components/BackLink";
 import { Button } from "~/components/Buttons/Button";
 import { ErrorBox } from "~/components/ErrorBox";
+import { FormGroup } from "~/components/Fields/FormGroup";
 import { TextInput } from "~/components/Fields/TextInput";
 import { Header } from "~/components/Header";
 import { SuccessBox } from "~/components/SuccessBox";
@@ -95,23 +96,24 @@ export default function ForgotPasswordPage() {
       }
     >
       <Form method="post">
-        <TextInput
-          isInvalid={Boolean(errors?.email)}
-          label="Email"
-          name="email"
-          type="email"
-          placeholder="e.g: james.bond@mi6.com"
-        />
+        <FormGroup>
+          <TextInput
+            isInvalid={Boolean(errors?.email)}
+            label="Email"
+            name="email"
+            type="email"
+            placeholder="e.g: james.bond@mi6.com"
+          />
 
-        <div>
           <Button
+            fullWidth
             type="submit"
             isLoading={transition.state === "submitting"}
             loadingText="Password resetting in progress, please wait..."
           >
             Reset password
           </Button>
-        </div>
+        </FormGroup>
       </Form>
     </NotAuthenticatedLayout>
   );
