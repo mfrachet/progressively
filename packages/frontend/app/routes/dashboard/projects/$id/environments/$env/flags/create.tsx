@@ -11,6 +11,7 @@ import {
 import { Crumbs, BreadCrumbs } from "~/components/AppBreadcrumbs";
 import { Button } from "~/components/Buttons/Button";
 import { ErrorBox } from "~/components/ErrorBox";
+import { FormGroup } from "~/components/Fields/FormGroup";
 import { TextInput } from "~/components/Fields/TextInput";
 import { Header } from "~/components/Header";
 import { Section } from "~/components/Section";
@@ -149,37 +150,40 @@ export default function CreateFlagPage() {
           }
         />
       }
+      status={
+        (errors?.name || errors?.description) && <ErrorBox list={errors} />
+      }
     >
       <Section>
-        {(errors?.name || errors?.description) && <ErrorBox list={errors} />}
-
         <Form method="post">
-          <TextInput
-            name="flag-name"
-            isInvalid={Boolean(errors?.name)}
-            label="Flag name"
-            placeholder="e.g: New Homepage"
-          />
+          <FormGroup>
+            <TextInput
+              name="flag-name"
+              isInvalid={Boolean(errors?.name)}
+              label="Flag name"
+              placeholder="e.g: New Homepage"
+            />
 
-          <TextInput
-            name="flag-desc"
-            isInvalid={Boolean(errors?.description)}
-            label="Flag description"
-            placeholder="e.g: The new homepage"
-          />
+            <TextInput
+              name="flag-desc"
+              isInvalid={Boolean(errors?.description)}
+              label="Flag description"
+              placeholder="e.g: The new homepage"
+            />
 
-          <Typography>
-            After the creation of a feature flag, you will be able to get its
-            SDK key for application usage.
-          </Typography>
+            <Typography>
+              After the creation of a feature flag, you will be able to get its
+              SDK key for application usage.
+            </Typography>
 
-          <Button
-            type="submit"
-            isLoading={transition.state === "submitting"}
-            loadingText="Creating the feature flag, please wait..."
-          >
-            Create the feature flag
-          </Button>
+            <Button
+              type="submit"
+              isLoading={transition.state === "submitting"}
+              loadingText="Creating the feature flag, please wait..."
+            >
+              Create the feature flag
+            </Button>
+          </FormGroup>
         </Form>
       </Section>
     </DashboardLayout>
