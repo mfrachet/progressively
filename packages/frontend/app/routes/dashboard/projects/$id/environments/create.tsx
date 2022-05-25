@@ -27,6 +27,7 @@ import { Section } from "~/components/Section";
 import { Button } from "~/components/Buttons/Button";
 import { TextInput } from "~/components/Fields/TextInput";
 import { Typography } from "~/components/Typography";
+import { FormGroup } from "~/components/Fields/FormGroup";
 
 interface MetaArgs {
   data?: {
@@ -125,27 +126,28 @@ export default function CreateEnvironmentPage() {
           }
         />
       }
+      status={errors?.name && <ErrorBox list={errors} />}
     >
       <Section>
-        {errors?.name && <ErrorBox list={errors} />}
-
         <Form method="post">
-          <TextInput
-            isInvalid={Boolean(errors?.name)}
-            name="env-name"
-            placeholder="e.g: Staging"
-            label="Environment name"
-            description="After the creation of an environment, you will be able to get
+          <FormGroup>
+            <TextInput
+              isInvalid={Boolean(errors?.name)}
+              name="env-name"
+              placeholder="e.g: Staging"
+              label="Environment name"
+              description="After the creation of an environment, you will be able to get
               its SDK key for application usage."
-          />
+            />
 
-          <Button
-            type="submit"
-            isLoading={transition.state === "submitting"}
-            loadingText="Creating the environment, please wait..."
-          >
-            Create the environment
-          </Button>
+            <Button
+              type="submit"
+              isLoading={transition.state === "submitting"}
+              loadingText="Creating the environment, please wait..."
+            >
+              Create the environment
+            </Button>
+          </FormGroup>
         </Form>
       </Section>
     </DashboardLayout>

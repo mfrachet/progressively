@@ -12,8 +12,6 @@ export const Header = ({ title, description, startAction }: HeaderProps) => {
     <div>
       <H1>{title}</H1>
 
-      <Spacer size={4} />
-
       {description}
 
       {startAction}

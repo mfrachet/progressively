@@ -21,6 +21,11 @@ const Input = styled("input", {
   display: "block",
   width: "100%",
   boxSizing: "border-box",
+  maxWidth: "40ch",
+});
+
+const Hint = styled(Typography, {
+  fontSize: "$btn",
 });
 
 export const TextInput = ({
@@ -52,9 +57,7 @@ export const TextInput = ({
         aria-describedby={ariaDescription}
       />
 
-      {description && (
-        <Typography id={`${name}-hint`}>{description}</Typography>
-      )}
+      {description && <Hint id={`${name}-hint`}>{description}</Hint>}
     </Stack>
   );
 };

@@ -5,4 +5,5 @@ export const Typography = styled("p", {
   fontSize: "$content",
   fontFamily: "$default",
   lineHeight: "$content",
+  maxWidth: "60ch",
 });
