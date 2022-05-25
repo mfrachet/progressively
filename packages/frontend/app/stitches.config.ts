@@ -16,7 +16,7 @@ export const {
       background: "#151722",
       border: "rgb(36, 38, 49)",
       backgroundAccent: "rgb(26, 28, 39)",
-      primary: "hsl(340deg, 82%, 42%)",
+      primary: "#c3134e",
       content: "#9ba1a6",
       hover: "hsl(340deg, 82%, 95%)",
 
@@ -31,6 +31,7 @@ export const {
     sizes: {
       container: "1080px",
       cardHeight: "100px",
+      notAuthenticatedCardWidth: "400px",
     },
     fontSizes: {
       content: "1.25rem",

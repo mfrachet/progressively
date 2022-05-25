@@ -11,9 +11,11 @@ import {
 } from "remix";
 import { Button } from "~/components/Buttons/Button";
 import { ErrorBox } from "~/components/ErrorBox";
+import { FormGroup } from "~/components/Fields/FormGroup";
 import { TextInput } from "~/components/Fields/TextInput";
 import { Header } from "~/components/Header";
 import { Link } from "~/components/Link";
+import { Stack } from "~/components/Stack";
 import { SuccessBox } from "~/components/SuccessBox";
 import { Li, Ul } from "~/components/Ul";
 import { NotAuthenticatedLayout } from "~/layouts/NotAuthenticatedLayout";
@@ -100,30 +102,32 @@ export default function Signin() {
       }
     >
       <Form method="post">
-        <TextInput
-          isInvalid={Boolean(errors?.email)}
-          name="email"
-          label="Email"
-          placeholder="e.g: james.bond@mi6.com"
-        />
+        <FormGroup>
+          <TextInput
+            isInvalid={Boolean(errors?.email)}
+            name="email"
+            label="Email"
+            placeholder="e.g: james.bond@mi6.com"
+          />
 
-        <TextInput
-          isInvalid={Boolean(errors?.password)}
-          name="password"
-          label="Password"
-          type="password"
-          placeholder="************"
-        />
+          <TextInput
+            isInvalid={Boolean(errors?.password)}
+            name="password"
+            label="Password"
+            type="password"
+            placeholder="************"
+          />
 
-        <div>
-          <Button
-            type="submit"
-            isLoading={transition.state === "submitting"}
-            loadingText="Signin in progress, please wait..."
-          >
-            Sign in
-          </Button>
-        </div>
+          <div>
+            <Button
+              type="submit"
+              isLoading={transition.state === "submitting"}
+              loadingText="Signin in progress, please wait..."
+            >
+              Sign in
+            </Button>
+          </div>
+        </FormGroup>
       </Form>
 
       <Ul aria-label="Account related">

@@ -3,6 +3,7 @@ import { Logo } from "~/components/Logo";
 import { Main } from "~/components/Main";
 import { Nav } from "~/components/Nav";
 import { Stack } from "~/components/Stack";
+import { styled } from "~/stitches.config";
 
 export interface NotAuthenticatedLayoutProps {
   children: React.ReactNode;
@@ -10,6 +11,15 @@ export interface NotAuthenticatedLayoutProps {
   header: React.ReactNode;
   status?: React.ReactNode;
 }
+
+const Wrapper = styled("div", {
+  background: "$backgroundAccent",
+  padding: "$spacing$10",
+  maxWidth: "$notAuthenticatedCardWidth",
+  margin: "0 auto",
+  borderRadius: "$borderRadius$regular",
+});
+
 export const NotAuthenticatedLayout = ({
   children,
   nav,
@@ -24,13 +34,16 @@ export const NotAuthenticatedLayout = ({
 
       <Main>
         <Container>
-          {nav}
-
-          {header}
-
-          {status && <Stack spacing={4}>{status}</Stack>}
-
-          {children}
+          <Wrapper>
+            {status && <Stack spacing={4}>{status}</Stack>}
+            <Stack spacing={8}>
+              <Stack spacing={2}>
+                {nav}
+                {header}
+              </Stack>
+              {children}
+            </Stack>
+          </Wrapper>
         </Container>
       </Main>
     </div>

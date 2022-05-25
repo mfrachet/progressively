@@ -28,6 +28,26 @@ export const Stack = styled("div", {
           marginTop: "$spacing$5",
         },
       },
+      6: {
+        "& > * + *": {
+          marginTop: "$spacing$6",
+        },
+      },
+      7: {
+        "& > * + *": {
+          marginTop: "$spacing$7",
+        },
+      },
+      8: {
+        "& > * + *": {
+          marginTop: "$spacing$8",
+        },
+      },
+      9: {
+        "& > * + *": {
+          marginTop: "$spacing$9",
+        },
+      },
     },
   },
 });

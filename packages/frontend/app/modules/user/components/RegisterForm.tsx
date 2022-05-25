@@ -1,6 +1,7 @@
 import { ActionFunction, Form, useActionData, useTransition } from "remix";
 import { Button } from "~/components/Buttons/Button";
 import { ErrorBox } from "~/components/ErrorBox";
+import { FormGroup } from "~/components/Fields/FormGroup";
 import { TextInput } from "~/components/Fields/TextInput";
 import { SuccessBox } from "~/components/SuccessBox";
 import { createUser } from "../services/createUser";
@@ -71,42 +72,44 @@ export const RegisterForm = () => {
         </SuccessBox>
       )}
 
-      <TextInput
-        isInvalid={Boolean(errors?.fullname)}
-        label="Fullname"
-        name="fullname"
-        placeholder="e.g: James Bond"
-      />
+      <FormGroup>
+        <TextInput
+          isInvalid={Boolean(errors?.fullname)}
+          label="Fullname"
+          name="fullname"
+          placeholder="e.g: James Bond"
+        />
 
-      <TextInput
-        isInvalid={Boolean(errors?.email)}
-        label="Email"
-        name="email"
-        placeholder="e.g: james.bond@mi6.com"
-      />
+        <TextInput
+          isInvalid={Boolean(errors?.email)}
+          label="Email"
+          name="email"
+          placeholder="e.g: james.bond@mi6.com"
+        />
 
-      <TextInput
-        isInvalid={Boolean(errors?.password)}
-        label="Password"
-        name="password"
-        type="password"
-        placeholder="************"
-      />
+        <TextInput
+          isInvalid={Boolean(errors?.password)}
+          label="Password"
+          name="password"
+          type="password"
+          placeholder="************"
+        />
 
-      <TextInput
-        isInvalid={Boolean(errors?.confirmPassword)}
-        label="Confirm your password"
-        name="confirmPassword"
-        type="password"
-        placeholder="************"
-      />
+        <TextInput
+          isInvalid={Boolean(errors?.confirmPassword)}
+          label="Confirm your password"
+          name="confirmPassword"
+          type="password"
+          placeholder="************"
+        />
 
-      <Button
-        isLoading={transition.state === "submitting"}
-        loadingText="Creation in progress, please wait..."
-      >
-        Create an account
-      </Button>
+        <Button
+          isLoading={transition.state === "submitting"}
+          loadingText="Creation in progress, please wait..."
+        >
+          Create an account
+        </Button>
+      </FormGroup>
     </Form>
   );
 };
