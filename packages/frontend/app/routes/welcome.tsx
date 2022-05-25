@@ -1,4 +1,4 @@
-import { ActionFunction, MetaFunction } from "remix";
+import { ActionFunction, MetaFunction, useActionData } from "remix";
 import { Header } from "~/components/Header";
 import { Typography } from "~/components/Typography";
 import { NotAuthenticatedLayout } from "~/layouts/NotAuthenticatedLayout";
@@ -25,6 +25,9 @@ export const action: ActionFunction = ({
 };
 
 export default function WelcomePage() {
+  const data = useActionData<ActionData>();
+  const errors = data?.errors;
+
   return (
     <NotAuthenticatedLayout
       header={
@@ -39,7 +42,7 @@ export default function WelcomePage() {
         />
       }
     >
-      <RegisterForm />
+      <RegisterForm errors={errors} />
     </NotAuthenticatedLayout>
   );
 }

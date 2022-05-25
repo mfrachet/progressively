@@ -1,16 +1,17 @@
 import { ActionFunction, Form, useActionData, useTransition } from "remix";
 import { Button } from "~/components/Buttons/Button";
-import { ErrorBox } from "~/components/ErrorBox";
 import { FormGroup } from "~/components/Fields/FormGroup";
 import { TextInput } from "~/components/Fields/TextInput";
-import { SuccessBox } from "~/components/SuccessBox";
 import { createUser } from "../services/createUser";
 import { RegisterCredentials, User } from "../types";
 import { validateRegistrationForm } from "../validators/validate-registration-form";
 
-export interface RegisterActionData {
-  newUser?: User;
+export interface RegisterFormProps {
   errors?: Partial<RegisterCredentials & { backend?: string }>;
+}
+
+export interface RegisterActionData extends RegisterFormProps {
+  newUser?: User;
 }
 
 export const registerAction: ActionFunction = async ({
@@ -55,23 +56,11 @@ export const registerAction: ActionFunction = async ({
   }
 };
 
-export const RegisterForm = () => {
+export const RegisterForm = ({ errors }: RegisterFormProps) => {
   const transition = useTransition();
-  const data = useActionData<RegisterActionData>();
-  const newUser = data?.newUser;
-  const errors = data?.errors;
 
   return (
     <Form method="post">
-      {errors && Object.keys(errors).length > 0 && <ErrorBox list={errors} />}
-
-      {newUser?.uuid && (
-        <SuccessBox id="user-created">
-          The user has been created! Take a look at your inbox, there should be
-          a link to activate it :).
-        </SuccessBox>
-      )}
-
       <FormGroup>
         <TextInput
           isInvalid={Boolean(errors?.fullname)}
