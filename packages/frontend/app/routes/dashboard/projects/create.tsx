@@ -19,10 +19,10 @@ import { getSession } from "~/sessions";
 import { User } from "~/modules/user/types";
 import { Header } from "~/components/Header";
 import { Section } from "~/components/Section";
-import { Button } from "~/components/Buttons/Button";
 import { TextInput } from "~/components/Fields/TextInput";
 import { Typography } from "~/components/Typography";
 import { FormGroup } from "~/components/Fields/FormGroup";
+import { SubmitButton } from "~/components/Buttons/SubmitButton";
 
 export const meta: MetaFunction = () => {
   return {
@@ -113,13 +113,13 @@ export default function CreateProjectPage() {
               placeholder="e.g: My super project"
             />
 
-            <Button
+            <SubmitButton
               type="submit"
               isLoading={transition.state === "submitting"}
               loadingText="Creating the project, please wait..."
             >
               Create the project
-            </Button>
+            </SubmitButton>
           </FormGroup>
         </Form>
       </Section>

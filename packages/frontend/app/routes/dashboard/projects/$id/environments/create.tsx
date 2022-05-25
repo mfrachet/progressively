@@ -24,10 +24,10 @@ import { getSession } from "~/sessions";
 import { User } from "~/modules/user/types";
 import { Header } from "~/components/Header";
 import { Section } from "~/components/Section";
-import { Button } from "~/components/Buttons/Button";
 import { TextInput } from "~/components/Fields/TextInput";
 import { Typography } from "~/components/Typography";
 import { FormGroup } from "~/components/Fields/FormGroup";
+import { SubmitButton } from "~/components/Buttons/SubmitButton";
 
 interface MetaArgs {
   data?: {
@@ -140,13 +140,13 @@ export default function CreateEnvironmentPage() {
               its SDK key for application usage."
             />
 
-            <Button
+            <SubmitButton
               type="submit"
               isLoading={transition.state === "submitting"}
               loadingText="Creating the environment, please wait..."
             >
               Create the environment
-            </Button>
+            </SubmitButton>
           </FormGroup>
         </Form>
       </Section>

@@ -10,6 +10,7 @@ import {
 } from "remix";
 import { Crumbs, BreadCrumbs } from "~/components/AppBreadcrumbs";
 import { Button } from "~/components/Buttons/Button";
+import { SubmitButton } from "~/components/Buttons/SubmitButton";
 import { ErrorBox } from "~/components/ErrorBox";
 import { FormGroup } from "~/components/Fields/FormGroup";
 import { TextInput } from "~/components/Fields/TextInput";
@@ -176,13 +177,13 @@ export default function CreateFlagPage() {
               SDK key for application usage.
             </Typography>
 
-            <Button
+            <SubmitButton
               type="submit"
               isLoading={transition.state === "submitting"}
               loadingText="Creating the feature flag, please wait..."
             >
               Create the feature flag
-            </Button>
+            </SubmitButton>
           </FormGroup>
         </Form>
       </Section>
