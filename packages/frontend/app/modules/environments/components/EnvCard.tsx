@@ -16,7 +16,7 @@ export const EnvCard = ({ id, linkTo, title, clientKey }: EnvCardProps) => {
   const linkRef = useRef<HTMLAnchorElement>(null);
 
   return (
-    <Card>
+    <Card onClick={() => linkRef?.current?.click()}>
       <CardHeader as="h3" id={`article-${id}`}>
         <Link ref={linkRef} to={linkTo}>
           {title} <VisuallyHidden>environment</VisuallyHidden>

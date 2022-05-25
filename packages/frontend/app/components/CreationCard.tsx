@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { styled } from "~/stitches.config";
 import { Card } from "./CardGroup";
@@ -28,10 +29,14 @@ const Wrapper = styled(Card, {
 });
 
 export const CreationCard = ({ children, to }: EmptyCardProps) => {
+  const linkRef = useRef<HTMLAnchorElement>(null);
+
   return (
-    <Wrapper>
+    <Wrapper onClick={() => linkRef?.current?.click()}>
       <AiOutlinePlusCircle aria-hidden />
-      <Link to={to}>{children}</Link>
+      <Link to={to} ref={linkRef}>
+        {children}
+      </Link>
     </Wrapper>
   );
 };

@@ -41,7 +41,7 @@ export const FlagCard = ({
   const linkRef = useRef<HTMLAnchorElement>(null);
 
   return (
-    <Card>
+    <Card onClick={() => linkRef?.current?.click()}>
       <CardHeader>
         <span aria-hidden>
           <Tag>{flagKey}</Tag>

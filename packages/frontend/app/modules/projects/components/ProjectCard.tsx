@@ -21,7 +21,7 @@ export const ProjectCard = ({
   const linkRef = useRef<HTMLAnchorElement>(null);
 
   return (
-    <Card>
+    <Card onClick={() => linkRef?.current?.click()}>
       <CardHeader as="h2" id={`article-${id}`}>
         <Link ref={linkRef} to={linkTo}>
           {title} <VisuallyHidden>project</VisuallyHidden>
