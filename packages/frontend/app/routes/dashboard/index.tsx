@@ -16,7 +16,6 @@ import { User } from "~/modules/user/types";
 import { Header } from "~/components/Header";
 import { Section } from "~/components/Section";
 import { CardGroup } from "~/components/CardGroup";
-import { Spacer } from "~/components/Spacer";
 import { CreationCard } from "~/components/CreationCard";
 
 export const meta: MetaFunction = () => {
@@ -55,22 +54,22 @@ export default function DashboardRoot() {
   const hasRemovedProject = searchParams.get("projectRemoved") || undefined;
 
   return (
-    <DashboardLayout user={user} header={<Header title="Projects" />}>
-      <Section>
-        {newProjectId ? (
+    <DashboardLayout
+      user={user}
+      header={<Header title="Projects" />}
+      status={
+        newProjectId ? (
           <SuccessBox id="project-added">
             The project has been successfully created.
           </SuccessBox>
-        ) : null}
-
-        {hasRemovedProject ? (
+        ) : hasRemovedProject ? (
           <SuccessBox id="project-removed">
             The project has been successfully removed.
           </SuccessBox>
-        ) : null}
-
-        <Spacer size={10} />
-
+        ) : null
+      }
+    >
+      <Section>
         <CardGroup>
           <CreationCard to="/dashboard/projects/create">
             Create a project

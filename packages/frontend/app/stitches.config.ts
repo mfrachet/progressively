@@ -27,6 +27,10 @@ export const {
       errorBg: "#ffcdd2",
       errorFg: "#b71c1c",
       errorBorder: "#ef5350",
+
+      warningBg: "#ffecb3",
+      warningFg: "#bf360c",
+      warningBorder: "#ffca28",
     },
     sizes: {
       container: "1080px",

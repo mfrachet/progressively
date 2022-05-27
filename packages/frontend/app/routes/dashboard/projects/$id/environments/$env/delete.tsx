@@ -211,12 +211,12 @@ export default function DeleteEnvPage() {
       <WarningBox
         list={warnings}
         title={
-          <Typography>
+          <>
             We really want to warn you: if you validate the environment
             suppression, you {`won't`} be able to access the{" "}
             <strong>{environment.name}</strong> environment anymore. It
             includes:
-          </Typography>
+          </>
         }
       />
     </DeleteEntityLayout>

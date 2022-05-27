@@ -179,11 +179,11 @@ export default function DeleteFlagPage() {
       <WarningBox
         list={warnings}
         title={
-          <Typography>
+          <>
             We really want to warn you: if you validate the flag suppression,
             you {`won't`} be able to access the{" "}
             <strong>{currentFlag.name}</strong> flag anymore. It includes:
-          </Typography>
+          </>
         }
       />
     </DeleteEntityLayout>

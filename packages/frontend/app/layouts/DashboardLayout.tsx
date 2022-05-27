@@ -45,9 +45,12 @@ export const DashboardLayout = ({
 
           {subNav}
 
+          <Spacer size={8} />
+
           {status && (
             <>
-              {status} <Spacer size={4} />
+              {status}
+              <Spacer size={4} />
             </>
           )}
 

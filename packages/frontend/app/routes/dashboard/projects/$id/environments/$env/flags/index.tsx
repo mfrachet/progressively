@@ -30,7 +30,6 @@ import { Typography } from "~/components/Typography";
 import { CreateButton } from "~/components/Buttons/CreateButton";
 import { CardGroup } from "~/components/CardGroup";
 import { CreationCard } from "~/components/CreationCard";
-import { Spacer } from "~/components/Spacer";
 
 interface MetaArgs {
   data?: {
@@ -158,23 +157,20 @@ export default function FlagsByEnvPage() {
           </NavItem>
         </HorizontalNav>
       }
-    >
-      <Section id="list-flags-title">
-        {isFlagRemoved ? (
+      status={
+        isFlagRemoved ? (
           <SuccessBox id="flag-removed">
             The flag has been successfully deleted.
           </SuccessBox>
-        ) : null}
-
-        {newFlagId ? (
+        ) : newFlagId ? (
           <SuccessBox id="flag-added">
             The flag has been successfully created.
           </SuccessBox>
-        ) : null}
-
+        ) : null
+      }
+    >
+      <Section id="list-flags-title">
         <SectionHeader title="Feature flags" hiddenTitle />
-
-        <Spacer size={10} />
 
         {flagsByEnv.length > 0 ? (
           <CardGroup>

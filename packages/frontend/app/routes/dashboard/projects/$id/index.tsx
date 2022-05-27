@@ -22,7 +22,6 @@ import { EmptyState } from "~/components/EmptyState";
 import { Typography } from "~/components/Typography";
 import { CreateButton } from "~/components/Buttons/CreateButton";
 import { CardGroup } from "~/components/CardGroup";
-import { Spacer } from "~/components/Spacer";
 import { CreationCard } from "~/components/CreationCard";
 
 interface MetaArgs {
@@ -94,23 +93,20 @@ export default function ProjectDetailPage() {
           </NavItem>
         </HorizontalNav>
       }
-    >
-      <Section aria-labelledby="list-env-title" id="list-env-title">
-        {newEnvId ? (
+      status={
+        newEnvId ? (
           <SuccessBox id="env-added">
             The environment has been successfully created.
           </SuccessBox>
-        ) : null}
-
-        {envRemoved ? (
+        ) : envRemoved ? (
           <SuccessBox id="env-removed">
             The environment has been successfully deleted.
           </SuccessBox>
-        ) : null}
-
+        ) : null
+      }
+    >
+      <Section aria-labelledby="list-env-title" id="list-env-title">
         <SectionHeader title="Environments" hiddenTitle />
-
-        <Spacer size={10} />
 
         <CardGroup>
           <CreationCard

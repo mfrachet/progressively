@@ -195,11 +195,11 @@ export default function DeleteStrategyPage() {
       <WarningBox
         list={warnings}
         title={
-          <Typography>
+          <>
             We really want to warn you: if you validate the strategy
             suppression, you {`won't`} be able to access the{" "}
             <strong>{strategy.name}</strong> strategy anymore. It includes:
-          </Typography>
+          </>
         }
       />
     </DeleteEntityLayout>

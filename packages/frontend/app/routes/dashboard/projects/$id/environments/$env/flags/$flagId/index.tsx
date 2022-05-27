@@ -36,7 +36,6 @@ import { Typography } from "~/components/Typography";
 import { CreateButton } from "~/components/Buttons/CreateButton";
 import { CardGroup } from "~/components/CardGroup";
 import { CreationCard } from "~/components/CreationCard";
-import { Spacer } from "~/components/Spacer";
 
 interface MetaArgs {
   data?: {
@@ -180,27 +179,22 @@ export default function FlagById() {
           </NavItem>
         </HorizontalNav>
       }
-    >
-      <Section id="concerned-audience">
-        {isStrategyAdded ? (
-          <SuccessBox id="strategy-added" mb={4}>
+      status={
+        isStrategyAdded ? (
+          <SuccessBox id="strategy-added">
             The strategy has been successfully created.
           </SuccessBox>
-        ) : null}
-
-        {isStrategyRemoved ? (
-          <SuccessBox id="strategy-removed" mb={4}>
+        ) : isStrategyRemoved ? (
+          <SuccessBox id="strategy-removed">
             The strategy has been successfully removed.
           </SuccessBox>
-        ) : null}
-
-        {strategies.length === 0 && (
+        ) : strategies.length === 0 ? (
           <WarningBox title="You don't have strategies yet. When activating the flag, every user will receive the activated variant." />
-        )}
-
+        ) : null
+      }
+    >
+      <Section id="concerned-audience">
         <SectionHeader title="Strategies" hiddenTitle />
-
-        <Spacer size={10} />
 
         {strategies.length > 0 ? (
           <CardGroup cols={2}>

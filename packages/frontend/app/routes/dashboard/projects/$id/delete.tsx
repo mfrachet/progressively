@@ -187,11 +187,11 @@ export default function DeleteProjectPage() {
       <WarningBox
         list={warnings}
         title={
-          <Typography>
+          <>
             We really want to warn you: if you validate the project suppression,
             you {`won't`} be able to access the <strong>{project.name}</strong>{" "}
             project anymore. It includes:
-          </Typography>
+          </>
         }
       />
     </DeleteEntityLayout>

@@ -83,7 +83,7 @@ export const Card = ({ children, className, onClick }: CardProps) => {
       onKeyDown={handleKeyDown}
       className={`card ${className}`}
       tabIndex={isHydrated ? 0 : undefined}
-      hydrated={isHydrated}
+      hydrated={Boolean(isHydrated && onClick)}
     >
       {children}
     </CardWrapper>
