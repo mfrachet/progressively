@@ -29,6 +29,9 @@ export const RawButton = styled("button", {
         background: "$backgroundAccent",
         border: "2px solid $border",
       },
+      danger: {
+        background: "$primary",
+      },
     },
   },
 });
@@ -47,7 +50,7 @@ export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   isLoading?: boolean;
   loadingText?: string;
   type?: "button" | "submit" | "reset";
-  variant?: "ghost";
+  variant?: "ghost" | "danger";
   fullWidth?: boolean;
   icon?: React.ReactNode;
 }

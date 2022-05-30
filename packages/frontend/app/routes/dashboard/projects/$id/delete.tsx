@@ -23,6 +23,7 @@ import { Button } from "~/components/Buttons/Button";
 import { DeleteEntityLayout } from "~/layouts/DeleteEntityLayout";
 import { Typography } from "~/components/Typography";
 import { Li, Ul } from "~/components/Ul";
+import { DeleteButton } from "~/components/Buttons/DeleteButton";
 
 interface MetaArgs {
   data?: {
@@ -171,13 +172,13 @@ export default function DeleteProjectPage() {
       }
       confirmAction={
         <Form method="post">
-          <Button
+          <DeleteButton
             type="submit"
             isLoading={transition.state === "submitting"}
             loadingText="Deleting the project, please wait..."
           >
             Yes, delete the project
-          </Button>
+          </DeleteButton>
         </Form>
       }
     >

@@ -24,6 +24,7 @@ import { deleteFlag } from "~/modules/flags/services/deleteFlag";
 import { Button } from "~/components/Buttons/Button";
 import { DeleteEntityLayout } from "~/layouts/DeleteEntityLayout";
 import { Typography } from "~/components/Typography";
+import { DeleteButton } from "~/components/Buttons/DeleteButton";
 
 interface MetaArgs {
   data?: {
@@ -167,13 +168,13 @@ export default function DeleteFlagPage() {
       }
       confirmAction={
         <Form method="post">
-          <Button
+          <DeleteButton
             type="submit"
             isLoading={transition.state === "submitting"}
             loadingText="Deleting the environment, please wait..."
           >
             Yes, delete the flag
-          </Button>
+          </DeleteButton>
         </Form>
       }
     >
