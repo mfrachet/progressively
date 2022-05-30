@@ -19,6 +19,7 @@ export const {
       primary: "#c3134e",
       content: "#9ba1a6",
       hover: "hsl(340deg, 82%, 95%)",
+      focus: "rgba(178,212,221)",
 
       successBg: "#c8e6c9",
       successFg: "#1b5e20",

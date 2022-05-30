@@ -23,13 +23,14 @@ const CardWrapper = styled("div", {
   borderRadius: "$borderRadius$regular",
   padding: "$spacing$8 0",
   border: "8px solid transparent",
+  transition: "border 0.2s",
   variants: {
     hydrated: {
       true: {
         // when hydrated
         cursor: "pointer",
         "&:active": {
-          border: "8px solid $primary",
+          border: "8px solid $hover",
         },
       },
     },
