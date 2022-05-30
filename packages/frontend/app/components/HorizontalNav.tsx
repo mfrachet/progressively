@@ -24,7 +24,7 @@ const HorizontalNavWrapper = styled("nav", {
     borderTop: "4px solid transparent",
     gap: "$spacing$2",
     transition: "border 0.2s",
-    fontSize: "$btn",
+    fontSize: "$content",
   },
 
   "& ul li:first-of-type a": {

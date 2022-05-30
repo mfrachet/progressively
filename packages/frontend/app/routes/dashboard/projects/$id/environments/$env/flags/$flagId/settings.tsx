@@ -134,12 +134,12 @@ export default function FlagSettingPage() {
         <Header
           title={currentFlag.name}
           startAction={
-            <div>
+            <>
+              <ToggleFlag isFlagActivated={isFlagActivated} />
               <ButtonCopy toCopy={currentFlag.key}>
                 {currentFlag.key}
               </ButtonCopy>
-              <ToggleFlag isFlagActivated={isFlagActivated} />
-            </div>
+            </>
           }
         />
       }
