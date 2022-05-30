@@ -8,7 +8,7 @@ const Ol = styled("ol", {
   color: "$content",
   display: "flex",
 
-  '& [aria-current="page"]': {
+  "& li:last-of-type a": {
     fontWeight: "$fontWeights$bold",
     color: "$hover",
   },
