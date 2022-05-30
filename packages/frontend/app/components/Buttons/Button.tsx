@@ -1,21 +1,21 @@
 import { HTMLAttributes } from "react";
+import { Link } from "remix";
 import { styled } from "~/stitches.config";
-import { Link } from "../Link";
 
 export const RawButton = styled("button", {
+  boxSizing: "border-box",
   background: "$background",
   borderRadius: "$borderRadius$regular",
-  padding: "$spacing$3 $spacing$4",
+  padding: "0 $spacing$4",
   color: "$title",
   fontSize: "$btn",
   fontFamily: "$default",
   border: "2px solid $primary",
-  display: "inline-block",
+  display: "inline-flex",
   textDecoration: "none",
   height: "$cta",
   cursor: "pointer",
   margin: 0,
-  lineHeight: 1,
 
   variants: {
     fullWidth: {
