@@ -49,6 +49,7 @@ export const ButtonCopy = ({ toCopy, children, ...props }: ButtonCopyProps) => {
           onClick={handleClick}
           aria-live="polite"
           icon={<AiOutlineCopy aria-hidden />}
+          variant="ghost"
           {...copyToClipBoardProps}
         >
           {isCopied ? (
@@ -71,6 +72,7 @@ export const ButtonCopy = ({ toCopy, children, ...props }: ButtonCopyProps) => {
       as={"span"}
       aria-live="polite"
       icon={<AiOutlineCopy aria-hidden />}
+      variant="ghost"
       {...spanProps}
     >
       {children}

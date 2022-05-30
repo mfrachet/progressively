@@ -22,6 +22,13 @@ export const RawButton = styled("button", {
         width: "100%",
       },
     },
+
+    variant: {
+      ghost: {
+        background: "$backgroundAccent",
+        border: "2px solid $border",
+      },
+    },
   },
 });
 
@@ -39,6 +46,7 @@ export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   isLoading?: boolean;
   loadingText?: string;
   type?: "button" | "submit" | "reset";
+  variant?: "ghost";
   fullWidth?: boolean;
   icon?: React.ReactNode;
 }
