@@ -1,4 +1,5 @@
 import { ActionFunction, MetaFunction, useActionData } from "remix";
+import { ErrorBox } from "~/components/ErrorBox";
 import { Header } from "~/components/Header";
 import { Typography } from "~/components/Typography";
 import { NotAuthenticatedLayout } from "~/layouts/NotAuthenticatedLayout";
@@ -40,6 +41,9 @@ export default function WelcomePage() {
             </Typography>
           }
         />
+      }
+      status={
+        errors && Object.keys(errors).length > 0 && <ErrorBox list={errors} />
       }
     >
       <RegisterForm errors={errors} />

@@ -53,7 +53,6 @@ export const Switch = ({ checked }: SwitchProps) => {
       <Text>Off</Text>
       <StyledSwitch
         checked={internalChecked}
-        id="s1"
         type="submit"
         aria-label="Feature flag activation"
         onClick={() => setInternalChecked((s) => !s)}

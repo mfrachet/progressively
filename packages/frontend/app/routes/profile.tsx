@@ -106,7 +106,7 @@ export default function ProfilePage() {
       header={<Header title="My profile" />}
       breadcrumb={
         <Container>
-          <nav aria-label="General">
+          <nav aria-label="Profile navigation">
             <BackLink to="/dashboard">Back to dashboard</BackLink>
           </nav>
         </Container>
