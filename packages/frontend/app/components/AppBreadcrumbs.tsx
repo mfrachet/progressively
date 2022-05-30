@@ -8,6 +8,10 @@ const Ol = styled("ol", {
   color: "$content",
   display: "flex",
 
+  "& li a": {
+    transition: "border,box-shadow 0.2s",
+  },
+
   "& li:last-of-type a": {
     fontWeight: "$fontWeights$bold",
     color: "$hover",

@@ -16,6 +16,7 @@ export const RawButton = styled("button", {
   height: "$cta",
   cursor: "pointer",
   margin: 0,
+  transition: "all 0.2s",
 
   variants: {
     fullWidth: {
@@ -28,6 +29,9 @@ export const RawButton = styled("button", {
       ghost: {
         background: "$backgroundAccent",
         border: "2px solid $border",
+        "&:hover": {
+          background: "$background",
+        },
       },
       danger: {
         background: "$primary",
