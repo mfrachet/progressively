@@ -50,7 +50,7 @@ export const DashboardLayout = ({
           {status && (
             <>
               {status}
-              <Spacer size={4} />
+              <Spacer size={8} />
             </>
           )}
 
