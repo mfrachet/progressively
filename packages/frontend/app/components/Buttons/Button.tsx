@@ -36,6 +36,14 @@ export const RawButton = styled("button", {
       danger: {
         background: "$primary",
       },
+      success: {
+        background: "$successBg",
+        border: "1px solid $successBorder",
+        color: "$background",
+        "&:hover": {
+          opacity: "0.9",
+        },
+      },
     },
   },
 });
@@ -54,7 +62,7 @@ export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   isLoading?: boolean;
   loadingText?: string;
   type?: "button" | "submit" | "reset";
-  variant?: "ghost" | "danger";
+  variant?: "ghost" | "danger" | "success";
   fullWidth?: boolean;
   icon?: React.ReactNode;
 }
