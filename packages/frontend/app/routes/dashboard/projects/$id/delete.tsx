@@ -162,8 +162,11 @@ export default function DeleteProjectPage() {
         data.errors.backendError && <ErrorBox list={data.errors} />
       }
       cancelAction={
-        <Button to={`/dashboard/projects/${project.uuid}/settings`}>
-          No, {`don't`} delete <strong>{project.name}</strong>
+        <Button
+          variant="ghost"
+          to={`/dashboard/projects/${project.uuid}/settings`}
+        >
+          No, {`don't`} delete {project.name}
         </Button>
       }
       confirmAction={

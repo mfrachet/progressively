@@ -185,9 +185,10 @@ export default function DeleteEnvPage() {
       }
       cancelAction={
         <Button
+          variant="ghost"
           to={`/dashboard/projects/${project.uuid}/environments/${environment.uuid}/settings`}
         >
-          No, {`don't`} delete <strong>{environment.name}</strong>
+          No, {`don't`} delete {environment.name}
         </Button>
       }
       confirmAction={

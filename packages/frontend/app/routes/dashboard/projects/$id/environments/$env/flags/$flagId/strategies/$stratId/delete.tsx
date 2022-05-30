@@ -175,6 +175,7 @@ export default function DeleteStrategyPage() {
       }
       cancelAction={
         <Button
+          variant="ghost"
           to={`/dashboard/projects/${project.uuid}/environments/${environment.uuid}/flags/${currentFlag.uuid}`}
         >
           {`No, don't delete`} {strategy.name}

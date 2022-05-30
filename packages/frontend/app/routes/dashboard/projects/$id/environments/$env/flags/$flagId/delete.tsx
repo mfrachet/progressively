@@ -159,9 +159,10 @@ export default function DeleteFlagPage() {
       }
       cancelAction={
         <Button
+          variant="ghost"
           to={`/dashboard/projects/${project.uuid}/environments/${environment.uuid}/flags/${currentFlag.uuid}/settings`}
         >
-          No, {`don't`} delete <strong aria-hidden>{currentFlag.name}</strong>
+          No, {`don't`} delete {currentFlag.name}
         </Button>
       }
       confirmAction={
