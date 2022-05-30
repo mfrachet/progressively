@@ -12,6 +12,7 @@ export const RawButton = styled("button", {
   border: "2px solid $primary",
   display: "inline-block",
   textDecoration: "none",
+  height: "$cta",
   cursor: "pointer",
   margin: 0,
   lineHeight: 1,

@@ -36,6 +36,7 @@ export const {
       container: "1080px",
       cardHeight: "100px",
       notAuthenticatedCardWidth: "400px",
+      cta: "48px",
     },
     fontSizes: {
       content: "1.25rem",
