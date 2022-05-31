@@ -35,6 +35,9 @@ export const RawButton = styled("button", {
       },
       danger: {
         background: "$primary",
+        "&:hover": {
+          opacity: "0.9",
+        },
       },
       success: {
         background: "$successBg",

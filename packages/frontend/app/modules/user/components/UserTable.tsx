@@ -5,6 +5,8 @@ import { useHydrated } from "../../misc/hooks/useHydrated";
 import { UserProject } from "../../projects/types";
 import { Button } from "~/components/Buttons/Button";
 import { Badge } from "~/components/Badge";
+import { DeleteButton } from "~/components/Buttons/DeleteButton";
+import { styled } from "~/stitches.config";
 
 export interface UserTableProps {
   projectId: string;
@@ -12,6 +14,12 @@ export interface UserTableProps {
   labelledBy: string;
   canEdit: boolean;
 }
+
+const ActionWrapper = styled("div", {
+  display: "flex",
+  gap: "$spacing$4",
+  marginBottom: "$spacing$4",
+});
 
 export const UserTable = ({
   userProjects,
@@ -30,20 +38,20 @@ export const UserTable = ({
       <input type="hidden" name="_method" value="delete-member" />
 
       {canEdit && (
-        <>
+        <ActionWrapper>
           <Button to={`/dashboard/projects/${projectId}/add-member`}>
             Add member
           </Button>
 
-          <Button
-            type={canDelete || !isHydrated ? "submit" : "button"}
+          <DeleteButton
+            type={canDelete ? "submit" : "button"}
             aria-disabled={isHydrated && !canDelete}
             isLoading={transition.state === "submitting"}
             loadingText="Deleting the member(s), please wait..."
           >
             Remove from project
-          </Button>
-        </>
+          </DeleteButton>
+        </ActionWrapper>
       )}
 
       <Table labelledBy={labelledBy} onSelect={setSelected} selected={selected}>

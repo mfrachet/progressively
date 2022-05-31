@@ -6,6 +6,21 @@ import { moveToCol, moveToRow } from "./utils";
 
 const TableWrapper = styled("table", {
   color: "$content",
+  width: "100%",
+  fontFamily: "$default",
+  borderRadius: "$borderRadius$regular",
+  overflow: "hidden",
+  "& th": {
+    background: "$background",
+    padding: "$spacing$4",
+    textAlign: "left",
+  },
+  "& tbody tr": {
+    borderBottom: "1px solid $border",
+  },
+  "& td": {
+    padding: "$spacing$4",
+  },
 });
 
 export interface TableProps {
