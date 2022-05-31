@@ -134,10 +134,7 @@ export default function CreateProjectPage() {
         user={user}
         breadcrumb={<BreadCrumbs crumbs={crumbs} />}
         header={
-          <Header
-            tagline="Project"
-            title="You are not allowed to add members to projects."
-          />
+          <Header title="You are not allowed to add members to projects." />
         }
       >
         <Section>
@@ -169,7 +166,7 @@ export default function CreateProjectPage() {
     <DashboardLayout
       user={user}
       breadcrumb={<BreadCrumbs crumbs={crumbs} />}
-      header={<Header tagline="Project" title="Add member" />}
+      header={<Header title="Add member" />}
       status={
         data?.success ? (
           <SuccessBox id="member-added">

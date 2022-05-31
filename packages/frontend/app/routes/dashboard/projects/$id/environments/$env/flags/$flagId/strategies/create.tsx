@@ -100,6 +100,7 @@ export const action: ActionFunction = async ({
   };
 
   try {
+    console.log("wtf", strategy);
     await createStrategy(
       params.env!,
       params.flagId!,
