@@ -218,38 +218,36 @@ export default function StrategyCreatePage() {
       status={actionData?.errors && <ErrorBox list={actionData.errors} />}
     >
       <Form method="post">
-        <FormGroup>
-          <CardSection id="general-information">
-            <SectionHeader title="General information" />
-            <SectionContent>
+        <CardSection id="general-information">
+          <SectionContent>
+            <FormGroup>
               <TextInput
                 name="strategy-name"
                 placeholder="e.g: Strategy 1"
                 label="Strategy name"
                 isInvalid={Boolean(errors["strategy-name"])}
               />
-            </SectionContent>
-          </CardSection>
 
-          <StrategyAudience
-            strategyType={strategyType}
-            onStrategyChange={setStrategyType}
-            errors={errors}
-          />
+              <StrategyAudience
+                strategyType={strategyType}
+                onStrategyChange={setStrategyType}
+                errors={errors}
+              />
 
-          <ActivationStrategy
-            activationStrategy={activationStrategy}
-            onActivationChange={setActivationStrategy}
-            errors={errors}
-          />
+              <ActivationStrategy
+                activationStrategy={activationStrategy}
+                onActivationChange={setActivationStrategy}
+              />
+            </FormGroup>
+          </SectionContent>
+        </CardSection>
 
-          <SubmitButton
-            isLoading={transition.state === "submitting"}
-            loadingText="Saving the strategy, please wait..."
-          >
-            Save the strategy
-          </SubmitButton>
-        </FormGroup>
+        <SubmitButton
+          isLoading={transition.state === "submitting"}
+          loadingText="Saving the strategy, please wait..."
+        >
+          Save the strategy
+        </SubmitButton>
       </Form>
     </DashboardLayout>
   );
