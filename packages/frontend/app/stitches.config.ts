@@ -38,11 +38,12 @@ export const {
     },
     sizes: {
       container: "1080px",
-      cardHeight: "100px",
+      cardHeight: "160px",
       notAuthenticatedCardWidth: "400px",
       cta: "48px",
     },
     fontSizes: {
+      xs: "0.8rem",
       content: "1.25rem",
       btn: "1rem",
       title: "3.5rem",

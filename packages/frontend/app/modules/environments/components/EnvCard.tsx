@@ -3,7 +3,9 @@ import { Typography } from "~/components/Typography";
 import { VisuallyHidden } from "~/components/VisuallyHidden";
 import { Tag } from "~/components/Tag";
 import { Link } from "~/components/Link";
-import { Card, CardContent, CardHeader } from "~/components/CardGroup";
+import { Card, CardFooter, CardHeader } from "~/components/CardGroup";
+import { TagLine } from "~/components/Tagline";
+import { Spacer } from "~/components/Spacer";
 
 export interface EnvCardProps {
   id: string;
@@ -23,11 +25,12 @@ export const EnvCard = ({ id, linkTo, title, clientKey }: EnvCardProps) => {
         </Link>
       </CardHeader>
 
-      <CardContent>
-        <Typography>
-          The environment sdk key is <Tag>{clientKey}</Tag>
-        </Typography>
-      </CardContent>
+      <CardFooter>
+        <TagLine small>Sdk Key</TagLine>
+        <Spacer size={4} />
+
+        <Tag>{clientKey}</Tag>
+      </CardFooter>
     </Card>
   );
 };

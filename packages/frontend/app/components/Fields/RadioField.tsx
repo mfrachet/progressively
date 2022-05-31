@@ -31,7 +31,7 @@ export const RadioField = <T extends string>({
   return (
     <Stack as="fieldset" spacing={2}>
       <Label as="legend">{title}</Label>
-      <Stack spacing={1}>
+      <Stack spacing={2}>
         {options.map((opt) => (
           <RadioItem key={opt.value}>
             <input

@@ -1,7 +1,7 @@
 import { styled } from "~/stitches.config";
 import { H1 } from "./H1";
 import { Spacer } from "./Spacer";
-import { Typography } from "./Typography";
+import { TagLine } from "./Tagline";
 
 export interface HeaderProps {
   title: string | React.ReactNode;
@@ -14,14 +14,6 @@ const HeaderRow = styled("div", {
   display: "flex",
   alignItems: "center",
   gap: "$spacing$10",
-});
-
-const TagLine = styled(Typography, {
-  textTransform: "uppercase",
-  fontSize: "$btn",
-  fontWeight: "$slim",
-  letterSpacing: "2px",
-  marginBottom: "$spacing$1",
 });
 
 const HeadingWrapper = styled("div", {
