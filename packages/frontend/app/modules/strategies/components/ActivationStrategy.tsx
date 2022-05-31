@@ -37,7 +37,6 @@ export const ActivationStrategy = ({
           name="percentage-value"
           label={`Percentage of the people concerned (${percentageValue}
             %):`}
-          value={percentageValue}
           onChange={setPercentageValue}
           percentageValue={percentageValue}
         />

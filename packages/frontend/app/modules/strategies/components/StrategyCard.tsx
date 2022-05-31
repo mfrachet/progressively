@@ -11,6 +11,11 @@ const WrapperUl = styled(Ul, {
   color: "$content",
 });
 
+const ActionWrapper = styled("div", {
+  display: "flex",
+  justifyContent: "flex-end",
+});
+
 export interface StrategyCardProps {
   flagId: string;
   projectId: string;
@@ -95,18 +100,22 @@ export const StrategyCard = ({
         {strat.name}
       </CardHeader>
 
+      <Spacer size={2} />
+
       <CardContent>
         <StrategyAudience strat={strat} />
 
         <StrategyTargetConstraints strat={strat} />
 
-        <Spacer size={8} />
+        <Spacer size={6} />
 
-        <DeleteButton
-          to={`/dashboard/projects/${projectId}/environments/${envId}/flags/${flagId}/strategies/${strat.uuid}/delete`}
-        >
-          Remove<VisuallyHidden> {strat.name}</VisuallyHidden>
-        </DeleteButton>
+        <ActionWrapper>
+          <DeleteButton
+            to={`/dashboard/projects/${projectId}/environments/${envId}/flags/${flagId}/strategies/${strat.uuid}/delete`}
+          >
+            Remove<VisuallyHidden> {strat.name}</VisuallyHidden>
+          </DeleteButton>
+        </ActionWrapper>
       </CardContent>
     </Card>
   );
