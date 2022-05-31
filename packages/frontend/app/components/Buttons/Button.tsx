@@ -29,13 +29,13 @@ export const RawButton = styled("button", {
       ghost: {
         background: "$backgroundAccent",
         border: "2px solid $border",
-        "&:hover": {
+        "&:active": {
           background: "$background",
         },
       },
       danger: {
         background: "$primary",
-        "&:hover": {
+        "&:active": {
           opacity: "0.9",
         },
       },
@@ -43,7 +43,7 @@ export const RawButton = styled("button", {
         background: "$ctaBg",
         border: "none",
         color: "$ctaFg",
-        "&:hover": {
+        "&:active": {
           opacity: "0.8",
         },
       },
