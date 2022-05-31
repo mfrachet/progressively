@@ -39,12 +39,12 @@ export const RawButton = styled("button", {
           opacity: "0.9",
         },
       },
-      success: {
-        background: "$successBg",
-        border: "1px solid $successBorder",
-        color: "$background",
+      secondary: {
+        background: "$ctaBg",
+        border: "none",
+        color: "$ctaFg",
         "&:hover": {
-          opacity: "0.9",
+          opacity: "0.8",
         },
       },
     },
@@ -65,7 +65,7 @@ export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   isLoading?: boolean;
   loadingText?: string;
   type?: "button" | "submit" | "reset";
-  variant?: "ghost" | "danger" | "success";
+  variant?: "ghost" | "danger" | "secondary";
   fullWidth?: boolean;
   icon?: React.ReactNode;
 }
