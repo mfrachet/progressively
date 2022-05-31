@@ -8,15 +8,29 @@ const TableWrapper = styled("table", {
   color: "$content",
   width: "100%",
   fontFamily: "$default",
-  borderRadius: "$borderRadius$regular",
-  overflow: "hidden",
+
   "& th": {
-    background: "$background",
     padding: "$spacing$4",
     textAlign: "left",
+    background: "$background",
+  },
+  "& th:first-of-type": {
+    borderStartStartRadius: "$borderRadius$regular",
+  },
+  "& th:last-of-type": {
+    borderStartEndRadius: "$borderRadius$regular",
+  },
+  "& tr": {
+    borderBottom: "1px solid $border",
   },
   "& tbody tr": {
-    borderBottom: "1px solid $border",
+    "&:focus-within": {
+      background: "$border",
+    },
+
+    "&.row-selected": {
+      background: "$background",
+    },
   },
   "& td": {
     padding: "$spacing$4",
