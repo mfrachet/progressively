@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { RadioField } from "~/components/Fields/RadioField";
 import { SliderInput } from "~/components/Fields/SliderInput";
+import { Spacer } from "~/components/Spacer";
 import { ActivationType } from "../types/activation";
+import { SubForm } from "./SubForm";
 
 export interface ActivationStrategyProps {
   activationStrategy: ActivationType;
@@ -27,7 +29,9 @@ export const ActivationStrategy = ({
         ]}
       />
 
-      {activationStrategy === "percentage" && (
+      <Spacer size={4} />
+
+      <SubForm>
         <SliderInput
           name="percentage-value"
           label={`Percentage of the people concerned (${percentageValue}
@@ -35,7 +39,7 @@ export const ActivationStrategy = ({
           onChange={setPercentageValue}
           percentageValue={percentageValue}
         />
-      )}
+      </SubForm>
     </div>
   );
 };
