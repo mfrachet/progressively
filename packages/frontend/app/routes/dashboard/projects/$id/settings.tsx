@@ -138,6 +138,7 @@ export default function SettingsPage() {
       breadcrumb={<BreadCrumbs crumbs={crumbs} />}
       header={
         <Header
+          tagline="Project"
           title={
             <span>
               {project.name}

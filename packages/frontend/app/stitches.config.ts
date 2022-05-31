@@ -50,6 +50,7 @@ export const {
       default: "Untitled Sans, apple-system, sans-serif",
     },
     fontWeights: {
+      slim: "300",
       normal: "normal",
       semiBold: "500",
       bold: "800",

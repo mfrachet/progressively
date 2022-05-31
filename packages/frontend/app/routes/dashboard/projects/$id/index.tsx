@@ -75,7 +75,7 @@ export default function ProjectDetailPage() {
     <DashboardLayout
       user={user}
       breadcrumb={<BreadCrumbs crumbs={crumbs} />}
-      header={<Header title={project.name} />}
+      header={<Header tagline="Project" title={project.name} />}
       subNav={
         <HorizontalNav label={`Project related`}>
           <NavItem

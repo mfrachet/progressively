@@ -129,6 +129,7 @@ export default function FlagsByEnvPage() {
       breadcrumb={<BreadCrumbs crumbs={crumbs} />}
       header={
         <Header
+          tagline="Environment"
           title={environment.name}
           startAction={
             <ButtonCopy toCopy={environment.clientKey}>

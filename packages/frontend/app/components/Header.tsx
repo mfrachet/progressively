@@ -1,11 +1,13 @@
 import { styled } from "~/stitches.config";
 import { H1 } from "./H1";
 import { Spacer } from "./Spacer";
+import { Typography } from "./Typography";
 
 export interface HeaderProps {
   title: string | React.ReactNode;
   description?: React.ReactNode;
   startAction?: React.ReactNode;
+  tagline?: string;
 }
 
 const HeaderRow = styled("div", {
@@ -14,10 +16,31 @@ const HeaderRow = styled("div", {
   gap: "$spacing$10",
 });
 
-export const Header = ({ title, description, startAction }: HeaderProps) => {
+const TagLine = styled(Typography, {
+  textTransform: "uppercase",
+  fontSize: "$btn",
+  fontWeight: "$slim",
+  letterSpacing: "2px",
+  marginBottom: "$spacing$1",
+});
+
+const HeadingWrapper = styled("div", {
+  display: "flex",
+  flexDirection: "column-reverse",
+});
+
+export const Header = ({
+  title,
+  description,
+  startAction,
+  tagline,
+}: HeaderProps) => {
   return (
     <div>
-      <H1>{title}</H1>
+      <HeadingWrapper>
+        <H1>{title}</H1>
+        {tagline && <TagLine>{tagline}</TagLine>}
+      </HeadingWrapper>
 
       {description || startAction ? <Spacer size={2} /> : null}
 
