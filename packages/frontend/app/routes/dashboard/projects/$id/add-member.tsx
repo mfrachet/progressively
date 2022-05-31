@@ -16,7 +16,6 @@ import { getSession } from "~/sessions";
 import { User } from "~/modules/user/types";
 import { Header } from "~/components/Header";
 import { Section } from "~/components/Section";
-import { Button } from "~/components/Buttons/Button";
 import { validateEmail } from "~/modules/forms/utils/validateEmail";
 import { getProject } from "~/modules/projects/services/getProject";
 import { ButtonCopy } from "~/components/ButtonCopy";
@@ -26,6 +25,7 @@ import { TextInput } from "~/components/Fields/TextInput";
 import { Typography } from "~/components/Typography";
 import { Li, Ul } from "~/components/Ul";
 import { FormGroup } from "~/components/Fields/FormGroup";
+import { SubmitButton } from "~/components/Buttons/SubmitButton";
 
 interface MetaArgs {
   data?: {
@@ -187,13 +187,12 @@ export default function CreateProjectPage() {
               placeholder="e.g: john.doe@gmail.com"
             />
 
-            <Button
-              type="submit"
+            <SubmitButton
               isLoading={transition.state === "submitting"}
               loadingText="Adding the member, please wait..."
             >
               Add the member
-            </Button>
+            </SubmitButton>
           </FormGroup>
         </Form>
       </Section>

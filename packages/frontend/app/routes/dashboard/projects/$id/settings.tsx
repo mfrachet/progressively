@@ -165,13 +165,6 @@ export default function SettingsPage() {
       }
     >
       <Stack spacing={8}>
-        <CardSection id="details">
-          <SectionHeader
-            title="Project details"
-            description={<Typography>{project.name}</Typography>}
-          />
-        </CardSection>
-
         <CardSection id="members">
           <SectionHeader
             title="Project members"
