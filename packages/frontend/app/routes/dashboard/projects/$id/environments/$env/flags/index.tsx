@@ -171,7 +171,7 @@ export default function FlagsByEnvPage() {
         <SectionHeader title="Feature flags" hiddenTitle />
 
         {flagsByEnv.length > 0 ? (
-          <CardGroup>
+          <CardGroup cols={2}>
             <CreationCard
               to={`/dashboard/projects/${project.uuid}/environments/${environment.uuid}/flags/create`}
             >
