@@ -26,10 +26,14 @@ import { FiFlag } from "react-icons/fi";
 import { HorizontalNav, NavItem } from "~/components/HorizontalNav";
 import { Typography } from "~/components/Typography";
 import { CreateButton } from "~/components/Buttons/CreateButton";
-import { CardGroup } from "~/components/CardGroup";
-import { CreationCard } from "~/components/CreationCard";
 import { FlagList } from "~/modules/flags/components/FlagList";
+import { Spacer } from "~/components/Spacer";
+import { styled } from "~/stitches.config";
 
+const ToggleAction = styled("div", {
+  display: "flex",
+  justifyContent: "flex-end",
+});
 interface MetaArgs {
   data?: {
     project?: Project;
@@ -169,19 +173,21 @@ export default function FlagsByEnvPage() {
         <SectionHeader title="Feature flags" hiddenTitle />
 
         {flagsByEnv.length > 0 ? (
-          <CardGroup cols={2}>
-            <CreationCard
+          <div>
+            <CreateButton
               to={`/dashboard/projects/${project.uuid}/environments/${environment.uuid}/flags/create`}
             >
               Create a feature flag
-            </CreationCard>
+            </CreateButton>
+
+            <Spacer size={6} />
 
             <FlagList
               flags={flagsByEnv}
               envId={environment.uuid}
               projectId={project.uuid}
             />
-          </CardGroup>
+          </div>
         ) : null}
 
         {flagsByEnv.length === 0 ? (

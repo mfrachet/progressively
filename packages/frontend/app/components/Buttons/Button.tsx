@@ -20,12 +20,6 @@ export const RawButton = styled("button", {
   textAlign: "left",
 
   variants: {
-    size: {
-      xs: {
-        fontSize: "$xs",
-      },
-    },
-
     variant: {
       ghost: {
         background: "$backgroundAccent",
@@ -69,7 +63,6 @@ export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   type?: "button" | "submit" | "reset";
   variant?: "ghost" | "danger" | "primary";
   icon?: React.ReactNode;
-  size?: "xs";
 }
 
 export const Button = ({

@@ -31,4 +31,7 @@ export const RawTable = styled("table", {
   "& td": {
     padding: "$spacing$4",
   },
+  "& a": {
+    color: "$title",
+  },
 });

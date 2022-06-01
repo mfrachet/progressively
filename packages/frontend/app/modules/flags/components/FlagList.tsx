@@ -1,5 +1,5 @@
 import { FlagEnv } from "../types";
-import { FlagCard } from "./FlagCard";
+import { FlagRow } from "./FlagRow";
 
 export interface FlagListProps {
   flags: Array<FlagEnv>;
@@ -11,7 +11,7 @@ export const FlagList = ({ flags, projectId, envId }: FlagListProps) => {
   return (
     <div>
       {flags.map((flagEnv) => (
-        <FlagCard
+        <FlagRow
           key={flagEnv.flagId}
           id={flagEnv.flagId}
           linkTo={`/dashboard/projects/${projectId}/environments/${envId}/flags/${flagEnv.flagId}`}
