@@ -40,15 +40,8 @@ export const RawButton = styled("button", {
           opacity: "0.9",
         },
       },
-      secondary: {
-        background: "$ctaBg",
-        border: "none",
-        color: "$ctaFg",
-        "&:active": {
-          opacity: "0.8",
-        },
-      },
-      tertiary: {
+
+      primary: {
         background: "$hover",
         border: "none",
         color: "$background",
@@ -74,7 +67,7 @@ export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   isLoading?: boolean;
   loadingText?: string;
   type?: "button" | "submit" | "reset";
-  variant?: "ghost" | "danger" | "secondary" | "tertiary";
+  variant?: "ghost" | "danger" | "primary";
   icon?: React.ReactNode;
   size?: "xs";
 }
