@@ -15,7 +15,6 @@ import { FlagEnv, FlagStatus } from "~/modules/flags/types";
 import { getProject } from "~/modules/projects/services/getProject";
 import { Project } from "~/modules/projects/types";
 import { getSession } from "~/sessions";
-import { FlagCard } from "~/modules/flags/components/FlagCard";
 import { SuccessBox } from "~/components/SuccessBox";
 import { DashboardLayout } from "~/layouts/DashboardLayout";
 import { authGuard } from "~/modules/auth/services/auth-guard";
@@ -30,6 +29,7 @@ import { Typography } from "~/components/Typography";
 import { CreateButton } from "~/components/Buttons/CreateButton";
 import { CardGroup } from "~/components/CardGroup";
 import { CreationCard } from "~/components/CreationCard";
+import { FlagList } from "~/modules/flags/components/FlagList";
 
 interface MetaArgs {
   data?: {
@@ -177,22 +177,12 @@ export default function FlagsByEnvPage() {
             >
               Create a feature flag
             </CreationCard>
-            {flagsByEnv.map((flagEnv) => (
-              <FlagCard
-                key={flagEnv.flagId}
-                id={flagEnv.flagId}
-                linkTo={`/dashboard/projects/${project.uuid}/environments/${environment.uuid}/flags/${flagEnv.flagId}`}
-                title={flagEnv.flag.name}
-                flagStatus={flagEnv.status}
-                flagKey={flagEnv.flag.key}
-                description={flagEnv.flag.description}
-                optimistic={
-                  transition.state === "submitting" &&
-                  transition.submission?.formData.get("flagId") ===
-                    flagEnv.flagId
-                }
-              />
-            ))}
+
+            <FlagList
+              flags={flagsByEnv}
+              envId={environment.uuid}
+              projectId={project.uuid}
+            />
           </CardGroup>
         ) : null}
 
