@@ -41,6 +41,7 @@ export const {
       cardHeight: "160px",
       notAuthenticatedCardWidth: "400px",
       cta: "48px",
+      emptyStateIconHeight: "160px",
     },
     fontSizes: {
       xs: "0.8rem",
