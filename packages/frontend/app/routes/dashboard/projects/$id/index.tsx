@@ -108,7 +108,7 @@ export default function ProjectDetailPage() {
       <Section aria-labelledby="list-env-title" id="list-env-title">
         <SectionHeader title="Environments" hiddenTitle />
 
-        <CardGroup>
+        <CardGroup cols={2}>
           <CreationCard
             to={`/dashboard/projects/${project.uuid}/environments/create`}
           >

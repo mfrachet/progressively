@@ -1,11 +1,10 @@
 import { useRef } from "react";
-import { Typography } from "~/components/Typography";
 import { VisuallyHidden } from "~/components/VisuallyHidden";
-import { Tag } from "~/components/Tag";
 import { Link } from "~/components/Link";
 import { Card, CardFooter, CardHeader } from "~/components/CardGroup";
 import { TagLine } from "~/components/Tagline";
 import { Spacer } from "~/components/Spacer";
+import { ButtonCopy } from "~/components/ButtonCopy";
 
 export interface EnvCardProps {
   id: string;
@@ -27,9 +26,9 @@ export const EnvCard = ({ id, linkTo, title, clientKey }: EnvCardProps) => {
 
       <CardFooter>
         <TagLine small>Sdk Key</TagLine>
-        <Spacer size={4} />
+        <Spacer size={2} />
 
-        <Tag>{clientKey}</Tag>
+        <ButtonCopy toCopy={clientKey}>{clientKey}</ButtonCopy>
       </CardFooter>
     </Card>
   );

@@ -17,6 +17,7 @@ export const RawButton = styled("button", {
   cursor: "pointer",
   margin: 0,
   transition: "all 0.2s",
+  textAlign: "left",
 
   variants: {
     fullWidth: {
