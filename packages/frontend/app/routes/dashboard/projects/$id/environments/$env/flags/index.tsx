@@ -4,7 +4,6 @@ import {
   MetaFunction,
   ActionFunction,
   useSearchParams,
-  useTransition,
 } from "remix";
 import { Crumbs, BreadCrumbs } from "~/components/AppBreadcrumbs";
 import { ButtonCopy } from "~/components/ButtonCopy";
@@ -103,7 +102,6 @@ export default function FlagsByEnvPage() {
   const { flagsByEnv, project, environment, user } =
     useLoaderData<LoaderData>();
 
-  const transition = useTransition();
   const [searchParams] = useSearchParams();
   const newFlagId = searchParams.get("newFlagId") || undefined;
   const isFlagRemoved = searchParams.get("flagRemoved") || undefined;
