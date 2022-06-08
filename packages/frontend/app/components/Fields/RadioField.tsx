@@ -21,6 +21,31 @@ const RadioItem = styled("div", {
   alignItems: "center",
 });
 
+const Input = styled("input", {
+  margin: 0,
+  padding: 0,
+  backgroundColor: "transparent",
+  border: "1px solid $hover",
+  borderRadius: "50%",
+  height: 24,
+  width: 24,
+  "-webkit-appearance": "none",
+  "&:after": {
+    borderRadius: " 50%",
+    content: "",
+    position: "relative",
+    zIndex: 1,
+    display: "block",
+    height: 18,
+    width: 18,
+    left: 2,
+    top: 2,
+  },
+  "&:checked:after": {
+    background: "$hover",
+  },
+});
+
 export const RadioField = <T extends string>({
   name,
   value,
@@ -34,7 +59,7 @@ export const RadioField = <T extends string>({
       <Stack spacing={2}>
         {options.map((opt) => (
           <RadioItem key={opt.value}>
-            <input
+            <Input
               type="radio"
               id={opt.value}
               name={name}
